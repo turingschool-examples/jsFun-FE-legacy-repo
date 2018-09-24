@@ -1,0 +1,18 @@
+{
+  "name": "jsFun",
+  "version": "1.0.0",
+  "description": "Practice problems for JavaScript Fundamentals",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Turing School of Software and Design",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
