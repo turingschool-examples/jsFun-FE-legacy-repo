@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const scope = require('../scope/index');
 
-describe('Returns from scope exercises', () => {
+describe('Scope Exercises', () => {
   it('should return the proper values in the correct order', () => {
     const result = scope.exerciseA();
 

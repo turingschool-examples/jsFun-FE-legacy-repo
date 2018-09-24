@@ -29,12 +29,8 @@ const scope = {
 
     console.log(personC, 'D');
 
-    return [
-      { 'A': 'Ben' },
-      { 'B': 'CardiB' },
-      { 'C': 'CardiB' },
-      { 'D': 'Paul' }
-    ]
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
   }
 }
 
