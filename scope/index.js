@@ -31,6 +31,9 @@ const scope = {
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 }
 
