@@ -3,7 +3,7 @@
 
 # Instructions
 
-In the [scope/index.js]() file, you'll see an object called `scope` that has a number of methods on it. Each method represents a scope exercise you should solve. The exercises will look something like the following:
+In the [scope/index.js](https://github.com/turingschool-examples/jsFun/scope/index.js) file, you'll see an object called `scope` that has a number of methods on it. Each method represents a scope exercise you should solve. The exercises will look something like the following:
 
 ```js
 let text = 'Hello World!';
@@ -56,8 +56,6 @@ return result;
 // Because there is no variable declaration for `text` inside our current functional scope, the reassignment will look up the scope chain, into the global scope, and reassign the value of the `text` variable we declared on line 1.
 // Now that `changeText` is finished executing, we hop back down to our last `console.log()` of 'B' which now logs 'Goodbye World!'
 ``` 
-
-
 
 
 
