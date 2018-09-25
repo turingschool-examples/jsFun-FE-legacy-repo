@@ -12,5 +12,13 @@ describe('Prototype Exercises', () => {
     it('studentsPerInstructor', () => {
 
     });
+
+    it('modulesPerInstructor', () => {
+
+    });
+
+    it('curriculumPerInstructor', () => {
+
+    });
   });
 });
