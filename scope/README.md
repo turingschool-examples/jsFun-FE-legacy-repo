@@ -72,3 +72,6 @@ return result;
 # Resources
 
 * [Turing Scope Lesson Plan](http://frontend.turing.io/lessons/module-2/scope-and-closures.html)
+* [Understanding Scope](https://scotch.io/tutorials/understanding-scope-in-javascript)
+* [Scope & Hoisting](https://hackernoon.com/understanding-javascript-scope-1d4a74adcdf5)
+* [Scope Video](https://www.youtube.com/watch?v=SBjf9-WpLac)
