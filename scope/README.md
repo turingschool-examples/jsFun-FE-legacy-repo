@@ -1,5 +1,15 @@
 # Understanding Scope
 
+Scope is one of the most fundamental concepts of JavaScript, and is often used as a measure for how well a developer understands the inner workings of the language. Fully understanding how scope works will help you avoid introducing unexpected bugs into your codebase, and help you more easily track down the bugs that do pop up.
+
+In order to be successful with scope, you'll need to have a solid understanding of the following concepts:
+
+* the order in which JavaScript is read and executed
+* variable assignment vs. reassignment vs. declaration
+* the three scoping levels: global, functional and block
+* the scoping levels that var/let/const each adhere to
+* hoisting
+
 
 # Instructions
 
@@ -60,3 +70,5 @@ return result;
 
 
 # Resources
+
+* [Turing Scope Lesson Plan](http://frontend.turing.io/lessons/module-2/scope-and-closures.html)
