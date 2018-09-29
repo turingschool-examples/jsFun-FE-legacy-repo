@@ -1,7 +1,6 @@
 const { instructors, cohorts } = require('./datasets/turing');
 
 // DATASET: instructors, cohorts from ./datasets/turing
-
 const turingPrompts = {
   studentsForEachInstructor() {
     // Return an array of instructors where each instructor is an object
