@@ -15,7 +15,7 @@ In order to be successful when working with prototype methods, you'll need to ha
 
 In the [prototypes/index.js](https://github.com/turingschool-examples/jsFun/prototypes/index.js) file, you'll see several objects named after a collection of prompts that need to be solved. Each prompt is represented by a separate method on that object. 
 
-For example, the first object of prompts is called `turingPrompts` and coincides with the dataset at [./prototypes/datasets/turing.js](https://github.com/turingschool-examples/jsFun/prototypes/datasets/turing.js). As you work through the methods on this object, it will help to switch your sublimeText layout to display 2 files at once - one for the dataset you're working with, and one for the prompts to be solved.
+For example, the first object of prompts is called `turingPrompts` and coincides with the dataset at [prototypes/datasets/turing.js](https://github.com/turingschool-examples/jsFun/prototypes/datasets/turing.js). As you work through the methods on this object, it will help to switch your sublimeText layout to display 2 files at once - one for the dataset you're working with, and one for the prompts to be solved.
 
 Each prompt has an explanation of how the dataset should be manipulated, and what the final output should look like. Replace the `result` variable in each method with the solution that will give you the correct output.
 
@@ -29,6 +29,10 @@ const animals = [
   { name: 'chicken', sound: 'cluck', count: 10 },
   { name: 'sheep', sound: 'baah', count: 20 }
 ];
+
+module.exports = {
+  animals
+};
 
 
 // prototypes/index.js
