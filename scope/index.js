@@ -11,23 +11,23 @@ const scope = {
       }
 
       function beautifyPerson() {
-        console.log(personB, 'A');
+        logValues(personB, 'A');
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          console.log(personC, 'B');
+          logValues(personC, 'B');
         }
       }
 
       personC = personA;
 
-      console.log(personB, 'C');
+      logValues(personB, 'C');
     }
 
     changePerson();
 
-    console.log(personC, 'D');
+    logValues(personC, 'D');
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
