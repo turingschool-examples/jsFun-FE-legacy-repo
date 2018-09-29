@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const scope = require('../scope/index');
 
-describe('Scope Exercises', () => {
-  it('should return the proper values in the correct order', () => {
+describe('SCOPE', () => {
+  it('exerciseA', () => {
     const result = scope.exerciseA();
 
     expect(result).to.deep.equal([

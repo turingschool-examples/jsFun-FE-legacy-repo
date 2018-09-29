@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { turingPrompts } = require('../prototypes/index');
 
-describe('Prototype Exercises', () => {
+describe('PROTOTYPES', () => {
   describe('Turing Prompts', () => {
     it('studentsForEachInstructor', () => {
       const result = turingPrompts.studentsForEachInstructor();

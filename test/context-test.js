@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const context = require('../context/index');
 
-describe('Context Exercises', () => {
-  it('should reference the appropriate object', () => {
+describe('CONTEXT', () => {
+  it('exerciseA', () => {
     const result = context.exerciseA();
 
     expect(result).to.deep.equal({

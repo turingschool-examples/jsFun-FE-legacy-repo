@@ -4,7 +4,7 @@
   "description": "Practice problems for JavaScript Fundamentals",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha test/ --reporter dot --require mocha-clean"
   },
   "keywords": [
     "js"
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "mocha-clean": "^1.0.0"
   }
 }

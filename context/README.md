@@ -13,7 +13,7 @@ There are several rules you must keep in mind in order to successfully keep trac
 
 # Resources
 
-* [MDN this keyword](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/this)
+* [MDN `this` keyword](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/this)
 * [Turing `this` lesson plan](http://frontend.turing.io/lessons/module-2/this-is-confusing.html)
 * [Scope vs. Context 1](https://blog.kevinchisholm.com/javascript/difference-between-scope-and-context/)
 * [Scope vs. Context 2](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
