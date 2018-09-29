@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const scope = require('../scope/index');
-logValues = function() {}
 
 describe('Scope Exercises', () => {
   it('should return the proper values in the correct order', () => {

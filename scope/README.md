@@ -22,11 +22,11 @@ function changeText() {
   text = 'Goodbye World!';
 }
 
-console.log('A', text);
+// Log A: text
 
 changeText();
 
-console.log('B', text);
+// Log B: text
 
 const result = 'REPLACE WITH YOUR RESULT HERE';
 return result;
@@ -37,7 +37,7 @@ return result;
 
 ```
 
-In order to return the result, you should replace the value of the `result` variable with an array of objects that denotes which order the `console.logs()` run, and what values they log. For example, the above exercise would be solved like so:
+In order to return the result, you should replace the value of the `result` variable with an array of objects that denotes which order the `// Log` comments run, and what values they log. For example, the above exercise would be solved like so:
 
 ```js
 let text = 'Hello World!';
@@ -46,11 +46,11 @@ function changeText() {
   text = 'Goodbye World!';
 }
 
-console.log('A', text);
+// Log A: text
 
 changeText();
 
-console.log('B', text);
+// Log B: text
 
 const result = [
   { 'A': 'Hello World!' },
