@@ -121,7 +121,7 @@ const context = {
 
     class Game {
       constructor(title) {
-      this.title = title;
+        this.title = title;
     }
 
       resetGame() {
