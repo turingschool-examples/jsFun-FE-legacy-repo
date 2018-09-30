@@ -39,6 +39,9 @@ const context = {
 
     return result;
 
+    // Annotation:
+    // Write your annotation here as a comment
+
   },
   exerciseC() {
 
