@@ -64,6 +64,7 @@ const context = {
 
   },
   exerciseD() {
+
     const dog = {
       breed: "Chihuahua",
       getBreed: function(){
@@ -145,6 +146,7 @@ const context = {
     // Write your annotation here as a comment
   },
   exerciseH() {
+
     const obj = {
       arrowFunction: null,
       method: function () {
@@ -162,6 +164,7 @@ const context = {
 
   },
   exerciseI() {
+    
     const poets = [{
       name: 'Sappho'
     }, {
