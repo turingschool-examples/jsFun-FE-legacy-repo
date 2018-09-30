@@ -96,7 +96,6 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment
   },
-
   ExerciseF() {
 
     class Hero {
@@ -118,8 +117,7 @@ const context = {
 
     // Annotation: 
     // Write your annotation here as a comment
-  }
-
+  },
   ExerciseG() {
 
     class Game {
@@ -145,6 +143,54 @@ const context = {
 
     // Annotation: 
     // Write your annotation here as a comment
+  },
+  exerciseH() {
+    const obj = {
+      arrowFunction: null,
+      method: function () {
+        this.arrowFunction = () => { return this };
+      }
+    };
+
+    obj.method();
+    const result = obj.arrowFunction();
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+
+  },
+  exerciseI() {
+    const poets = [{
+      name: 'Sappho'
+    }, {
+      name: 'Maya'
+    }, {
+      name: 'Emily'
+    }, {
+      name: 'Audre'
+    }];
+
+    var result = poets.map(function(poet) {
+      return this;
+    }, poets)
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+  },
+  exerciseJ() {
+
+    const result = $('#btn').on('click', function() {
+      console.log($(this));
+    });
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment.
   }
 
 };
