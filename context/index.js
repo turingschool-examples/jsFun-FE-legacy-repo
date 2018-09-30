@@ -82,8 +82,8 @@ const context = {
   exerciseE() {
 
     const fn = () => {
-      value = 21;
-      console.log(this);
+      const value = 21;
+      return this.value;
     }
 
     const result = fn();
@@ -135,7 +135,7 @@ const context = {
       }
     }
 
-    var monopoly = new Game('Monopoly');
+    const monopoly = new Game('Monopoly');
     const result = monopoly.restart()
 
     return result;
