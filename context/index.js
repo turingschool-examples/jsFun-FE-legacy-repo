@@ -117,6 +117,33 @@ const context = {
     // Write your annotation here as a comment
   }
 
+  ExerciseG() {
+
+    class Game {
+      constructor(title) {
+      this.title = title;
+    }
+
+      resetGame() {
+        console.log('Clearing the board and starting over');
+      }
+
+      restart() {
+        setTimeout(function() {
+          console.log(`Restarting ${this.title}...`)
+        }, 1000);
+      }
+    }
+
+    var monopoly = new Game('Monopoly');
+    const result = monopoly.restart()
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  }
+
 };
 
 module.exports = context;
