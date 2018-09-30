@@ -31,7 +31,7 @@ const context = {
   exerciseB() {
 
     function fn () {
-    const value = 2;
+      const value = 2;
       return this.value;
     }
     
@@ -85,7 +85,7 @@ const context = {
   exerciseE() {
 
     const fn = () => {
-      const value = 21;
+      value = 21;
       return this.value;
     }
 
