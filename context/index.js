@@ -32,7 +32,7 @@ const context = {
 
     function fn () {
     const value = 2;
-      console.log (this.value)
+      return this.value;
     }
     
     const result = fn();
@@ -44,13 +44,13 @@ const context = {
 
     const car = {
       make: "Tesla",
-      getMake: function(){
+      getInfo: function(){
         console.log(this);
       }
     };
 
     const el = document.getElementById("btn");
-    const result = el.addEventListener("click", car.getMake);
+    const result = el.addEventListener("click", car.getInfo);
 
     // simulate button click in testing
 
@@ -61,18 +61,55 @@ const context = {
 
   },
   exerciseD() {
-
     const dog = {
       breed: "Chihuahua",
-      getBreed: function() {
+      getBreed: function(){
         const innerFunction = function(){
-          console.log(this.breed);
+        console.log(this.breed);
       };
-        return getBreed;
+    
+      return innerFunction();
       }
     };
 
     const result = dog.getBreed();
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+  exerciseE() {
+
+    const fn = () => {
+      value = 21;
+      console.log(this);
+    }
+
+    const result = fn();
+
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+
+  ExerciseF() {
+
+    class Hero {
+      constructor(name, power, canFly = false) {
+        this.name = name;
+        this.power = power;
+        this.canFly = canFly;
+      }
+
+      identifyHero() {
+        return this;
+      }
+    }
+
+    const storm = new Hero('Ororo', 'weather control', true);
+    const result = storm.identifyHero();
 
     return result;
 
