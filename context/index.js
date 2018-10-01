@@ -1,6 +1,5 @@
 const context = {
   exerciseA() {
-
     const fly = () => {
       console.log(this);
     }
@@ -17,29 +16,29 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = ship.fly();
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   },
-  exerciseB() {
 
+  exerciseB() {
     function fn () {
       const value = 2;
       return this.value;
     }
     
-    const result = fn();
-
+    // What is the value of `this` when we call fn()?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
 
   },
-  exerciseC() {
 
+  exerciseC() {
     const car = {
       make: "Tesla",
       getInfo: function(){
@@ -58,8 +57,8 @@ const context = {
     // Write your annotation here as a comment
 
   },
-  exerciseD() {
 
+  exerciseD() {
     const dog = {
       breed: "Chihuahua",
       getBreed: function(){
@@ -78,6 +77,7 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment
   },
+
   exerciseE() {
 
     const fn = () => {
@@ -92,8 +92,8 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment
   },
-  ExerciseF() {
 
+  exerciseF() {
     class Hero {
       constructor(name, power, canFly = false) {
         this.name = name;
@@ -114,8 +114,8 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment
   },
-  ExerciseG() {
 
+  exerciseG() {
     class Game {
       constructor(title) {
         this.title = title;
@@ -140,8 +140,8 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment
   },
-  exerciseH() {
 
+  exerciseH() {
     const obj = {
       arrowFunction: null,
       method: function () {
@@ -158,8 +158,8 @@ const context = {
     // Write your annotation here as a comment
 
   },
-  exerciseI() {
-    
+
+  exerciseI() {  
     const poets = [{
       name: 'Sappho'
     }, {
@@ -179,8 +179,8 @@ const context = {
     // Annotation: 
     // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
   },
-  exerciseJ() {
 
+  exerciseJ() {
     const result = $('#btn').on('click', function() {
       console.log($(this));
     });
