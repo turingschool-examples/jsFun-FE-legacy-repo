@@ -17,6 +17,8 @@ For each context exercise, we want to know what the value of `this` is when a ce
 * 'nameOfObject'
 * 'instance of nameOfClassInstance'
 
+Though you are technically working inside of a big `context` object with methods for each exercise, treat the code within each method as standalone code. (Imagine the code within the method is in it's own separate JavaScript file.)
+
 For example, given the following exercise:
 
 ```js
