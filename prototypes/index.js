@@ -2,6 +2,8 @@ const { instructors, cohorts } = require('./datasets/turing');
 const { cakes } = require('./datasets/cakes');
 const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
+const { classrooms } = require('./datasets/classrooms');
+const { mods } = require('./datasets/mods');
 const { bosses, sidekicks } = require('./datasets/bosses');
 
 // DATASET: instructors, cohorts from ./datasets/turing
@@ -80,6 +82,91 @@ const turingPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+
+
+
+
+
+// DATASET: mods from ./datasets/mods
+const modPrompts = {
+  studentsPerMod() {
+    // Return an array of objects where the keys are mod (the number of the module)
+    // and studentsPerInstructor (how many students per instructor there are for that mod) e.g.
+    // [
+    //   { mod: 1, studentsPerInstructor: 9 },
+    //   { mod: 2, studentsPerInstructor: 11 },
+    //   { mod: 3, studentsPerInstructor: 10 },
+    //   { mod: 4, studentsPerInstructor: 8 }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: classrooms from ./datasets/classrooms
+const classPrompts = {
+  feClassrooms() {
+    // Create an array of just the front-end classrooms. e.g.
+    // [
+    //   { roomLetter: 'A', program: 'FE', capacity: 32 },
+    //   { roomLetter: 'C', program: 'FE', capacity: 27 },
+    //   { roomLetter: 'E', program: 'FE', capacity: 22 },
+    //   { roomLetter: 'G', program: 'FE', capacity: 29 }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  totalCapacities() {
+    // Create an object where the keys are 'feCapacity' and 'beCapacity',
+    // and the values are the total capacity for all classrooms in each program e.g.
+    // { 
+    //   feCapacity: 110,
+    //   beCapacity: 96
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 
 
@@ -278,5 +365,7 @@ module.exports = {
   turingPrompts,
   piePrompts,
   clubPrompts,
-  bossPrompts
+  bossPrompts,
+  classPrompts,
+  modPrompts
 };
