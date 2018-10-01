@@ -4,7 +4,6 @@ const scope = require('../scope/index');
 describe('SCOPE', () => {
   it('exerciseA', () => {
     const result = scope.exerciseA();
-
     expect(result).to.deep.equal([
       { 'A': 'Ben' },
       { 'B': 'CardiB' },
