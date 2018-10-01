@@ -30,7 +30,7 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = fn();
     return result;
 
     // Annotation:
@@ -48,9 +48,6 @@ const context = {
 
     const el = document.getElementById("btn");
     const result = el.addEventListener("click", car.getInfo);
-
-    // simulate button click in testing
-
     return result;
 
     // Annotation: 
@@ -70,8 +67,9 @@ const context = {
       }
     };
 
-    const result = dog.getBreed();
 
+    // What is the value of `this` when we call dog.getBreed()?
+    const result = dog.getBreed();
     return result;
 
     // Annotation: 
@@ -85,8 +83,9 @@ const context = {
       return this.value;
     }
 
-    const result = fn();
 
+    // What is the value of `this` when we call fn()?
+    const result = fn();
     return result;
 
     // Annotation: 
@@ -107,8 +106,10 @@ const context = {
     }
 
     const storm = new Hero('Ororo', 'weather control', true);
-    const result = storm.identifyHero();
 
+
+    // What is the value of `this` when we call storm.identifyHero()?
+    const result = storm.identifyHero();
     return result;
 
     // Annotation: 
@@ -133,8 +134,10 @@ const context = {
     }
 
     const monopoly = new Game('Monopoly');
-    const result = monopoly.restart()
 
+
+    // What is the value of `this` when we call monopoly.restart()?
+    const result = monopoly.restart();
     return result;
 
     // Annotation: 
@@ -150,8 +153,9 @@ const context = {
     };
 
     obj.method();
-    const result = obj.arrowFunction();
 
+    // What is the value of `this` when we call obj.arrowFunction()?
+    const result = obj.arrowFunction();
     return result;
 
     // Annotation: 
