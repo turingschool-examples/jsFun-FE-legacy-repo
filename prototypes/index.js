@@ -1,4 +1,5 @@
 const { instructors, cohorts } = require('./datasets/turing');
+const { pie } = require('./datasets/pie');
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -66,6 +67,44 @@ const turingPrompts = {
   }
 }
 
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: pie from ./datasets/pie
+const piePrompts = {
+  howManyIngredients() {
+    // The bakery needs to make more rhubarb pies in order to meet the
+    // desiredInventoryCount. Figure out how many more pies need to be 
+    // made, and return an object of the total number of ingredients we need
+    // to buy in order to make the remaining pies. e.g.:
+    // {
+    //   cinnamon: 50,
+    //   sugar: 100
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
 module.exports = {
-  turingPrompts
+  turingPrompts,
+  piePrompts
 };
