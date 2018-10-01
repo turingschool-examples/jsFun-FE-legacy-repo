@@ -61,9 +61,9 @@ return result;
 // Annotation: 
 // `this` will reference the voyager1 object because we are calling `logThis()` as a method
 // on that particular object. The voyager1 object has a property called `logThis` that references
-// a global `logThis` function, declared as a traditional ES5 function. With traditional ES5 functions,
-// the value of `this` is set upon invocation rather than upon declaration. If this had been written
-// as an arrow function, `this` would instead point to the global window object.
+// a traditional ES5 global function. With traditional ES5 functions, the value of `this` is set 
+// upon invocation rather than upon declaration. If this had been written as an arrow function,
+// `this` would instead point to the global window object.
 ```
 
 # Resources
