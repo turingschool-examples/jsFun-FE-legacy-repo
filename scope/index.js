@@ -233,6 +233,118 @@ const scope = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  exerciseH() {
+    let num = 6;
+
+    const fn1 = function() {
+      let num = 4;
+
+      // Log A: num
+
+      if (num < 5) {
+        const num = 9;
+
+        fn2(num)
+
+        const newNum = num;
+
+        // Log B: newNum
+      }
+
+      newNum = num;
+
+      // Log C: newNum
+    }
+
+    const fn2 = function(num){
+      // Log D: num
+
+      num = num + 1;
+
+      // Log E: num
+    }
+
+    fn1();
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseI() {
+    var hunger = 100;
+
+    function eatSnack() {
+      hunger -= 25;
+      // Log A: hunger
+      gorgeYourself();
+
+      function gorgeYourself() {
+        const hunger = 0;
+        // Log B: hunger
+      }
+
+      // Log C: hunger
+    };
+
+    eatSnack();
+
+    hunger += 5;
+    // Log D: hunger
+
+    eatSnack();
+    // Log E: hunger
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseJ() {
+    let sandwich = 'ketchup sandwich';
+
+    // Log A: sandwich
+
+    const addChipotle = () => {
+      // Log B: toppings
+      var toppings = 'chipotle sauce';
+
+      if (toppings === 'chipotle sauce') { 
+        sandwich = 'not a mediocre sandwich';
+      }
+
+      // Log C: sandwich
+    }
+
+    const addCheese = () => {
+      let cheeseTopping = 'gouda';
+      // Log D: cheeseTopping
+
+      const shesTheManReference = () => {
+        amandaBynes = "National Treasure"
+      }
+
+      shesTheManReference();
+    }
+
+    cheeseTopping = 'kraft';
+    addCheese();
+
+    addChipotle();
+    // Log E: sandwich
+    // Log F: amandaBynes
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 }
 
