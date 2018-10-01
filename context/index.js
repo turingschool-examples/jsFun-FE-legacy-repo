@@ -24,7 +24,7 @@ const context = {
   },
 
   exerciseB() {
-    function fn () {
+    function fn() {
       const value = 2;
       return this.value;
     }
@@ -59,7 +59,7 @@ const context = {
     const dog = {
       breed: "Chihuahua",
       getBreed: function(){
-        const innerFunction = function(){
+        const innerFunction = function() {
         console.log(this.breed);
       };
     
@@ -147,7 +147,7 @@ const context = {
   exerciseH() {
     const obj = {
       arrowFunction: null,
-      method: function () {
+      method: function() {
         this.arrowFunction = () => { return this };
       }
     };
