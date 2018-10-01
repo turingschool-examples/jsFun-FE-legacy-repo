@@ -345,6 +345,143 @@ const scope = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  exerciseK() {
+    let num = 10;
+
+    function foo() {
+        if (num > 5) {
+           num = 7;
+        }
+        // Log A: num
+    }
+
+    foo();
+
+    // Log B: num
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseL() {
+    let grade = 100;
+
+    function losePoints() {
+      grade = 90;
+
+      function addPoints() {
+        const grade = 95;
+
+        if (grade === 95) {
+          let grade = 97;
+        }
+
+        // Log A: grade
+      }
+
+      addPoints();
+
+      // Log B: grade
+    }
+
+    losePoints();
+
+    // Log C: grade
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseM() {
+    var num = 5;
+
+    function first() {
+      // Log A: num
+      num = 6;
+      // Log B: num
+    }
+
+    function second() {
+      // Log C: num
+      let num = 7;
+    }
+
+    first();
+    second();
+
+    // Log D: num
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseN() {
+    var instructor = 'Pam';
+
+    function changeInstructor() {
+
+      // Log A: instructor
+
+      if (instructor === 'Brittany') {
+        const instructor = 'Nathaniel';
+      } else {
+        let instructor = 'Brittany';
+      }
+
+      // Log B: instructor
+
+      function rename() {
+        instructor = 'Louisa';
+        // Log C: instructor
+      }
+
+      rename();
+
+      // Log D: instructor
+
+    }
+
+    // Log E: instructor
+
+    changeInstructor();
+
+    // Log F: instructor
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseO() {
+    var shoe = 'flipflop';
+
+    function putOnShoe() {
+      // Log A: shoe
+      var shoe = 'boot';
+    }
+
+    // Log B: shoe
+    putOnShoe();
+    // Log C: shoe
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 }
 
