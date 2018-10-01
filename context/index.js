@@ -15,14 +15,9 @@ const context = {
 
     const ship = new SpaceProbe('voyager', 'classy');
 
-    ship.fly(); // What is logged?
 
-    const result = {
-      title: 'voyager',
-      classification: 'classy',
-      fly() { console.log(this); }
-    };
-
+    // What is the value of `this` when we call ship.fly()?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:

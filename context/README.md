@@ -11,6 +11,8 @@ There are several rules you must keep in mind in order to successfully keep trac
 
 # Instructions
 
+
+
 # Resources
 
 * [MDN `this` keyword](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/this)
