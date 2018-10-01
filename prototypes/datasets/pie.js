@@ -1,6 +1,10 @@
 const pie = {
   flavor: 'rhubarb',
-  size: 'large'
+  cost: {
+    large: 10,
+    medium: 7,
+    small: 5
+  },
   ingredients: {
     cinnamon: 2, 
     sugar: 4
