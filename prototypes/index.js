@@ -154,6 +154,16 @@ const classPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  sortByCapacity() {
+    // Return the array of classrooms sorted by their capacity (least capacity to greatest)
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 };
 
