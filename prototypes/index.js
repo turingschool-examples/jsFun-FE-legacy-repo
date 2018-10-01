@@ -4,55 +4,6 @@ const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
 const { bosses, sidekicks } = require('./datasets/bosses');
 
-
-// DATASET: cakes from ./datasets/cakes
-const cakePrompts = {
-  allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
-    // each topping, and the values are the amount of that topping I need to buy e.g.
-    // { 
-    //    'dutch process cocoa': 1,
-    //    'toasted sugar': 3,
-    //    'smoked sea salt': 3,
-    //    'berries': 2, 
-    //    ...etc
-    // }
-    
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
   studentsForEachInstructor() {
@@ -128,6 +79,105 @@ const turingPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
+
+
+
+
+
+
+
+// DATASET: cakes from ./datasets/cakes
+const cakePrompts = {
+  allToppings() {
+    // Return an array of all unique toppings (no duplicates) needed to bake
+    // every cake in the dataset e.g.
+    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  groceryList() {
+    // I need to make a grocery list. Please give me an object where the keys are
+    // each topping, and the values are the amount of that topping I need to buy e.g.
+    // { 
+    //    'dutch process cocoa': 1,
+    //    'toasted sugar': 3,
+    //    'smoked sea salt': 3,
+    //    'berries': 2, 
+    //    ...etc
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  stockPerCake() {
+    // Return an array of objects that include just the flavor of the cake and how
+    // much of that cake is in stock e.g.
+    // [ 
+    //    { flavor: 'honey', inStock: 3 },
+    //    { flavor: 'vanilla', inStock: 21 },
+    //    ..etc
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  totalInventory() {
+    // Return the total amout of cakes in stock e.g.
+    // 59
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  onlyInStock() {
+    // Return an array of only the cakes that are in stock
+    // e.g.
+    // [
+    //   {
+    //   cakeFlavor: 'dark chocolate',
+    //   filling: null,
+    //   frosting: 'dark chocolate ganache',
+    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
+    //   inStock: 15
+    // },
+    // {
+    //   cakeFlavor: 'yellow',
+    //   filling: 'citrus glaze',
+    //   frosting: 'chantilly cream',
+    //   toppings: ['berries', 'edible flowers'],
+    //   inStock: 14
+    // },
+    // ..etc
+    // ]
+  }
+};
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
 
 
 
