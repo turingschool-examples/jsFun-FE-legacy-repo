@@ -15,8 +15,20 @@ const turingPrompts = {
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
     // ]
+    let numberOfStudentsPerInstructor = instructors.map((instructor) => {
+      let numberOfStudents = cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      })
+      return numberOfStudents.studentCount
+    })
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    instructors.forEach((instructor, i) => {
+      result.push({
+        name: instructors[i].name,
+        studentCount: numberOfStudentsPerInstructor[i]
+      });
+    });
     return result;
 
     // Annotation:
