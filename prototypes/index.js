@@ -371,11 +371,51 @@ const bossPrompts = {
 
 
 
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: kitties from ./datasets/kitties
+const kittyPrompts = {
+  orangeKittyNames() {
+    // Return an array of just the names of kitties who are orange e.g.
+    // ['Tiger', 'Snickers']
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  sortByAge() {
+    // Sort the kitties by their age
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
 module.exports = {
   turingPrompts,
   piePrompts,
   clubPrompts,
   bossPrompts,
   classPrompts,
-  modPrompts
+  modPrompts,
+  kittyPrompts
 };
