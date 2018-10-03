@@ -16,12 +16,29 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    //PSUEDO
+    //find cohort that matches my instructors cohort -> cohorts.find()
+    //Grab the studentCount value from that cohort -> matchingCohort.studentCount
+    //Add studentCount property to my newInstructor -> newInstructor.studentCount = studentCount
+const result = instructors.map((instructor) => {
+       let newInstructor = {
+         name: instructor.name,
+       };
+       let moduleNum = cohorts.find((cohort) => {
+           return cohort.module === instructor.module;
+       })
+       newInstructor.studentCount = moduleNum.studentCount;
+       return newInstructor
+   });
+   result;
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
+    //ANNOTATION HERE
+    //Which dataset is given to me? 2 arrays
+    //what do i want back? array of the same length
+    //which prototype method will i use? map
+    //which dataset makes sense to iterate over? instructors
+    //what do the datasets have in common? module number
+
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
@@ -262,6 +279,24 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+
+const result = cakes.filter((currentCake) => {
+
+    return currentCake.inStock;
+});
+
+    //WRITE ANNOTATION HERE
+    //I'm receiving an array of cakes and I want a 
+    // subset of that array, so I want to use filter.
+    //My filter callback will return only the cakes who have 
+    //an inStock value
+
+
+
+
+
+
+
   }
 };
 
