@@ -150,9 +150,13 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter((classroom) => {
+     return classroom.program === 'FE';
+     });
     return result;
 
+
+    //I need to filter through the given array and find the objects that have the key value pair of program: 'FE'. Then I will assign this to an array, result.
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -165,8 +169,36 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    
+    const result = {feCapacity: totalFe, beCapacity: totalBe};
+
+     var FE = classrooms.filter((classroom) => {
+     return classroom.program === 'FE';
+     })
+  
+    var BE = classrooms.filter((classroom) => {
+     return classroom.program === 'BE';
+     })
+
+  let totalFe = 0;
+  let totalBe = 0;
+
+    var capacityFe = FE.forEach((classroom) => {
+       const capac = classroom.capacity;
+        totalFe = totalFe + capac;
+        return totalFe;
+     });
+
+    var capacityBe = BE.forEach((classroom) => {
+       const capac = classroom.capacity;
+        totalBe = totalBe + capac;
+        return totalBe;
+     });
+    
     return result;
+
+  
 
     // Annotation:
     // Write your annotation here as a comment
@@ -324,7 +356,11 @@ const piePrompts = {
     //   sugar: 100
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.assign({}, pie.ingredients);
+    const piesToBeMade = pie.desiredInventoryCount - pie.inventoryCount;
+    result.map(pie  => pie * piesToBeMade);
+
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -357,6 +393,9 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
+
+
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
