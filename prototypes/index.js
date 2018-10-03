@@ -16,11 +16,21 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = instructors.map((instructor) => {
+        let newInstructor = { name: instructor.name };
+        let matchingCohort = cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      })
+      newInstructor.studentCount = matchingCohort.studentCount;
+         return newInstructor;
+    });
 
     // Annotation:
     // Write your annotation here as a comment
+    //find the cohort that matches the instructors cohort --> cohorts.find()
+    //grab the studentcount value from that cohort --> matchingCohort.studentCount
+    //add studentCount property to my newInstructor --> newInstructor.studentCount = studentCount;
+
   },
 
   studentsPerInstructor() {
@@ -99,11 +109,17 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((modules) => {
+      const studentsPer = modules.students / modules.instructors;
+      const modData = {mod: modules.mod, studentsPerInstructor: studentsPer};
+      return modData;
+    });
+
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    //I needed to create a new array of the same size as the mods array
+    //so used the proto .map(). I created a new object modData that had two key-value pairs, passing in the mod number and students per instructor variable 
+
   }
 };
 
@@ -208,7 +224,12 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+
+
+
+
+    const result = cakes.map((cake) => );
     return result;
 
     // Annotation:
@@ -262,6 +283,16 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+
+    const result = cakes.filter((currentCake) => {
+        return currentCake.inStock;
+    });
+
+    return result;
+
+    //Im recieving an array of cake, I want a subset of that array 
+    //to be returned so I'm going to reach for filter. My filter callback
+    //will return only the cakes who have an inStock value
   }
 };
 
