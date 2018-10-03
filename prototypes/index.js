@@ -1,4 +1,5 @@
 const { instructors, cohorts } = require('./datasets/turing');
+const { constellations, stars } = require('./datasets/astronomy');
 const { cakes } = require('./datasets/cakes');
 const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
@@ -169,36 +170,27 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
+    const result =  {feCapacity: capacityFE, beCapacity: capacityBE};
 
-    
-    const result = {feCapacity: totalFe, beCapacity: totalBe};
-
-     var FE = classrooms.filter((classroom) => {
+     let FE = classrooms.filter((classroom) => {
      return classroom.program === 'FE';
      })
   
-    var BE = classrooms.filter((classroom) => {
+    let BE = classrooms.filter((classroom) => {
      return classroom.program === 'BE';
      })
 
-  let totalFe = 0;
-  let totalBe = 0;
+    let capacityFE = FE.reduce((sum, classroom) => {
+    sum += classroom.capacity;
+    return sum;
+    }, 0);
 
-    var capacityFe = FE.forEach((classroom) => {
-       const capac = classroom.capacity;
-        totalFe = totalFe + capac;
-        return totalFe;
-     });
-
-    var capacityBe = BE.forEach((classroom) => {
-       const capac = classroom.capacity;
-        totalBe = totalBe + capac;
-        return totalBe;
-     });
+    let capacityBE = BE.reduce((sum, classroom) => {
+    sum += classroom.capacity;
+    return sum;
+    }, 0);
     
     return result;
-
-  
 
     // Annotation:
     // Write your annotation here as a comment
@@ -238,7 +230,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+
+    const result = cakes.reduce( (cakesArr, cake) => {
+    cake.toppings.forEach((topping) => {
+    if (!cakesArr.includes(topping)) { 
+      cakesArr.push(topping)
+    }
+  })
+  return cakesArr;
+}, [])
+
+
     return result;
 
     // Annotation:
@@ -355,17 +358,24 @@ const piePrompts = {
     //   cinnamon: 50,
     //   sugar: 100
     // }
-
-    const result = Object.assign({}, pie.ingredients);
+    let result = groceryList;
     const piesToBeMade = pie.desiredInventoryCount - pie.inventoryCount;
-    result.map(pie  => pie * piesToBeMade);
+    const ingredientsOfPie = pie.ingredients;
+    const ingredientsKeys = Object.keys(ingredientsOfPie);
+    const groceryList = Object.assign({}, pie.ingredients);
 
-    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    ingredientsKeys.forEach((ingredient) => {
+    groceryList[ingredient] = groceryList[ingredient] * piesToBeMade;
+  })
+
+    const result = groceryList;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
-  }
+
+    //We are given an object, and we need to access the value of the key ingredients. 
+    //which is an object with 2 properties. We want to return this object with each values multiplied by the amount of pies needed. We reached for the object.keys prototype to grab the keys of the ingredients value object, and used forEach to iterate through this object and update the values of each key in our new assigned object. }
 };
 
 
@@ -394,10 +404,28 @@ const clubPrompts = {
     //   ...etc
     // }
 
+    const namesArray = clubs.reduce((namesArr, club) => {
+  club.members.forEach((member) => {
+    if (!namesArr.includes(member)) {
+      namesArr.push(member)
+    }
+  })
+  return namesArr
+}, [])
+
+const namesObj = namesArray.reduce((obj, name) => {
+  let clubArr = [];
+  clubs.forEach((club) => {
+    if (club.members.includes(name)) {
+      clubArr.push(club.club)
+    }
+  })
+  obj[name] = clubArr;
+  return obj
+}, {});
 
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = namesObj;
     return result;
 
     // Annotation:
@@ -431,6 +459,162 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
+    
+    const bossKeys = Object.keys(bosses);
+    bossKeys.map((boss) => {
+    let loyalty = sidekicks.reduce((loyaltySum, sidekick) => {
+    if (sidekick.boss === bosses[boss].name) {
+      loyaltySum += sidekick.loyaltyToBoss;
+        }
+    return loyaltySum;
+    }, 0)
+    return {bossName: bosses[boss].name, sidekickLoyalty: loyalty};
+    })
+    
+    const result = bossKeys;
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: kitties from ./datasets/kitties
+const kittyPrompts = {
+  orangeKittyNames() {
+    // Return an array of just the names of kitties who are orange e.g.
+    // ['Tiger', 'Snickers']
+    const result = kitties.filter(kitten => kitten.color === 'orange')
+    result.map((kitten) => {
+        return kitten.name;
+        })
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  sortByAge() {
+    // Sort the kitties by their age
+
+    const result = kitties.sort((kitten1,kitten2) => {
+    return kitten1.age - kitten2.age
+        });
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  growUp() {
+    // Return an array of kitties who have all grown up by 2 years e.g.
+    // [{
+    //   name: 'Felicia',
+    //   age: 4,
+    //   color: 'grey'
+    // },
+    // {
+    //   name: 'Tiger',
+    //   age: 7,
+    //   color: 'orange'
+    // },
+    // ...etc]
+
+    const result = kitties.map((kitten) => {
+    kitten.age = kitten.age + 2;
+    return kitten;
+    })
+    return result;
+
+  };
+};
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: bosses, sidekicks from ./datasets/bosses
+const astronomyPrompts = {
+  starsInConstellations() {
+    // Return an array of all the stars that appear in any of the constellations
+    // listed in the constellations object e.g.
+    // [ 
+    //   { name: 'Rigel',
+    //     visualMagnitude: 0.13,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 860,
+    //     color: 'blue' },
+    //   { name: 'Betelgeuse',
+    //     visualMagnitude: 0.5,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 640,
+    //     color: 'red' }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  starsByColor() {
+    // Return an object with keys of the different colors of the stars,
+    // whose values are arrays containing the star objects that match e.g.
+    // {
+    //   blue: [{obj}, {obj}, {obj}, {obj}, {obj}],
+    //   white: [{obj}, {obj}],
+    //   yellow: [{obj}, {obj}],
+    //   orange: [{obj}],
+    //   red: [{obj}]
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  constellationsStarsExistIn() {
+    // Return an array of the names of the constellations that the brightest stars are part of e.g.
+    // [ 'Canis Major',
+    //   'Carina',
+    //   'Boötes',
+    //   'Lyra',
+    //   'Auriga',
+    //   'Orion',
+    //   'Canis Minor',
+    //   'Eridanus',
+    //   'Orion',
+    //   'Centaurus' ]
+
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -447,5 +631,7 @@ module.exports = {
   clubPrompts,
   bossPrompts,
   classPrompts,
-  modPrompts
+  modPrompts,
+  kittyPrompts,
+  astronomyPrompts
 };
