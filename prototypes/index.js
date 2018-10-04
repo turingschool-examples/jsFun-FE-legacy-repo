@@ -41,6 +41,9 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
+    //USE TWO REDUCE PROTOS
+
+
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -169,28 +172,41 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
+    const result = classrooms.reduce((obj, classroom) => {
 
-    const result =  {feCapacity: capacityFE, beCapacity: capacityBE};
+    if( classroom.program === 'FE') {
+  obj.feCapacity += classroom.capacity;
+    } else {
+  obj.beCapacity += classroom.capacity;
+    }
 
-     let FE = classrooms.filter((classroom) => {
-     return classroom.program === 'FE';
-     })
   
-    let BE = classrooms.filter((classroom) => {
-     return classroom.program === 'BE';
-     })
+    return obj;
+    }, {feCapacity:0, beCapacity: 0});
 
-    let capacityFE = FE.reduce((sum, classroom) => {
-    sum += classroom.capacity;
-    return sum;
-    }, 0);
+return result;
 
-    let capacityBE = BE.reduce((sum, classroom) => {
-    sum += classroom.capacity;
-    return sum;
-    }, 0);
+    // const result =  {feCapacity: capacityFE, beCapacity: capacityBE};
+
+    //  let FE = classrooms.filter((classroom) => {
+    //  return classroom.program === 'FE';
+    //  })
+  
+    // let BE = classrooms.filter((classroom) => {
+    //  return classroom.program === 'BE';
+    //  })
+
+    // let capacityFE = FE.reduce((sum, classroom) => {
+    // sum += classroom.capacity;
+    // return sum;
+    // }, 0);
+
+    // let capacityBE = BE.reduce((sum, classroom) => {
+    // sum += classroom.capacity;
+    // return sum;
+    // }, 0);
     
-    return result;
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -260,10 +276,6 @@ const cakePrompts = {
     // }
 
 
-
-
-
-
     const result = cakes.map((cake) => );
     return result;
 
@@ -280,7 +292,14 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => {
+      let cakeObj = {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      }
+      return cakeObj;
+    })
+
     return result;
 
     // Annotation:
@@ -288,8 +307,10 @@ const cakePrompts = {
   },
 
   totalInventory() {
-    // Return the total amout of cakes in stock e.g.
-    // 59
+    cakes.reduce((acc, cakeObj) => {
+        acc += cakeObj.inStock
+        return acc;
+    }, 0)
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -404,32 +425,28 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const namesArray = clubs.reduce((namesArr, club) => {
-  club.members.forEach((member) => {
-    if (!namesArr.includes(member)) {
-      namesArr.push(member)
-    }
+    const clubbers = clubs.reduce((acc, currentClub) => {
+    currentClub.members.forEach((member) => {
+        let memberName = member;
+        let clubArray = [];
+        acc[memberName] = clubArray;
+        clubArray = clubs.reduce((acc, currentClub) => {
+      if (currentClub.members.includes(member)) {
+        clubArray.push(currentClub.club);
+      };
+    }, [])
   })
-  return namesArr
-}, [])
-
-const namesObj = namesArray.reduce((obj, name) => {
-  let clubArr = [];
-  clubs.forEach((club) => {
-    if (club.members.includes(name)) {
-      clubArr.push(club.club)
-    }
-  })
-  obj[name] = clubArr;
-  return obj
-}, {});
+  return acc;
+}, {})
 
 
-    const result = namesObj;
+
+
+    const result = clubbers;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are given a dataset of one array (clubs) 
   }
 };
 
