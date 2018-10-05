@@ -552,13 +552,15 @@ const kittyPrompts = {
     // },
     // ...etc]
 
+
     const result = kitties.map((kitten) => {
     kitten.age = kitten.age + 2;
     return kitten;
     })
     return result;
 
-  };
+  }
+
 };
 
 
@@ -650,5 +652,6 @@ module.exports = {
   classPrompts,
   modPrompts,
   kittyPrompts,
+  cakePrompts,
   astronomyPrompts
 };
