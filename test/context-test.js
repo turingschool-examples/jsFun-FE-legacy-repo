@@ -12,7 +12,7 @@ describe('CONTEXT', () => {
     expect(result).to.equal('global window object');
   });
 
-  it('exerciseC', () => {
+  it.skip('exerciseC', () => {
     const result = context.exerciseC();
     expect(result).to.equal('el');
   });
@@ -47,7 +47,7 @@ describe('CONTEXT', () => {
     expect(result).to.equal('poets');
   });
 
-  it('exerciseJ', () => {
+  it.skip('exerciseJ', () => {
     const result = context.exerciseJ();
     expect(result).to.equal('#btn');
   });
