@@ -9,7 +9,7 @@ describe('CONTEXT', () => {
 
   it('exerciseB', () => {
     const result = context.exerciseB();
-    expect(result).to.equal('window');
+    expect(result).to.equal('global window object');
   });
 
   it('exerciseC', () => {
@@ -19,12 +19,12 @@ describe('CONTEXT', () => {
 
   it('exerciseD', () => {
     const result = context.exerciseD();
-    expect(result).to.equal('window');
+    expect(result).to.equal('global window object');
   });
 
   it('exerciseE', () => {
     const result = context.exerciseE();
-    expect(result).to.equal('window');
+    expect(result).to.equal('global window object');
   });
 
   it('exerciseF', () => {
@@ -34,7 +34,7 @@ describe('CONTEXT', () => {
 
   it('exerciseG', () => {
     const result = context.exerciseG();
-    expect(result).to.equal('window');
+    expect(result).to.equal('global window object');
   });
 
   it('exerciseH', () => {
