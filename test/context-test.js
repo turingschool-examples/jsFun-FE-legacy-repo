@@ -4,7 +4,7 @@ const context = require('../context/index');
 describe('CONTEXT', () => {
   it('exerciseA', () => {
     const result = context.exerciseA();
-    expect(result).to.equal('instance of Ship');
+    expect(result).to.equal('global window object');
   });
 
   it('exerciseB', () => {
