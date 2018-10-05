@@ -122,7 +122,7 @@ describe('SCOPE', () => {
     const result = scope.exerciseL();
     expect(result).to.deep.equal([
       { 'A': 95 },
-      { 'B': 95 },
+      { 'B': 90 },
       { 'C': 90 }
     ]);
   });
