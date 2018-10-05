@@ -87,7 +87,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we are declaring a global variable number ans assigning it equal to number 30. Then we are creating a function numberFunction()  and creating a function scoped variable and assignging it to number 75. We are running a conditional checking if number is equal to 75, then creating a block variable number and assigning it to 28. Then we are logging number which is equal to 75 since we are inside the function but not the block. Then we are declaring a function newNumber() on line 66, once invoked it is  reassigning number to equal 64. Then when we log number it is equal to 64. Logging number outside the function logs 64. Last we are logging number which is equal to 30 since it is globally scoped. 
   },
 
   exerciseC() {
@@ -126,7 +126,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //first we are declaring a variable greeting and assigning it to a string Hello, then declaring and running the function greetingFunction(). This declares a function scoped variable and assigning it to 'Yo'. The conditional on line 99 checks if greeting is equal to 'Yo', then creates a block variabel and assignings it to Howdy. When we log greeting after it is equal to 'Yo' since we are outside o the block but inside the function. Then we create function newPhrase() and reassign greeting to equal string 'Hey'. Then we log greeting which is equal to 'Hey'. Then we log greeting which is still equal to hey since we reassigned the variable. Last we log greeting once again, qhich is equal to 'Hello' since it is globally scoped.
   },
 
   exerciseD() {
@@ -140,21 +140,25 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log('A: ' + greeting);
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
         // Log B: greeting
+        console.log('B: ' + greeting);
       }
 
       newGreeting();
 
       // Log C: greeting
+      console.log('C: ' + greeting);
     }
 
     greetingGenerator();
 
     // Log D: greeting
+    console.log('D: ' + greeting);
 
     const result = [
      {‘A’: ‘hi’},
@@ -165,7 +169,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 133 we are creating a variable greeting and assigning it to 'Hi'. function greetGenerator is run, and we declare a function scoped variable greeting = 'hi'. The conditional on line 139 evaluates to true, and a new block scoped variable greeting is assigned to 'hello'. When we log greeting on line 143, it is equal to 'hi'. When newGreeting() is invoked, greeting is reassigned to 'welcome' and then we log greeting as 'welcome'. Outside of this function we log greeting again, which is equal to 'welcome' since it was reassigned. Last we log greeting which is equal to 'howdy' since it as a globally scoped variable.
   },
 
   exerciseE() {
@@ -293,6 +297,7 @@ const scope = {
       let num = 4;
 
       // Log A: num
+      console.log('A:' num);
 
       if (num < 5) {
         const num = 9;
@@ -302,19 +307,23 @@ const scope = {
         const newNum = num;
 
         // Log B: newNum
+        console.log('B:' num);
       }
 
       newNum = num;
 
       // Log C: newNum
+      console.log('C:' num);
     }
 
     const fn2 = function(num){
       // Log D: num
+      console.log('D:' num);
 
       num = num + 1;
 
       // Log E: num
+      console.log('E:' num);
     }
 
     fn1();
@@ -339,29 +348,44 @@ const scope = {
     function eatSnack() {
       hunger -= 25;
       // Log A: hunger
+      console.log('A: ' + hunger);
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
         // Log B: hunger
+        console.log('B: ' + hunger);
       }
 
       // Log C: hunger
+      console.log('C: ' + hunger);
     };
 
     eatSnack();
 
     hunger += 5;
     // Log D: hunger
+    console.log('D: ' + hunger);
 
     eatSnack();
     // Log E: hunger
+    console.log('E: ' + hunger);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {'A': 75},
+    {'B': 0},
+    {'C': 75},
+    {'D': 80},
+    {'A': 55},
+    {'B': 0},
+    {'C': 55},
+    {'E': 55}
+
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 341 we are declaring a global variable named hunger and assigning it to number 100. Then we are creating a function eatSnack() which is invoked on 359. This function reassigns hunger to equal hunger - 25, which is 75. This console log of A is equal to 75. Then we invoke the function gorgeYourself which creates a constant hunger equal to number 0. When we log hunger on this line, B logs as 0. On line 356 console.log() of C logs 75. Then we reassign hunger to hunger + 5, and logging hunger results in 80. We then run the function eatSnack() again, which increments the global variable hunger down by 25 again, so logging hunger for A results in 55. running gorge yourself declares const 0, so hunger logs as B: 0. Hunger on line 356 for C: will log as 55 again. On line 367, we log E: 55 since it is referencing the global variable that has been changed.
   },
 
   exerciseJ() {
@@ -413,17 +437,22 @@ const scope = {
            num = 7;
         }
         // Log A: num
+        console.log('A: ' + num);
     }
 
     foo();
 
     // Log B: num
+    console.log('B: ' + num);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {'A': 7},
+    {'B': 7}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Line 433 we declare a global variable named num and assign it to number 10, then we invoke the foo() function. The conditional evaluates as true, so global variable num is reassigned to equal number 7. Therefore, both console.logs will result in 7 since they are both referencing the global variable. 
   },
 
   exerciseL() {
@@ -463,12 +492,15 @@ const scope = {
 
     function first() {
       // Log A: num
+      console.log('A: ' + num);
       num = 6;
       // Log B: num
+      console.log('B: ' + num);
     }
 
     function second() {
       // Log C: num
+      console.log('C: ' + num);
       let num = 7;
     }
 
@@ -476,6 +508,7 @@ const scope = {
     second();
 
     // Log D: num
+    console.log('D: ' + num);
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -490,6 +523,7 @@ const scope = {
     function changeInstructor() {
 
       // Log A: instructor
+      console.log('A: ' + instructor);
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -498,23 +532,26 @@ const scope = {
       }
 
       // Log B: instructor
-
+      console.log('B: ' + instructor);
       function rename() {
         instructor = 'Louisa';
         // Log C: instructor
+        console.log('C: ' + instructor);
       }
 
       rename();
-
+      console.log('D: ' + instructor);
       // Log D: instructor
 
     }
 
     // Log E: instructor
+    console.log('E: ' + instructor);
 
     changeInstructor();
 
     // Log F: instructor
+    console.log('F: ' + instructor);
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
