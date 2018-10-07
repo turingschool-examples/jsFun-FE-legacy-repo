@@ -186,7 +186,8 @@ const context = {
   },
 
   exerciseJ() {
-    $('#btn').on('click', function() {
+    const el = $('#btn');
+    el.on('click', function() {
       console.log($(this));
     });
 
