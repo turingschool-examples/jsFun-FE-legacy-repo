@@ -482,6 +482,31 @@ const scope = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  exerciseP() {
+    function orderLunch() {
+      if (typeof lunch === 'undefined') {
+        // Log A: lunch
+        let lunch = 'sandwich';
+      }
+
+      if (typeof lunch === 'undefined') {
+        lunch = 'soup';
+      }
+
+      // Log B: lunch
+    }
+
+    orderLunch();
+
+    // Log C: lunch
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 }
 
