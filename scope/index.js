@@ -12,25 +12,25 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
-        console.log('A: 'personB);
+        // console.log('A: 'personB)
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
           // Log B: personC
-          console.log('B: 'personC)
+          // console.log('B: 'personC)
         }
       }
 
       personC = personA;
-      console.log('C: 'personB);
+      // console.log('C: 'personB);
       // Log C: personB
     }
 
     changePerson();
 
     // Log D: personC
-    console.log('D: 'personC)
+    // console.log('D: 'personC)
 
     const result = [
     {'A': 'Ben'},
@@ -79,10 +79,10 @@ const scope = {
     // Log D: number
 
     const result = [
-     {‘A’: 75},
-     {‘B’: 64},
-     {‘C’: 64},
-     {‘D’: 30}
+     {'A': 75},
+     {'B': 64},
+     {'C': 64},
+     {'D': 30}
    ];
     return result;
 
@@ -118,10 +118,10 @@ const scope = {
     // Log D: greeting
 
     const result = [
-     {‘A’: ‘Yo’},
-     {‘B’: ‘Hey’},
-     {‘C’: ‘Hey’},
-     {‘D’: ‘Hello’}
+     {'A': 'Yo'},
+     {'B': 'Hey'},
+     {'C': 'Hey'},
+     {'D': 'Hello'}
    ];
     return result;
 
@@ -140,31 +140,31 @@ const scope = {
       }
 
       // Log A: greeting
-      console.log('A: ' + greeting);
+      // console.log('A: ' + greeting);
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
         // Log B: greeting
-        console.log('B: ' + greeting);
+        // console.log('B: ' + greeting);
       }
 
       newGreeting();
 
       // Log C: greeting
-      console.log('C: ' + greeting);
+      // console.log('C: ' + greeting);
     }
 
     greetingGenerator();
 
     // Log D: greeting
-    console.log('D: ' + greeting);
+    // console.log('D: ' + greeting);
 
     const result = [
-     {‘A’: ‘hi’},
-     {‘B’: ‘welcome’},
-     {‘C’: ‘welcome’},
-     {‘D’: ‘howdy’}
+     {'A': 'hi'},
+     {'B': 'welcome'},
+     {'C': 'welcome'},
+     {'D': 'howdy'}
    ];;
     return result;
 
@@ -186,26 +186,26 @@ const scope = {
         }
 
         // Log A: name
-        console.log('A: ' + dog);
+        // console.log('A: ' + dog);
       }
 
       // Log B: name
-      console.log('B: ' + name);
+      // console.log('B: ' + name);
     }
 
     // Log C: name
-    console.log('C: ' + name);
+    // console.log('C: ' + name);
 
     sayName();
 
     // Log D: name
-    console.log('D: ' + name);
+    // console.log('D: ' + name);
 
     const result = [
-     {‘C’: ‘Brittany’},
-     {‘A’: ‘Nathaniel’},
-     {‘B’: ‘Nathaniel’},
-     {‘D’: ‘Brittany’}
+     {'C': 'Brittany'},
+     {'A': 'Nathaniel'},
+     {'B': 'Nathaniel'},
+     {'D': 'Brittany'}
    ];
     return result;
 
@@ -218,7 +218,7 @@ const scope = {
 
     function petDog() {
       // Log A: dog
-      console.log('A: ' + dog);
+      // console.log('A: ' + dog);
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
@@ -226,18 +226,18 @@ const scope = {
 
       function rollOver() {
         // Log B: dog
-        console.log('B: ' + dog);
+        // console.log('B: ' + dog);
 
         dog = 'Biscuit';
 
         // Log C: dog
-        console.log('C: ' + dog);
+        // console.log('C: ' + dog);
 
       }
 
       rollOver();
 
-      console.log('D: ' + dog);
+      // console.log('D: ' + dog);
       // Log D: dog
     }
 
@@ -262,25 +262,25 @@ const scope = {
 
         if (fruit) {
           // Log A: fruit
-          console.log('A: ' + fruit);
+          // console.log('A: ' + fruit);
           const fruit = 'strawberry';
         }
 
         // Log B: fruit
-        console.log('B: ' + fruit);
+        // console.log('B: ' + fruit);
       }
 
       // Log C: fruit
-      console.log('C: ' + fruit);
+      // console.log('C: ' + fruit);
     }
 
     eatFruit()
 
     // Log D: fruit
-    console.log('D: ' + fruit);
+    // console.log('D: ' + fruit);
 
     const result = [
-    {'A': 'undefined'},
+    {'A': 'reference error'},
     {'B': 'mango'},
     {'C': 'mango'},
     {'D': 'apple'}];
@@ -297,7 +297,7 @@ const scope = {
       let num = 4;
 
       // Log A: num
-      console.log('A:' num);
+      // console.log('A:' num);
 
       if (num < 5) {
         const num = 9;
@@ -307,33 +307,33 @@ const scope = {
         const newNum = num;
 
         // Log B: newNum
-        console.log('B:' num);
+        // console.log('B:' num);
       }
 
       newNum = num;
 
       // Log C: newNum
-      console.log('C:' num);
+      // console.log('C:' num);
     }
 
     const fn2 = function(num){
       // Log D: num
-      console.log('D:' num);
+      // console.log('D:' num);
 
       num = num + 1;
 
       // Log E: num
-      console.log('E:' num);
+      // console.log('E:' num);
     }
 
     fn1();
 
     const result = [
-     {‘A’: 4},
-     {‘D’: 9},
-     {‘E’: 10},
-     {‘B’: 9},
-     {‘C’: 4}
+     {'A': 4},
+     {'D': 9},
+     {'E': 10},
+     {'B': 9},
+     {'C': 4}
    ];
     return result;
 
@@ -348,28 +348,28 @@ const scope = {
     function eatSnack() {
       hunger -= 25;
       // Log A: hunger
-      console.log('A: ' + hunger);
+      // console.log('A: ' + hunger);
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
         // Log B: hunger
-        console.log('B: ' + hunger);
+        // console.log('B: ' + hunger);
       }
 
       // Log C: hunger
-      console.log('C: ' + hunger);
+      // console.log('C: ' + hunger);
     };
 
     eatSnack();
 
     hunger += 5;
     // Log D: hunger
-    console.log('D: ' + hunger);
+    // console.log('D: ' + hunger);
 
     eatSnack();
     // Log E: hunger
-    console.log('E: ' + hunger);
+    // console.log('E: ' + hunger);
 
     const result = [
     {'A': 75},
@@ -437,13 +437,13 @@ const scope = {
            num = 7;
         }
         // Log A: num
-        console.log('A: ' + num);
+        // console.log('A: ' + num);
     }
 
     foo();
 
     // Log B: num
-    console.log('B: ' + num);
+    // console.log('B: ' + num);
 
     const result = [
     {'A': 7},
@@ -492,15 +492,15 @@ const scope = {
 
     function first() {
       // Log A: num
-      console.log('A: ' + num);
+      // console.log('A: ' + num);
       num = 6;
       // Log B: num
-      console.log('B: ' + num);
+      // console.log('B: ' + num);
     }
 
     function second() {
       // Log C: num
-      console.log('C: ' + num);
+      // console.log('C: ' + num);
       let num = 7;
     }
 
@@ -508,7 +508,7 @@ const scope = {
     second();
 
     // Log D: num
-    console.log('D: ' + num);
+    // console.log('D: ' + num);
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -523,7 +523,7 @@ const scope = {
     function changeInstructor() {
 
       // Log A: instructor
-      console.log('A: ' + instructor);
+      // console.log('A: ' + instructor);
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -532,26 +532,26 @@ const scope = {
       }
 
       // Log B: instructor
-      console.log('B: ' + instructor);
+      // console.log('B: ' + instructor);
       function rename() {
         instructor = 'Louisa';
         // Log C: instructor
-        console.log('C: ' + instructor);
+        // console.log('C: ' + instructor);
       }
 
       rename();
-      console.log('D: ' + instructor);
+      // console.log('D: ' + instructor);
       // Log D: instructor
 
     }
 
     // Log E: instructor
-    console.log('E: ' + instructor);
+    // console.log('E: ' + instructor);
 
     changeInstructor();
 
     // Log F: instructor
-    console.log('F: ' + instructor);
+    // console.log('F: ' + instructor);
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -564,13 +564,13 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      console.log('A: ' shoe);
+      // console.log('A: ' shoe);
       var shoe = 'boot';
     }
 
-    console.log('B: 'shoe);
+    // console.log('B: 'shoe);
     putOnShoe();
-    console.log('C: 'shoe);
+    // console.log('C: 'shoe);
 
     const result = [
       {'B': 'flipflop'},

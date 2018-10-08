@@ -32,7 +32,7 @@ const context = {
     // What is the value of `this` when we call fn()?
     const result = 'global window object';
     return result;
-
+  },
     // Annotation:
     // 'This' refers to the global window object because 'this' does not live inside of an object or constructor function. Since the function is not referring to a method or object, this is defaulting to the global window (Rule 1)
 

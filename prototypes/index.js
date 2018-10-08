@@ -27,7 +27,6 @@ const turingPrompts = {
     });
 
     // Annotation:
-    // Write your annotation here as a comment
     //find the cohort that matches the instructors cohort --> cohorts.find()
     //grab the studentcount value from that cohort --> matchingCohort.studentCount
     //add studentCount property to my newInstructor --> newInstructor.studentCount = studentCount;
@@ -174,42 +173,20 @@ const classPrompts = {
     // }
     const result = classrooms.reduce((obj, classroom) => {
 
-    if( classroom.program === 'FE') {
-  obj.feCapacity += classroom.capacity;
+    if ( classroom.program === 'FE') {
+        obj.feCapacity += classroom.capacity;
     } else {
-  obj.beCapacity += classroom.capacity;
+        obj.beCapacity += classroom.capacity;
     }
-
   
     return obj;
     }, {feCapacity:0, beCapacity: 0});
 
 return result;
 
-    // const result =  {feCapacity: capacityFE, beCapacity: capacityBE};
-
-    //  let FE = classrooms.filter((classroom) => {
-    //  return classroom.program === 'FE';
-    //  })
-  
-    // let BE = classrooms.filter((classroom) => {
-    //  return classroom.program === 'BE';
-    //  })
-
-    // let capacityFE = FE.reduce((sum, classroom) => {
-    // sum += classroom.capacity;
-    // return sum;
-    // }, 0);
-
-    // let capacityBE = BE.reduce((sum, classroom) => {
-    // sum += classroom.capacity;
-    // return sum;
-    // }, 0);
-    
-    // return result;
-
     // Annotation:
     // Write your annotation here as a comment
+    //II need to go through each 
   },
 
   sortByCapacity() {
@@ -274,9 +251,21 @@ const cakePrompts = {
     //    'berries': 2, 
     //    ...etc
     // }
+        const result = cakes.reduce((acc, currentCake) => {
+  //go through each cake and grab the toppings array & iterate over each toppings array
+        currentCake.toppings.forEach((currentTopping) => {
+    //Create an oject key for each toppings - if it doesnt already exist
+        if (!acc[currentTopping]) {
+      acc[currentTopping] = 1;
+        }
+    //if it does exist, add 1 to the value of that key
+        else {
+      acc[currentTopping]++;
+            }
+        })
+    return acc;
+    }, {});
 
-
-    const result = cakes.map((cake) => );
     return result;
 
     // Annotation:
@@ -379,7 +368,7 @@ const piePrompts = {
     //   cinnamon: 50,
     //   sugar: 100
     // }
-    let result = groceryList;
+   
     const piesToBeMade = pie.desiredInventoryCount - pie.inventoryCount;
     const ingredientsOfPie = pie.ingredients;
     const ingredientsKeys = Object.keys(ingredientsOfPie);
@@ -397,6 +386,7 @@ const piePrompts = {
 
     //We are given an object, and we need to access the value of the key ingredients. 
     //which is an object with 2 properties. We want to return this object with each values multiplied by the amount of pies needed. We reached for the object.keys prototype to grab the keys of the ingredients value object, and used forEach to iterate through this object and update the values of each key in our new assigned object. }
+    }
 };
 
 
@@ -596,6 +586,28 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
+
+
+const newConst = Object.assign(constellations);
+const constArray = Object.keys(newConst);
+constArray;
+//grab names from constellation object
+constArray.forEach((constellation) => {
+  //grab the stars array for each constellation object
+  // (constellations.constellation);
+  const starsArray = constellations[constellation].stars;
+  console.log(starsArray);
+  starsArray.forEach((star) => {
+    stars.filter((currentStar) => {
+      return star.includes(currentStar);
+        // console.log(stars);
+    })
+    stars;
+  })
+})
+
+
+
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -613,6 +625,18 @@ const astronomyPrompts = {
     //   orange: [{obj}],
     //   red: [{obj}]
     // }
+
+    const result = stars.reduce((retObj, star) => {
+        if (star.color in retObj) {
+          retObj[star.color].push(star);
+        }
+        else {
+          retObj[star.color] = [star];
+        }
+      return retObj;
+    }, {});
+
+    console.log('result' , result);
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
