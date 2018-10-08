@@ -188,8 +188,23 @@ const context = {
   },
 
   exerciseJ() {
-    $('#btn').on('click', function() {
+    const el = $('#btn');
+    el.on('click', function() {
       console.log($(this));
+    });
+
+    // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment.
+  },
+
+  exerciseK() {
+    const el = $('#btn');
+    el.on('click', () => {
+      console.log(this);
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?

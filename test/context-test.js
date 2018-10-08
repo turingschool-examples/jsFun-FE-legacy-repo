@@ -1,6 +1,18 @@
 const { expect } = require('chai');
 const context = require('../context/index');
 
+global.document = {
+  getElementById: () => {
+    return { addEventListener: () => {} }
+  }
+}
+
+global.$ = () => {
+  return {
+    on: () => {}
+  }
+}
+
 describe('CONTEXT', () => {
   it('exerciseA', () => {
     const result = context.exerciseA();
@@ -12,7 +24,7 @@ describe('CONTEXT', () => {
     expect(result).to.equal('global window object');
   });
 
-  it.skip('exerciseC', () => {
+  it('exerciseC', () => {
     const result = context.exerciseC();
     expect(result).to.equal('el');
   });
@@ -47,8 +59,8 @@ describe('CONTEXT', () => {
     expect(result).to.equal('poets');
   });
 
-  it.skip('exerciseJ', () => {
+  it('exerciseJ', () => {
     const result = context.exerciseJ();
-    expect(result).to.equal('#btn');
+    expect(result).to.equal('el');
   });
 });

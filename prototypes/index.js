@@ -6,6 +6,49 @@ const { clubs } = require('./datasets/clubs');
 const { classrooms } = require('./datasets/classrooms');
 const { mods } = require('./datasets/mods');
 const { bosses, sidekicks } = require('./datasets/bosses');
+const { breweries } = require('./datasets/breweries');
+
+
+// DATASET: breweries from ./datasets/breweries
+const breweryPrompts = {
+  getBeerCount() {
+    // Return the total beer count of all beers for every brewery e.g.
+    // 35
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  getBreweryBeerCount() {
+    // Return an array of objects where each object has the name of a brewery
+    // and the count of the beers that brewery has e.g.
+    // [
+    //  { name: 'Little Machine Brew', beerCount: 11 }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  findHighestAbvBeer() {
+    // Return the beer which has the highest ABV of all beers
+    // e.g.
+    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -669,6 +712,7 @@ constArray.forEach((constellation) => {
 
 
 module.exports = {
+  breweryPrompts,
   turingPrompts,
   piePrompts,
   clubPrompts,

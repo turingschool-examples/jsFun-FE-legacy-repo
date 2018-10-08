@@ -580,6 +580,7 @@ const scope = {
     return result;
 
     // Annotation:
+<<<<<<< HEAD
     // On line 469 declare a global variable names shoe and assign it equal to flipflop. Then we 
     //declare a global function named putOnShoe, but we skip down to line 473 because it hasnt 
     //been invoked yet. On line 469 we log the value of shoe, which is 'flipflop' at this point 
@@ -587,6 +588,34 @@ const scope = {
     //within our function, we get undefined because oru shoe delcartion on line 473
     //is hoisted to the top of that function scope. Once weve finished executing putOnShoe
     //we go back down to line 478 and log shoe again which will give us flipflop.
+=======
+    // Write your annotation here as a comment
+  },
+
+  exerciseP() {
+    function orderLunch() {
+      if (typeof lunch === 'undefined') {
+        // Log A: lunch
+        let lunch = 'sandwich';
+      }
+
+      if (typeof lunch === 'undefined') {
+        lunch = 'soup';
+      }
+
+      // Log B: lunch
+    }
+
+    orderLunch();
+
+    // Log C: lunch
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+>>>>>>> 568db0ab5b43ec3388877948b5afc1039e9a1cc4
   }
 }
 
