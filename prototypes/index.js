@@ -7,6 +7,7 @@ const { classrooms } = require('./datasets/classrooms');
 const { mods } = require('./datasets/mods');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { breweries } = require('./datasets/breweries');
+const { weapons, characters } = require('./datasets/ultima');
 
 
 // DATASET: breweries from ./datasets/breweries
@@ -548,6 +549,48 @@ const astronomyPrompts = {
 
 
 
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: charaters, weapons from ./datasets/ultima
+const ultimaPrompts = {
+  totalDamage() {
+
+    // Return the sum of the amount of damage for all the weapons that our characters can use
+    // Answer => 113
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  charactersByTotal() {
+
+    // Return the sum damage and total range for each character as an object. 
+    // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+};
+
+
+
 module.exports = {
   breweryPrompts,
   turingPrompts,
@@ -558,5 +601,6 @@ module.exports = {
   modPrompts,
   kittyPrompts,
   cakePrompts,
-  astronomyPrompts
+  astronomyPrompts,
+  ultimaPrompts
 };
