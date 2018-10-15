@@ -507,6 +507,64 @@ const scope = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  exerciseQ(){
+    let myKid = 'Pandora';
+    let wildKids = ['Antigone']
+
+    let myCrazyKidAntics = kid => {
+    // Log A: kid
+    wildKids.push(kid);
+    // Log B: wildKids
+  
+    let drawOnTheWall = () => {
+      let myKid = 'Mandy';
+      // Log C: myKid
+      return `That wild kid ${myKid}, drew on the wall!`;
+    }
+
+    drawOnTheWall();
+
+    let myAmazingKid = () => {
+      let myKid = wildKids.shift();
+      // Log D: myKid
+      return `That kid ${myKid}, is AMAZING!`;
+    }
+
+    myAmazingKid();
+      // Log E: myKid;
+      return `All these kids are wild, especially, ${myKid}!`
+    }
+
+    myCrazyKidAntics(myKid);
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseR() {
+    let myName = 'Rody';
+    // Log A: myName
+
+    const parentFunc = () => {
+      myName += 'Toy';
+      // Log B: myName
+
+      let innerFunc = () => {
+        let myName = 'Tesla'; 
+        // Log C: myName
+      }
+
+      innerFunc();
+      myName += 'Daniels';
+    }
+
+    parentFunc();
+    // Log D: myName
   }
 }
 
