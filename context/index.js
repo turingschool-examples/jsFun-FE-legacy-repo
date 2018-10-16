@@ -16,11 +16,11 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of spaceProbe';
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    
+    //This will reference the new instance of spaceProbe, that is assigned to the variable ship. Ship inherits all of spaceprobes properties. Since the function fly is a property of spaceProbe and is invoked within the constructor function, 'this' in the function refers to the specific instance of SpaceProbe.
   },
 
   exerciseB() {
@@ -30,12 +30,11 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
+    // Annotation:
+    // 'This' refers to the global window object because 'this' does not live inside of an object or constructor function. Since the function is not referring to a method or object, this is defaulting to the global window (Rule 1)
 
   exerciseC() {
     const car = {
@@ -49,20 +48,21 @@ const context = {
     el.addEventListener("click", car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'car';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // This refers to the object car. Since we are calling a function as a method on an object, this refers to the object that we are calling the function on which is car. (Rule 2)
   },
 
   exerciseD() {
     const dog = {
       breed: "Chihuahua",
       getBreed: function(){
-        const innerFunction = function() {
+        const innerFunction = function()  {
         console.log(this.breed);
       };
+      console.log(this.breed)
     
       return innerFunction();
       }
@@ -70,11 +70,11 @@ const context = {
 
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    //Since this is an ES5 function, the value of this is not assigned until the function is invoked. Since we are not invoking the function until line 67, and the console.log(this.breed) is before the function is invoked, this is defaulting to the global window. 
   },
 
   exerciseE() {
@@ -86,11 +86,12 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    //Since the function fn is in a global scope, 'this' refers back to the global window since it is not being assigned within an object. Value is declared as a global object, so this.value will return 21 since value is now a property of the window.
+
   },
 
   exerciseF() {
@@ -109,11 +110,11 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    //identifyHero() is a method of the constructor Hero. When we create storm as a new instance of Hero, it is inheriting the properties of hero. This refers back to the instance of Hero that was created, that is assigned to the variable storm.
   },
 
   exerciseG() {
@@ -137,11 +138,11 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Restart() is a method that is on the the game object. Inner functions cannot access methods that are attached to the outer functions.
   },
 
   exerciseH() {
@@ -155,11 +156,11 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'obj';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When obj.method() is run, it is reassigning the value of arrowFunction to an anonymous function that is returning 'this'. When we invoke obj.arrowFunction(), we are running that function on the object.
   },
 
   exerciseI() {  
@@ -178,11 +179,12 @@ const context = {
     }, poets)
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'poets';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+    //This refers to the poets since we are setting it up to bind to 'this' in our map function. 
   },
 
   exerciseJ() {

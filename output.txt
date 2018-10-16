@@ -1,0 +1,204 @@
+
+> jsFun@1.0.0 test /Users/colevanacore/mod-2-projects/jsFun
+> ./node_modules/mocha/bin/mocha test/ --reporter dot --require mocha-clean
+
+
+
+  !․,․․․․․․,!!!!!!․!!․!!!!!!!․!․!․․․․․․!!․․!․!!!․
+
+  21 passing (27ms)
+  2 pending
+  24 failing
+
+  1) CONTEXT
+       exerciseA:
+
+      AssertionError: expected 'instance of spaceProbe' to equal 'global window object'
+      + expected - actual
+
+      -instance of spaceProbe
+      +global window object
+      
+      at Context.it (test/context-test.js:7:23)
+
+  2) PROTOTYPES
+       Turing Prompts
+         studentsForEachInstructor:
+     AssertionError: expected undefined to deeply equal [ Array(9) ]
+      at Context.it (test/prototype-test.js:12:30)
+
+  3) PROTOTYPES
+       Turing Prompts
+         studentsPerInstructor:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal { Object (cohort1806, cohort1804, ...) }
+      at Context.it (test/prototype-test.js:17:30)
+
+  4) PROTOTYPES
+       Turing Prompts
+         modulesPerTeacher:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal { Object (Pam, Brittany, ...) }
+      at Context.it (test/prototype-test.js:22:30)
+
+  5) PROTOTYPES
+       Turing Prompts
+         curriculumPerTeacher:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal { Object (html, css, ...) }
+      at Context.it (test/prototype-test.js:27:30)
+
+  6) PROTOTYPES
+       Club Prompts
+         membersBelongingToClubs:
+     AssertionError: expected { Object (Louisa, Pam, ...) } to deeply equal undefined
+      at Context.it (test/prototype-test.js:35:30)
+
+  7) PROTOTYPES
+       Boss Prompts
+         bossLoyalty:
+
+      AssertionError: expected [ 'scar', 'ursula', 'jafar' ] to deeply equal [ Array(3) ]
+      + expected - actual
+
+       [
+      -  "scar"
+      -  "ursula"
+      -  "jafar"
+      +  {
+      +    "bossName": "Scar"
+      +    "sidekickLoyalty": 16
+      +  }
+      +  {
+      +    "bossName": "Ursula"
+      +    "sidekickLoyalty": 20
+      +  }
+      +  {
+      +    "bossName": "Jafar"
+      +    "sidekickLoyalty": 3
+      +  }
+       ]
+      
+      at Context.it (test/prototype-test.js:43:30)
+
+  8) PROTOTYPES
+       Class Prompts
+         totalCapacities:
+
+      AssertionError: expected { feCapacity: 110, beCapacity: 96 } to deeply equal { FE: 110, BE: 96 }
+      + expected - actual
+
+       {
+      -  "beCapacity": 96
+      -  "feCapacity": 110
+      +  "BE": 96
+      +  "FE": 110
+       }
+      
+      at Context.it (test/prototype-test.js:56:30)
+
+  9) PROTOTYPES
+       Class Prompts
+         sortByCapacity:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(8) ]
+      at Context.it (test/prototype-test.js:61:30)
+
+  10) PROTOTYPES
+       Kitty Prompts
+         orangeKittyNames:
+     ReferenceError: kitties is not defined
+      at Object.orangeKittyNames (prototypes/index.js:520:20)
+      at Context.it (test/prototype-test.js:77:35)
+
+  11) PROTOTYPES
+       Kitty Prompts
+         sortByAge:
+     ReferenceError: kitties is not defined
+      at Object.sortByAge (prototypes/index.js:533:20)
+      at Context.it (test/prototype-test.js:82:35)
+
+  12) PROTOTYPES
+       Kitty Prompts
+         growUp:
+     ReferenceError: kitties is not defined
+      at Object.growUp (prototypes/index.js:557:20)
+      at Context.it (test/prototype-test.js:87:35)
+
+  13) PROTOTYPES
+       Pie Prompts
+         howManyIngredients:
+     SyntaxError: Identifier 'result' has already been declared
+      at Context.it (test/prototype-test.js:95:33)
+
+  14) PROTOTYPES
+       Astronomy Prompts
+         starsInConstellations:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(2) ]
+      at Context.it (test/prototype-test.js:104:30)
+
+  15) PROTOTYPES
+       Astronomy Prompts
+         starsByColor:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal { Object (blue, white, ...) }
+      at Context.it (test/prototype-test.js:109:30)
+
+  16) PROTOTYPES
+       Astronomy Prompts
+         constellationsStarsExistIn:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(11) ]
+      at Context.it (test/prototype-test.js:114:30)
+
+  17) PROTOTYPES
+       Cake Prompts
+         groceryList:
+     ReferenceError: result is not defined
+      at Object.groceryList (prototypes/index.js:280:5)
+      at Context.it (test/prototype-test.js:126:34)
+
+  18) PROTOTYPES
+       Cake Prompts
+         totalInventory:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal 59
+      at Context.it (test/prototype-test.js:137:30)
+
+  19) SCOPE
+       exerciseF:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(5) ]
+      at Context.it (test/scope-test.js:57:28)
+
+  20) SCOPE
+       exerciseG:
+
+      AssertionError: expected [ Array(4) ] to deeply equal [ Array(4) ]
+      + expected - actual
+
+       [
+         {
+      -    "A": "undefined"
+      +    "A": "reference error"
+         }
+         {
+           "B": "mango"
+         }
+      
+      at Context.it (test/scope-test.js:68:28)
+
+  21) SCOPE
+       exerciseJ:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(6) ]
+      at Context.it (test/scope-test.js:103:28)
+
+  22) SCOPE
+       exerciseL:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ { A: 95 }, { B: 90 }, { C: 90 } ]
+      at Context.it (test/scope-test.js:123:28)
+
+  23) SCOPE
+       exerciseM:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(4) ]
+      at Context.it (test/scope-test.js:132:28)
+
+  24) SCOPE
+       exerciseN:
+     AssertionError: expected 'REPLACE WITH YOUR RESULT HERE' to deeply equal [ Array(6) ]
+      at Context.it (test/scope-test.js:142:28)
+
+
+
