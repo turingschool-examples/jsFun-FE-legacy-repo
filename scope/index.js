@@ -580,6 +580,7 @@ const scope = {
     return result;
 
     // Annotation:
+
     // On line 469 declare a global variable names shoe and assign it equal to flipflop. Then we 
     //declare a global function named putOnShoe, but we skip down to line 473 because it hasnt 
     //been invoked yet. On line 469 we log the value of shoe, which is 'flipflop' at this point 
@@ -587,6 +588,90 @@ const scope = {
     //within our function, we get undefined because oru shoe delcartion on line 473
     //is hoisted to the top of that function scope. Once weve finished executing putOnShoe
     //we go back down to line 478 and log shoe again which will give us flipflop.
+    // Write your annotation here as a comment
+  },
+
+  exerciseP() {
+    function orderLunch() {
+      if (typeof lunch === 'undefined') {
+        // Log A: lunch
+        let lunch = 'sandwich';
+      }
+
+      if (typeof lunch === 'undefined') {
+        lunch = 'soup';
+      }
+
+      // Log B: lunch
+    }
+
+    orderLunch();
+
+    // Log C: lunch
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseQ(){
+    let myKid = 'Pandora';
+    let wildKids = ['Antigone']
+
+    let myCrazyKidAntics = kid => {
+    // Log A: kid
+    wildKids.push(kid);
+    // Log B: wildKids
+  
+    let drawOnTheWall = () => {
+      let myKid = 'Mandy';
+      // Log C: myKid
+      return `That wild kid ${myKid}, drew on the wall!`;
+    }
+
+    drawOnTheWall();
+
+    let myAmazingKid = () => {
+      let myKid = wildKids.shift();
+      // Log D: myKid
+      return `That kid ${myKid}, is AMAZING!`;
+    }
+
+    myAmazingKid();
+      // Log E: myKid;
+      return `All these kids are wild, especially, ${myKid}!`
+    }
+
+    myCrazyKidAntics(myKid);
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  exerciseR() {
+    let myName = 'Rody';
+    // Log A: myName
+
+    const parentFunc = () => {
+      myName += 'Toy';
+      // Log B: myName
+
+      let innerFunc = () => {
+        let myName = 'Tesla'; 
+        // Log C: myName
+      }
+
+      innerFunc();
+      myName += 'Daniels';
+    }
+
+    parentFunc();
+    // Log D: myName
   }
 }
 
