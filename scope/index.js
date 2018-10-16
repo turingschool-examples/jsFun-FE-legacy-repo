@@ -581,6 +581,10 @@ const scope = {
 
     // Annotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a0a839e129d359cc5dcdf0ca43a28a018507528
     // On line 469 declare a global variable names shoe and assign it equal to flipflop. Then we 
     //declare a global function named putOnShoe, but we skip down to line 473 because it hasnt 
     //been invoked yet. On line 469 we log the value of shoe, which is 'flipflop' at this point 
@@ -588,7 +592,10 @@ const scope = {
     //within our function, we get undefined because oru shoe delcartion on line 473
     //is hoisted to the top of that function scope. Once weve finished executing putOnShoe
     //we go back down to line 478 and log shoe again which will give us flipflop.
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 6a0a839e129d359cc5dcdf0ca43a28a018507528
     // Write your annotation here as a comment
   },
 
@@ -676,7 +683,10 @@ const scope = {
 
     parentFunc();
     // Log D: myName
+<<<<<<< HEAD
 >>>>>>> b1f9d6644068d5f07dba923d0238febec599abe7
+=======
+>>>>>>> 6a0a839e129d359cc5dcdf0ca43a28a018507528
   }
 }
 
