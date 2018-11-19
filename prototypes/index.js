@@ -1,20 +1,28 @@
-const { instructors, cohorts } = require('./datasets/turing');
-const { constellations, stars } = require('./datasets/astronomy');
-const { cakes } = require('./datasets/cakes');
+const { kitties } = require('./datasets/kitties')
 const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
-const { classrooms } = require('./datasets/classrooms');
 const { mods } = require('./datasets/mods');
-const { bosses, sidekicks } = require('./datasets/bosses');
+const { cakes } = require('./datasets/cakes');
+const { classrooms } = require('./datasets/classrooms');
 const { breweries } = require('./datasets/breweries');
+const { instructors, cohorts } = require('./datasets/turing');
+const { bosses, sidekicks } = require('./datasets/bosses');
+const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
 
 
-// DATASET: breweries from ./datasets/breweries
-const breweryPrompts = {
-  getBeerCount() {
-    // Return the total beer count of all beers for every brewery e.g.
-    // 35
+
+
+
+
+// SINGLE DATASETS
+// =================================================================
+
+// DATASET: kitties from ./datasets/kitties
+const kittyPrompts = {
+  orangeKittyNames() {
+    // Return an array of just the names of kitties who are orange e.g.
+    // ['Tiger', 'Snickers']
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -23,12 +31,8 @@ const breweryPrompts = {
     // Write your annotation here as a comment
   },
 
-  getBreweryBeerCount() {
-    // Return an array of objects where each object has the name of a brewery
-    // and the count of the beers that brewery has e.g.
-    // [
-    //  { name: 'Little Machine Brew', beerCount: 11 }
-    // ]
+  sortByAge() {
+    // Sort the kitties by their age
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -37,10 +41,52 @@ const breweryPrompts = {
     // Write your annotation here as a comment
   },
 
-  findHighestAbvBeer() {
-    // Return the beer which has the highest ABV of all beers
-    // e.g.
-    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+  growUp() {
+    // Return an array of kitties who have all grown up by 2 years e.g.
+    // [{
+    //   name: 'Felicia',
+    //   age: 4,
+    //   color: 'grey'
+    // },
+    // {
+    //   name: 'Tiger',
+    //   age: 7,
+    //   color: 'orange'
+    // },
+    // ...etc]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+  }
+};
+
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: pie from ./datasets/pie
+const piePrompts = {
+  howManyIngredients() {
+    // The bakery needs to make more rhubarb pies in order to meet the
+    // desiredInventoryCount. Programmatically determine how many more pies
+    // need to be made, and return an object of the total number of ingredients we need
+    // we need to buy in order to make the remaining pies. e.g.:
+    // {
+    //   cinnamon: 50,
+    //   sugar: 100
+    // }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -51,62 +97,30 @@ const breweryPrompts = {
 };
 
 
-// DATASET: instructors, cohorts from ./datasets/turing
-const turingPrompts = {
-  studentsForEachInstructor() {
-    // Return an array of instructors where each instructor is an object
-    // with a name and the count of students in their module. e.g. 
-    // [
-    //  { name: 'Pam', studentCount: 21 },
-    //  { name: 'Robbie', studentCount: 18 }
-    // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
 
-  studentsPerInstructor() {
-    // Return an object of how many students per teacher there are in each cohort e.g.
-    // { 
-    // cohort1806: 9,
-    // cohort1804: 10.5
-    // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
 
-  modulesPerTeacher() {
-    // Return an object where each key is an instructor name and each value is
-    // an array of the modules they can teach based on their skills. e.g.:
-    // { 
-    //   Leta: [2, 4],
-    //   Nathaniel: [2],
-    //   Robbie: [4],
-    //   Pam: [2, 4]
-    // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
 
-  curriculumPerTeacher() {
-    // Return an object where each key is a curriculum topic and each value is
-    // an array of instructors who teach that topic e.g.:
-    // { 
-    //   html: [ 'Travis', 'Louisa' ],
-    //   css: [ 'Travis', 'Louisa' ],
-    //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
-    //   recursion: [ 'Pam', 'Leta' ]
+
+// DATASET: clubs from ./datasets/clubs
+const clubPrompts = {
+  membersBelongingToClubs() {
+    // Create an object whose keys are the names of people, and whose values are
+    // arrays that include the names of the clubs that person is a part of. e.g. 
+    // {
+    //   Louisa: ['Drama', 'Art'],
+    //   Pam: ['Drama', 'Art', 'Chess'],
+    //   ...etc
     // }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -116,6 +130,7 @@ const turingPrompts = {
     // Write your annotation here as a comment
   }
 };
+
 
 
 
@@ -143,6 +158,110 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: cakes from ./datasets/cakes
+const cakePrompts = {
+  stockPerCake() {
+    // Return an array of objects that include just the flavor of the cake and how
+    // much of that cake is in stock e.g.
+    // [ 
+    //    { flavor: 'dark chocolate', inStock: 15 },
+    //    { flavor: 'yellow', inStock: 14 },
+    //    ..etc
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  onlyInStock() {
+    // Return an array of only the cakes that are in stock
+    // e.g.
+    // [
+    //   {
+    //   cakeFlavor: 'dark chocolate',
+    //   filling: null,
+    //   frosting: 'dark chocolate ganache',
+    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
+    //   inStock: 15
+    // },
+    // {
+    //   cakeFlavor: 'yellow',
+    //   filling: 'citrus glaze',
+    //   frosting: 'chantilly cream',
+    //   toppings: ['berries', 'edible flowers'],
+    //   inStock: 14
+    // },
+    // ..etc
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+  
+  totalInventory() {
+    // Return the total amount of cakes in stock e.g.
+    // 59
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  allToppings() {
+    // Return an array of all unique toppings (no duplicates) needed to bake
+    // every cake in the dataset e.g.
+    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  groceryList() {
+    // I need to make a grocery list. Please give me an object where the keys are
+    // each topping, and the values are the amount of that topping I need to buy e.g.
+    // { 
+    //    'dutch process cocoa': 1,
+    //    'toasted sugar': 3,
+    //    'smoked sea salt': 3,
+    //    'berries': 2, 
+    //    ...etc
+    // }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -228,12 +347,11 @@ const classPrompts = {
 
 
 
-// DATASET: cakes from ./datasets/cakes
-const cakePrompts = {
-  allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+// DATASET: breweries from ./datasets/breweries
+const breweryPrompts = {
+  getBeerCount() {
+    // Return the total beer count of all beers for every brewery e.g.
+    // 40
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -242,101 +360,26 @@ const cakePrompts = {
     // Write your annotation here as a comment
   },
 
-  groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
-    // each topping, and the values are the amount of that topping I need to buy e.g.
-    // { 
-    //    'dutch process cocoa': 1,
-    //    'toasted sugar': 3,
-    //    'smoked sea salt': 3,
-    //    'berries': 2, 
-    //    ...etc
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  stockPerCake() {
-    // Return an array of objects that include just the flavor of the cake and how
-    // much of that cake is in stock e.g.
-    // [ 
-    //    { flavor: 'honey', inStock: 3 },
-    //    { flavor: 'vanilla', inStock: 21 },
-    //    ..etc
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  totalInventory() {
-    // Return the total amout of cakes in stock e.g.
-    // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  onlyInStock() {
-    // Return an array of only the cakes that are in stock
-    // e.g.
+  getBreweryBeerCount() {
+    // Return an array of objects where each object has the name of a brewery
+    // and the count of the beers that brewery has e.g.
     // [
-    //   {
-    //   cakeFlavor: 'dark chocolate',
-    //   filling: null,
-    //   frosting: 'dark chocolate ganache',
-    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
-    //   inStock: 15
-    // },
-    // {
-    //   cakeFlavor: 'yellow',
-    //   filling: 'citrus glaze',
-    //   frosting: 'chantilly cream',
-    //   toppings: ['berries', 'edible flowers'],
-    //   inStock: 14
-    // },
-    // ..etc
+    //  { name: 'Little Machine Brew', beerCount: 12 },
+    //  { name: 'Ratio Beerworks', beerCount: 5},
+    // ...etc.
     // ]
-  }
-};
 
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
 
+    // Annotation:
+    // Write your annotation here as a comment
+  },
 
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-
-// DATASET: pie from ./datasets/pie
-const piePrompts = {
-  howManyIngredients() {
-    // The bakery needs to make more rhubarb pies in order to meet the
-    // desiredInventoryCount. Programmatically determine how many more pies
-    // need to be made, and return an object of the total number of ingredients we need
-    // we need to buy in order to make the remaining pies. e.g.:
-    // {
-    //   cinnamon: 50,
-    //   sugar: 100
-    // }
+  findHighestAbvBeer() {
+    // Return the beer which has the highest ABV of all beers
+    // e.g.
+    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -350,6 +393,7 @@ const piePrompts = {
 
 
 
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -361,15 +405,76 @@ const piePrompts = {
 
 
 
-// DATASET: clubs from ./datasets/clubs
-const clubPrompts = {
-  membersBelongingToClubs() {
-    // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g. 
-    // {
-    //   Louisa: ['Drama', 'Art'],
-    //   Pam: ['Drama', 'Art', 'Chess'],
-    //   ...etc
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DOUBLE DATASETS
+// =================================================================
+
+// DATASET: instructors, cohorts from ./datasets/turing
+const turingPrompts = {
+  studentsForEachInstructor() {
+    // Return an array of instructors where each instructor is an object
+    // with a name and the count of students in their module. e.g. 
+    // [
+    //  { name: 'Pam', studentCount: 21 },
+    //  { name: 'Robbie', studentCount: 18 }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  studentsPerInstructor() {
+    // Return an object of how many students per teacher there are in each cohort e.g.
+    // { 
+    // cohort1806: 9,
+    // cohort1804: 10.5
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  modulesPerTeacher() {
+    // Return an object where each key is an instructor name and each value is
+    // an array of the modules they can teach based on their skills. e.g.:
+    // { 
+    //   Leta: [2, 4],
+    //   Nathaniel: [2],
+    //   Robbie: [4],
+    //   Pam: [2, 4]
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  curriculumPerTeacher() {
+    // Return an object where each key is a curriculum topic and each value is
+    // an array of instructors who teach that topic e.g.:
+    // { 
+    //   html: [ 'Travis', 'Louisa' ],
+    //   css: [ 'Travis', 'Louisa' ],
+    //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
+    //   recursion: [ 'Pam', 'Leta' ]
     // }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -379,6 +484,7 @@ const clubPrompts = {
     // Write your annotation here as a comment
   }
 };
+
 
 
 
@@ -418,59 +524,6 @@ const bossPrompts = {
 
 
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-// DATASET: kitties from ./datasets/kitties
-const kittyPrompts = {
-  orangeKittyNames() {
-    // Return an array of just the names of kitties who are orange e.g.
-    // ['Tiger', 'Snickers']
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  sortByAge() {
-    // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
-  }
-};
-
-
-
-
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -483,7 +536,7 @@ const kittyPrompts = {
 
 
 
-// DATASET: bosses, sidekicks from ./datasets/bosses
+// DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
   starsInConstellations() {
     // Return an array of all the stars that appear in any of the constellations
@@ -546,6 +599,7 @@ const astronomyPrompts = {
     // Write your annotation here as a comment
   }
 };
+
 
 
 
