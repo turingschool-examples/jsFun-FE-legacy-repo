@@ -3,15 +3,15 @@ const context = require('../context/index');
 
 global.document = {
   getElementById: () => {
-    return { addEventListener: () => {} }
+    return { addEventListener: () => {} };
   }
-}
+};
 
 global.$ = () => {
   return {
     on: () => {}
-  }
-}
+  };
+};
 
 describe('CONTEXT', () => {
   it('exerciseA', () => {
