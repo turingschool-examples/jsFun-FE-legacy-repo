@@ -4,7 +4,7 @@
   "description": "Practice problems for JavaScript Fundamentals",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/ --reporter dot --require mocha-clean"
+    "test": "./node_modules/mocha/bin/mocha test/ --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js"
   },
   "keywords": [
     "js"
