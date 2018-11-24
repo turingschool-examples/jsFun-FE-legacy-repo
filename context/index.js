@@ -2,12 +2,12 @@ const context = {
   exerciseA() {
     const fly = () => {
       console.log(this);
-    }
+    };
 
     class SpaceProbe {
       constructor(title, classification) {
         this.title = title;
-        this.classification = classification
+        this.classification = classification;
         this.fly = fly;
       } 
     }
@@ -39,14 +39,14 @@ const context = {
 
   exerciseC() {
     const car = {
-      make: "Tesla",
+      make: 'Tesla',
       getInfo: function(){
         console.log(this);
       }
     };
 
-    const el = document.getElementById("btn");
-    el.addEventListener("click", car.getInfo);
+    const el = document.getElementById('btn');
+    el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -58,13 +58,13 @@ const context = {
 
   exerciseD() {
     const dog = {
-      breed: "Chihuahua",
+      breed: 'Chihuahua',
       getBreed: function(){
         const innerFunction = function() {
-        console.log(this.breed);
-      };
+          console.log(this.breed);
+        };
     
-      return innerFunction();
+        return innerFunction();
       }
     };
 
@@ -82,7 +82,7 @@ const context = {
     const fn = () => {
       value = 21;
       return this.value;
-    }
+    };
 
 
     // What is the value of `this` when we call fn()?
@@ -120,7 +120,7 @@ const context = {
     class Game {
       constructor(title) {
         this.title = title;
-    }
+      }
 
       resetGame() {
         console.log('Clearing the board and starting over');
@@ -128,7 +128,7 @@ const context = {
 
       restart() {
         setTimeout(function() {
-          console.log(`Restarting ${this.title}...`)
+          console.log(`Restarting ${this.title}...`);
         }, 1000);
       }
     }
@@ -148,7 +148,9 @@ const context = {
     const obj = {
       arrowFunction: null,
       method: function() {
-        this.arrowFunction = () => { return this };
+        this.arrowFunction = () => { 
+          return this;
+        };
       }
     };
 
@@ -175,7 +177,7 @@ const context = {
 
     poets.map(function(poet) {
       return this;
-    }, poets)
+    }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
     const result = 'REPLACE WITH YOUR RESULT HERE';

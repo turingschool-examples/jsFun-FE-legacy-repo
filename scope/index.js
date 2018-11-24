@@ -1,8 +1,8 @@
 const scope = {
   exerciseA() {
-    let personA = 'Paul'
-    let personB = 'Ben'
-    let personC = 'Tom'
+    let personA = 'Paul';
+    let personB = 'Ben';
+    let personC = 'Tom';
 
     function changePerson() {
       if (personA === 'Paul') {
@@ -120,12 +120,12 @@ const scope = {
         greeting = 'welcome';
 
         // Log B: greeting
-      }
+      };
 
       newGreeting();
 
       // Log C: greeting
-    }
+    };
 
     greetingGenerator();
 
@@ -224,7 +224,7 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit()
+    eatFruit();
 
     // Log D: fruit
 
@@ -246,7 +246,7 @@ const scope = {
       if (num < 5) {
         const num = 9;
 
-        fn2(num)
+        fn2(num);
 
         const newNum = num;
 
@@ -256,7 +256,7 @@ const scope = {
       newNum = num;
 
       // Log C: newNum
-    }
+    };
 
     const fn2 = function(num){
       // Log D: num
@@ -264,7 +264,7 @@ const scope = {
       num = num + 1;
 
       // Log E: num
-    }
+    };
 
     fn1();
 
@@ -289,7 +289,7 @@ const scope = {
       }
 
       // Log C: hunger
-    };
+    }
 
     eatSnack();
 
@@ -320,18 +320,18 @@ const scope = {
       }
 
       // Log C: sandwich
-    }
+    };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
       // Log D: cheeseTopping
 
       const shesTheManReference = () => {
-        amandaBynes = "National Treasure"
-      }
+        amandaBynes = 'National Treasure';
+      };
 
       shesTheManReference();
-    }
+    };
 
     cheeseTopping = 'kraft';
     addCheese();
@@ -351,10 +351,10 @@ const scope = {
     let num = 10;
 
     function foo() {
-        if (num > 5) {
-           num = 7;
-        }
-        // Log A: num
+      if (num > 5) {
+        num = 7;
+      }
+      // Log A: num
     }
 
     foo();
@@ -511,31 +511,31 @@ const scope = {
 
   exerciseQ(){
     let myKid = 'Pandora';
-    let wildKids = ['Antigone']
+    let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-    // Log A: kid
-    wildKids.push(kid);
-    // Log B: wildKids
+      // Log A: kid
+      wildKids.push(kid);
+      // Log B: wildKids
   
-    let drawOnTheWall = () => {
-      let myKid = 'Mandy';
-      // Log C: myKid
-      return `That wild kid ${myKid}, drew on the wall!`;
-    }
+      let drawOnTheWall = () => {
+        let myKid = 'Mandy';
+        // Log C: myKid
+        return `That wild kid ${myKid}, drew on the wall!`;
+      };
 
-    drawOnTheWall();
+      drawOnTheWall();
 
-    let myAmazingKid = () => {
-      let myKid = wildKids.shift();
-      // Log D: myKid
-      return `That kid ${myKid}, is AMAZING!`;
-    }
+      let myAmazingKid = () => {
+        let myKid = wildKids.shift();
+        // Log D: myKid
+        return `That kid ${myKid}, is AMAZING!`;
+      };
 
-    myAmazingKid();
+      myAmazingKid();
       // Log E: myKid;
-      return `All these kids are wild, especially, ${myKid}!`
-    }
+      return `All these kids are wild, especially, ${myKid}!`;
+    };
 
     myCrazyKidAntics(myKid);
 
@@ -557,15 +557,15 @@ const scope = {
       let innerFunc = () => {
         let myName = 'Tesla'; 
         // Log C: myName
-      }
+      };
 
       innerFunc();
       myName += 'Daniels';
-    }
+    };
 
     parentFunc();
     // Log D: myName
   }
-}
+};
 
 module.exports = scope;

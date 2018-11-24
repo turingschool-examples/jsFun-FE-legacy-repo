@@ -1,4 +1,4 @@
-const { kitties } = require('./datasets/kitties')
+const { kitties } = require('./datasets/kitties');
 const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
