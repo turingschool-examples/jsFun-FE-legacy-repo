@@ -94,6 +94,24 @@ describe('PROTOTYPES', () => {
   });
 
 
+  describe('Brewery Prompts', () => {
+    it('getBeerCount', () => {
+      const result = breweryPrompts.getBeerCount();
+      expect(result).to.deep.equal(40);
+    });
+
+    it('getBreweryBeerCount', () => {
+      const result = breweryPrompts.getBreweryBeerCount();
+      expect(result).to.deep.equal([{ name: 'Little Machine Brew', beercount: 12 },{ name: 'Ratio Beerworks', beercount: 5 },{ name: 'Spangalang Brewery', beercount: 9 },{ name: 'Beryl\'s Beer Co.', beercount: 7 },{ name: 'Platt Park Brewing Co.', beercount: 7 }]);
+    });
+
+    it('findHighestAbvBeer', () => {
+      const result = breweryPrompts.findHighestAbvBeer();
+      expect(result).to.deep.equal({ name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 });
+    });
+  });
+
+
   describe('Turing Prompts', () => {
     it('studentsForEachInstructor', () => {
       const result = turingPrompts.studentsForEachInstructor();
@@ -138,6 +156,19 @@ describe('PROTOTYPES', () => {
     it('constellationsStarsExistIn', () => {
       const result = astronomyPrompts.constellationsStarsExistIn();
       expect(result).to.deep.equal([ 'Canis Major','Carina','','Boötes','Lyra','Auriga','Orion','Canis Minor','The Plow','Orion','The Little Dipper' ]);
+    });
+  });
+
+
+  describe('Ultima Prompts', () => {
+    it('totalDamage', () => {
+      const result = ultimaPrompts.totalDamage();
+      expect(result).to.deep.equal(113);
+    });
+
+    it('charactersByTotal', () => {
+      const result = ultimaPrompts.charactersByTotal();
+      expect(result).to.deep.equal([{ Avatar: { damage: 27, range: 24 } },{ Iolo: { damage: 28, range: 46 } },{ Shamino: { damage: 31, range: 39 } },{ Dupre: { damage: 27, range: 24 } } ]);
     });
   });
 });
