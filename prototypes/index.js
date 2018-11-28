@@ -56,8 +56,8 @@ const kittyPrompts = {
     // ...etc]
 
     const result = kitties.map(kitty => {
-        kitty.age += 2;
-        return kitty
+      kitty.age += 2;
+      return kitty;
     });
     return result;
 
@@ -85,6 +85,7 @@ const kittyPrompts = {
 
 
 
+
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
@@ -96,7 +97,10 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.map(function (clubName) {
+        let name = clubs.club;
+        
+    });
     return result;
 
     // Annotation:

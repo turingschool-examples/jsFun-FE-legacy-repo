@@ -130,7 +130,15 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Declare variable greeting and assign it to 'Yo'.
+    // Run if statement, which is true, and declare let greeting to 'Howdy'. This variable is block scoped.
+    // Log A: greeting = 'Yo' referring to global variable assignment.
+    // Declare function newPhrase and invoke it on line 115.
+    // Within newPhrase, re-assign the global variable greeting to 'Hey'
+    // Log B: greeting = 'Hey' due to re-assignment of outer function scoped variable.
+    // Log C: greeting = 'Hey' due to re-assignment of outer scope variable.
+    // Return out of greetingFunction function.
+    // Log D: greeting = 'Hello' in ther global scope because the global variable has not been re-assigned.
   },
 
   exerciseD() {
@@ -169,7 +177,17 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Declaration of let greeting assigned to 'howdy'
+    // Declaration of arrow function greetingGenerator which is invoked on line 167.
+    // Within that function, declaration of let greeting assigned to 'hi', this variable is function scoped.
+    // If statement, which is true, with the declaration of let greeting assigned to 'hellow'. This variable is block scoped.
+    // Outside if statement, log A: 'hi' from the function scoped variable.
+    // Declaration of new arrow function newGreeting which is invoked on line 162.
+    // Within newGreeting, outer function scoped greeting is re-assigned to 'welcome'.
+    // Log B: greeting = 'welcome' from above re-assignment.
+    // Return out of newGreeting, Log C: greeting = 'welcome' because re-assignment was outer function scoped.
+    // Return out of function to global scope.
+    // Log D: greeting = 'howdy' because global scoped variable was not re-assigned.
   },
 
   exerciseE() {
@@ -243,7 +261,7 @@ const scope = {
       { 'C': 'Biscuit' },
       { 'D': 'Biscuit' },
       { 'E': 'Biscuit' }
-    ];;
+    ];
     return result;
 
     // Annotation:
@@ -281,7 +299,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // A is a reference error because of the block const assignment of fruit within that block scope.
+    // A is a reference error because of the block const assignment of fruit within that block scope. Due to TDZ.
     // The block statement knows fruit is declared as something else but does not hoist the variable (not set as undefined).
   },
 
@@ -405,11 +423,32 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'ketchup sandwich' },
+      { 'D': 'gouda' },
+      { 'B': undefined },
+      { 'C': 'not a mediocre sandwich' },
+      { 'E': 'not a mediocre sandwich'},
+      { 'F': 'National Treasure'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Assign global let sandwich to ketchup sandwich.
+    // Log A: sandwich is ketchup sandwich from global assignment above.
+    // Declare functions addChipotle and addCheese.
+    // Assign global variable cheeseTopping as kraft.
+    // Invoke function addCheese. Within function, declare function scope variable cheeseTopping as gouda.
+    // Log D: cheeseTopping = gouda from above assignment.
+    // Declare arrow function shesTheManReference and invoke it below.
+    // Within shesTheManReference, global variable amandaBynes is assigned to 'National Treasure'.
+    // Return out of function, then out of outer function back to global scope.
+    // addChipotle function is invoked next. Within that function, Log B: toppings = undefined because it is declared using var so it's is hoisted.
+    // Assign toppings as chipotle sauce. If statement is true, so sandwich at the global scope is assigned to 'not a mediocre sandwich'.
+    // Log C: sandwich outside if statement is 'not a mediocre sandwich' because it was re-assigned at the global scope.
+    // Return out of function back to global scope.
+    // Log E: sandwich = 'not a mediocre sandwich' because global scope variable was re-assigned.
+    // Log F: amandaBynes = 'National Treasure' because the variable was declared without a keyword and therefore is globally scoped.
   },
 
   exerciseK() {
@@ -426,11 +465,18 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 7 },
+      { 'B': 7 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Global declaration of let num assigned to 10.
+    // Declaration of function foo, invoked below.
+    // Within foo, if num > 5, which is true from global declaration, re-assign num to 7 (at global scope).
+    // Log A: num = 7 from above re-assignment, return out of foo.
+    // In global scope, Log B: num is also 7 because num was re-assigned at the global scope.
   },
 
   exerciseL() {
@@ -458,11 +504,24 @@ const scope = {
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 95 },
+      { 'B': 90 },
+      { 'C': 90 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Declare global let grade and assign it to 100.
+    // Declare function losePoints and invoke it.
+    // Within losePoints, global re-assignment of grade to 90.
+    // Declare function addPoints and invoke it.
+    // Within addPoints, declare function scope constant grade and assign it to 95.
+    // Check if statement, which is true, withing if statement, declare block scoped let grade and assign it to 97.
+    // Outside if statment, Log A: grade = 95 from function scope re-assignment.
+    // Return out of addPoints.
+    // Log B: grade = 90 from global re-assignment in losePoints.
+    // Return out of losePoints. Log C: grade = 90 from global re-assignment in losePoints.
   },
 
   exerciseM() {
@@ -484,7 +543,12 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 5 },
+      { 'B': 6 },
+      { 'C': 'reference error' },
+      { 'D': 6 }
+    ];
     return result;
 
     // Annotation:
@@ -523,7 +587,14 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'E': 'Pam' },
+      { 'A': 'Pam' },
+      { 'B': 'Pam' },
+      { 'C': 'Louisa' },
+      { 'D': 'Louisa' },
+      { 'F': 'Louisa' }
+    ];
     return result;
 
     // Annotation:
@@ -542,7 +613,11 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'B': 'flipflop' },
+      { 'A': 'undefined' },
+      { 'C': 'flipflop' }
+    ];
     return result;
 
     // Annotation:
