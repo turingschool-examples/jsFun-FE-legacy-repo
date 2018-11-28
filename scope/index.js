@@ -11,25 +11,32 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB - Ben
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC - CardiB
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB - CardiB
     }
 
     changePerson();
 
-    // Log D: personC
+    // Log D: personC - Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Ben' },
+      { 'B': 'CardiB' },
+      { 'C': 'CardiB' },
+      { 'D': 'Paul' }
+    ]
+
+    'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -46,24 +53,30 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number - 75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number - 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number - 64
     }
 
     numberFunction();
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 75 }, 
+      { 'B': 64 }, 
+      { 'C': 64 }, 
+      { 'D': 30 }
+    ];
+    
     return result;
 
     // Annotation:
@@ -80,24 +93,29 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting - 'Yo'
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting - 'Hey'
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting - 'Hey'
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting - 'Hello'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Yo' },
+      { 'B': 'Hey' },
+      { 'C': 'Hey' },
+      { 'D': 'Hello' }
+    ]    
     return result;
 
     // Annotation:
@@ -114,24 +132,29 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting - 'hi' 
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting - 'welcome'
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting - 'welcome'
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting - 'howdy'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'hi' },
+      { 'B': 'welcome' },
+      { 'C': 'welcome' },
+      { 'D': 'howdy' }
+    ]    
     return result;
 
     // Annotation:
@@ -151,19 +174,24 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name - Nathaniel
       }
 
-      // Log B: name
-    }
+      // Log B: name - Nathaniel
+    } 
 
-    // Log C: name
+    // Log C: name - Brittany
 
     sayName();
 
-    // Log D: name
+    // Log D: name - Brittany
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'C': 'Brittany' },
+      { 'A': 'Nathaniel' },
+      { 'B': 'Nathaniel' },
+      { 'D': 'Brittany' }
+    ]      
     return result;
 
     // Annotation:
@@ -198,7 +226,13 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Spot' },
+      { 'B': 'Spot' },
+      { 'C': 'Biscuit' },
+      { 'D': 'Biscuit' },
+      { 'E': 'Biscuit' }
+    ]     
     return result;
 
     // Annotation:
@@ -214,21 +248,26 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit - ReferenceError!- since its const (rather than var) it is placed in temporal dead zone
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit - mango
       }
 
-      // Log C: fruit
+      // Log C: fruit - mango - use of var on 248 leaks it to top of eatFruit() - line 246
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit - apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'ReferenceError!' },
+      { 'B': 'mango' },
+      { 'C': 'mango' },
+      { 'D': 'apple' }
+    ]         
     return result;
 
     // Annotation:
@@ -241,7 +280,7 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num
+      // Log A: num - 4
 
       if (num < 5) {
         const num = 9;
@@ -250,25 +289,31 @@ const scope = {
 
         const newNum = num;
 
-        // Log B: newNum
+        // Log B: newNum - 9
       }
 
       newNum = num;
 
-      // Log C: newNum
+      // Log C: newNum - 4
     };
 
     const fn2 = function(num){
-      // Log D: num
+      // Log D: num - 9
 
       num = num + 1;
 
-      // Log E: num
+      // Log E: num - 10
     };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 4 }, 
+      { D: 9 }, 
+      { E: 10 }, 
+      { B: 9 }, 
+      { C: 4 }
+    ]    
     return result;
 
     // Annotation:
@@ -292,8 +337,8 @@ const scope = {
     }
 
     eatSnack();
-
-    hunger += 5;
+ 
+    hunger += 5 ;
     // Log D: hunger
 
     eatSnack();
