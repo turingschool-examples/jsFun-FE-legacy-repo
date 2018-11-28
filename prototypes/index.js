@@ -24,8 +24,10 @@ const kittyPrompts = {
     // ['Tiger', 'Snickers']
 
     const result = kitties.filter((kitten) =>{
-      
-    });
+      return kitten.color === 'orange';
+    }).map((kitten) => {
+      return kitten.name;
+    })
     return result;
 
     // Annotation:
