@@ -20,7 +20,7 @@ const context = {
     return result;
 
     // Annotation:
-    // 'this' falls under 'global window object' because 'this' defaults to the 'global window object'.
+    // 'this' falls under 'global window object' because 'this' defaults to the 'global window object'. Arrow functions bind 'this' as soon as declared.
   },
 
   exerciseB() {
@@ -75,7 +75,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When you declare dog.getBreed() with ES5, it will not have context until it gets invoked.
   },
 
   exerciseE() {
@@ -87,11 +87,11 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Defaults to the global as per 1 because the function is declared in the global space using ES6 
   },
 
   exerciseF() {
