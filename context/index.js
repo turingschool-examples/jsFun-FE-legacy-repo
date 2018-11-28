@@ -16,11 +16,11 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 'this' falls under 'global window object' because 'this' defaults to the 'global window object'.
   },
 
   exerciseB() {
@@ -30,11 +30,12 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 'This' falls under the 'global window object' because fn() has not been called yet. 'this' is a placeholder until called because it is written in ES5.
+    
   },
 
   exerciseC() {
@@ -49,11 +50,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // I originally thought 'car' on line 50 was 'this', however 'getInfo' is not being called, it is only being passed. 'addEventListener' however, is being called with 'el' or 'element' being the referenced object. 
   },
 
   exerciseD() {
@@ -70,7 +71,7 @@ const context = {
 
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 

@@ -11,29 +11,31 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: Ben
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: CardiB
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: CardiB
     }
 
     changePerson();
 
-    // Log D: personC
+    // Log D: Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'Ben'}, {B: 'CardiB'}, {C: 'CardiB'},{D: 'Paul'},
+    ];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Annotation: 
+    // In the creation phase, persons A, B, and C are declared globally on lines 3-5. Then the change Person function is stored in memory. Then execution phase starts. Person A is assigned the value of 'Paul. Person B is assigned the value of 'Ben'. Person C is assigned the value of 'Tom'. The interpreter does not execute the function decleration on lines 7-26. It then exectues changePerson() on line 28. This creates a new local execution context and a new creation phase begins. The function beautifyPerson is saved in memory. Then the interpreter goes to execution phase starting on line 8. The conditional is evaluated. THe interpreter looks for personA in changePerson()'s functional scope and does not find it, so it looks in the global scope. It finds that person B is strictly equal to 'Paul', so the execution goes inside the if block. On line 9, the interpreter attempts to reassign person and looks for it in the functional scope. Person is not there, so it looks for person in the global scope. person is still not there, so person is then declared as a new global variable assigned 'CardiB'. Then beautifyPerson is executed, and a new local execution context is created. Nothing happens in the creation phase. In the execution phase, the if looks for personB. Person B isn't found until; the global scope where it has the value of 'Ben'. 'Ben' includes 'B', so the conditional evaluates to true and execution goes into the if block. On line 17, the interpeter looks for personB in the block scope, beautifyPerson functional scope, changePerson functional scope, and lastly in the global scope where it is finally found. It assigns the global variable person B to the value of person which is also found in the global scope  with the value 'CardiB'. Then person C is found in the global scope as well and is assigned the value of person B which is in the global scope. So person C has the value of 'CardiB'. Then that local execution context is done, and removed from the call stack. And the changePerson local execution context is done and removed from the call stack. 
+    // 
   },
 
   exerciseB() {
@@ -46,28 +48,29 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: 75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 75}, {B: 64}, {C: 64},{D: 30},
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // number is declared and assigned to 30 globally. Inside numberFunction, number is declared and assigned to 75 in the functional scope. Inside the if block, number is declared and assigned to 28 in the block scope. At Log A, number is found in the functional scope with the value of 75. Inside newNumber, number (the variable inside numberFunction’s scope) is reassigned to 64 so at Log B, number is 64. At log C, number is looked for in numberFunction’s scope and is found to be 64. At Log D, number is looked for in the global scope and is found to be 30.
   },
 
   exerciseC() {
@@ -80,28 +83,28 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: Yo
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: Hey
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: Hey
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: Hello
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'Yo'}, {B:'Hey'}, {C:'Hey'},{D:'Hello'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the global scope, greeting is declared and assigned to ‘Hello’. When greetingFunction is called, a new variable greeting is declared and assigned to ‘Yo’ in the functional scope. Inside the if block, a new let greeting is declared and assigned to ‘Howdy’ in the block scope. At Log A, greeting is found in the functional scope where it has the value of ‘Yo’. When newPhrase is called, greeting is reassigned. The greeting which is reassigned is the one in greetingFunction’s functional scope. It is reassigned to ‘Hey’,so at Log B, greeting is ‘Hey’. At Log C, greeting is found in the functional scope of greetingFunction where its value is ‘Hey’. At Log D, greeting is found in the global scope where its value is ‘Hello’.
   },
 
   exerciseD() {
@@ -114,24 +117,24 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: welcome
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: welcome
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: howdy
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'hi'}, {B:'welcome'}, {C:'welcome'},{D:'howdy'}];
     return result;
 
     // Annotation:
