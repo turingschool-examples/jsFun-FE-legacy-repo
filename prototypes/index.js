@@ -611,7 +611,6 @@ const ultimaPrompts = {
 module.exports = {
   breweryPrompts,
   turingPrompts,
-  piePrompts,
   clubPrompts,
   bossPrompts,
   classPrompts,
