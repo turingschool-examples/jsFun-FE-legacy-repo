@@ -643,7 +643,11 @@ const scope = {
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'B': 'soup' },
+      { 'C': 'soup' },
+      {}
+    ];
     return result;
 
     // Annotation:
