@@ -90,7 +90,7 @@ const clubPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // result is initialized as an empty array. Then for each object in the clubs array, each member in the members array is added as a property of the results object and assigned an empty array. For each key/property of the results array, go through each club in the clubs array, and if the key is included in the members array, push the club name into that key's array.
   }
 };
 
@@ -122,11 +122,14 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+    const result = mods.map((mod) => {
+      return {'mod': mod.mod, 'studentsPerInstructor': mod.students / mod.instructors};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map the mods array to a new array of objects in which the objects only have the original mod property and value, and a new property called studentsPerInstructor with the value equal to the quotient of the values of the original properties students and instructors.
   }
 };
 
@@ -157,11 +160,13 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => {
+      return {'flavor' : cake.cakeFlavor, inStock: cake.inStock};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map the cakes array to a new array of objects in which the objects only have the original inStock property and value, and a new property called flavor with the same value as the original cakeFlavor property.
   },
 
   onlyInStock() {
@@ -185,22 +190,22 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => cake.inStock !== 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Filter the cakes array to a new array with only the objects which have an inStock property that is not 0.
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => cake.inStock).reduce((total, stock) => total + stock);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map the cakes array to a new array of numbers where the numbers are the value of each object's inStock property. Then reduce that array down to the sum of all the numbers in it.
   },
 
   allToppings() {
