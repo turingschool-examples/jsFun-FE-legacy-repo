@@ -621,7 +621,7 @@ const scope = {
 
     const result = [
       { 'B': 'flipflop' },
-      { 'A': 'undefined' },
+      { 'A': undefined },
       { 'C': 'flipflop' }
     ];
 
