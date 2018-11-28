@@ -615,7 +615,7 @@ const scope = {
 
     const result = [
       { 'B': 'flipflop' },
-      { 'A': 'undefined' },
+      { 'A': undefined },
       { 'C': 'flipflop' }
     ];
     return result;
@@ -645,8 +645,7 @@ const scope = {
 
     const result = [
       { 'B': 'soup' },
-      { 'C': 'soup' },
-      {}
+      { 'C': 'soup' }
     ];
     return result;
 
@@ -684,7 +683,13 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Pandora' },
+      { 'B': ['Antigone', 'Pandora'] },
+      { 'C': 'Mandy' },
+      { 'D': 'Antigone' },
+      { 'E': 'Pandora' }
+    ];
     return result;
 
     // Annotation:

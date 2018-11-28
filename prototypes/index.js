@@ -24,10 +24,11 @@ const kittyPrompts = {
     // ['Tiger', 'Snickers']
 
     const result = kitties.filter(kitty => kitty.color === 'orange').map(kitty => kitty.name);
+
     return result;
 
     // Annotation:
-    // First we need to identify which kitties in our kitties dataset are orange. To do this, the best prototype to use is filter because it will return a new array with a different length that includes only orange kitties. But what we really want to return is the name property for each orange kitty as an array. Therefore we need to use the map prototype to create a new array with just the names of these kitties.
+    // First we need to identify which kitties in our kitties dataset are orange. To do this, the best prototype to use is filter because it will return a new array that is a subset of the original array for only orange kitties. But what we really want to return is the name property for each orange kitty as an array. Therefore we need to use the map prototype to create a new array with just the names of these kitties.
   },
 
   sortByAge() {
@@ -136,11 +137,15 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      let studentsPerInstructor = mod.students / mod.instructors;
+      return { mod: mod.mod, studentsPerInstructor: studentsPerInstructor}
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use the map prototype to modify the array but keep it the same length. Within that method, for each element we create a new variable studentsPerInstructor and calculate the math of students/instructors to assign that variable. Then we return a new object, which contains the mod property from the original array and a new property, studentsPerInstructor with the value we calculated above.
   }
 };
 
