@@ -485,8 +485,9 @@ const scope = {
   },
 
   exerciseP() {
+    let lunch;
     function orderLunch() {
-      if (typeof lunch === 'undefined') {
+      if (lunch) {
         // Log A: lunch
         let lunch = 'sandwich';
       }
@@ -565,6 +566,12 @@ const scope = {
 
     parentFunc();
     // Log D: myName
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 };
 
