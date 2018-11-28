@@ -29,11 +29,28 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'Ben'}, {'B':'CardiB'}, {'C':'CardiB'}, {'D':'Paul'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+  // On Log A to find personB: the log appears in the beautifyPerson function 
+  // which is nested with in the changePerson function. Since there is no definition 
+  // for personB in beautifyPerson or changePerson it will defer to the global let 
+  // which is set to a sting of 'Ben'.
+
+  // On Log B to find personC: the log is block scoped under an if statement in the
+  // beautifyPerson function Looking up to the previous two lines we see that we have 
+  // reassigned personC with personB and personB with the variable person. 
+  // Since changePerson declared a variable called person without using var, let or 
+  // const that ends up hoisting person to the global scope. So globally person is 
+  //  assigned to 'CardiB'.
+
+  // On Log C to find personB: the log is within the changePerson function.
+  // in the beautifyPerson function within the changePerson function we reassigned 
+  // personB to person. 
+
+  // On Log D to find personC: the log is located outside our nested functions and to find 
+  // the variable personC we have to look to the global scope which is 'paul'.
+
   },
 
   exerciseB() {
@@ -63,11 +80,20 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':75}, {'B':64}, {'C':64}, {'D':30}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+  // On Log A to find number: the console log is located within the number Function just 
+  // after the if statement so the number variable it's scoped to is the one on line 62.
+
+  // On Log B to find number: the console log is located in the nested function newNumber 
+  // which reassigns the number on line 62 to the number 64.
+
+  // On Log C to find number: the console log is located in the numberFunction so the number is still 64.
+
+  // On Log D to find number: the console log is located outside the nested functions so it
+  // defaults to the global let number = 30;
+
   },
 
   exerciseC() {
@@ -97,11 +123,23 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+    const result = [{'A':'Yo'}, {'B':'Hey'}, {'C':'Hey'}, {'D':'Hello'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+  // On Log A to find greeting: the console log is located within greetingFunction so 
+  // the greeting is scoped to line 106 'Yo'.
+
+  // On Log B to find greeting: the console log is located within newPhrase nested in
+  // greetingFunction. Greeting is reassigned on line 106 by line 115 to 'Hey'.
+
+  // On Log C to find greeting: the console log is located within greetingFunction and
+  // is still 'Hey'.
+
+  // On Log D to find greeting: the console log is located outside our nested functions
+  // so greeting defaults to the global let greeting = 'Hello' on line 103;
+
+
   },
 
   exerciseD() {
@@ -131,11 +169,21 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'hi'}, {'B':'welcome'}, {'C':'welcome'}, {'D':'howdy'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+  // On Log A to find greeting: the console is located within  greetingGenerator so
+  // the greeting is scoped to line 148 ‘hi’.
+
+  // On Log B to find greeting: the console log is located within the nested function of newGreeting and on line 158 of that function we reassign the greeting ‘hi’ to ‘welcome’.
+
+  // On Log C to find greeting: the console log is located in the greetingGenerator function
+  // since we already assigned that greeting the greeting remains ‘welcome’.
+
+  // On Log D to find greeting: the console log is located outside our nested functions
+  // so greeting defaults to the global ‘howdy’ on line 146.
+
+  
   },
 
   exerciseE() {
@@ -163,7 +211,7 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'C':'Brittany'}, {'A':'Nathaniel'}, {'B':'Nathaniel'}, {'D':'Brittany'}];
     return result;
 
     // Annotation:
@@ -198,7 +246,7 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'Spot'}, {'B':'Spot'}, {'C':'Biscuit'}, {'D':'Biscuit'}, {'E':'Biscuit'}];
     return result;
 
     // Annotation:
@@ -228,7 +276,7 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':'reference error'}, {'B':'mango'}, {'C':'mango'}, {'D':'apple'}];
     return result;
 
     // Annotation:
@@ -268,7 +316,7 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A':4}, {'D':9}, {'B':9}, {'C':4}, {'E':5}];
     return result;
 
     // Annotation:
