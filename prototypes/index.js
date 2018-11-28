@@ -24,21 +24,22 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter((kitty) => kitty.color === 'orange').map((kitty) => kitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First filter the array to only show kitties with color === orange, then map that filtered array to only get an array of the kitties' names
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const [...sortedKitties] = kitties;
+    const result = sortedKitties.sort((kitty1, kitty2) => kitty2.age - kitty1.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I'm not sure how compare functions work with the sort array prototype method, but in the docs it shows the example of (a, b) => a - b. That will sort numbers in increasing order, so I reversed it so that it was the second parameter minus the first parameter. This sorts the array in decreasing order by age which is what the test wants. Also I needed to clone the kitties array because the sort method changes the array in place, so the next test was not working.
   },
 
   growUp() {
@@ -55,8 +56,12 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    kitties.forEach((kitty) => kitty.age += 2);
+    const result = kitties;
     return result;
+
+    // Annotation:
+    // I used the forEach prototype method to add 2 to the age of each kitty, but since forEach does not return, I had to call it before assigning result.
   }
 };
 
@@ -88,11 +93,14 @@ const piePrompts = {
     //   sugar: 100
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+    Object.keys(pie.ingredients).forEach((ingredient) => {
+        result[ingredient] = pie.ingredients[ingredient] * (pie.desiredInventoryCount - pie.inventoryCount);  
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an empty object. Then for each ingredient in pie.ingredients, give the empty object a corresponding property. Then each property is assigned the value of pie.ingredients.whatever multiplied by the difference of desired inventory and current inventory.
   }
 };
 
@@ -123,7 +131,19 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+    clubs.forEach((club) => {
+        club.members.forEach((member) => {
+            result[member] = [];
+        });
+    });
+    Object.keys(result).forEach((person) => {
+        clubs.forEach((club) => {
+            if (club.members.includes(person)) {
+                result[person].push(club.club);
+            }
+        });
+    });
     return result;
 
     // Annotation:
