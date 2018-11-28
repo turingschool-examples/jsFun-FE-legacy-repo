@@ -34,8 +34,8 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const [...kittiesClone] = kitties;
-    const result = kittiesClone.sort((a, b) => b.age - a.age);
+    // const [...kittiesClone] = kitties;
+    const result = kitties.sort((a, b) => b.age - a.age);
     return result;
 
     // Annotation:
@@ -98,10 +98,17 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = clubs.map(function (clubName) {
-        let name = clubs.club;
-        
-    });
+
+
+    const result = clubs.reduce((accu, club) => {
+        // for each on members
+        // assign members as properties if they are undefined
+    },{});
+
+    // Individual instance of each person's name from the members in each club object.
+    // Assign each unique name as a key in our new object.
+    // Figure out which clubs each person belongs to.
+
     return result;
 
     // Annotation:
@@ -176,11 +183,14 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return { flavor: cake.cakeFlavor, inStock: cake.inStock }
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are returning a new, modified array of the same length so we use the map prototype. Within that map method, we return the 2 properties from the array that we want and do not use the others from the original array.
   },
 
   onlyInStock() {
@@ -204,7 +214,10 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock;
+    })
+
     return result;
 
     // Annotation:
@@ -215,7 +228,11 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc;
+    }, 0);
+
     return result;
 
     // Annotation:
@@ -227,7 +244,7 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce;
     return result;
 
     // Annotation:
