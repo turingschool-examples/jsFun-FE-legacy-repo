@@ -29,11 +29,25 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Ben' },
+      { 'B': 'CardiB' },
+      { 'C': 'CardiB' },
+      { 'D': 'Paul'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we declare three let variables personA, personB, and personC and assign them names as strings.
+    // Then we declare a function changePerson. Then we invoke that function on line 28.
+    // When we move into the local execution context of changePerson, we first run an if statement to check if personA === 'Paul', which is true.
+    // Therefore we move into the if statement and assign a new variable person to 'CardiB'. Since there is no declaration of this variable, it automatically goes into global scope.
+    // Then we invoke the function beautifyPerson which is declared later in the changePerson function but is available to us because of hoisting.
+    // Then we Log A: personB which is equal to 'Ben' because it was declared in the global scope and has not been re-assigned.
+    // Next we run the if statement, which is true and enter that block statement. In this block, personB is re-assigned to person which is equal to 'CardiB'. Then personC is re-assigned to personB which is now equal to 'CardiB'.
+    // When we Log B: personC we get 'CardiB'. Once we leave the if block statement, personC is re-assigned to personA which is equal to 'Paul'.
+    // Next, we Log C: personB which is 'CardiB'. Then we leave the changePerson function and go back to the global scope.
+    // Finally, we Log D: personC which is 'Paul' because it was re-assigned globally within the function.
   },
 
   exerciseB() {
@@ -63,18 +77,28 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 75 },
+      { 'B': 64 },
+      { 'C': 64 },
+      { 'D': 30 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we assign a new variable number and set it to 30. Then we declare a function numberFunction and invoke it on line 76.
+    // Within numberFunction, we assign a let called number equal to 75. Then we run an if statement that is true and assign a let called number to 28 that is block scoped.
+    // Next we leave the block scope and Log A: number is equal to 75 from the function scope.
+    // Tnen a new function newNumber is declared and invoked on line 71. Within the function newNumber, the variable number in the function scope is re-assigned to 64. Then we Log B: number which is equal to 64 from the local scope.
+    // Next we go out in scope and Log C: number which is still equal to 64 because the re-assignment of number in the newNumber function went out in scope.
+    // Lastly, we exit the function numberFunction and return to global scope. Log D: number is equal to 30 because number was never re-assigned in the global scope.
   },
 
   exerciseC() {
     let greeting = 'Hello';
 
     function greetingFunction() {
-      var greeting = 'Yo';
+      var greeting = 'Yo'; //'Hey'
 
       if (greeting === 'Yo') {
         let greeting = 'Howdy';
@@ -97,7 +121,12 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Yo' },
+      { 'B': 'Hey' },
+      { 'C': 'Hey' },
+      { 'D': 'Hello' }
+    ];
     return result;
 
     // Annotation:
@@ -131,7 +160,12 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'hi' },
+      { 'B': 'welcome' },
+      { 'C': 'welcome' },
+      { 'D': 'howdy'}
+    ];
     return result;
 
     // Annotation:
@@ -163,7 +197,12 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'C': 'Brittany' },
+      { 'A': 'Nathaniel' },
+      { 'B': 'Nathaniel'},
+      { 'D': 'Brittany'}
+    ];
     return result;
 
     // Annotation:
@@ -171,7 +210,7 @@ const scope = {
   },
 
   exerciseF() {
-    var dog = 'Spot';
+    var dog = 'Spot'; //Biscuit
 
     function petDog() {
       // Log A: dog
@@ -198,7 +237,13 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Spot' },
+      { 'B': 'Spot' },
+      { 'C': 'Biscuit' },
+      { 'D': 'Biscuit' },
+      { 'E': 'Biscuit' }
+    ];;
     return result;
 
     // Annotation:
@@ -209,7 +254,6 @@ const scope = {
     var fruit = 'apple';
 
     function eatFruit() {
-
       if (fruit !== 'kiwi') {
         var fruit = 'mango';
 
@@ -228,11 +272,17 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'reference error' },
+      { 'B': 'mango' },
+      { 'C': 'mango' },
+      { 'D': 'apple' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A is a reference error because of the block const assignment of fruit within that block scope.
+    // The block statement knows fruit is declared as something else but does not hoist the variable (not set as undefined).
   },
 
   exerciseH() {
@@ -268,7 +318,13 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 4 },
+      { 'D': 9 },
+      { 'E': 10 },
+      { 'B': 9 },
+      { 'C': 4 }
+    ];
     return result;
 
     // Annotation:
@@ -276,7 +332,7 @@ const scope = {
   },
 
   exerciseI() {
-    var hunger = 100;
+    var hunger = 100; //55
 
     function eatSnack() {
       hunger -= 25;
@@ -299,7 +355,16 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 75 },
+      { 'B': 0 },
+      { 'C': 75 },
+      { 'D': 80 },
+      { 'A': 55 },
+      { 'B': 0},
+      { 'C': 55 },
+      { 'E': 55 }
+    ];
     return result;
 
     // Annotation:

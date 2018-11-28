@@ -23,21 +23,22 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => kitty.color === 'orange').map(kitty => kitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we need to identify which kitties in our kitties dataset are orange. To do this, the best prototype to use is filter because it will return a new array with a different length that includes only orange kitties. But what we really want to return is the name property for each orange kitty as an array. Therefore we need to use the map prototype to create a new array with just the names of these kitties.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const [...kittiesClone] = kitties;
+    const result = kittiesClone.sort((a, b) => b.age - a.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // To sort the kitties by their ages, we can use the sort prototype witha compare function that can be used to access the age property for each kitty. The compare function iterates through each kitty and compares it's age to the next adjacent kitty, then sorts each kitty object in descending order (which is what the test requires).
   },
 
   growUp() {
@@ -54,8 +55,16 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+        kitty.age += 2;
+        return kitty
+    });
     return result;
+
+    // Annotation:
+    // To age the kitties by 2 years, map is the best prototype to use because it creates a new array (result) of the same length and allows for changes to each item in the original array. 
+
+    //**For this one the test says it's incorrect because of the previous sortByAge() function. If that is commented out, then the test works.**
   }
 };
 
@@ -69,6 +78,7 @@ const kittyPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
+
 
 
 
