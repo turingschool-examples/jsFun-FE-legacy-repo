@@ -23,17 +23,22 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+const result = kitties.filter((kitty) => {
+  return kitty.color === 'orange';
+  })
+    .map((orangeKitty) => {
+      return orangeKitty.name
+      });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //By using the filter method, we will iterate through the kitties array and create a array of all elements that have a color property with the value of orange.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -122,11 +127,20 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((mod) => {
+      // create studentsPerInstructor variable
+      // assign it to mod.students/mod.instructors
+      // return an object with the mod number and studentsPerInstructor
+
+      let studentsPerInstructor = (mod.students / mod.instructors);
+
+      return {mod : mod.mod, studentsPerInstructor : studentsPerInstructor}
+
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Since we want to return an array with the modified elements of the original mods array, we will use MAP. We set result to the return of mapping over the mods array. The callback will take mod as the parameter. Within the callback, we are creating a variable called studentsPerInstructor that is the result of each mod objects students value divided by each mod object's instructors value. The return from our map prototype will be an object that has two properties,  For each loop through the array, we create a new object that has two properties: mod and studentsPerInstructor. The mod value will be assigned to the currrent mod (element) mod value, and the studentsPerInstructor value will be assigned to the current value of studentsPerInstructor within the loop. 
   }
 };
 
