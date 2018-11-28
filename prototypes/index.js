@@ -23,21 +23,25 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter((kitty) => {
+      return kitty.color === 'orange';
+    }).map((kitty) => {
+      return kitty.name;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First filter the array to only show kitties with color === orange, then map that filtered array to only get an array of the kitties' names
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kitty1, kitty2) => kitty2.age - kitty1.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I'm not sure how compare functions work with the sort array prototype method, but in the docs it shows the example of (a, b) => a - b. That will sort numbers in increasing order, so I reversed it so that it was the second parameter minus the first parameter. This sorts the array in decreasing order by age which is what the test wants. Also I needed to clone the kitties array because the sort method changes the array in place, so the next test was not working.
   },
 
   growUp() {
@@ -54,8 +58,12 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    kitties.forEach((kitty) => kitty.age += 2);
+    const result = kitties;
     return result;
+
+    // Annotation:
+    // I used the forEach prototype method to add 2 to the age of each kitty, but since forEach does not return, I had to call it before assigning result.
   }
 };
 
@@ -75,6 +83,7 @@ const kittyPrompts = {
 
 
 
+
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
@@ -86,7 +95,19 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+    clubs.forEach((club) => {
+      club.members.forEach((member) => {
+        result[member] = [];
+      });
+    });
+    Object.keys(result).forEach((person) => {
+      clubs.forEach((club) => {
+        if (club.members.includes(person)) {
+          result[person].push(club.club);
+        }
+      });
+    });
     return result;
 
     // Annotation:
@@ -124,7 +145,9 @@ const modPrompts = {
 
     
     const result = mods.map((mod) => {
-      return {'mod': mod.mod, 'studentsPerInstructor': mod.students / mod.instructors};
+      let studentsPerInstructor = mod.students / mod.instructors;
+      return {mod: mod.mod, studentsPerInstructor: studentsPerInstructor};
+
     });
     return result;
 
@@ -161,7 +184,7 @@ const cakePrompts = {
     // ]
 
     const result = cakes.map((cake) => {
-      return {'flavor' : cake.cakeFlavor, inStock: cake.inStock};
+      return {flavor: cake.cakeFlavor, inStock: cake.inStock};
     });
     return result;
 
@@ -213,11 +236,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    cakes.forEach((cake) => {
+      cake.toppings.forEach((topping) => {
+        if (!result.includes(topping)) {
+          result.push(topping);
+        }
+      });
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Initialize result as an empty array. For each topping in each cake, if the topping is not yet in the result array, push it to the array.
   },
 
   groceryList() {
@@ -231,11 +261,20 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {};
+    cakes.forEach((cake) => {
+      cake.toppings.forEach((topping) => {
+        if (typeof result[topping] === 'undefined') {
+          result[topping] = 1;
+        } else {
+          result[topping] += 1;
+        }
+      });
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Initialize result as an empty object. For each topping in each cake, if the topping is not already a property of result, add it as a property with a value of 1, and if the topping is a property of result, increment its value.
   }
 };
 
@@ -266,11 +305,14 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = '';
+    // const result = classrooms.filter((room) => {
+    //     return room.program === 'FE';
+    // });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Filter the classrooms array to a new array with only the object which have a program property with the value of 'FE'.
   },
 
   totalCapacities() {
@@ -281,7 +323,9 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // const result = classrooms.reduce(() => {
+
+    // });
     return result;
 
     // Annotation:
