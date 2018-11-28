@@ -95,7 +95,7 @@ const piePrompts = {
 
     const result = {};
     Object.keys(pie.ingredients).forEach((ingredient) => {
-        result[ingredient] = pie.ingredients[ingredient] * (pie.desiredInventoryCount - pie.inventoryCount);  
+      result[ingredient] = pie.ingredients[ingredient] * (pie.desiredInventoryCount - pie.inventoryCount);  
     });
     return result;
 
@@ -133,16 +133,16 @@ const clubPrompts = {
 
     const result = {};
     clubs.forEach((club) => {
-        club.members.forEach((member) => {
-            result[member] = [];
-        });
+      club.members.forEach((member) => {
+        result[member] = [];
+      });
     });
     Object.keys(result).forEach((person) => {
-        clubs.forEach((club) => {
-            if (club.members.includes(person)) {
-                result[person].push(club.club);
-            }
-        });
+      clubs.forEach((club) => {
+        if (club.members.includes(person)) {
+          result[person].push(club.club);
+        }
+      });
     });
     return result;
 
