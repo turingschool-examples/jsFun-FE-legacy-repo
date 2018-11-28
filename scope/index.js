@@ -299,11 +299,11 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 75}, {B: 0}, {C: 75}, {D: 80}, {A: 55}, {B: 0}, {C: 55}, {E: 55}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // hunger is declared globally and assigned 100. When eatSnack() is invoked, the global hunger is decreased by 25 so it has the value of 75. At Log A, hunger is 75. When gorgeYourself() is invoked, a new const hunger is declared in the functional scope and assigned 0. At Log B, hunger is 0. At Log C, hunger is found globally and it is 75. After eatSnack() is done executing, the global hunger is increased by 5. At Log D, hunger is found globally, and its value is 80. When eatSnack is called the second time, the global hunger is decreased by 25, so at Log A again, hunger is found globally with the value of 55. At Log B again, hunger is found in the functional scope with the value of 0. At Log C again, hunger is found globally, and its 55. At Log E, hunger is found globally, and its 55.
   },
 
   exerciseJ() {
@@ -340,11 +340,11 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'ketchup sandwich'}, {D: 'gouda'}, {B: undefined}, {C: 'not a mediocre sandwich'}, {E: 'not a mediocre sandwich'}, {F: 'National Treasure'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // sandwich is declared globally and assigned 'ketchup sandwich'. At Log A, sandwich is 'ketchup sandwich'. cheeseTopping is reassigned to 'kraft', but it does not exist anywhere so it is created as a global variable. addCheese() is invoked. cheeseTopping is declared in the functional scope and assigned 'gouda', so at Log D, cheeseTopping is 'gouda'. shesTheManReference() is invoked, and amandaBynes is reassigned to 'National Treasure'. However, amandaBynes in not a found in any scope so it is created as a global variable.. addChipotle() is invoked. At Log B, toppings has not yet been assigned a value, so it is undefined. In the if block, the global sandwich is reassigned to 'not a mediocre sandwich', so that is what it is at Log C when it is found in the global scope. At Log E, sandwich is still found in the global scope with the same value of 'not a mediocre sandwich'. At Log F, amandaBynes does not exist in the global scope, so there is a reference error.
   },
 
   exerciseK() {
@@ -361,11 +361,11 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 7}, {B: 7}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // num is declared globally with the value 10. foo() is invoked. The global num is reassigned to 7. At Log A, num is found in the global scope where it is 7. At Log B, num is found in the global scope where it is 7.
   },
 
   exerciseL() {
@@ -393,11 +393,11 @@ const scope = {
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 95}, {B: 90}, {C: 90}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // grade is declared globally and assigned 100. losePoints() is invoked. The global grade is reassigned to 90. addPoints() is invoked. In the functional scope, grade is declared and assigned 95. In the if block, grade is declared in the block scope and assigned 97. At Log A, grade is found in addPoints()'s functional scope where its value is 95. At Log B, grade is found in the global scope with the value of 90. At Log C, grade is found in the global scope with the value of 90.
   },
 
   exerciseM() {
@@ -419,11 +419,11 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 5}, {B: 6}, {C: 'reference error'}, {D: 6}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // num is declared globally and assigned 5. first() is invoked. At Log A, num is found in the global scope with the value of 5. The global num is reassigned to 6, and that is what it is at Log B. second() is invoked. At Log C, num is in a temporal dead zone because it is declared with the let keyword in the functional scope after the log. At Log D, num is found in the global scope with the value of 6.
   },
 
   exerciseN() {
@@ -458,11 +458,11 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{E: 'Pam'}, {A: 'Pam'}, {B: 'Pam'}, {C: 'Louisa'}, {D: 'Louisa'}, {F: 'Louisa'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // instructor is declared globally and assigned to 'Pam'. At Log E, instructor is found globally, and its value is 'Pam'. changeInstructor() is invoked. At Log A, instructor is found globally, and its value is 'Pam'. At Log B, instructor is found globally, and its value is 'Pam'. rename() is invoked. The global instructor is reassigned to 'Louisa'. At Log C, instructor is found globally, and its value is 'Louisa'. At Log D, instructor is found globally, and its value is 'Louisa'. At Log F, instructor is found globally, and its value is 'Louisa'.
   },
 
   exerciseO() {
@@ -477,11 +477,11 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{B: 'flipflop'}, {A: 'undefined'}, {C: 'flipflop'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // shoe is declared globally with the value 'flipflop'. At Log B, shoe is found globally, and its value is 'flipflop'. putOnShow() is invoked. At Log A, shoe is found in the function scope, and since it has not yet been assigned a value, it is undefined. At Log C, shoe is found globally, and its value is 'flipflop'.
   },
 
   exerciseP() {
@@ -503,11 +503,11 @@ const scope = {
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'reference error'}, {B: 'soup'}, {C: 'soup'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // orderLunch() is invoked. At Log A, lunch is in a temporal dead zone, so there is a reference error. In the second if block, lunch is reassigned to 'soup', but since lunch does not exist in any scope, lunch is created as a global variable. At Log B, lunch is found in the global scope where its value is 'soup'. At Log C, lunch is found in the global scope where its value is 'soup'.
   },
 
   exerciseQ(){
