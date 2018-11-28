@@ -1,5 +1,4 @@
 const { kitties } = require('./datasets/kitties');
-const { pie } = require('./datasets/pie');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
 const { cakes } = require('./datasets/cakes');
@@ -57,42 +56,6 @@ const kittyPrompts = {
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
-  }
-};
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-// DATASET: pie from ./datasets/pie
-const piePrompts = {
-  howManyIngredients() {
-    // The bakery needs to make more rhubarb pies in order to meet the
-    // desiredInventoryCount. Programmatically determine how many more pies
-    // need to be made, and return an object of the total number of ingredients we need
-    // we need to buy in order to make the remaining pies. e.g.:
-    // {
-    //   cinnamon: 50,
-    //   sugar: 100
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
 
