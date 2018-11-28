@@ -80,7 +80,6 @@ const kittyPrompts = {
 
 
 
-
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
@@ -94,16 +93,16 @@ const clubPrompts = {
 
     const result = {};
     clubs.forEach((club) => {
-        club.members.forEach((member) => {
-            result[member] = [];
-        });
+      club.members.forEach((member) => {
+        result[member] = [];
+      });
     });
     Object.keys(result).forEach((person) => {
-        clubs.forEach((club) => {
-            if (club.members.includes(person)) {
-                result[person].push(club.club);
-            }
-        });
+      clubs.forEach((club) => {
+        if (club.members.includes(person)) {
+          result[person].push(club.club);
+        }
+      });
     });
     return result;
 
