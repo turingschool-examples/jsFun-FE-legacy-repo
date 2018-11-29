@@ -24,7 +24,7 @@ const kittyPrompts = {
     // ['Tiger', 'Snickers']
 
     const result = kitties.filter((kitten) => {
-        return kitten.color === 'Orange';
+        return kitten.color === 'orange';
     }).map((kitten) => {
         return kitten.name;
     });
@@ -37,7 +37,11 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = kitties.sort((b, a) => {
+    return a.age - b.age;
+    });
+
     return result;
 
     // Annotation:
@@ -58,25 +62,20 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result  = kitties.map((kitten) => {
+        kitten.age += 2; 
+        return kitten;
+    });
     return result;
   }
 };
 
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: clubs from ./datasets/clubs
@@ -168,7 +167,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cakes.map((cake) => {
+        return {flavor: cake.cakeFlavor, inStock: cake.inStock};
+    });
     return result;
 
     // Annotation:
@@ -196,7 +197,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => {
+        return cake.inStock > 0;
+    });
     return result;
 
     // Annotation:
@@ -207,7 +210,9 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((allCakes, cake) => {
+        return allCakes += cake.inStock;
+    }, 0);
     return result;
 
     // Annotation:
@@ -219,7 +224,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((accArray, cake) => {
+        cake.toppings.forEach((topping) => {
+            if (accArray.indexOf(topping) === -1) {
+            accArray.push(topping);
+            }
+        });
+  return accArray;
+}, []);
     return result;
 
     // Annotation:
@@ -237,7 +249,15 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((groceryListObj, cake) => {
+        cake.toppings.forEach((topping) => {
+        if (!groceryListObj[topping]) {
+            groceryListObj[topping] = 0;
+        }
+        groceryListObj[topping]++;
+    })
+    return groceryListObj;
+    }, {});
     return result;
 
     // Annotation:
@@ -302,7 +322,7 @@ const classPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
-  }
+  } 
 };
 
 
@@ -403,7 +423,18 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // map over instructors array
+    // find the matching cohort for our current instructor
+    // get the student count value from the matching cohort
+    // return an object with the instructor name and studentCount
+
+    const result = instructors.map((instructor) => {
+      let matchingCohort =  cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      });
+      let numberOfStudents = matchingCohort.studentCount;
+      return { name: instructor.name, studentCount: numberOfStudents }
+    });
     return result;
 
     // Annotation:
