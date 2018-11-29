@@ -161,6 +161,7 @@ const cakePrompts = {
     //    ..etc
     // ]
 
+
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -396,8 +397,20 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+
+    // map over the instructorsArray
+    // find the matching cohort for our current instructor
+    // grab the student count value from the matching cohort
+    // return an object with the instructor's name and studentCount
+
+    const result = instructors.map((instructor) => {
+           let matchingCohort = cohorts.find((cohort) => {
+            return cohort.module === instructor.module;
+           })
+           let numberOfStudents = matchingCohort.studentCount;
+           return { name: instructor.name, studentCount: numberOfStudents }
+        });
+        return result;
 
     // Annotation:
     // Write your annotation here as a comment
