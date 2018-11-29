@@ -27,7 +27,7 @@ const result = kitties.filter((kitty) => {
   return kitty.color === 'orange';
   })
     .map((orangeKitty) => {
-      return orangeKitty.name
+      return orangeKitty.name;
       });
     return result;
 
@@ -38,7 +38,9 @@ const result = kitties.filter((kitty) => {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = kitties.sort((a,b) => {
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
@@ -59,7 +61,10 @@ const result = kitties.filter((kitty) => {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map((kitty) => {
+      kitty.age += 2;
+      return kitty
+    });    
     return result;
   }
 };
@@ -91,7 +96,17 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((accu, currentClub) => { //using reduce because we want one object at the end
+      currentClub.members.forEach((member) => { //using forEach to iterate over each clubs members array
+        if (!accu[member]) { //if our accumulator doesnt have a key of member
+          accu[member] = [currentClub.club] // creating a key of member, with the value of an array of currentClub
+        }
+        else { //otherwise, if the accumulator DOES already have a key of the member created from a previous iteration
+          accu[member].push(currentClub.club) // push the current club into the member's array 
+        }
+      })
+      return accu //after doing all that, return a single object with member as key, their clubs in an array for their value
+    }, {});
     return result;
 
     // Annotation:
@@ -171,7 +186,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => {
+      return {flavor: cake.cakeFlavor, inStock: cake.inStock}
+    });
     return result;
 
     // Annotation:
@@ -198,8 +215,9 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => {
+      return cake.inStock > 0
+    });
     return result;
 
     // Annotation:
@@ -209,12 +227,14 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((sumOfCakes, cake) => {
+      sumOfCakes += cake.inStock;
+      return sumOfCakes;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Since we are returning a sum of all the instock cakes, i.e. one value, we need to use REDUCE. We set our accumulator to sumCakes and initialize its value as 0 on line 233. On 231, we reassign the value of sumOfCakes to the value of each cake's inStock value as we iterate through the array. 
   },
 
   allToppings() {
@@ -222,7 +242,16 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+  const result = cakes.reduce((allToppingsArr, currCake) => {
+    // if the topping isnt in the array yet
+    currCake.toppings.forEach((topping) => {
+      if (allToppingsArr.indexOf(topping) === -1) {
+        allToppingsArr.push(topping)
+      }
+    })
+    return allToppingsArr
+  }, []);
+
     return result;
 
     // Annotation:
@@ -240,11 +269,20 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((groceryList, cake) => {
+      cake.toppings.forEach((topping) => {
+        if (!groceryList[topping]) {
+          groceryList[topping] = 0;
+        }
+        groceryList[topping]++;
+        
+      })
+      return groceryList;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Need to create a new object (groceryList) that has all the toppings and their count -- will use REDUCE to create a single object. Will reduce off the cakes array. We need to iterate over each topping in the array to add to our grocery list using a forEach prototpye. On Line 274, we are seeing if the groceryList Object DOESNT CONTAIN the current topping as a key. If it doesnt contain that topping, we are setting the topping as a key of the grocery list object (line 275) and setting the value to 0. Once its set, each time through the forLoop it will incremeent the value of each key by one as it encounter it. After it has gone through all the topppings, the keys are all set and incremented to the correct amount. Then we return the groceryList on 280 outside of the forLoop/inside of the REDUCE. 
   }
 };
 
@@ -275,7 +313,10 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter((classroom) => {
+      return classroom.program === 'FE'
+    });
+
     return result;
 
     // Annotation:
@@ -290,7 +331,15 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((capacityObj, currClassroom) => {
+      if (currClassroom.program === 'FE') {
+        capacityObj.feCapacity += currClassroom.capacity;
+      } else {
+        capacityObj.beCapacity += currClassroom.capacity;
+      }
+      return capacityObj
+    }, { feCapacity: 0, beCapacity: 0 });
+
     return result;
 
     // Annotation:
@@ -300,7 +349,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
@@ -346,11 +397,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      return { name: brewery.name, beerCount: brewery.beers.length }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map over the brewery 
   },
 
   findHighestAbvBeer() {
@@ -406,7 +459,13 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+      let matchingCohort = cohorts.find((cohort) => {
+        return cohort.module === instructor.module; //returns true
+      });
+      let numberOfStudents = matchingCohort.studentCount;
+      return { name: instructor.name, studentCount: numberOfStudents }
+    });
     return result;
 
     // Annotation:
