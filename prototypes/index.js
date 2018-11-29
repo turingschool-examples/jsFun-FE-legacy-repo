@@ -405,8 +405,16 @@ return {name: brewery.name, beerCount: brewery.beers.length}
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // given an array
+    // want an object back
+
+const result= breweries.reduce((beerArray, brewery) => {
+  beerArray = beerArray.concat(brewery.beers);
+  return beerArray;
+}, []).sort((a, b) => {
+  return b.abv - a.abv;
+});
+return result[0];
 
     // Annotation:
     // Write your annotation here as a comment
