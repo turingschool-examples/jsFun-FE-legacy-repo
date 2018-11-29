@@ -381,11 +381,14 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((beerSum, currBrewery) => {
+
+      return beerSum += currBrewery.beers.length;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Use reduce since we want to return a single sum of all beers of brewery. we will iterate over the breweries array . On line 387, we set our initializer to 0 and on line 386 we are adding to and reassigning the beerSum to be equal to the count of the beers per brewery (usng the length)
   },
 
   getBreweryBeerCount() {
