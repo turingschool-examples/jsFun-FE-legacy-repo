@@ -467,7 +467,7 @@ const turingPrompts = {
     return result;
 
     // Annotation:
-    // instructors is mapped to an array of objects whose keys are name and studentCount. studentCount is calculated by calling the length method after running the find method on cohorts and finding the element in which the module value of the current instructor matches module value of the current cohort.
+    // instructors is mapped to an array of objects whose keys are name and studentCount. studentCount is calculated by getting the studentCount property after running the find method on cohorts and finding the element in which the module value of the current instructor matches module value of the current cohort.
   },
 
   studentsPerInstructor() {
