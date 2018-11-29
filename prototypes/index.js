@@ -82,11 +82,6 @@ const kittyPrompts = {
 
 
 
-
-
-
-
-
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
@@ -99,10 +94,15 @@ const clubPrompts = {
     // }
 
 
-
-    const result = clubs.reduce((accu, club) => {
-        // for each on members
-        // assign members as properties if they are undefined
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [club.club];
+        } else {
+          acc[member].push(club.club);
+        }
+      });
+      return acc;
     },{});
 
     // Individual instance of each person's name from the members in each club object.
@@ -112,7 +112,7 @@ const clubPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is use to create a new object that contains member names as keys and arrays of clubs as values. Within the reduce method, we run through each club object's members. If the member doesn't exist as a proprty, we add it and assign an array with the club value inside it. If the property does exist, we use push to add the club to the array value.
   }
 };
 
@@ -146,7 +146,7 @@ const modPrompts = {
 
     const result = mods.map(mod => {
       let studentsPerInstructor = mod.students / mod.instructors;
-      return { mod: mod.mod, studentsPerInstructor: studentsPerInstructor}
+      return { mod: mod.mod, studentsPerInstructor: studentsPerInstructor};
     });
 
     return result;
@@ -184,7 +184,7 @@ const cakePrompts = {
     // ]
 
     const result = cakes.map(cake => {
-      return { flavor: cake.cakeFlavor, inStock: cake.inStock }
+      return { flavor: cake.cakeFlavor, inStock: cake.inStock };
     });
 
     return result;
@@ -216,7 +216,7 @@ const cakePrompts = {
 
     const result = cakes.filter(cake => {
       return cake.inStock;
-    })
+    });
 
     return result;
 
@@ -244,11 +244,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = cakes.reduce;
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (acc.indexOf(topping) === -1) {
+          acc.push(topping);
+        }
+      });
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // To get a unique array of toppings, we use a reduce prototype with and empty array as the initial value. Within the reduce method, we access each array in each cakes object toppings property. For each array, we check if the value exists in our accumulator and if not, we add it to the accumulator (so we have no duplicates). Then we go out in scope to the reduce method and return the accumulator after we've gone through each object in the cakes array.
   },
 
   groceryList() {
@@ -262,7 +269,17 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!acc[topping]) {
+          acc[topping] = 1;
+        } else {
+          acc[topping]++;
+        }
+      });
+      return acc;
+    },{});
+
     return result;
 
     // Annotation:
@@ -297,7 +314,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
@@ -312,17 +329,30 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, room) => {
+      if (Object.keys(acc).length === 0) {
+        acc.feCapacity = 0;
+        acc.beCapacity = 0;
+      }
+      
+      if (room.program === 'FE') {
+        acc.feCapacity += room.capacity;
+      } else {
+        acc.beCapacity += room.capacity;
+      }
+      return acc;
+    },{});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The best prototype for this problem is reduce because we are creating a new object with different properties and a different length. Within the reduce method, first we check if our new object is empty (first iteration) and if it is, we creat our new properties and assign them to 0. If it is not our first iteration, we check is the program property is strictly equal to 'FE' and if it is, we add the value to the feCapacity property. Else we add it to the beCapacity property. Then we return our object from the reduce method.
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((roomA, roomB) => roomA.capacity - roomB.capacity);
     return result;
 
     // Annotation:
@@ -352,7 +382,7 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => acc += brewery.beers.length, 0);
     return result;
 
     // Annotation:
