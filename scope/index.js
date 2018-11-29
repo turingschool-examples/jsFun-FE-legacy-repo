@@ -40,7 +40,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are creating 3 global variables on lines 3-5. We then are creating a new function called changePerson on line 7. We will skip down until line 28 when the changePerson() function is called, at which point we go back to line 7 to enter the function. On line 8, since personA is assigned to Paul, we will enter the if block. On line 9, we are creating a new functionally scoped variable called person which is assigned to CardiB (this will leak to global scope). We then run the beautifyPerson function, which we enter on line 13. On line 14, wwe have the first log for personB, which at this point is still Ben since it hasn't been reassinged. We then enter the if block on line 16 since Ben starts with the letter B. On line 17, personB is being reassinged to 'CardiB' because the person variable we created on line 9 has leaked out to the functional scope. On line 18, personC is being reassigned to personB (which got reassigned to CardiB on line 17), so logB will indicate that personC is now also CardiB. We exit the if block and on line23 personC is reassinged to personA. LogC will be CardiB for person B since it still reassigned from line 18. We have now left the function and are back in the global scope. At this point, on line 30 person C will be Paul since all the reassignment to CardiB only happened in the changePerson function. 
   },
 
   exerciseB() {
@@ -53,17 +53,17 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number - 75
+      // Log A: number -
 
       function newNumber() {
         number = 64;
 
-        // Log B: number - 64
+        // Log B: number - 
       }
 
       newNumber();
 
-      // Log C: number - 64
+      // Log C: number - 
     }
 
     numberFunction();
@@ -80,7 +80,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Creating a global variable on line 50 setting number to 30. Creating the numberFunction on line 49. On line 69 we enter the numberFunction on 49. Creating a FUNCTIONALLY SCOPED variable called number assigned to 75. This allows us to enter the if blcok on 52. Within the if block, creating a new variable number that is block scoped and assigned to 28. Since we exit th block, LogA will be 75 since it refers to the functioanlyl scoepd variable assigned to 75. Then we create the function newNumber in the local context and enter it after encountering the numberFunction on line 69. When we enter newNumber, it is creating a new variable (assigned to 64) which will leak out to the functioanl scope. For LogB, the number will be 64 since we are still in the functional block. Then, on LogC, number will be assigned to 64 since it bled out to the functional scope on the variable declaration. Finally, LogD will be 30 since are back in the global scope and number hasnt been reassigned.
   },
 
   exerciseC() {
@@ -93,22 +93,22 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting - 'Yo'
+      // Log A: greeting - 
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting - 'Hey'
+        // Log B: greeting - 
       }
 
       newPhrase();
 
-      // Log C: greeting - 'Hey'
+      // Log C: greeting - 
     }
 
     greetingFunction();
 
-    // Log D: greeting - 'Hello'
+    // Log D: greeting - 
 
     const result = [
       { 'A': 'Yo' },
@@ -119,7 +119,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Enter the greetingFunction on line 89 after its called on 109. Creates new var assigned to Yo, allows us to enter the if bloock on 93. within if block, craetes new greeting as Howdy. This is block scoped so doesnt escape. LogA should be Yo since we are still in functional block. enter the new Phrase function (after its called 104) greeting creates a new var of greeting called Hey. LogB will be Hey since its within the functional scope. However, since we didnt use a variable declaration it will leak out to the greetingFunction() level and therefore LogC will also be Hey since it overwrites the origianl Yo. Finally, Log D will still remain Hello since it is within the global scope and nothing has impacted hte original global variable. 
   },
 
   exerciseD() {
@@ -132,22 +132,22 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting - 'hi' 
+      // Log A: greeting - 'hi'
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting - 'welcome'
+        // Log B: greeting - welcome
       };
 
       newGreeting();
 
-      // Log C: greeting - 'welcome'
+      // Log C: greeting - welcome
     };
 
     greetingGenerator();
 
-    // Log D: greeting - 'howdy'
+    // Log D: greeting - howdy
 
     const result = [
       { 'A': 'hi' },
@@ -158,7 +158,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // LogA is 'hi' since it refers to the functionally scoped greeting on line 129 (not hello, which is block scoped on 132). LogB is welcome as it is declared on line 138. LogC is also welcome since it leaks out of its functional scope on 138 to line 129 where it reassigns hi to welcone. LogD is welcome as it is globally scoped and doesnt get reassigned. 
   },
 
   exerciseE() {
@@ -174,17 +174,17 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name - Nathaniel
+        // Log A: name - nathaniel
       }
 
-      // Log B: name - Nathaniel
+      // Log B: name - nathaniel - leaks out
     } 
 
-    // Log C: name - Brittany
+    // Log C: name - 'Brittany' logged 1st
 
     sayName();
 
-    // Log D: name - Brittany
+    // Log D: name - brittany
 
     const result = [
       { 'C': 'Brittany' },
@@ -195,31 +195,31 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // LogC is executed first and refers to Brittany as it is globally scoped. Next we enter the sayName function and logA is nathaniel as it is declared on 171. However, it leaks out and also is logged for LogB since it reassigns name on line 168. Finally, logC is Brittany since its globally scoped and never reassigned. 
   },
 
   exerciseF() {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog - Spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog - biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog - buiscuit
     }
 
     petDog();
@@ -236,7 +236,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // LogA is spot as its globally scoped and no var declaration anywhere in the petDog function (looks up to global). LogB is still spot as it looks globally. LogC is biscuit as it reassigned. Log D is also biscuit as the var is leaked up to global scope and replaces Spot. LogE is also biscuit as it has been reassigned globally earlier.
   },
 
   exerciseG() {
@@ -248,22 +248,23 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit - ReferenceError!- since its const (rather than var) it is placed in temporal dead zone
+          // Log A: fruit - referenceError! 
           const fruit = 'strawberry';
         }
 
         // Log B: fruit - mango
       }
 
-      // Log C: fruit - mango - use of var on 248 leaks it to top of eatFruit() - line 246
+      // Log C: fruit - mango
     }
 
     eatFruit();
 
     // Log D: fruit - apple
 
+
     const result = [
-      { 'A': 'ReferenceError!' },
+      { 'A': 'referenceError!' },
       { 'B': 'mango' },
       { 'C': 'mango' },
       { 'D': 'apple' }
@@ -271,7 +272,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We get a reference error on LogA since the console log is called on line 251 before the fruit variable is declared on line 252 within the if block. It doesn't have a fruit to refer to in the if statement! LogB will log mango since it refers back to the functioanlly scoped fruit on 248. LogC is also mango as the var declaration on 248 leaks out to the functional scope. LogD is apple as it refers to the global scope!
   },
 
   exerciseH() {
@@ -280,7 +281,7 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num - 4
+      // Log A: num - 
 
       if (num < 5) {
         const num = 9;
@@ -289,20 +290,20 @@ const scope = {
 
         const newNum = num;
 
-        // Log B: newNum - 9
+        // Log B: newNum - 
       }
 
       newNum = num;
 
-      // Log C: newNum - 4
+      // Log C: newNum - 
     };
 
     const fn2 = function(num){
-      // Log D: num - 9
+      // Log D: num - 
 
       num = num + 1;
 
-      // Log E: num - 10
+      // Log E: num -
     };
 
     fn1();
@@ -344,11 +345,17 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { D: 80 },
+      { A: 55 },
+      { B: 0 },
+      { C: 55 },
+      { E: 55 }
+    ];     
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Hunger delcared as 100 in line 325. Enter the eatSnack after it is invoke on line 340. The global hunger is reassigned as 75 on line 328 so logA will be 75. We then enter the gorgeYoureself function on 322 (invoked on 330) where we create a functionaly scoped hunger as 0 (doesnt impact global hunger). After exiting gorge, logC refers to the global hunger as 75. We exit the eatSnack function and global hunger is reassigned as 80. encounter another eatSnack and re-enter the function. LogA reassinged to 55 on line 328. LogB will remain 0. Log C is still 55 from reassignment. Log E is still 55 from reassignemnt. So correct final execution order is D, A, B, C, E. 
   },
 
   exerciseJ() {
@@ -385,7 +392,13 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'ketchup sandwich' },
+      { D: 'gouda' },
+      { B: undefined },
+      { C: 'not a mediocre sandwich' },
+      { E: 'not a mediocre sandwich' }
+    ];      
     return result;
 
     // Annotation:
@@ -406,7 +419,10 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 7,},
+      { B: 7}
+    ];
     return result;
 
     // Annotation:
@@ -438,11 +454,14 @@ const scope = {
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 95 },
+      { B: 90 },
+      { C: 90 }
+    ];    
     return result;
-
     // Annotation:
-    // Write your annotation here as a comment
+    // grade is declared on line 433 and value is set at 100. enter the losePoints function after it is called on 453. On 436, global grade (line 433) is reassigned to 90. addPoints is called on 448, so we enter that function scope on 438. On 439, we create a functionally scoped variable grade wiht value 95. this allows us to enter the if block on 441 where we create a block scoped grade of 97. We then exit that block, so LogA will be 95 sin it is within the addPoints function scope. LogB will refer to 90 since it is in the function scope of lose points. However, logC is also 90 since the grade variable on 436 didnt use a variable declaration so it leaks out to global scope and reassigns teh global grade to 90. 
   },
 
   exerciseM() {
@@ -464,11 +483,15 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 95 },
+      { B: 90 },
+      { C: ReferenceError }
+    ];     
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We declare a global num on 468 with value of 5. The first() is called on 481 so we enter that functin. LogA will reference the global variable 5. on 472 we reassign the global num as 6. LogB references the reassignment so it will be 6. After win finish exectuting first(), we have second() called on 482. On the creation phase of this function, the variable let declaration gets hoisted above logC but the value hasn't been assigned yet. Since it is a let declaration, we cannot refer to that variable so it throws a reference error. 
   },
 
   exerciseN() {
@@ -503,11 +526,17 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = [
+      { E: 'Pam' },
+      { A: 'Pam' },
+      { B: 'Pam' },
+      { C: 'Louisa' },
+      { D: 'Louisa' },
+      { F: 'Louisa' }
+    ];     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Declare global var instructor with value pam on line 498. Encounter LogE on 523 which references global var of Pam. change() is called on 525. LogA on 502 refers to global Pam sicne there is no function level declarations. The if logic on 504-508 doesnt do any functional scoped declarations. however, the rename() reassignes the global instructo to luisa (leaks out). LogC is Louisa. LogD will also be Louisa since it leaked out. LogF is also louisa as it leaked out to global scope and reassigned. 
   },
 
   exerciseO() {
@@ -522,11 +551,15 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = [
+      { B: 'flipflop' },
+      { A: 'undefined' },
+      { C: 'flipflop' }
+    ]    
+      return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // shoe declared globally on 543 and value is set to flip flop. encounter LogB first, which references the global flipflop. PutOn() called on 551. LogA will be undefined since it comes about the variable declaration. It recognizes the variable from teh local creation phase but it hasnt been assigned a value, so LogA will be undefined. LogC will be flipflop since the var declaration on 547 was functionally scoped. 
   },
 
   exerciseP() {
