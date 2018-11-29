@@ -413,12 +413,15 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = '';
+    const result = breweries.reduce((acc, brewery) => {
+      acc = acc.concat(brewery.beers);
+      return acc;
+    },[]).sort((a, b) => b.abv - a.abv)[0];
 
-    //  breweries.beers
+    return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We can use the reduce function to concatenate all of the beers from each brewery into one array. Then we return that array and sort it from highest abv to lowest. Then we can call the first index in that array since it will be the beer with the highest abv.
   }
 };
 
@@ -462,11 +465,18 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      let matchingMod = cohorts.find(cohort => instructor.module === cohort.module);
+      return {name: instructor.name, studentCount: matchingMod.studentCount};
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map over instructors array to return a new array of the same length as original instructors array.
+    // Find the matching cohort for our current instructor.
+    // Grab student count value from matching cohort.
+    // Return an object with current instructors name and student count value.
   },
 
   studentsPerInstructor() {
@@ -476,7 +486,13 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      let name = `cohort${cohort.cohort}`;
+      let numTeachers = instructors.filter(instructor => instructor.module === cohort.module).length;
+      acc[name] = cohort.studentCount / numTeachers;
+      return acc;
+    },{});
+
     return result;
 
     // Annotation:
@@ -513,6 +529,8 @@ const turingPrompts = {
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
+    // Use some to check if skill is in entire array or includes
+
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -545,11 +563,18 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(bosses).map(boss => {
+      let loyaltyNum = sidekicks.filter(sidekick => sidekick.boss === bosses[boss].name).reduce((acc, sidekick) => {
+        acc += sidekick.loyaltyToBoss;
+        return acc;
+      },0);
+      return { bossName: bosses[boss].name, sidekickLoyalty: loyaltyNum };
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map through bosses to return new object wiht boss name and sidekickLoyalty value.
   }
 };
 
@@ -587,7 +612,14 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.filter(star => {
+      let allConstellations = Object.keys(constellations).reduce((acc, constellation) => {
+        acc = acc.concat(constellations[constellation].names);
+        return acc;
+      },[]);
+      return allConstellations.includes(star.constellation);
+    });
+
     return result;
 
     // Annotation:
@@ -605,7 +637,14 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((acc, star) => {
+      if (!acc[star.color]) {
+        acc[star.color] = [];
+      }
+      acc[star.color].push(star);
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -656,7 +695,13 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.reduce((acc, character) => {
+      character.weapons.forEach(weapon => {
+        acc += weapons[weapon].damage;
+      });
+      return acc;
+    }, 0);
+
     return result;
 
     // Annotation:
@@ -668,7 +713,20 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.map(character => {
+      let damageCount = character.weapons.reduce((acc, weapon) => {
+        acc += weapons[weapon].damage;
+        return acc;
+      }, 0);
+      let rangeCount = character.weapons.reduce((acc, weapon) => {
+        acc += weapons[weapon].range;
+        return acc;
+      }, 0);
+      let obj = {};
+      obj[character.name] = { damage: damageCount, range: rangeCount};
+      return obj;
+    });
+
     return result;
 
     // Annotation:

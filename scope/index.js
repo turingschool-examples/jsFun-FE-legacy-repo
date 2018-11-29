@@ -716,7 +716,12 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Rody' },
+      { 'B': 'RodyToy' },
+      { 'C': 'Tesla' },
+      { 'D': 'RodyToyDaniels' }
+    ];
     return result;
 
     // Annotation:
