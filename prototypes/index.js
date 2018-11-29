@@ -398,7 +398,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      return { name: brewery.name, beerCount: brewery.beers.length };
+    });
+
     return result;
 
     // Annotation:
@@ -410,8 +413,9 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = '';
+
+    //  breweries.beers
 
     // Annotation:
     // Write your annotation here as a comment
