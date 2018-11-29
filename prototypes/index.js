@@ -509,7 +509,20 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((obj, instructor) => {
+      obj[instructor.name] = [];
+      instructor.teaches.forEach(skill => {
+        let modMatches = cohorts.reduce((modsArray, cohort) => {
+          if ((cohort.curriculum.includes(skill)) && (!obj[instructor.name].includes(cohort.module))) {
+            modsArray.push(cohort.module);
+          }
+          return modsArray;
+        },[]);
+        obj[instructor.name] = obj[instructor.name].concat(modMatches);
+      });
+      return obj;
+    },{});
+
     return result;
 
     // Annotation:
@@ -526,13 +539,30 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((obj, cohort) => {
+      cohort.curriculum.forEach(topic => {
+        if (!obj[topic]) {
+          obj[topic] = [];
+        }
+        instructors.forEach((instructor) => {
+          if ((instructor.teaches.includes(topic)) && (!obj[topic].includes(instructor.name))) {
+            obj[topic] = obj[topic].concat(instructor.name);
+          }
+        });
+      });
+      return obj;
+    }, {});
+
     return result;
 
     // Use some to check if skill is in entire array or includes
 
     // Annotation:
-    // Write your annotation here as a comment
+    // two arrays, return an object, use reduce
+    // iterate over cohorts to get each curriculum topic and assign it as a property in our object.
+    // within that, iterate over instructors and instructors skills to determine if any of those skills match the curriculum topic.
+    // if they do, add instructor name to the array of names for each curriculum topic.
+    // return our final object
   }
 };
 
@@ -614,15 +644,16 @@ const astronomyPrompts = {
 
     const result = stars.filter(star => {
       let allConstellations = Object.keys(constellations).reduce((acc, constellation) => {
-        acc = acc.concat(constellations[constellation].names);
+        acc = acc.concat(constellations[constellation].stars);
         return acc;
       },[]);
-      return allConstellations.includes(star.constellation);
+      return allConstellations.includes(star.name);
     });
 
     return result;
 
     // Annotation:
+    // Go through stars array not constellation!!!
     // Write your annotation here as a comment
   },
 
@@ -664,7 +695,10 @@ const astronomyPrompts = {
     //   'Orion',
     //   'Centaurus' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.map(star => {
+      return star.constellation;
+    });
+
     return result;
 
     // Annotation:
