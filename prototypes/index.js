@@ -27,7 +27,7 @@ const kittyPrompts = {
       return kitten.color === 'orange';
     }).map((kitten) => {
       return kitten.name;
-    })
+    });
     return result;
 
     // Annotation:
@@ -37,7 +37,10 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a,b) => {
+      return b.age - a.age;
+
+    });
     return result;
 
     // Annotation:
@@ -58,7 +61,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map((kitty) => {
+      kitty.age = (kitty.age + 2);
+      return kitty;
+    });
     return result;
   }
 };
@@ -90,7 +96,18 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((peopleObj, clubObj) => {
+      clubObj.members.forEach((member) => {
+    
+      if(peopleObj[member] === undefined) {
+        peopleObj[member] = [];
+      };
+    
+       peopleObj[member].push(clubObj.club);
+    })
+       return peopleObj;
+       
+    }, {});;
     return result;
 
     // Annotation:
@@ -128,7 +145,7 @@ const modPrompts = {
 
     const result = mods.map((mod) => {
       let studentsPerInstructor = mod.students / mod.instructors;
-      return {'mod': mod.mod, 'studentsPerInstructor':studentsPerInstructor}
+      return {'mod': mod.mod, 'studentsPerInstructor':studentsPerInstructor};
       
       // assign it to mod.students / mod.instructors
       // return object with mod # and students per instructors
@@ -406,7 +423,19 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // Map over our instructors array
+    // find the matching cohort for our current instructor
+    // grab the student count value from the matching cohort
+    // return oan object witht the instructor name and studentCOunt
+
+    const result = instructors.map((instructor) => {
+      let matchingCohort = cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      });
+      let numberOfStudents = matchingCohort.studentCount;
+
+      return {name: instructor.name, studentCount: numberOfStudents};
+    });
     return result;
 
     // Annotation:

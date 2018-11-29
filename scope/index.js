@@ -27,7 +27,7 @@ const scope = {
 
     changePerson();
 
-    // Log D: Paul
+    // Log D: Paul;
 
     const result = [{A: 'Ben'}, {B: 'CardiB'}, {C: 'CardiB'},{D: 'Paul'},
     ];
@@ -166,11 +166,11 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{C:'Brittany'}, {A:'Nathaniel'},{B: 'Nathaniel'},{D:'Brittany'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log 'A' defaults to the global variable as it's the first log to be tripped. Afterwards, sayName gets invoked and trips log A, B, and finally D. 
   },
 
   exerciseF() {
@@ -201,11 +201,11 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:'Spot'}, {B:'Spot'}, {C:'Biscuit'}, {D:'Biscuit'}, {E:'Biscuit'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseG() {
@@ -219,6 +219,7 @@ const scope = {
         if (fruit) {
           // Log A: fruit
           const fruit = 'strawberry';
+
         }
 
         // Log B: fruit
@@ -227,15 +228,15 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit();
+    eatFruit(); 
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'reference error'}, {B: 'mango'},{C: 'mango'},{D:'apple'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A is a reference error to line 217, where fruit is being double declared using 'var', creating a reference error. 
   },
 
   exerciseH() {
@@ -271,7 +272,7 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 4}, {D:9},{E:10},{B:9},{C:4}];
     return result;
 
     // Annotation:
@@ -283,26 +284,27 @@ const scope = {
 
     function eatSnack() {
       hunger -= 25;
-      // Log A: hunger
+      // Log A: 75
+      // Log A2: 55
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
-        // Log B: hunger
+        // Log B: 0
       }
 
-      // Log C: hunger
+      // Log C: 75
     }
 
     eatSnack();
-
+ 
     hunger += 5;
-    // Log D: hunger
+    // Log D: 80
 
     eatSnack();
-    // Log E: hunger
+    // Log E: 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 75},{B: 0},{C: 75}, {D: 80},{A: 55},{B: 0},{C: 55}, {E: 55}];
     return result;
 
     // Annotation:
@@ -343,7 +345,7 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'ketchup sandwich'},{D: 'gouda'}, {B: undefined}, {C: 'not a mediocre sandwich'},{E: 'not mediocre sandwich'},{F: 'National Treasure'}];
     return result;
 
     // Annotation:
