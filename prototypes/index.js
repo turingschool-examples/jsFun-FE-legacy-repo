@@ -327,16 +327,16 @@ const classPrompts = {
 
     const result = classrooms.reduce((acc, room) => {
       if (room.program === 'FE') {
-        acc.FE += room.capacity;
+        acc.feCapacity += room.capacity;
       } else {
-        acc.BE += room.capacity;
+        acc.beCapacity += room.capacity;
       }
       return acc;
-    }, {FE: 0, BE: 0});
+    }, {feCapacity: 0, beCapacity: 0});
     return result;
 
     // Annotation:
-    // classrooms is reduced to a single object with keys of FE and BE. In each iteration, if the room.program is 'FE', acc.FE is increased by room.capacity. Otherwise it does the same thing for BE.
+    // classrooms is reduced to a single object with keys of feCapacity and beCapacity. In each iteration, if the room.program is 'feCapacity', acc.feCapacity is increased by room.capacity. Otherwise it does the same thing for beCapacity.
   },
 
   sortByCapacity() {
@@ -393,12 +393,12 @@ const breweryPrompts = {
     // ]
 
     const result = breweries.map((brewery) => {
-      return {name: brewery.name, beercount: brewery.beers.length};
+      return {name: brewery.name, beerCount: brewery.beers.length};
     });
     return result;
 
     // Annotation:
-    // breweries is mapped to a new array with a key of name equal to the brewery's name, and a key of beercount equal to the length of the brewery's beer array.
+    // breweries is mapped to a new array with a key of name equal to the brewery's name, and a key of beerCount equal to the length of the brewery's beer array.
   },
 
   findHighestAbvBeer() {
@@ -725,7 +725,7 @@ const ultimaPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Run the reduce method on characters using sum = 0 as the accumulator, and character as the name for the current element. In each iteration of reduce, run the forEach method on character.weapons where the current element is named weapon. Add to sum weapons[weapon].damage
   },
 
   charactersByTotal() {
@@ -745,7 +745,7 @@ const ultimaPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map characters to a new array that modifies each element in characters to be a new object named newCharObj. In each iteration of the map, the current element is named character, and a const newCharObj is declared and assigned as an empty object. the newCharObj[character.name] property is created. It is assigned the object returned by calling the reduce method on character.weapons where the accumulator is named sumObj with the initial value of {damage: 0, range: 0} and the current element is named weapon. In each iteration of reduce, weapons[weapon].damage is added to sumObj.damage, and similarly weapons[weapon].range is added to sumObj.range.
   },
 };
 
