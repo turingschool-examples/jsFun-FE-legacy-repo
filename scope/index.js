@@ -477,7 +477,7 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = [{B: 'flipflop'}, {A: 'undefined'}, {C: 'flipflop'}];
+    const result = [{B: 'flipflop'}, {A: undefined}, {C: 'flipflop'}];
     return result;
 
     // Annotation:
@@ -503,11 +503,11 @@ const scope = {
 
     // Log C: lunch
 
-    const result = [{A: 'reference error'}, {B: 'soup'}, {C: 'soup'}];
+    const result = [{B: 'soup'}, {C: 'soup'}];
     return result;
 
     // Annotation:
-    // orderLunch() is invoked. At Log A, lunch is in a temporal dead zone, so there is a reference error. In the second if block, lunch is reassigned to 'soup', but since lunch does not exist in any scope, lunch is created as a global variable. At Log B, lunch is found in the global scope where its value is 'soup'. At Log C, lunch is found in the global scope where its value is 'soup'.
+    // lunch is declared in the global scope. orderLunch() is invoked. The first if condition is not true, so Log A does not get executed. The global lunch is reassigned to 'soup'. At Log B, lunch is found in the global scope with the value of 'soup'. At Log C, lunch is found in the global scope with the value of 'soup'.
   },
 
   exerciseQ(){
@@ -540,11 +540,11 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'Pandora'}, {B: ['Antigone', 'Pandora']}, {C: 'Mandy'}, {D: 'Antigone'}, {E: 'Pandora'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // myKid is declared in the global scope and assigned the value of 'Pandora'. wildKids is declared in the global scope and assigned the value of ['Antigone']. myCrazyKidAntics(myKid) is invoked. At Log A, kid is the value of myKid when it was passed in which was 'Pandora'. 'Pandora' is pushed to the global wildKids, so at Log B, wildKids has the value of ['Antigone', 'Pandora']. drawOnTheWall() is invoked. myKid is declared in the functional scope and assigned 'Mandy', and at Log C, myKid's value is 'Mandy'. myAmazingKid() is invoked. myKid is declared in the functional scope and assigned the first element of the global wildKids after wildKids.shift() is invoked. At Log D, myKid is 'Antigone'. At Log E, myKid is found in the global scope with the value of 'Pandora'
   },
 
   exerciseR() {
@@ -567,11 +567,11 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'Rody'}, {B: 'RodyToy'}, {C: 'Tesla'}, {D: 'RodyToyDaniels'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // myName is declared in the global scope and assigned 'Rody'. At Log A myName is 'Rody'. parentFunc() is invoked. The global myName is concatenated with 'Toy', so at Log B, myName is 'RodyToy'. innerFunc() is invoked. myName is declared in the functional scope and assigned 'Tesla'. At Log C, myName is found in the functional scope with the value of 'Tesla'. The global myName is concatenated with 'Daniels'. At Log D, myName is found in the global scope with the value 'RodyToyDaniels'.
   }
 };
 
