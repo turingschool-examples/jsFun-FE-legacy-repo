@@ -89,8 +89,27 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // reduce over clubs to create a new object
+    // for each over members array 
+    // set name as a key on our object and set value as an array
+    // push club name into the array
+    // return the new object
+
+
+
+
+
+    const result = clubs.reduce((memberAcc, currentClub) => {
+        currentClub.members.forEach((member) => {
+            if (!memberAcc[member]) {
+            memberAcc[member] = [];
+            }
+        memberAcc[member].push(currentClub.club)
+        });
+        return memberAcc;
+    }, {});
     return result;
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -486,7 +505,19 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // we are given 2 arrays
+    // we want back an object
+    // module property is shared
+    // we need cohort & studentCount out of cohorts
+
+
+const result = cohorts.reduce((ratioObj, currentCohort) => {
+    let matchingCohorts = instructors.filter((instructor) => {
+    return instructor.module === currentCohort.module;
+}); 
+    ratioObj['cohort'  + currentCohort.cohort] = currentCohort.studentCount / matchingCohorts.length;
+    return ratioObj;
+}, {});
     return result;
 
     // Annotation:
@@ -503,8 +534,14 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+const result = cohorts.reduce((ratioObj, currentCohort) => {
+  let matchingCohorts = instructors.filter((instructor) => {
+    return instructor.module === currentCohort.module;
+  }); 
+  ratioObj['cohort'  + currentCohort.cohort] = currentCohort.studentCount / matchingCohorts.length;
+  return ratioObj;
+}, {});
+return result;
 
     // Annotation:
     // Write your annotation here as a comment
