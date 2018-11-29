@@ -37,7 +37,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = kitties.sort((kitty1, kitty2) => kitty2.age - kitty1.age);
+    const result = kitties.sort((kitty1, kitty2) => {
+      return kitty2.age - kitty1.age;
+    });
     return result;
 
     // Annotation:
@@ -95,23 +97,20 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = {};
-    clubs.forEach((club) => {
+    const result = clubs.reduce((acc, club) => {
       club.members.forEach((member) => {
-        result[member] = [];
-      });
-    });
-    Object.keys(result).forEach((person) => {
-      clubs.forEach((club) => {
-        if (club.members.includes(person)) {
-          result[person].push(club.club);
+        if (!acc[member]) {
+          acc[member] = [club.club];
+        } else {
+          acc[member].push(club.club);
         }
       });
-    });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // result is initialized as an empty array. Then for each object in the clubs array, each member in the members array is added as a property of the results object and assigned an empty array. For each key/property of the results array, go through each club in the clubs array, and if the key is included in the members array, push the club name into that key's array.
+    // clubs is reduced to a single object. In each iteration, the members array is iterated through and if the member is not a property of the accumulator, the member is added as a property and given a value of the club property's value. If the member is already a property of the accumulator, the club property's value is pushed to the member's array.
   }
 };
 
@@ -147,7 +146,6 @@ const modPrompts = {
     const result = mods.map((mod) => {
       let studentsPerInstructor = mod.students / mod.instructors;
       return {mod: mod.mod, studentsPerInstructor: studentsPerInstructor};
-
     });
     return result;
 
@@ -224,7 +222,12 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = cakes.map((cake) => cake.inStock).reduce((total, stock) => total + stock);
+    const result = cakes.map((cake) => {
+      return cake.inStock;
+    }).reduce((total, stock) => {
+      total += stock;
+      return total;
+    }, 0);
     return result;
 
     // Annotation:
@@ -236,18 +239,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = [];
-    cakes.forEach((cake) => {
+    const result = cakes.reduce((acc, cake) => {
       cake.toppings.forEach((topping) => {
-        if (!result.includes(topping)) {
-          result.push(topping);
+        if (!acc.includes(topping)) {
+          acc.push(topping);
         }
       });
-    });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Initialize result as an empty array. For each topping in each cake, if the topping is not yet in the result array, push it to the array.
+    // cakes is reduced to a single array. In each iteration, for each topping, if the topping is not already in the accumulator array, the topping is pushed in.
   },
 
   groceryList() {
@@ -261,20 +264,20 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = {};
-    cakes.forEach((cake) => {
+    const result = cakes.reduce((acc, cake) => {
       cake.toppings.forEach((topping) => {
-        if (typeof result[topping] === 'undefined') {
-          result[topping] = 1;
+        if (!acc[topping]) {
+          acc[topping] = 1;
         } else {
-          result[topping] += 1;
+          acc[topping] += 1;
         }
       });
-    });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Initialize result as an empty object. For each topping in each cake, if the topping is not already a property of result, add it as a property with a value of 1, and if the topping is a property of result, increment its value.
+    // The reduce method is called on the cakes array starting with an empty object as the accumulator. In each iteration, for each topping in toppings, if it's not a key in acc, add it as a key with the value of 1. If it is a key, increment its value.
   }
 };
 
@@ -305,10 +308,9 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = '';
-    // const result = classrooms.filter((room) => {
-    //     return room.program === 'FE';
-    // });
+    const result = classrooms.filter((room) => {
+      return room.program === 'FE';
+    });
     return result;
 
     // Annotation:
@@ -323,23 +325,30 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    // const result = classrooms.reduce(() => {
-
-    // });
+    const result = classrooms.reduce((acc, room) => {
+      if (room.program === 'FE') {
+        acc.FE += room.capacity;
+      } else {
+        acc.BE += room.capacity;
+      }
+      return acc;
+    }, {FE: 0, BE: 0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // classrooms is reduced to a single object with keys of FE and BE. In each iteration, if the room.program is 'FE', acc.FE is increased by room.capacity. Otherwise it does the same thing for BE.
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((room1, room2) => {
+      return room1.capacity - room2.capacity;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // classroom is sorted in order by each element's capacity.
   }
 };
 
@@ -365,11 +374,13 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      return acc += brewery.beers.length;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In each iteration of the reduce, acc is increased by the length of beers array.
   },
 
   getBreweryBeerCount() {
@@ -381,11 +392,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map((brewery) => {
+      return {name: brewery.name, beercount: brewery.beers.length};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // breweries is mapped to a new array with a key of name equal to the brewery's name, and a key of beercount equal to the length of the brewery's beer array.
   },
 
   findHighestAbvBeer() {
@@ -393,11 +406,15 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      return acc.concat(brewery.beers);
+    }, []).find((beer) => {
+      return beer.name === 'Barrel Aged Nature\'s Sweater';
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is invoked on the breweries array starting with an empty array, and on each iteration, that array is concatenated with the current brewery's beer array. The find method is called on this reduced array to return the beer with the name 'Barrel Aged Nature\'s Sweater'.
   }
 };
 
@@ -441,11 +458,16 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+      const studentCount = cohorts.find((cohort) => {
+        return cohort.module === instructor.module;
+      }).studentCount;
+      return {name: instructor.name, studentCount: studentCount};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // instructors is mapped to an array of objects whose keys are name and studentCount. studentCount is calculated by calling the length method after running the find method on cohorts and finding the element in which the module value of the current instructor matches module value of the current cohort.
   },
 
   studentsPerInstructor() {
@@ -455,11 +477,17 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      const numInstructors = instructors.filter((instructor) => {
+        return cohort.module === instructor.module;
+      }).length;
+      acc[`cohort${cohort.cohort}`] = cohort.studentCount / numInstructors;
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is called on cohorts, starting with an empty object as the accumulator. In each iteration numInstructors is defined as the length of the filtered instructors array with the filter condition of equivalent module values for the current cohort and instructor. Then the a key is created in the accumulator with the name 'cohort' + the value of the cohort property, and the value is the studentCount / numInstructors.
   },
 
   modulesPerTeacher() {
@@ -472,11 +500,26 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      acc[instructor.name] = [];
+      instructor.teaches.forEach((subject) => {
+        const teachableMods = cohorts.filter((cohort) => {
+          return cohort.curriculum.includes(subject);
+        }).map((teachableCohort) => {
+          return teachableCohort.module;
+        });
+        teachableMods.forEach((mod) => {
+          if (!acc[instructor.name].includes(mod)) {
+            acc[instructor.name].push(mod);
+          }
+        });
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is called on instructors with an accumulator named acc which is an empty object. In each iteration, the current element is named instructor, and instructor.name is created as a key in acc with an initial value of an empty array. For each subject in instructor.teaches, a const teachableMods is declared. Its value is calculated by first filtering cohorts into a new array that only includes a cohort whose curriculum array includes the subject the instructor teaches. The array returned by the filter is then mapped to a new array which mutates each element to be just the number value of element's module property. After assigning this array to teachableMods, the forEach method is called on it, and for each mod, if the key (which is the instructor's name) in acc does include the mod in its array, that mod is pushed to the array.
   },
 
   curriculumPerTeacher() {
@@ -489,11 +532,23 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      cohort.curriculum.forEach((subject) => {
+        if (!acc[subject]) {
+          acc[subject] = [];
+          instructors.forEach((instructor) => {
+            if (instructor.teaches.includes(subject)) {
+              acc[subject].push(instructor.name);
+            }
+          });
+        }
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is called on cohorts with an accumulator named acc whose initial value is an empty object. In each iteration of the reduce method, the current element is named cohort, and the forEach method is called on cohort.curriculum. In each iteration of the forEach, the current element is named subject if acc[subject] does not exist, acc[subject] is assigned to be an empty array. Then the forEach method is called on instructors, and in each iteration the current element is named instructor. If subject is an element of the instructor.teaches array, instructor.name is pushed into acc[subject].
   }
 };
 
@@ -524,11 +579,20 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(bosses).map((bossKey) => {
+      const bossName = bosses[bossKey].name;
+      const sidekickLoyalty = sidekicks.filter((sidekick) => {
+        return sidekick.boss === bossName;
+      }).reduce((totalLoyalty, sidekick) => {
+        totalLoyalty += sidekick.loyaltyToBoss;
+        return totalLoyalty;
+      }, 0);
+      return {bossName: bossName, sidekickLoyalty: sidekickLoyalty};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The keys method is called on bosses, and on that array the map method is called. In each iteration, the current element is named bossKey. A const bossName is declared and assigned bosses[bossKey].name, a const sidekickLoyalty is declared. Its value is calculated by first filtering sidekicks to an array containing only elements whose boss property matches bossName. This array is reduced with an accumulator name totalLoyalty which has an initial value of 0. In each iteration of the reduce, totalLoyalty is increased by the value of sidekick.loyaltyToBoss. The number returned by the reduce method is assigned to sidekickLoyalty. The map returns an object literal with keys bossName and sidekickLoyalty and their respective values.
   }
 };
 
@@ -566,11 +630,19 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.filter((star) => {
+      let passFilter = false;
+      Object.keys(constellations).forEach((constellationKey) => {
+        if (constellations[constellationKey].stars.includes(star.name)) {
+          passFilter = true;
+        }
+      });
+      return passFilter;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // stars is filtered into a new array with the current element of each iteration named star. In each iteration of the filter, the keys method is called on constellations, and the forEach method is called on it. In each iteration of the forEach, if the stars property of the current constellation includes star.name, that star passes the filter.
   },
 
   starsByColor() {
@@ -584,11 +656,18 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((acc, star) => {
+      if (!acc[star.color]) {
+        acc[star.color] = [star];
+      } else {
+        acc[star.color].push(star);
+      }
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The reduce method is called on stars with an accumlator named acc which has an initial value of an empty object. In each iteration of reduce the current element is named star, and if acc[star.color] is not already a key, it is created as a key with the value of an array with star as its only element. If acc[star.color] is a key, star is pushed into its array.
   },
 
   constellationsStarsExistIn() {
@@ -604,11 +683,13 @@ const astronomyPrompts = {
     //   'Orion',
     //   'Centaurus' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.map((star) => {
+      return star.constellation;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Map stars to a new array where each element is modified to only be the star's constellation value.
   }
 };
 
@@ -635,7 +716,12 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.reduce((sum, character) => {
+      character.weapons.forEach((weapon) => {
+        sum += weapons[weapon].damage;
+      });
+      return sum;
+    }, 0);
     return result;
 
     // Annotation:
@@ -647,7 +733,15 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.map((character) => {
+      const newCharObj = {};
+      newCharObj[character.name] = character.weapons.reduce((sumObj, weapon) => {
+        sumObj.damage += weapons[weapon].damage;
+        sumObj.range += weapons[weapon].range;
+        return sumObj;
+      }, {damage: 0, range: 0});
+      return newCharObj;
+    });
     return result;
 
     // Annotation:
