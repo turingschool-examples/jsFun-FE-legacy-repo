@@ -292,11 +292,17 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+const result = classrooms.filter((classroom) => {
+    return classroom.program === 'FE';
+});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I was given an array with multiple objects, and I wanted an back an array
+    // with multiple objects. Because the array that I wanted back had a lesser amount
+    // of objects within it than the original, I used the filter prototype method. 
+    // The filter only returned only the objects with the property value of the 
+    // string 'FE'.
   },
 
   totalCapacities() {
@@ -307,17 +313,26 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+const result = classrooms.reduce((capacityObj, classroom) => {
+  if (classroom.program === 'FE') {
+    capacityObj.feCapacity += classroom.capacity;
+  } else {
+    capacityObj.beCapacity += classroom.capacity;
+  }
+  return capacityObj;   
+}, { feCapacity: 0, beCapacity: 0 });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+     return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
@@ -347,12 +362,19 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // we need to return a single value (reduce method)
+    // to get the total, we will need breweries.beers.length
 
-    // Annotation:
-    // Write your annotation here as a comment
-  },
+const result = breweries.reduce((beerSum, currentBrewery) => {
+  return beerSum += currentBrewery.beers.length;
+ }, 0);
+return result;
+
+// Annotation:
+// Write your annotation here as a comment
+
+
+},
 
   getBreweryBeerCount() {
     // Return an array of objects where each object has the name of a brewery
@@ -363,7 +385,15 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // given breweries array
+    // want array back
+    // map method
+
+
+const result = breweries.map((brewery) => {
+  // we only need brewery.name and brewery.beers.length
+return {name: brewery.name, beerCount: brewery.beers.length}
+});
     return result;
 
     // Annotation:
