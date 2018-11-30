@@ -423,11 +423,17 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+   const result = cohorts.reduce((accuObj, cohort) => {
+        let matchModArray = instructors.filter((instructor) => {
+        return instructor.module === cohort.module;
+        x});
+      accuObj['cohort' + cohort.cohort] =
+      cohort.studentCount / matchModArray.length
+      return accuObj;
+    }, {});
+        return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   modulesPerTeacher() {

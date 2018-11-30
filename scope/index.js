@@ -1,4 +1,4 @@
-const scope = {
+ const scope = {
   exerciseA() {
     let personA = 'Paul';
     let personB = 'Ben';
@@ -316,7 +316,7 @@ const scope = {
 
     fn1();
 
-    const result = [{'A':4}, {'D':9}, {'B':9}, {'C':4}, {'E':5}];
+    const result = [{'A': 4}, {'D': 9}, {'E': 10}, {'B': 9}, {'C': 4}];
     return result;
 
     // Annotation:
@@ -347,7 +347,7 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 75}, {'B': 0}, {'C': 75}, {'D': 80}, {'A': 55}, {'B': 0}, {'C': 55}, {'E': 55},];
     return result;
 
     // Annotation:

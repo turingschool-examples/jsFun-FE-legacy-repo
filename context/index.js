@@ -16,11 +16,12 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'Global Window';
+    const result = 'global window object';
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // because we are using ES6 syntax and writing an arrow
+    // function we are difining this when we create the function and
+    // not when the function is invoked.
   },
 
   exerciseB() {
