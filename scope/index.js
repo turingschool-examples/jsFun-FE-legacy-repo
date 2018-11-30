@@ -264,7 +264,7 @@ const scope = {
 
 
     const result = [
-      { 'A': 'referenceError!' },
+      { 'A': 'reference error' },
       { 'B': 'mango' },
       { 'C': 'mango' },
       { 'D': 'apple' }
@@ -322,35 +322,38 @@ const scope = {
   },
 
   exerciseI() {
-    var hunger = 100;
+    var hunger = 100; //
 
     function eatSnack() {
       hunger -= 25;
-      // Log A: hunger
+      // Log A: 
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
-        // Log B: hunger
+        // Log B: hunger- 
       }
 
-      // Log C: hunger
+      // Log C: hunger -
     }
 
     eatSnack();
  
     hunger += 5 ;
-    // Log D: hunger
+    // Log D: hunger - 
 
     eatSnack();
-    // Log E: hunger
+    // Log E: hunger - 
 
     const result = [
-      { D: 80 },
-      { A: 55 },
-      { B: 0 },
-      { C: 55 },
-      { E: 55 }
+      {A: 75},
+      {B: 0},
+      {C: 75},
+      {D: 80},
+      {A: 55},
+      {B: 0},
+      {C: 55},
+      {E: 55}
     ];     
     return result;
 
@@ -397,7 +400,8 @@ const scope = {
       { D: 'gouda' },
       { B: undefined },
       { C: 'not a mediocre sandwich' },
-      { E: 'not a mediocre sandwich' }
+      { E: 'not a mediocre sandwich' },
+      { F: 'National Treasure'}
     ];      
     return result;
 
@@ -468,7 +472,7 @@ const scope = {
     var num = 5;
 
     function first() {
-      // Log A: num
+      // Log A: num - 5
       num = 6;
       // Log B: num
     }
@@ -484,9 +488,10 @@ const scope = {
     // Log D: num
 
     const result = [
-      { A: 95 },
-      { B: 90 },
-      { C: ReferenceError }
+      {A: 5},
+      {B: 6},
+      {C: 'reference error'},
+      {D: 6}
     ];     
     return result;
 
@@ -553,7 +558,7 @@ const scope = {
 
     const result = [
       { B: 'flipflop' },
-      { A: 'undefined' },
+      { A: undefined },
       { C: 'flipflop' }
     ]    
       return result;
@@ -581,11 +586,14 @@ const scope = {
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { B: 'soup' },
+      { C: 'soup' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Declare variable lunch on line 571 but no value is assigned (undefined). Call the orderLunch function  and enter function on 572. On 573, lunch is still not defined, so we never enter the if statement and cannot logA. On line 578, we will enter the if block since the global lunch is still undefined (which is a primitive), and on 574, lunch is reassigned globally as 'soup', therefore, logc will be soup.
   },
 
   exerciseQ(){
@@ -593,13 +601,13 @@ const scope = {
     let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-      // Log A: kid
+      // Log A: kid - Pandora
       wildKids.push(kid);
-      // Log B: wildKids
+      // Log B: wildKids ['Antigone', 'Pandora']
   
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
-        // Log C: myKid
+        // Log C: myKid - Mandy
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
@@ -607,27 +615,33 @@ const scope = {
 
       let myAmazingKid = () => {
         let myKid = wildKids.shift();
-        // Log D: myKid
+        // Log D: myKid - 'Antigone'
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
-      // Log E: myKid;
+      // Log E: myKid - Pandora
       return `All these kids are wild, especially, ${myKid}!`;
     };
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Pandora' },
+      { B: ['Antigone', 'Pandora'] },
+      { C: 'Mandy' },
+      { D: 'Antigone' },
+      { E: 'Pandora' },
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The global myKid is passed as a parameter in the myCrazyKidAntics on 624, therefore, LogA (which is asking for the parameter kid) will be Pandora. On line 602, we are pushing the kid parameter into the global wildKids array, so LogB will now include [Antigone, Pandora]. We see drawOnTheWall called within the myCrazyKidAntics() on line 611. On 606, we are creating a block scoped variable of myKid assigned to Mandy. myAmazingKid is called on 619 and we enter fucntion on 613. We then set a block scoped var of myKid assigned to the first valeue of the wildKids array that is shifted out (in this case, Antigone); Finally, logE refers to the myKid from the parameter, which is still Pandora. 
   },
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName - 'Rody'
 
     const parentFunc = () => {
       myName += 'Toy';
@@ -645,11 +659,16 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Rody'},
+      {B: 'RodyToy'}, 
+      {C: 'Tesla'},
+      {D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On 643 declare myName globally as Rody. Enter the Parentfunc on 646, on 647 we are reassigning and concating on the global level so it is reassigned as RodyToy
   }
 };
 

@@ -18,18 +18,27 @@ const { weapons, characters } = require('./datasets/ultima');
 // =================================================================
 
 // DATASET: kitties from ./datasets/kitties
+//given array
+//return an array
+//
 const kittyPrompts = {
   orangeKittyNames() {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
+    //set up empty array
+    // iterate over the kitties array
+    // if the current kitten's color is orange, 
+    //then push in kitten.name
+    // return the array
 
-const result = kitties.filter((kitty) => {
-  return kitty.color === 'orange';
-  })
-    .map((orangeKitty) => {
-      return orangeKitty.name;
-      });
-    return result;
+    const result = kitties.reduce((orangeArr, currKittie) => {
+      if (currKittie.color === 'orange') {
+        orangeArr.push(currKittie.name)
+      }
+      return orangeArr;
+    }, []);
+
+    return result
 
     // Annotation:
     //By using the filter method, we will iterate through the kitties array and create a array of all elements that have a color property with the value of orange.
@@ -37,12 +46,15 @@ const result = kitties.filter((kitty) => {
 
   sortByAge() {
     // Sort the kitties by their age
-
+//given the kitties array
+// the same lenght array by their age
+// sort
+  
     const result = kitties.sort((a,b) => {
-      return b.age - a.age;
-    });
-    return result;
+      return a.age - b.age
+    })
 
+    return result
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -60,12 +72,11 @@ const result = kitties.filter((kitty) => {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = kitties.map((kitty) => {
+    const result = kitties.map(kitty => {
       kitty.age += 2;
-      return kitty
-    });    
-    return result;
+      return kitty;
+    })
+    return result
   }
 };
 
@@ -142,15 +153,12 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = mods.map((mod) => {
-      // create studentsPerInstructor variable
-      // assign it to mod.students/mod.instructors
-      // return an object with the mod number and studentsPerInstructor
+    //given array of mods
+    // return array of mods
+    // 
 
-      let studentsPerInstructor = (mod.students / mod.instructors);
-
-      return {mod : mod.mod, studentsPerInstructor : studentsPerInstructor}
-
+    const result = mods.map((currMod) => {
+        return {mod: currMod.mod, studentsPerInstructor: currMod.students / currMod.instructors};
     });
     return result;
 
@@ -186,8 +194,8 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = cakes.map((cake) => {
-      return {flavor: cake.cakeFlavor, inStock: cake.inStock}
+    const result = cakes.map((currCake) => {
+      return {flavor: currCake.cakeFlavor, inStock: currCake.inStock}
     });
     return result;
 
@@ -215,8 +223,9 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
-    const result = cakes.filter((cake) => {
-      return cake.inStock > 0
+    //given 
+    const result = cakes.filter(cake => {
+      return cake.inStock > 0;
     });
     return result;
 
@@ -227,14 +236,14 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-    const result = cakes.reduce((sumOfCakes, cake) => {
-      sumOfCakes += cake.inStock;
-      return sumOfCakes;
+    const result = cakes.reduce((sum, cake) => {
+      sum += cake.inStock;
+      return sum
     }, 0);
     return result;
 
     // Annotation:
-    // Since we are returning a sum of all the instock cakes, i.e. one value, we need to use REDUCE. We set our accumulator to sumCakes and initialize its value as 0 on line 233. On 231, we reassign the value of sumOfCakes to the value of each cake's inStock value as we iterate through the array. 
+    //  
   },
 
   allToppings() {
@@ -242,14 +251,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-  const result = cakes.reduce((allToppingsArr, currCake) => {
-    // if the topping isnt in the array yet
-    currCake.toppings.forEach((topping) => {
-      if (allToppingsArr.indexOf(topping) === -1) {
-        allToppingsArr.push(topping)
-      }
-    })
-    return allToppingsArr
+  const result = cakes.reduce((toppingsArr, currCake) => {
+      //look at the toppings of each cake
+      currCake.toppings.forEach((topping) => {
+        if (toppingsArr.indexOf(topping) === -1) {
+          toppingsArr.push(topping);
+        };
+      })
+      return toppingsArr;
   }, []);
 
     return result;
@@ -269,20 +278,22 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = cakes.reduce((groceryList, cake) => {
-      cake.toppings.forEach((topping) => {
-        if (!groceryList[topping]) {
-          groceryList[topping] = 0;
+    const result = cakes.reduce((listObj, currCake) => {
+
+      currCake.toppings.forEach((topping) => {
+        if (!listObj[topping]){
+          listObj[topping] = 1;
+        } else {
+          listObj[topping]++
         }
-        groceryList[topping]++;
-        
       })
-      return groceryList;
+      /// listObj[currCake.toppings] : number of those toppings (do we need to put the toppings in an array and get each)
+      return listObj;
     }, {});
     return result;
 
     // Annotation:
-    // Need to create a new object (groceryList) that has all the toppings and their count -- will use REDUCE to create a single object. Will reduce off the cakes array. We need to iterate over each topping in the array to add to our grocery list using a forEach prototpye. On Line 274, we are seeing if the groceryList Object DOESNT CONTAIN the current topping as a key. If it doesnt contain that topping, we are setting the topping as a key of the grocery list object (line 275) and setting the value to 0. Once its set, each time through the forLoop it will incremeent the value of each key by one as it encounter it. After it has gone through all the topppings, the keys are all set and incremented to the correct amount. Then we return the groceryList on 280 outside of the forLoop/inside of the REDUCE. 
+    //
   }
 };
 
@@ -331,14 +342,16 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = classrooms.reduce((capacityObj, currClassroom) => {
+    const result = classrooms.reduce((capObj, currClassroom) => {
+      let feCap = capObj.feCapacity;
+      let beCap = capObj.beCapacity;
       if (currClassroom.program === 'FE') {
-        capacityObj.feCapacity += currClassroom.capacity;
-      } else {
-        capacityObj.beCapacity += currClassroom.capacity;
+        feCap += currClassroom.capacity;
+      } else if (currClassroom.program === 'BE') {
+        beCap += currClassroom.capacity;
       }
-      return capacityObj
-    }, { feCapacity: 0, beCapacity: 0 });
+      return {feCapacity: feCap, beCapacity: beCap}
+    }, {feCapacity: 0, beCapacity: 0});
 
     return result;
 
@@ -349,7 +362,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = classrooms.sort((a, b) => {
+    const result = classrooms.sort((a,b) => {
       return a.capacity - b.capacity;
     });
     return result;
@@ -381,9 +394,9 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = breweries.reduce((beerSum, currBrewery) => {
+    const result = breweries.reduce((sum, currBrewery) => {
 
-      return beerSum += currBrewery.beers.length;
+      return sum += currBrewery.beers.length
     }, 0);
     return result;
 
@@ -400,13 +413,14 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = breweries.map(brewery => {
-      return { name: brewery.name, beerCount: brewery.beers.length }
-    });
+    const result = breweries.reduce((arr, currBrewery) => {
+      arr.push({name: currBrewery.name, beerCount: currBrewery.beers.length})
+      return arr
+    }, []);
     return result;
 
     // Annotation:
-    // Map over the brewery 
+    //
   },
 
   findHighestAbvBeer() {
@@ -414,7 +428,16 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((beerArr, currBrewery) => {
+      currBrewery.beers.forEach(beer => {
+        beerArr.push(beer);
+      })
+      return beerArr;
+    }, [])
+    .sort((a, b) => {
+      return b.abv - a.abv;
+    })
+    .shift();
     return result;
 
     // Annotation:
