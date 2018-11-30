@@ -433,7 +433,7 @@ const result= breweries.reduce((beerArray, brewery) => {
 }, []).sort((a, b) => {
   return b.abv - a.abv;
 });
-return result[0];
+return result.shift();
 
     // Annotation:
     // Write your annotation here as a comment
@@ -534,14 +534,23 @@ const result = cohorts.reduce((ratioObj, currentCohort) => {
     //   Pam: [2, 4]
     // }
 
-const result = cohorts.reduce((ratioObj, currentCohort) => {
-  let matchingCohorts = instructors.filter((instructor) => {
-    return instructor.module === currentCohort.module;
-  }); 
-  ratioObj['cohort'  + currentCohort.cohort] = currentCohort.studentCount / matchingCohorts.length;
-  return ratioObj;
+    // iterate over instructors and grab the name and set as key
+    // foreach to check each subject that each instructor teaches
+    // foreach to check the curriculum
+
+const result = instructors.reduce((obj, instructor) => {
+    let modsCanTeach = obj[instructor.name] = [];
+    instructor.teaches.forEach((subject) => {
+      cohorts.forEach((cohort) => {
+        if (cohort.curriculum.includes(subject) && !modsCanTeach.includes(cohort.module)) {
+          obj[instructor.name].push(cohort.module);
+        }
+      });
+    });
+    return obj;
 }, {});
-return result;
+
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -592,8 +601,18 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+
+const result = Object.keys(bosses).reduce((array, boss) => {
+  let name = bosses[boss].name;
+  let loyaltySum = sidekicks.filter((sidekick) => {
+    return sidekick.boss === name;
+  }).reduce((sum, sidekick) => {
+    return sum += sidekick.loyaltyToBoss;
+  }, 0);
+  array.push({ bossName: name, sidekickLoyalty: loyaltySum})
+  return array;
+}, []);
+return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -634,11 +653,25 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // we are given an object and an array
+    // we want an array
+    // use filter method
+
+const result = stars.filter((star) => { //Sirius
+//[orion, ursaMajor, ursaMinor]
+  let passFilter = false;
+  Object.keys(constellations).forEach(constellationKey => {
+    if(constellations[constellationKey].stars.includes(star.name)) {
+      passFilter = true;
+    }
+  })
+    return passFilter;
+});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // to make a new array, we need to filter the stars dataset and then, for each constallation, we compare the name of
+    // the star to the array 'stars' of the constellation object's key (orion, ursamajor and ursaminor)
   },
 
   starsByColor() {
@@ -690,8 +723,6 @@ const astronomyPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
 
 
 

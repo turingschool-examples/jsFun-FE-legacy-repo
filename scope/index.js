@@ -371,7 +371,7 @@ const scope = {
     //
     //
 
-//     A function scoped variable num is declared with the value 4. A log confirms the 
+// A function scoped variable num is declared with the value 4. A log confirms the 
 // value 4 for the variable num. A conditional checks whether the variable num is 
 // less than 5, which is true since it references the function scoped variable declared 
 // up the scope chain. A new variable num is assigned to 9 and fn2() is invoked with 
@@ -419,7 +419,6 @@ const scope = {
     // Annotation:
     // Write your annotation here as a comment
   },
-
   exerciseJ() {
     let sandwich = 'ketchup sandwich';
 

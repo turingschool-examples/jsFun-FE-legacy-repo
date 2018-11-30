@@ -57,7 +57,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // The event listener for 
+    // The event listener for car.getInfo is run UPON the el object because, according to rule #2 of context, this will refer to the object to the left of the dot in dot notation.
   },
 
   exerciseD() {
@@ -74,11 +74,11 @@ const context = {
 
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'global window object';
+    const result = 'global window object'
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Function inside function -- 'no this'
   },
 
   exerciseE() {
@@ -90,7 +90,9 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // "what would you replace 'this' with"? 
+
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -113,11 +115,11 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Rule 3
   },
 
   exerciseG() {
@@ -141,11 +143,12 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // arrowfunction calls an anonymous function. its a nested function, loses its context. defaults to window.
+
   },
 
   exerciseH() {
@@ -161,11 +164,11 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'obj';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // rules 2. es6 doesnt have a 'this', this is returned and replaces the arrowFunction property
   },
 
   exerciseI() {  
@@ -184,11 +187,11 @@ const context = {
     }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'poets';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+    // if you pass poets as the second argument of an iterator, it will bind this
   },
 
   exerciseJ() {
@@ -198,7 +201,7 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
