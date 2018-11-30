@@ -67,6 +67,18 @@ return result;
 // Now that `changeText` is finished executing, we hop back down to our last `console.log()` of 'B' which now logs 'Goodbye World!'
 ``` 
 
+In the event that the value of a variable would be undefined or the code would throw an error, write your answer like so:
+
+```
+[
+ { ‘A’: ‘reference error’ },
+ { ‘B’: undefined },
+ { ‘C’: ‘bar’ }
+ …etc
+]
+```
+
+
 
 
 # Resources
