@@ -188,7 +188,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) =>{
+      return {flavor: `${cake.cakeFlavor}`, inStock: cake.inStock};
+    }) ;
     return result;
 
     // Annotation:
