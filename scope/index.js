@@ -53,17 +53,29 @@ const scope = {
         let number = 28;
       }
 
+<<<<<<< HEAD
       // Log A: number -
+=======
+      // Log A: number - 75
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
       function newNumber() {
         number = 64;
 
+<<<<<<< HEAD
         // Log B: number - 
+=======
+        // Log B: number - 64
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
       }
 
       newNumber();
 
+<<<<<<< HEAD
       // Log C: number - 
+=======
+      // Log C: number - 64
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
     }
 
     numberFunction();
@@ -93,22 +105,38 @@ const scope = {
         let greeting = 'Howdy';
       }
 
+<<<<<<< HEAD
       // Log A: greeting - 
+=======
+      // Log A: greeting - 'Yo'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
       function newPhrase() {
         greeting = 'Hey';
 
+<<<<<<< HEAD
         // Log B: greeting - 
+=======
+        // Log B: greeting - 'Hey'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
       }
 
       newPhrase();
 
+<<<<<<< HEAD
       // Log C: greeting - 
+=======
+      // Log C: greeting - 'Hey'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
     }
 
     greetingFunction();
 
+<<<<<<< HEAD
     // Log D: greeting - 
+=======
+    // Log D: greeting - 'Hello'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
     const result = [
       { 'A': 'Yo' },
@@ -132,22 +160,38 @@ const scope = {
         let greeting = 'hello';
       }
 
+<<<<<<< HEAD
       // Log A: greeting - 'hi'
+=======
+      // Log A: greeting - 'hi' 
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
+<<<<<<< HEAD
         // Log B: greeting - welcome
+=======
+        // Log B: greeting - 'welcome'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
       };
 
       newGreeting();
 
+<<<<<<< HEAD
       // Log C: greeting - welcome
+=======
+      // Log C: greeting - 'welcome'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
     };
 
     greetingGenerator();
 
+<<<<<<< HEAD
     // Log D: greeting - howdy
+=======
+    // Log D: greeting - 'howdy'
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
     const result = [
       { 'A': 'hi' },
@@ -174,6 +218,7 @@ const scope = {
           let name = 'Brittany';
         }
 
+<<<<<<< HEAD
         // Log A: name - nathaniel
       }
 
@@ -185,6 +230,19 @@ const scope = {
     sayName();
 
     // Log D: name - brittany
+=======
+        // Log A: name - Nathaniel
+      }
+
+      // Log B: name - Nathaniel
+    } 
+
+    // Log C: name - Brittany
+
+    sayName();
+
+    // Log D: name - Brittany
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
     const result = [
       { 'C': 'Brittany' },
@@ -248,23 +306,36 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
+<<<<<<< HEAD
           // Log A: fruit - referenceError! 
+=======
+          // Log A: fruit - ReferenceError!- since its const (rather than var) it is placed in temporal dead zone
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
           const fruit = 'strawberry';
         }
 
         // Log B: fruit - mango
       }
 
+<<<<<<< HEAD
       // Log C: fruit - mango
+=======
+      // Log C: fruit - mango - use of var on 248 leaks it to top of eatFruit() - line 246
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
     }
 
     eatFruit();
 
     // Log D: fruit - apple
 
+<<<<<<< HEAD
 
     const result = [
       { 'A': 'reference error' },
+=======
+    const result = [
+      { 'A': 'ReferenceError!' },
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
       { 'B': 'mango' },
       { 'C': 'mango' },
       { 'D': 'apple' }
@@ -281,7 +352,11 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
+<<<<<<< HEAD
       // Log A: num - 
+=======
+      // Log A: num - 4
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
 
       if (num < 5) {
         const num = 9;
@@ -290,11 +365,16 @@ const scope = {
 
         const newNum = num;
 
+<<<<<<< HEAD
         // Log B: newNum - 
+=======
+        // Log B: newNum - 9
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
       }
 
       newNum = num;
 
+<<<<<<< HEAD
       // Log C: newNum - 
     };
 
@@ -304,6 +384,17 @@ const scope = {
       num = num + 1;
 
       // Log E: num -
+=======
+      // Log C: newNum - 4
+    };
+
+    const fn2 = function(num){
+      // Log D: num - 9
+
+      num = num + 1;
+
+      // Log E: num - 10
+>>>>>>> 48fe0fd92bc77cfd694c5d053bbd9b7bc8543c72
     };
 
     fn1();
