@@ -626,7 +626,7 @@ const ultimaPrompts = {
 // DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
 const dinosaurPrompts = {
   countAwesomeDinosaurs() {
-    // Return an object where each key is a movie title and each value it the 
+    // Return an object where each key is a movie title and each value is the 
     // number of awesome dinosaurs in that movie. e.g.:
     // {
     //   'Jurassic Park': 5,
