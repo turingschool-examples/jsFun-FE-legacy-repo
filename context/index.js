@@ -16,12 +16,11 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'global window object';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
-    // Annotation: 
-    // `this` is the Window because the const fly is an arrow function, so `this` is set when fly is created and not when ship.fly() is executed.
-    
+    // Annotation:
+    // Write your annotation here as a comment
   },
 
   exerciseB() {
@@ -31,12 +30,11 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'global window object';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
-    // Annotation: 
-    // `this` inside fn() is not a method of an object or a new instance of a class, so `this` is the Window.
-    
+    // Annotation:
+    // Write your annotation here as a comment
   },
 
   exerciseC() {
@@ -51,12 +49,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'el';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // When the event listener triggers, `this` is el because it is contained in a method of el.
-    
+    // Write your annotation here as a comment
   },
 
   exerciseD() {
@@ -73,12 +70,11 @@ const context = {
 
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'global window object';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // `this` is the Window because it is being referenced in innerFunction, and innerFunction is not a method of an object or a new instance of anything.
-    
+    // Write your annotation here as a comment
   },
 
   exerciseE() {
@@ -90,12 +86,11 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'global window object';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // The context is the Window because when fn is created, it is not a method of another object and the keyword new is not being used.
-    
+    // Write your annotation here as a comment
   },
 
   exerciseF() {
@@ -114,12 +109,11 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'instance of Hero';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // The context is the instance of Hero because `this` is being referenced inside the instance's method
-    
+    // Write your annotation here as a comment
   },
 
   exerciseG() {
@@ -143,12 +137,11 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'global window object';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // `this` is the Window because it is being referenced in setTimeout() which is a built in method of the Window
-    
+    // Write your annotation here as a comment
   },
 
   exerciseH() {
@@ -164,12 +157,11 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'obj';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // Because an arrow function is being used, `this` is set when the function is created, so `this` is obj because when the arrow function is created, its in the context of obj    
-
+    // Write your annotation here as a comment
   },
 
   exerciseI() {  
@@ -188,12 +180,11 @@ const context = {
     }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'poets';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // Since the map method is being passed a thisArg as a second argument, `this` refers to poets
-
+    // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
   },
 
   exerciseJ() {
@@ -203,12 +194,11 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'el';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // `this` refers to el because it's being referenced by the on method of el.
-
+    // Write your annotation here as a comment.
   },
 
   exerciseK() {
@@ -218,12 +208,11 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'el';
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation: 
-    // I think `this` is also el here because when the arrow function is created, this is refering still referenced by the on method of el.
-
+    // Write your annotation here as a comment.
   }
 
 };
