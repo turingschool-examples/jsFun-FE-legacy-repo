@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @JustinD85 Sign out
-13
-0 40 turingschool-examples/jsFun
- Code  Issues 0  Pull requests 2  Projects 0  Wiki  Insights
-jsFun/prototypes/index.js
-d239f42  35 minutes ago
-@dForDeveloper dForDeveloper Fix typo in countAwesomeDinosaurs()
-@dForDeveloper @brittanystoroz @thatPamIAm
-      
-659 lines (453 sloc)  16.9 KB
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
