@@ -8,6 +8,7 @@ const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
+const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
@@ -23,23 +24,21 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = kitties.filter(kitty => kitty.color === 'orange').map(kitty => kitty.name);
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // First we need to identify which kitties in our kitties dataset are orange. To do this, the best prototype to use is filter because it will return a new array that is a subset of the original array for only orange kitties. But what we really want to return is the name property for each orange kitty as an array. Therefore we need to use the map prototype to create a new array with just the names of these kitties.
+    // Write your annotation here as a comment
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    // const [...kittiesClone] = kitties;
-    const result = kitties.sort((a, b) => b.age - a.age);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // To sort the kitties by their ages, we can use the sort prototype witha compare function that can be used to access the age property for each kitty. The compare function iterates through each kitty and compares it's age to the next adjacent kitty, then sorts each kitty object in descending order (which is what the test requires).
+    // Write your annotation here as a comment
   },
 
   growUp() {
@@ -56,16 +55,8 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = kitties.map(kitty => {
-      kitty.age += 2;
-      return kitty;
-    });
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
-
-    // Annotation:
-    // To age the kitties by 2 years, map is the best prototype to use because it creates a new array (result) of the same length and allows for changes to each item in the original array. 
-
-    //**For this one the test says it's incorrect because of the previous sortByAge() function. If that is commented out, then the test works.**
   }
 };
 
@@ -82,6 +73,9 @@ const kittyPrompts = {
 
 
 
+
+
+
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
@@ -93,26 +87,11 @@ const clubPrompts = {
     //   ...etc
     // }
 
-
-    const result = clubs.reduce((acc, club) => {
-      club.members.forEach(member => {
-        if (!acc[member]) {
-          acc[member] = [club.club];
-        } else {
-          acc[member].push(club.club);
-        }
-      });
-      return acc;
-    },{});
-
-    // Individual instance of each person's name from the members in each club object.
-    // Assign each unique name as a key in our new object.
-    // Figure out which clubs each person belongs to.
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // The reduce method is use to create a new object that contains member names as keys and arrays of clubs as values. Within the reduce method, we run through each club object's members. If the member doesn't exist as a proprty, we add it and assign an array with the club value inside it. If the property does exist, we use push to add the club to the array value.
+    // Write your annotation here as a comment
   }
 };
 
@@ -144,15 +123,11 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = mods.map(mod => {
-      let studentsPerInstructor = mod.students / mod.instructors;
-      return { mod: mod.mod, studentsPerInstructor: studentsPerInstructor};
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // We use the map prototype to modify the array but keep it the same length. Within that method, for each element we create a new variable studentsPerInstructor and calculate the math of students/instructors to assign that variable. Then we return a new object, which contains the mod property from the original array and a new property, studentsPerInstructor with the value we calculated above.
+    // Write your annotation here as a comment
   }
 };
 
@@ -183,14 +158,11 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = cakes.map(cake => {
-      return { flavor: cake.cakeFlavor, inStock: cake.inStock };
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // We are returning a new, modified array of the same length so we use the map prototype. Within that map method, we return the 2 properties from the array that we want and do not use the others from the original array.
+    // Write your annotation here as a comment
   },
 
   onlyInStock() {
@@ -214,10 +186,7 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = cakes.filter(cake => {
-      return cake.inStock;
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -228,11 +197,7 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = cakes.reduce((acc, cake) => {
-      acc += cake.inStock;
-      return acc;
-    }, 0);
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -244,18 +209,11 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = cakes.reduce((acc, cake) => {
-      cake.toppings.forEach(topping => {
-        if (acc.indexOf(topping) === -1) {
-          acc.push(topping);
-        }
-      });
-      return acc;
-    },[]);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // To get a unique array of toppings, we use a reduce prototype with and empty array as the initial value. Within the reduce method, we access each array in each cakes object toppings property. For each array, we check if the value exists in our accumulator and if not, we add it to the accumulator (so we have no duplicates). Then we go out in scope to the reduce method and return the accumulator after we've gone through each object in the cakes array.
+    // Write your annotation here as a comment
   },
 
   groceryList() {
@@ -269,17 +227,7 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = cakes.reduce((acc, cake) => {
-      cake.toppings.forEach(topping => {
-        if (!acc[topping]) {
-          acc[topping] = 1;
-        } else {
-          acc[topping]++;
-        }
-      });
-      return acc;
-    },{});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -314,7 +262,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = classrooms.filter(room => room.program === 'FE');
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -329,30 +277,17 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = classrooms.reduce((acc, room) => {
-      if (Object.keys(acc).length === 0) {
-        acc.feCapacity = 0;
-        acc.beCapacity = 0;
-      }
-      
-      if (room.program === 'FE') {
-        acc.feCapacity += room.capacity;
-      } else {
-        acc.beCapacity += room.capacity;
-      }
-      return acc;
-    },{});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // The best prototype for this problem is reduce because we are creating a new object with different properties and a different length. Within the reduce method, first we check if our new object is empty (first iteration) and if it is, we creat our new properties and assign them to 0. If it is not our first iteration, we check is the program property is strictly equal to 'FE' and if it is, we add the value to the feCapacity property. Else we add it to the beCapacity property. Then we return our object from the reduce method.
+    // Write your annotation here as a comment
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = classrooms.sort((roomA, roomB) => roomA.capacity - roomB.capacity);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -382,7 +317,7 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = breweries.reduce((acc, brewery) => acc += brewery.beers.length, 0);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -398,10 +333,7 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = breweries.map(brewery => {
-      return { name: brewery.name, beerCount: brewery.beers.length };
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -413,15 +345,11 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = breweries.reduce((acc, brewery) => {
-      acc = acc.concat(brewery.beers);
-      return acc;
-    },[]).sort((a, b) => b.abv - a.abv)[0];
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // We can use the reduce function to concatenate all of the beers from each brewery into one array. Then we return that array and sort it from highest abv to lowest. Then we can call the first index in that array since it will be the beer with the highest abv.
+    // Write your annotation here as a comment
   }
 };
 
@@ -465,18 +393,11 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = instructors.map(instructor => {
-      let matchingMod = cohorts.find(cohort => instructor.module === cohort.module);
-      return {name: instructor.name, studentCount: matchingMod.studentCount};
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Map over instructors array to return a new array of the same length as original instructors array.
-    // Find the matching cohort for our current instructor.
-    // Grab student count value from matching cohort.
-    // Return an object with current instructors name and student count value.
+    // Write your annotation here as a comment
   },
 
   studentsPerInstructor() {
@@ -486,13 +407,7 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = cohorts.reduce((acc, cohort) => {
-      let name = `cohort${cohort.cohort}`;
-      let numTeachers = instructors.filter(instructor => instructor.module === cohort.module).length;
-      acc[name] = cohort.studentCount / numTeachers;
-      return acc;
-    },{});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -509,20 +424,7 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = instructors.reduce((obj, instructor) => {
-      obj[instructor.name] = [];
-      instructor.teaches.forEach(skill => {
-        let modMatches = cohorts.reduce((modsArray, cohort) => {
-          if ((cohort.curriculum.includes(skill)) && (!obj[instructor.name].includes(cohort.module))) {
-            modsArray.push(cohort.module);
-          }
-          return modsArray;
-        },[]);
-        obj[instructor.name] = obj[instructor.name].concat(modMatches);
-      });
-      return obj;
-    },{});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -539,30 +441,11 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = cohorts.reduce((obj, cohort) => {
-      cohort.curriculum.forEach(topic => {
-        if (!obj[topic]) {
-          obj[topic] = [];
-        }
-        instructors.forEach((instructor) => {
-          if ((instructor.teaches.includes(topic)) && (!obj[topic].includes(instructor.name))) {
-            obj[topic] = obj[topic].concat(instructor.name);
-          }
-        });
-      });
-      return obj;
-    }, {});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
-    // Use some to check if skill is in entire array or includes
-
     // Annotation:
-    // two arrays, return an object, use reduce
-    // iterate over cohorts to get each curriculum topic and assign it as a property in our object.
-    // within that, iterate over instructors and instructors skills to determine if any of those skills match the curriculum topic.
-    // if they do, add instructor name to the array of names for each curriculum topic.
-    // return our final object
+    // Write your annotation here as a comment
   }
 };
 
@@ -593,18 +476,11 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = Object.keys(bosses).map(boss => {
-      let loyaltyNum = sidekicks.filter(sidekick => sidekick.boss === bosses[boss].name).reduce((acc, sidekick) => {
-        acc += sidekick.loyaltyToBoss;
-        return acc;
-      },0);
-      return { bossName: bosses[boss].name, sidekickLoyalty: loyaltyNum };
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Map through bosses to return new object wiht boss name and sidekickLoyalty value.
+    // Write your annotation here as a comment
   }
 };
 
@@ -642,18 +518,10 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = stars.filter(star => {
-      let allConstellations = Object.keys(constellations).reduce((acc, constellation) => {
-        acc = acc.concat(constellations[constellation].stars);
-        return acc;
-      },[]);
-      return allConstellations.includes(star.name);
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Go through stars array not constellation!!!
     // Write your annotation here as a comment
   },
 
@@ -668,14 +536,7 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = stars.reduce((acc, star) => {
-      if (!acc[star.color]) {
-        acc[star.color] = [];
-      }
-      acc[star.color].push(star);
-      return acc;
-    }, {});
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -695,10 +556,7 @@ const astronomyPrompts = {
     //   'Orion',
     //   'Centaurus' ]
 
-    const result = stars.map(star => {
-      return star.constellation;
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -729,13 +587,7 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = characters.reduce((acc, character) => {
-      character.weapons.forEach(weapon => {
-        acc += weapons[weapon].damage;
-      });
-      return acc;
-    }, 0);
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -747,20 +599,7 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = characters.map(character => {
-      let damageCount = character.weapons.reduce((acc, weapon) => {
-        acc += weapons[weapon].damage;
-        return acc;
-      }, 0);
-      let rangeCount = character.weapons.reduce((acc, weapon) => {
-        acc += weapons[weapon].range;
-        return acc;
-      }, 0);
-      let obj = {};
-      obj[character.name] = { damage: damageCount, range: rangeCount};
-      return obj;
-    });
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -769,6 +608,116 @@ const ultimaPrompts = {
 };
 
 
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
+const dinosaurPrompts = {
+  countAwesomeDinosaurs() {
+    // Return an object where each key is a movie title and each value is the 
+    // number of awesome dinosaurs in that movie. e.g.:
+    // {
+    //   'Jurassic Park': 5,
+    //   'The Lost World: Jurassic Park': 8,
+    //   'Jurassic Park III': 9,
+    //   'Jurassic World': 11,
+    //   'Jurassic World: Fallen Kingdom': 18
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  averageAgePerMovie() {
+    /* Return an object where each key is a movie director's name and each value is
+        an object whose key is a movie's title and whose value is the average age
+        of the cast on the release year of that movie.
+      e.g.:
+      { 
+        'Steven Spielberg': 
+          { 
+            'Jurassic Park': 34,
+            'The Lost World: Jurassic Park': 37 
+          },
+        'Joe Johnston': 
+          { 
+            'Jurassic Park III': 44 
+          },
+        'Colin Trevorrow': 
+          { 
+            'Jurassic World': 56
+           },
+        'J. A. Bayona': 
+          { 
+            'Jurassic World: Fallen Kingdom': 59 
+          } 
+      }
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  uncastActors() {
+    /*
+    Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
+
+    e.g.
+
+    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
+      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
+      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
+      { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  actorsAgesInMovies() {
+    /*
+    Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
+
+    e.g.
+    [ { name: 'Sam Neill', ages: [ 46, 54 ] },
+      { name: 'Laura Dern', ages: [ 26, 34 ] },
+      { name: 'Jeff Goldblum', ages: [ 41, 45, 63, 66 ] },
+      { name: 'Richard Attenborough', ages: [ 70, 74, 92, 95 ] },
+      { name: 'Ariana Richards', ages: [ 14, 18 ] },
+      { name: 'Joseph Mazello', ages: [ 10, 14 ] },
+      { name: 'BD Wong', ages: [ 33, 55, 58 ] },
+      { name: 'Chris Pratt', ages: [ 36, 39 ] },
+      { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
 
 module.exports = {
   breweryPrompts,
@@ -780,5 +729,6 @@ module.exports = {
   kittyPrompts,
   cakePrompts,
   astronomyPrompts,
-  ultimaPrompts
+  ultimaPrompts,
+  dinosaurPrompts
 };
