@@ -1,3 +1,21 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @JustinD85 Sign out
+13
+0 40 turingschool-examples/jsFun
+ Code  Issues 0  Pull requests 2  Projects 0  Wiki  Insights
+jsFun/prototypes/index.js
+d239f42  35 minutes ago
+@dForDeveloper dForDeveloper Fix typo in countAwesomeDinosaurs()
+@dForDeveloper @brittanystoroz @thatPamIAm
+      
+659 lines (453 sloc)  16.9 KB
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -8,6 +26,7 @@ const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
+const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
@@ -608,6 +627,75 @@ const ultimaPrompts = {
 
 
 
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
+const dinosaurPrompts = {
+  countAwesomeDinosaurs() {
+    // Return an object where each key is a movie title and each value is the 
+    // number of awesome dinosaurs in that movie. e.g.:
+    // {
+    //   'Jurassic Park': 5,
+    //   'The Lost World: Jurassic Park': 8,
+    //   'Jurassic Park III': 9,
+    //   'Jurassic World': 11,
+    //   'Jurassic World: Fallen Kingdom': 18
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  averageAgePerMovie() {
+    /* Return an object where each key is a movie director's name and each value is
+        an object whose key is a movie's title and whose value is the average age
+        of the cast on the release year of that movie.
+      e.g.:
+      { 
+        'Steven Spielberg': 
+          { 
+            'Jurassic Park': 34,
+            'The Lost World: Jurassic Park': 37 
+          },
+        'Joe Johnston': 
+          { 
+            'Jurassic Park III': 44 
+          },
+        'Colin Trevorrow': 
+          { 
+            'Jurassic World': 56
+           },
+        'J. A. Bayona': 
+          { 
+            'Jurassic World: Fallen Kingdom': 59 
+          } 
+      }
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+  
+};
+
 module.exports = {
   breweryPrompts,
   turingPrompts,
@@ -618,5 +706,6 @@ module.exports = {
   kittyPrompts,
   cakePrompts,
   astronomyPrompts,
-  ultimaPrompts
+  ultimaPrompts,
+  dinosaurPrompts
 };
