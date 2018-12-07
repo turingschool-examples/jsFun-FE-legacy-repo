@@ -8,6 +8,7 @@ const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
+const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
@@ -608,6 +609,41 @@ const ultimaPrompts = {
 
 
 
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
+const dinosaurPrompts = {
+  countAwesomeDinosaurs() {
+    // Return an object where each key is a movie title and each value is the 
+    // number of awesome dinosaurs in that movie. e.g.:
+    // {
+    //   'Jurassic Park': 5,
+    //   'The Lost World: Jurassic Park': 8,
+    //   'Jurassic Park III': 9,
+    //   'Jurassic World': 11,
+    //   'Jurassic World: Fallen Kingdom': 18
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
 module.exports = {
   breweryPrompts,
   turingPrompts,
@@ -618,5 +654,6 @@ module.exports = {
   kittyPrompts,
   cakePrompts,
   astronomyPrompts,
-  ultimaPrompts
+  ultimaPrompts,
+  dinosaurPrompts
 };
