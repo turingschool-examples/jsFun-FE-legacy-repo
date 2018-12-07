@@ -675,7 +675,6 @@ const dinosaurPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-  
 };
 
 module.exports = {
