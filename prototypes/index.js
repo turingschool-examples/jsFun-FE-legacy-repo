@@ -641,6 +641,39 @@ const dinosaurPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  averageAgePerMovie() {
+    /* Return an object where each key is a movie director's name and each value is
+        an object whose key is a movie's title and whose value is the average age
+        of the cast on the release year of that movie.
+      e.g.:
+      { 
+        'Steven Spielberg': 
+          { 
+            'Jurassic Park': 34,
+            'The Lost World: Jurassic Park': 37 
+          },
+        'Joe Johnston': 
+          { 
+            'Jurassic Park III': 44 
+          },
+        'Colin Trevorrow': 
+          { 
+            'Jurassic World': 56
+           },
+        'J. A. Bayona': 
+          { 
+            'Jurassic World: Fallen Kingdom': 59 
+          } 
+      }
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 };
 
