@@ -674,6 +674,48 @@ const dinosaurPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  uncastActors() {
+    /*
+    Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
+
+    e.g.
+
+    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
+      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
+      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
+      { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  actorsAgesInMovies() {
+    /*
+    Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
+
+    e.g.
+    [ { name: 'Sam Neill', ages: [ 46, 54 ] },
+      { name: 'Laura Dern', ages: [ 26, 34 ] },
+      { name: 'Jeff Goldblum', ages: [ 41, 45, 63, 66 ] },
+      { name: 'Richard Attenborough', ages: [ 70, 74, 92, 95 ] },
+      { name: 'Ariana Richards', ages: [ 14, 18 ] },
+      { name: 'Joseph Mazello', ages: [ 10, 14 ] },
+      { name: 'BD Wong', ages: [ 33, 55, 58 ] },
+      { name: 'Chris Pratt', ages: [ 36, 39 ] },
+      { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   }
 };
 
