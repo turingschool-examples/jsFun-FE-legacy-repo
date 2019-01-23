@@ -214,8 +214,11 @@
     const result = [{'C':'Brittany'}, {'A':'Nathaniel'}, {'B':'Nathaniel'}, {'D':'Brittany'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // The first log that fires is log C because sayName is invoked on 210 and the code execution passes 
+    // over the nested ifs and refers back to the name declarion on line 190 which is Brittany.
+    // Then log A fires at which point name has been redefined  to Nathaniel.
+    // Then log B fires and the name refers back to 193 which we have already re assigned to Nathaniel.
+    // Log D is out side of the say name function and refers back to the globally defined Brittany on 190.
   },
 
   exerciseF() {
@@ -249,8 +252,10 @@
     const result = [{'A':'Spot'}, {'B':'Spot'}, {'C':'Biscuit'}, {'D':'Biscuit'}, {'E':'Biscuit'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log A fires first in the run after petDog is invoked on 248 and dog refers to the global dog spot
+    // Log B on 235 inside of rollover has still not changed dog so it is still spot.
+    // Log C comes after we have redefind dog to Biscuit this redefines the global dog an all logs after 
+    // roll over D & E are still Biscuit.
   },
 
   exerciseG() {
@@ -279,8 +284,9 @@
     const result = [{'A':'reference error'}, {'B':'mango'}, {'C':'mango'}, {'D':'apple'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log A is a reference error 
+    // Log B and C are both Mango because we are inside of eat fruit and define it on 267
+    // Log D is apple becaue we are out side our function and it defaults to the global apple
   },
 
   exerciseH() {
@@ -319,8 +325,12 @@
     const result = [{'A': 4}, {'D': 9}, {'E': 10}, {'B': 9}, {'C': 4}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // log A fires first after fn1 is called on 323 and at that point num is 4 from 296
+    // Log D fires second  after we invoke fn2 on 303 and pass num to after we have defined it as 9.
+    // Next log E fires and num has been reassign to num 9 + 1 which is 10.
+    // Log B fires after that num is called newNum which at that pooint is 9
+    // lastly log C fires and after new num is reassigned to num and num at that point if 4 
+    //because we are outside of our if but still in fn1/
   },
 
   exerciseI() {
@@ -347,11 +357,18 @@
     eatSnack();
     // Log E: hunger
 
-    const result = [{'A': 75}, {'B': 0}, {'C': 75}, {'D': 80}, {'A': 55}, {'B': 0}, {'C': 55}, {'E': 55},];
+    const result = [{'A': 75}, {'B': 0}, {'C': 75}, {'D': 80}, {'A': 55}, {'B': 0}, {'C': 55}, {'E': 55}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log A fires first after we subtracted 25 from our og hunger of 100 and reassign it to 75
+    // Log B fires second after we reassigned hunger to 0
+    // C fires third it is out side the gorgeYourself funx but still in eat sack so hunger is 75 again
+    // Next D adds 5 ponts to our hunger reassigning it to 80
+    // Log A fires again but this time 25 is getting pulled from 80 and reassigns hunger to 55 
+    // Log B fires and remains 0
+    // Then C fires again while hunger is still 55
+    // Then we exit our function and E fires for the first time but since our function redefined 
+    // the global hunger it is still 55
   },
 
   exerciseJ() {
@@ -388,11 +405,19 @@
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 'ketchup sandwich'}, {'D':'gouda'}, {'B':'reference error'},{'C': 'not a mediocre sandwich'},{'E': 'not a mediocre sandwich'}, {'F': 'National Treasure'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // log A fires before any functions right after we define sandwich as ketchup sandwich
+    // The first function that is invoked is addCheese which fires D and ask what cheese topping is then
+    // at that point we have defined it as gouda.
+    // it exits add cheese and invokes addChipotle and fires log B which is a refence error 
+    // because we have nothing called just toppings at that point.
+    // Log C fires after we have redefined sandwich with not a mediocer sandwich Then exits addChipotle
+    // Next we log E and sandich is still not mediocer
+    // last we log F and amandaBynes has been hoisted out of the shesTheMan function to global scope
+    // because we didn't declare her with const or let so default is global a variable
+
   },
 
   exerciseK() {
