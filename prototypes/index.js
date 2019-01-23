@@ -13,7 +13,6 @@ const { weapons, characters } = require('./datasets/ultima');
 
 
 
-
 // SINGLE DATASETS
 // =================================================================
 
@@ -152,7 +151,11 @@ const modPrompts = {
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
+
   stockPerCake() {
+      const result = cakes.map((cake) => {
+      return {inStock: cake.inStock, flavor: cake.cakeFlavor}
+  });
     // Return an array of objects that include just the flavor of the cake and how
     // much of that cake is in stock e.g.
     // [ 
@@ -161,8 +164,6 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -404,13 +405,11 @@ const turingPrompts = {
     // return an object with the instructor's name and studentCount
 
     const result = instructors.map((instructor) => {
-           let matchingCohort = cohorts.find((cohort) => {
-            return cohort.module === instructor.module;
-           })
-           let numberOfStudents = matchingCohort.studentCount;
-           return { name: instructor.name, studentCount: numberOfStudents }
-        });
-        return result;
+        let matchingCohort = cohorts.find((cohort) => {
+            return instructor.module === cohort.module
+
+        })
+    })
 
     // Annotation:
     // Write your annotation here as a comment
