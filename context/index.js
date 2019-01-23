@@ -16,11 +16,13 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // This refers to the global window object because ES6 arrow notation
+    // points to the global window if you are not using strict mode when the javascript file is run.
+    // The value of `this` is set on window load.
   },
 
   exerciseB() {
@@ -30,12 +32,13 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    // 'this' is referring to the function fn() inside of the object, which in this case is the 
+    // window object. This is also known as an unbound function
+      },
 
   exerciseC() {
     const car = {
