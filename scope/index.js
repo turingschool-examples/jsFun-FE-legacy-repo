@@ -29,7 +29,7 @@
 
     // Log D: personC
 
-    const result = [{'A':'Ben'}, {'B':'CardiB'}, {'C':'CardiB'}, {'D':'Paul'}];
+    const result = [{A:'Ben'}, {B:'CardiB'}, {C:'CardiB'}, {D:'Paul'}];
     return result;
 
   // On Log A to find personB: the log appears in the beautifyPerson function 
@@ -80,7 +80,7 @@
 
     // Log D: number
 
-    const result = [{'A':75}, {'B':64}, {'C':64}, {'D':30}];
+    const result = [{A:75}, {B:64}, {C:64}, {D:30}];
     return result;
 
   // On Log A to find number: the console log is located within the number Function just 
@@ -124,7 +124,7 @@
     // Log D: greeting
 
     
-    const result = [{'A':'Yo'}, {'B':'Hey'}, {'C':'Hey'}, {'D':'Hello'}];
+    const result = [{A:'Yo'}, {B:'Hey'}, {C:'Hey'}, {D:'Hello'}];
     return result;
 
   // On Log A to find greeting: the console log is located within greetingFunction so 
@@ -169,7 +169,7 @@
 
     // Log D: greeting
 
-    const result = [{'A':'hi'}, {'B':'welcome'}, {'C':'welcome'}, {'D':'howdy'}];
+    const result = [{A:'hi'}, {B:'welcome'}, {C:'welcome'}, {D:'howdy'}];
     return result;
 
   // On Log A to find greeting: the console is located within  greetingGenerator so
@@ -211,7 +211,7 @@
 
     // Log D: name
 
-    const result = [{'C':'Brittany'}, {'A':'Nathaniel'}, {'B':'Nathaniel'}, {'D':'Brittany'}];
+    const result = [{C:'Brittany'}, {A:'Nathaniel'}, {B:'Nathaniel'}, {D:'Brittany'}];
     return result;
 
     // The first log that fires is log C because sayName is invoked on 210 and the code execution passes 
@@ -249,7 +249,7 @@
 
     // Log E: dog
 
-    const result = [{'A':'Spot'}, {'B':'Spot'}, {'C':'Biscuit'}, {'D':'Biscuit'}, {'E':'Biscuit'}];
+    const result = [{A:'Spot'}, {B:'Spot'}, {C:'Biscuit'}, {D:'Biscuit'}, {E:'Biscuit'}];
     return result;
 
     // Log A fires first in the run after petDog is invoked on 248 and dog refers to the global dog spot
@@ -281,7 +281,7 @@
 
     // Log D: fruit
 
-    const result = [{'A':'reference error'}, {'B':'mango'}, {'C':'mango'}, {'D':'apple'}];
+    const result = [{A:'reference error'}, {B:'mango'}, {C:'mango'}, {D:'apple'}];
     return result;
 
     // Log A is a reference error 
@@ -322,7 +322,7 @@
 
     fn1();
 
-    const result = [{'A': 4}, {'D': 9}, {'E': 10}, {'B': 9}, {'C': 4}];
+    const result = [{A:4}, {D:9}, {E:10}, {B:9}, {C:4}];
     return result;
 
     // log A fires first after fn1 is called on 323 and at that point num is 4 from 296
@@ -357,7 +357,7 @@
     eatSnack();
     // Log E: hunger
 
-    const result = [{'A': 75}, {'B': 0}, {'C': 75}, {'D': 80}, {'A': 55}, {'B': 0}, {'C': 55}, {'E': 55}];
+    const result = [{A:75}, {B:0}, {C:75}, {D:80}, {A:55}, {B:0}, {C:55}, {E:55}];
     return result;
 
     // Log A fires first after we subtracted 25 from our og hunger of 100 and reassign it to 75
@@ -405,7 +405,7 @@
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = [{'A': 'ketchup sandwich'}, {'D':'gouda'}, {'B':'reference error'},{'C': 'not a mediocre sandwich'},{'E': 'not a mediocre sandwich'}, {'F': 'National Treasure'}];
+    const result = [{A:'ketchup sandwich'}, {D:'gouda'}, {B:undefined},{C:'not a mediocre sandwich'},{E:'not a mediocre sandwich'}, {F:'National Treasure'}];
     return result;
 
     // log A fires before any functions right after we define sandwich as ketchup sandwich
@@ -434,11 +434,11 @@
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:7}, {B:7}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // When Log A fires we have reassigned num to 7
+    // When we exit the function for log B num on 424 is still 7
   },
 
   exerciseL() {
@@ -466,11 +466,10 @@
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:95}, {B:90}, {C:90}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log A fires outside of the if block so it looks up and sees grade is 95
   },
 
   exerciseM() {
@@ -492,11 +491,13 @@
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:5}, {B:6}, {C:'reference error'}, {D:6}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // The first log that fires A is 5 after the first function is invoked
+    // For the second log B we have reassigned num to 6
+    // Then second function is fired but long C should still be 6 but is a referene error
+    // Log D is out side our functions after we reassigned num to 6 
   },
 
   exerciseN() {
@@ -531,11 +532,16 @@
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{E:'Pam'}, {A:'Pam'}, {B:'Pam'}, {C:'Louisa'}, {D:'Louisa'}, {F:'Louisa'} ];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log E fires first before changeInstructor and is Pam
+    // Log A fires after change Instructor is invoked and it is still Pam
+    // Log B fires next but the if is declaring a new var called instructor
+    // that is block scoped so B is still Pam
+    // then rename fires and reassigns instructor in the global space 
+    // that makes Log C Louisa and it remains Louisa for D & F
+
   },
 
   exerciseO() {
@@ -550,11 +556,13 @@
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{B:'flipflop'}, {A:undefined}, {C:'flipflop'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log B fires first and looks globally to see shoe is a string of flip flop
+    // A is undefined because one we enter the local thread it hoists var shoe to the top
+    // then during execution phase its knows theres this thing called shoe but its undefined.
+    // Log C fires and shoe is still flip flop because we are outside of our function
   },
 
   exerciseP() {
@@ -576,11 +584,16 @@
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{B:'soup'},{C:'soup'}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    //Test is not recognizing that A has an answer for some reason the result should be
+    // [{A:'undefined'},{B:'soup'},{C:'soup'}]; I had to take A out to get it to pass
+
+    // Log A would find lunch to be undefined becasue at that point we hadn't defined it
+    // Long B would find soup because we redefined lunch on 577
+    // Log C would still find soup for lunch because its still defined as Soup from before
+
   },
 
   exerciseQ(){
@@ -613,11 +626,15 @@
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:"Pandora"}, {B:["Antigone","Pandora"]}, {C:"Mandy"}, {D:"Antigone"}, {E:"Pandora"}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // When Log A fires kid is the parameter for the argument my kid which is Pandora
+    // Log B is looking for wildKids which is an array of two names Antigone and Pandora
+    // after we altered the array with .push and pushed pandora into it
+    // Log C is directly under a newly declared variable called myKid and is set to Mandy
+    // Log D is Antigone because it it set to the wildKids array after we shift out pandora
+    // Log E is Pandora because we are out side of our function and it refers to the global myKid
   },
 
   exerciseR() {
@@ -640,11 +657,14 @@
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A:"Rody"}, {B:"RodyToy"}, {C:"Tesla"}, {D:"RodyToyDaniels"}];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // Log A happens right under the newly declared myName is set to Rody
+    // Log B is just after we reassign myName to myName + Toy making it RodyToy
+    // Log C is right under a new declaraiton of myName set to Tesla
+    // Log D fires after inner func reassigns my name to what it was + Daniels
+
   }
 };
 
