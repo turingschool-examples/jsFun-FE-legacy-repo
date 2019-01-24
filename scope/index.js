@@ -11,29 +11,33 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB Ben
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC Cardi B
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB Cardi B
     }
 
     changePerson();
 
-    // Log D: personC
+    // Log D: personC Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 'Ben'},
+      {'B' : 'CardiB'},
+      {'C' : 'CardiB'},
+      {'D' : 'Paul'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is Ben because the person B variable is globally scoped as Ben and hasn't been changed. Log B is CardiB because personB was reassigned to person, which was assigned a value of 'CardiB'. Log C is 'CardiB' because personB was never reassigned. Log D is 'Paul' because personA was declared with a value of 'Paul' and has not been changed. 
   },
 
   exerciseB() {
@@ -46,28 +50,33 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number 75 
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number 64
     }
 
     numberFunction();
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A' : 75 },
+      { 'B' : 64 },
+      { 'C' : 64 },
+      { 'D' : 30 }];
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A has a value of 75 because the number variable is functionally scoped inside numberFunction. Log B is 64 because the variable 'number' at line 50 has been reassigned to 64. Log C is also 64 because the variable 'number' at line 50 has been reassigned to 64. Log D is 30 because the variable 'number' is globally scoped. 
   },
 
   exerciseC() {
@@ -80,28 +89,32 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting Yo because the greeting variable at line 89 is block scoped
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting Hey because we're reassigning the greeting variable at line 86 to a value of Hey. 
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting Hey because we reassigned it
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting is Hello because that's global 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A' : 'Yo' },
+      {'B' : 'Hey' },
+      {'C' : 'Hey' },
+      {'D' : 'Hello'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A, the variable "greeting" has a value of "Yo" because the "greeting" variable at line 89 is block scoped, so the value of the variable greeting is functionally scoped at line 94 with a value of "Yo". Log B, the variable "greeting" has a value of "Hey" because the "greeting" variable at line 86 has been reassgined a valuye of "Hey" on line 95. Log C, the variable "greeting" has a value of "Hey" because it's been reassigned a value of "Hey" on line 95. Log D is "Hello" because the "greeting" variable on line 83 is globally scoped and has not been reassigned. 
   },
 
   exerciseD() {
@@ -114,7 +127,7 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting 
 
       const newGreeting = ()  => {
         greeting = 'welcome';
@@ -131,11 +144,16 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A' : 'hi'},
+      {'B' : 'welcome'},
+      {'C' : 'welcome'},
+      {'D' : 'howdy'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is "hi" because the variable greeting is assigned a value of "hi" on line 124, is functionally scoped, and has not been reassigned. Log B is "welcome" because the variable "greeting" on line 124 has been reassigned a value of "welcome". Log C is "welcome" because the value of the variable "greeting" on line 124 was previously reassigned to "welcome". Log D is 'howdy' because the variable greeting on line 121 has a value of "howdy", is globally scoped, and has not been reassigned. 
   },
 
   exerciseE() {

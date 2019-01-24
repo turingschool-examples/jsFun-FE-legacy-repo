@@ -183,7 +183,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // "This" has a value of "poets" because the map method returns the array. 
+    // "This" has a value of "poets" because the second argument in the map method binds "this" to "poets". 
   },
 
   exerciseJ() {
