@@ -24,17 +24,23 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => {
+        return kitty.color === 'orange';
+    }).map(kitty => {
+        return kitty.name;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we're using the filter method on the kitties array to return each object in the array with a color property that is strictly equal to 'orange '. However, because we're only looking for the name of each orange kitty (not the entire object), we have to use the map function on the newly created array of orange kitties and use dot notating to access and return the name property of each kitty in the array. 
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kittyObj1, kittyObj2) => {
+        return kittyObj2.age - kittyObj1.age;
+    });
     return result;
 
     // Annotation:
@@ -55,9 +61,13 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+        kitty.age = kitty.age + 2;
+        return kitty;
+    });
     return result;
-  }
+    // Annotation: 
+  },
 };
 
 
