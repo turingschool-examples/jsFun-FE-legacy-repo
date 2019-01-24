@@ -114,7 +114,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Log A, the variable "greeting" has a value of "Yo" because the "greeting" variable at line 89 is block scoped, so the value of the variable greeting is functionally scoped at line 94 with a value of "Yo". Log B, the variable "greeting" has a value of "Hey" because the "greeting" variable at line 86 has been reassgined a valuye of "Hey" on line 95. Log C, the variable "greeting" has a value of "Hey" because it's been reassigned a value of "Hey" on line 95. Log D is "Hello" because the "greeting" variable on line 83 is globally scoped and has not been reassigned. 
+    // Log A, the variable "greeting" has a value of "Yo" because the "greeting" variable at line 89 is block scoped, so the value of the variable greeting is functionally scoped at line 94 with a value of "Yo". Log B, the variable "greeting" has a value of "Hey" because the "greeting" variable at line 86 has been reassgined a valuye of "Hey" on line 95. Log C, the variable "greeting" has a value of "Hey" because it's been reassigned a value of "Hey" on line 95. Log D is "Hello" because the "greeting" variable on line 83 is globally scoped and has not been reassigned.
   },
 
   exerciseD() {
@@ -169,19 +169,24 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name is Nathaniel because the if statement checking the value of "name" reassigns the value of "name" to Nathaniel. It does not reassign the value again in the second if statement even though the length of "name" is greater than zero because the second if statement declares a new variable "name", it doesn't reassign the value of the variable "name" on line 163. 
       }
 
-      // Log B: name
+      // Log B: name is still Nathaniel because the if statement on line 166 reassigns the value of "name" on line 163 to "Nathaniel".
     }
 
-    // Log C: name
+    // Log C: name Brittany because we are now out of the function, so the variable "name" we're referring to is the variable on line 163, which has been assigned a value of "Brittany".
 
     sayName();
 
-    // Log D: name
+    // Log D: name Brittany because we are now out of the function, so the variable "name" we're referring to is the variable on line 163, which has been assigned a value of "Brittany".
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'C' : 'Brittany'},
+      {'A' : 'Nathaniel'},
+      {'B' : 'Nathaniel'},
+      {'D' : 'Brittany'}
+    ];
     return result;
 
     // Annotation:
@@ -192,7 +197,7 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog 
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
@@ -203,7 +208,7 @@ const scope = {
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog  
 
       }
 
@@ -216,11 +221,17 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A' : 'Spot'},
+      {'B' : 'Spot'},
+      {'C' : 'Biscuit'},
+      {'D' : 'Biscuit'},
+      {'E' : 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A: dog is 'Spot' because 'Spot' is globally scoped and has not been reassigned. Log B: dog is still 'Spot' because 'Spot' is globally scoped and has not been reassigned. Log C: dog is 'Biscuit' because the function rollOver reassigns the value of the variable 'dog' on line 197 to 'Biscuit'. Log D and Log E are also 'Biscuit' because the global variable 'dog' has been reassigned the value of 'Biscuit' by the function rollOver. 
   },
 
   exerciseG() {
@@ -232,11 +243,11 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit is still 'apple' because line 243 is not reassigning the value of 'fruit', it's creating a new variable 'fruit' with a value of 'mango'. 
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit still apple
       }
 
       // Log C: fruit
@@ -246,7 +257,12 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A' : 'apple'},
+      {'B' : 'apple'},
+      {'C' : 'apple'},
+      {'D' : 'apple'}
+    ];
     return result;
 
     // Annotation:
