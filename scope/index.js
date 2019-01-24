@@ -182,10 +182,10 @@ const scope = {
     // Log D: name Brittany because we are now out of the function, so the variable "name" we're referring to is the variable on line 163, which has been assigned a value of "Brittany".
 
     const result = [
-      {'C' : 'Brittany'},
-      {'A' : 'Nathaniel'},
-      {'B' : 'Nathaniel'},
-      {'D' : 'Brittany'}
+      { C : 'Brittany' }, 
+      { A : 'Nathaniel' },
+      { B : 'Nathaniel' },
+      { D : 'Brittany' }
     ];
     return result;
 
@@ -197,29 +197,29 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog 
+      // Log A: dog Spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog  
+        // Log C: dog Biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog Biscuit
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog Biscuit 
 
     const result = [
       {'A' : 'Spot'},
@@ -243,24 +243,24 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit is still 'apple' because line 243 is not reassigning the value of 'fruit', it's creating a new variable 'fruit' with a value of 'mango'. 
+          // Log A: Reference error because the if statement knows there will be a new variable declared, but because it's declared with const it's not hoisted. (Temporal Dead Zone.)
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit still apple
+        // Log B: fruit mango because we're still in the function. 
       }
 
-      // Log C: fruit
+      // Log C: fruit mango
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit apple because we're outside of the function
 
     const result = [
-      {'A' : 'apple'},
-      {'B' : 'apple'},
-      {'C' : 'apple'},
+      {'A' : 'reference error'},
+      {'B' : 'mango'},
+      {'C' : 'mango'},
       {'D' : 'apple'}
     ];
     return result;
@@ -275,34 +275,40 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num
+      // Log A: num 4 #1
 
       if (num < 5) {
         const num = 9;
 
-        fn2(num);
+        fn2(num); // num here is 9 bc block scoped
 
         const newNum = num;
 
-        // Log B: newNum
+        // Log B: newNum 9 because fn2 doesn't return anything #4
       }
 
       newNum = num;
 
-      // Log C: newNum
+      // Log C: newNum 4 #5
     };
 
     const fn2 = function(num){
-      // Log D: num
+      // Log D: num 9 #2
 
       num = num + 1;
 
-      // Log E: num
+      // Log E: num 10 #3
     };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A : 4 },
+      { D: 9 },
+      { E: 10 },
+      { B: 9 },
+      { C: 4 }
+    ];
     return result;
 
     // Annotation:
@@ -314,26 +320,35 @@ const scope = {
 
     function eatSnack() {
       hunger -= 25;
-      // Log A: hunger
+      // Log A: hunger 75 the first time eatSnack is called --> 55 the second time 
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
-        // Log B: hunger
+        // Log B: hunger 0 stays 0 the second time 
       }
 
-      // Log C: hunger
+      // Log C: hunger 75 also changes to 55 2nd time
     }
 
     eatSnack();
 
     hunger += 5;
-    // Log D: hunger
+    // Log D: hunger 80
 
     eatSnack();
-    // Log E: hunger
+    // Log E: hunger 55
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 75 }, 
+      { B: 0 },
+      { C: 75 },
+      { D: 80 },
+      { A: 55 },
+      { B: 0 },
+      { C: 55 },
+      { E: 55 }
+    ];
     return result;
 
     // Annotation:
@@ -343,22 +358,22 @@ const scope = {
   exerciseJ() {
     let sandwich = 'ketchup sandwich';
 
-    // Log A: sandwich
+    // Log A: sandwich 'ketchup sandwich'
 
     const addChipotle = () => {
-      // Log B: toppings
+      // Log B: toppings is undefined because the label is hoisted by "var", but its value is not. 
       var toppings = 'chipotle sauce';
 
       if (toppings === 'chipotle sauce') { 
         sandwich = 'not a mediocre sandwich';
       }
 
-      // Log C: sandwich
+      // Log C: sandwich 'not a mediocre sandwich'
     };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
-      // Log D: cheeseTopping
+      // Log D: cheeseTopping 'gouda' 
 
       const shesTheManReference = () => {
         amandaBynes = 'National Treasure';
@@ -371,10 +386,17 @@ const scope = {
     addCheese();
 
     addChipotle();
-    // Log E: sandwich
-    // Log F: amandaBynes
+    // Log E: sandwich 'not a mediocre sandwich'
+    // Log F: amandaBynes 'National Treasure'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { A : 'ketchup sandwich'},
+    { D : 'gouda'},
+    { B : 'undefined'},
+    { C : 'not a mediocre sandwich'},
+    { E : 'not a mediocre sandwich'},
+    { F : 'National Treasure'},
+    ];
     return result;
 
     // Annotation:
