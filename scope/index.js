@@ -29,11 +29,17 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 
+    [
+      { 'A': 'Ben' },
+      { 'B': 'CardiB' },
+      { 'C': 'CardiB' },
+      { 'D': 'Paul' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A will look outside the function to pull the global variable personB which is Ben. Since person B does include the letter B, the if statement will run. In reassigning personB, JS will look outside of the function to find a value for person, which it can find in the next block up, CardiB. Also, person C is reassigned to the new value of personB. So person C is now CardiB. Once beutifyPerson finishes execution, we hit the last piece of changePerson() that reassigns personC to the value of personA. Log C thus produces CardiB.
   },
 
   exerciseB() {
@@ -63,7 +69,11 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {},
+    {},
+    {}
+    ];
     return result;
 
     // Annotation:
