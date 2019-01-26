@@ -10,73 +10,47 @@ const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
 
 
-
-
-
 // SINGLE DATASETS
 // =================================================================
-
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangeKittyNames() {
-    // Return an array of just the names of kitties who are orange e.g.
-    // ['Tiger', 'Snickers']
-
-    const result = kitties.filter((kitty) => {
-        return kitty.color === 'orange';
-    }).map((kitty) => {
-        return kitty.name
-    });
-    return result;
-
-    // I chained the map and filter methods together to first sort by color 
-    // then return the cat's names.
-  },
-
-  sortByAge() {
-    // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-  }
+    // Return an array of just the names of kitties who are orange ['Tiger', 'Snickers']
+    orangeKittyNames() {
+        const result = kitties.filter((kitty) => {
+            return kitty.color === 'orange';
+        }).map((kitty) => {
+            return kitty.name;
+        });
+        return result;
+        // I first did a filter method to sort the kitties by color, 
+        // then I used a map to return just the cat's names.
+    },
+  
+    sortByAge() {
+        const result = kitties.sort((kitty1, kitty2) => {
+            return kitty2.age - kitty1.age;
+        });
+        return result;
+        // I used the sort filter over the kitties array and
+        // I returned the kitties in deccending age by specifying b - a
+    },
+    
+    growUp() {
+        const result = kitties.map((kitty) => {
+            kitty.age += 2
+        });
+        return kitties;
+        return result;
+        //map over kitties array increase age property by 2 years
+        //return an array of kitties grown up
+    }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
@@ -89,8 +63,17 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+   const result = clubs.reduce((acc, curr) => {
+    curr.members.forEach((member) => {
+    if(!acc[member]) {
+      acc[member] = [];
+    }
+    acc[member].push(curr.club)
+  })
+
+  return acc
+}, {});
+   return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -153,9 +136,12 @@ const modPrompts = {
 const cakePrompts = {
 
   stockPerCake() {
+
       const result = cakes.map((cake) => {
-      return {inStock: cake.inStock, flavor: cake.cakeFlavor}
-  });
+          return {flavor: cake.cakeFlavor, inStock: cake.inStock }
+      });
+
+
     // Return an array of objects that include just the flavor of the cake and how
     // much of that cake is in stock e.g.
     // [ 
@@ -191,7 +177,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake)=>{
+        return cake.inStock > 0;
+    })
     return result;
 
     // Annotation:
@@ -202,7 +190,10 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake)=>{
+        acc += cake.inStock;
+        return acc;
+    },0);
     return result;
 
     // Annotation:
