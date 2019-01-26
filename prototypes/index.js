@@ -150,15 +150,13 @@ const modPrompts = {
     // ]
 
     const result = mods.map(mod => {
-        mod["studentsPerInstructor"] = mod.students / mod.instructors;
-        delete mod.students;
-        delete mod.instructors;
-        return mod;
+        var newMod = {"mod": mod.mod, "studentsPerInstructor" : mod.students / mod.instructors}
+        return newMod;
     })
     return result;
 
     // Annotation:
-    // We want to modify the current array and return a new one, so we're using the map prototype method. The map method iterates through the mods array and for each mod uses bracket notation to create a new key of "studentsPerInstructor" and assigns it a value of students/instructors. It also deletes the keys students and instructors and their respective values. Finally, it returns the new array as the value of the const result. 
+    // We want to modify the current array and return a new one, so we're using the map prototype method. The map method iterates through the mods array and for each mod creates a new object literal with keys of "mod" and "studentsPerInstructor" and values of mod.mod (using dot notation to access the value of each "mod" key) and students/instructors (using dot notation to access the value of each student and each instructor). It then returns the new object to the array created by the map method. Finally, it returns the new array as the value of the const result. 
 
   
   }
@@ -191,12 +189,15 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+        const newCake = {"flavor" : cake.cakeFlavor, "inStock" : cake.inStock};
+        return newCake;
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    // Here we're using the map method to return a modified version of the cakes array. We're iterating over the cakes array and for each cake we're declaring a new variable of newCake and assigning it an object literal that has "flavor" and "inStock" as its keys. For the "flavor" key, we're using dot notation to access the cakeFlavor or each cake and assigning its value to the "flavor" key. For the "inStock" key, we're using dot notation to access the inStock value for each cake and assigning it to the "inStock" key.   
+},
 
   onlyInStock() {
     // Return an array of only the cakes that are in stock
@@ -219,18 +220,24 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+        return cake.inStock >= 1;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Here we're using the filter function because we want to return a particular representation of the cakes array. In this case, we want to iterate over the array and use dot notation to only return the cakes that have a key of inStock with a value that is at least 1. 
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        acc += currentCake.inStock;
+        return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -242,7 +249,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        currentCake.toppings.forEach(topping => {
+            if (acc.indexOf(topping) === -1) {
+                acc.push(topping);
+            };
+        });
+        return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -260,7 +274,16 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        currentCake.toppings.forEach(topping => {
+            if (!acc[topping]) {
+                acc[topping] = 1;
+            } else {
+                acc[topping] ++;  
+            };
+        });
+        return acc;
+    }, {});
     return result;
 
     // Annotation:
