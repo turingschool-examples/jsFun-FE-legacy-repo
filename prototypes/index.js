@@ -336,7 +336,14 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, currentClassroom) => {
+        if (currentClassroom.program === "FE") {
+            acc["feCapacity"] += currentClassroom.capacity;
+        } else {
+            acc["beCapacity"] += currentClassroom.capacity;
+        }
+        return acc;
+    }, {feCapacity : 0, beCapacity: 0});
     return result;
 
     // Annotation:
@@ -346,7 +353,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((obj1, obj2) => {
+        return obj1.capacity - obj2.capacity;
+    });
     return result;
 
     // Annotation:
