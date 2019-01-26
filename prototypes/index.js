@@ -97,11 +97,27 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, currentClub) => {
+        currentClub.members.forEach((member) => {
+            if (!acc[member]) {
+                acc[member] = [currentClub.club]
+            } else {
+                acc[member].push(currentClub.club);
+            };            
+        })
+        return acc
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We're using the reduce method here because we want to return a new object containing the names as keys with an array of clubs as each key's value. 
+
+    //The reduce method takes two arguments: a callback function and the new empty object that we're modifying with the reduce method. The callback function also takes two arguments: the accumulator (which we'll then return as the new object), and the "current value", in this case, each "club" object in the clubs array. 
+
+    //The callback function uses the forEach method to iterate over the "members" property in each currentClub object and execute a conditional: if the member does not exist as a key in the accumulater object (referenced using bracket notation: !acc[member]), the function creates a key of that member and gives it a value of the club value (referenced using dot notation: currentClub.club). If the member does exist as a key in the accumulator object, the function adds the club value to the array of values for that key in the accumulator object. 
+
+    //When the forEach method has iterated through each object in the clubs array it returns the accumulator to the result variable.  
   }
 };
 
@@ -133,11 +149,18 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+        mod["studentsPerInstructor"] = mod.students / mod.instructors;
+        delete mod.students;
+        delete mod.instructors;
+        return mod;
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want to modify the current array and return a new one, so we're using the map prototype method. The map method iterates through the mods array and for each mod uses bracket notation to create a new key of "studentsPerInstructor" and assigns it a value of students/instructors. It also deletes the keys students and instructors and their respective values. Finally, it returns the new array as the value of the const result. 
+
+  
   }
 };
 
