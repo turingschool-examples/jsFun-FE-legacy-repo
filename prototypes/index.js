@@ -1,5 +1,4 @@
-const { kitties } = require('./datasets/kitties');
-const { clubs } = require('./datasets/clubs');
+const { kitties } = require('./datasets/kitties'); const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
 const { cakes } = require('./datasets/cakes');
 const { classrooms } = require('./datasets/classrooms');
@@ -9,40 +8,39 @@ const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
 
-
 // SINGLE DATASETS
 // =================================================================
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-    // Return an array of just the names of kitties who are orange ['Tiger', 'Snickers']
-    orangeKittyNames() {
-        const result = kitties.filter((kitty) => {
-            return kitty.color === 'orange';
-        }).map((kitty) => {
-            return kitty.name;
-        });
-        return result;
-        // I first did a filter method to sort the kitties by color, 
-        // then I used a map to return just the cat's names.
+  // Return an array of just the names of kitties who are orange ['Tiger', 'Snickers']
+  orangeKittyNames() {
+    const result = kitties.filter((kitty) => {
+      return kitty.color === 'orange';
+    }).map((kitty) => {
+      return kitty.name;
+    });
+      return result;
+      // I first did a filter method to sort the kitties by color, 
+      // then I used a map to return just the cat's names.
     },
   
-    sortByAge() {
-        const result = kitties.sort((kitty1, kitty2) => {
-            return kitty2.age - kitty1.age;
-        });
-        return result;
-        // I used the sort filter over the kitties array and
-        // I returned the kitties in deccending age by specifying b - a
+  sortByAge() {
+    const result = kitties.sort((kitty1, kitty2) => {
+      return kitty2.age - kitty1.age;
+    });
+      return result;
+      // I used the sort filter over the kitties array and
+      // I returned the kitties in deccending age by specifying b - a
     },
     
-    growUp() {
-        const result = kitties.map((kitty) => {
-            kitty.age += 2
-        });
-        return kitties;
-        return result;
-        //map over kitties array increase age property by 2 years
-        //return an array of kitties grown up
+  growUp() {
+    const result = kitties.map((kitty) => {
+      kitty.age += 2;
+      return kitty;
+    });
+      return result;
+      //map over kitties array increase age property by 2 years
+      //return an array of kitties grown up
     }
 };
 
@@ -55,200 +53,124 @@ const kittyPrompts = {
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
-    // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g. 
-    // {
-    //   Louisa: ['Drama', 'Art'],
-    //   Pam: ['Drama', 'Art', 'Chess'],
-    //   ...etc
-    // }
-
-   const result = clubs.reduce((acc, curr) => {
-    curr.members.forEach((member) => {
-    if(!acc[member]) {
-      acc[member] = [];
-    }
-    acc[member].push(curr.club)
-  })
-
-  return acc
-}, {});
-   return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    const result = clubs.reduce((accObj, club) => {
+      club.members.forEach((member) => {
+        if(!accObj[member]) {
+          accObj[member] = []
+        }
+      accObj[member].push(club.club)
+      })
+      return accObj
+    }, {});
+    return result;
+  //reduce over clubs aray
+  //for each club push the member as a key on the accumulate object 
+  //add conditional logic to avoid repeats
+  //push the member's clubs into the accumulated object as values
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
+
   studentsPerMod() {
-    // Return an array of objects where the keys are mod (the number of the module)
-    // and studentsPerInstructor (how many students per instructor there are for that mod) e.g.
-    // [
-    //   { mod: 1, studentsPerInstructor: 9 },
-    //   { mod: 2, studentsPerInstructor: 11 },
-    //   { mod: 3, studentsPerInstructor: 10 },
-    //   { mod: 4, studentsPerInstructor: 8 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((mod) => {
+      return{ mod: mod.mod, 
+             studentsPerInstructor: mod.students/mod.instructors }
+    });
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    //map over the mods array 
+    //return an array of objects with the same inital key value pair
+    // and a second keyvalue pair studentsPerInstructor : students/instructors
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
 
   stockPerCake() {
-
-      const result = cakes.map((cake) => {
-          return {flavor: cake.cakeFlavor, inStock: cake.inStock }
+    const result = cakes.map((cake) => {
+      return { flavor: cake.cakeFlavor, inStock: cake.inStock }
       });
-
-
-    // Return an array of objects that include just the flavor of the cake and how
-    // much of that cake is in stock e.g.
-    // [ 
-    //    { flavor: 'dark chocolate', inStock: 15 },
-    //    { flavor: 'yellow', inStock: 14 },
-    //    ..etc
-    // ]
-
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    // mapped over the cake array and used an object literal
+    // to return an array of objects
   },
 
   onlyInStock() {
-    // Return an array of only the cakes that are in stock
-    // e.g.
-    // [
-    //   {
-    //   cakeFlavor: 'dark chocolate',
-    //   filling: null,
-    //   frosting: 'dark chocolate ganache',
-    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
-    //   inStock: 15
-    // },
-    // {
-    //   cakeFlavor: 'yellow',
-    //   filling: 'citrus glaze',
-    //   frosting: 'chantilly cream',
-    //   toppings: ['berries', 'edible flowers'],
-    //   inStock: 14
-    // },
-    // ..etc
-    // ]
-
-    const result = cakes.filter((cake)=>{
+   const result = cakes.filter((cake) => {
         return cake.inStock > 0;
     })
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    // filtered over the cake array to return 
+    // cakes with an inStock value of greater then 0
   },
   
   totalInventory() {
-    // Return the total amount of cakes in stock e.g.
-    // 59
-
-    const result = cakes.reduce((acc, cake)=>{
-        acc += cake.inStock;
-        return acc;
+  const result = cakes.reduce((acc, cake) => {
+    acc += cake.inStock;
+    return acc;
     },0);
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+  // Reduce over the cake array to gather the total number of cakes
   },
 
   allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if(acc.indexOf(topping) === -1) {
+          acc.push(topping)
+        }
+      })
+      return acc
+    },[]);
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    //I reduced over the cakes array
+    //for each cake i asked the accumulated array if it had that topping at index of -1
+    // if it didn't exist it got pushed in to my accumulator.
   },
 
   groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
-    // each topping, and the values are the amount of that topping I need to buy e.g.
-    // { 
-    //    'dutch process cocoa': 1,
-    //    'toasted sugar': 3,
-    //    'smoked sea salt': 3,
-    //    'berries': 2, 
-    //    ...etc
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    const result = cakes.reduce((listObj, cake) => {
+      cake.toppings.forEach((topping) => {
+        if(!listObj[topping]) {
+          listObj[topping] = 0;
+        }  
+        listObj[topping]++
+    })
+    return listObj
+  },{})  
+  return result
+  //reduce over the cakes array
+  //for each topping if the topping is not a key
+  //in my list object make it a key
+  //else increment the value in the object
+  //return the object
   }
+  
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
+
   feClassrooms() {
     // Create an array of just the front-end classrooms. e.g.
     // [
@@ -291,21 +213,11 @@ const classPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: breweries from ./datasets/breweries
 const breweryPrompts = {
@@ -349,81 +261,44 @@ const breweryPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DOUBLE DATASETS
 // =================================================================
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
+
   studentsForEachInstructor() {
-    // Return an array of instructors where each instructor is an object
-    // with a name and the count of students in their module. e.g. 
-    // [
-    //  { name: 'Pam', studentCount: 21 },
-    //  { name: 'Robbie', studentCount: 18 }
-    // ]
-
-
+    const result = instructors.map((instructor) => {
+      let matchingCohort = cohorts.find((cohort) => {
+        return instructor.module === cohort.module
+      })
+    })
+      return result
     // map over the instructorsArray
     // find the matching cohort for our current instructor
     // grab the student count value from the matching cohort
     // return an object with the instructor's name and studentCount
-
-    const result = instructors.map((instructor) => {
-        let matchingCohort = cohorts.find((cohort) => {
-            return instructor.module === cohort.module
-
-        })
-    })
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   studentsPerInstructor() {
-    // Return an object of how many students per teacher there are in each cohort e.g.
-    // { 
-    // cohort1806: 9,
-    // cohort1804: 10.5
-    // }
-
-   const result = cohorts.reduce((accuObj, cohort) => {
-        let matchModArray = instructors.filter((instructor) => {
+    const result = cohorts.reduce((accuObj, cohort) => {
+      let matchModArray = instructors.filter((instructor) => {
         return instructor.module === cohort.module;
-        x});
+      });
       accuObj['cohort' + cohort.cohort] =
       cohort.studentCount / matchModArray.length
       return accuObj;
     }, {});
-        return result;
-
-    // 
+      return result
+    // reduce over the cohorts array then filter over instructors
+    // return an array objects with the cohort numbers as keys 
+    // and the students per instructors as values
   },
 
   modulesPerTeacher() {
@@ -461,21 +336,11 @@ const turingPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
@@ -496,21 +361,11 @@ const bossPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
@@ -576,21 +431,11 @@ const astronomyPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: charaters, weapons from ./datasets/ultima
 const ultimaPrompts = {
@@ -618,8 +463,6 @@ const ultimaPrompts = {
     // Write your annotation here as a comment
   },
 };
-
-
 
 module.exports = {
   breweryPrompts,
