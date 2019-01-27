@@ -368,7 +368,7 @@ const scope = {
         sandwich = 'not a mediocre sandwich';
       }
 
-      // Log C: sandwich 'not a mediocre sandwich'
+      // Log C: sandwich 'not a mediocre sandwich' because sandwich is declared in the global scope. 
     };
 
     const addCheese = () => {
@@ -392,7 +392,7 @@ const scope = {
     const result = [
     { A : 'ketchup sandwich'},
     { D : 'gouda'},
-    { B : 'undefined'},
+    { B : undefined},
     { C : 'not a mediocre sandwich'},
     { E : 'not a mediocre sandwich'},
     { F : 'National Treasure'},
@@ -415,13 +415,16 @@ const scope = {
 
     foo();
 
-    // Log B: num
+    // Log B: num 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'A' : 7 },
+    { 'B' : 7 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Once foo is invoked, it reassigns the value of num during execution phase. Before it's invoked, the interpreter simply captures the text of the function in global memory and wouldn't log any values. 
   },
 
   exerciseL() {
@@ -437,19 +440,23 @@ const scope = {
           let grade = 97;
         }
 
-        // Log A: grade
+        // Log A: grade stays 95 because line 440 is declaring a new variable grade, not reassigning the value of the variable grade on line 95. 
       }
 
       addPoints();
 
-      // Log B: grade
+      // Log B: grade is 90 because the addPoints function did not reassign its value. 
     }
 
     losePoints();
 
-    // Log C: grade
+    // Log C: grade 90 because the losePoints function reassigns the value of grade on line 431. 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'A' : 95 },
+    { 'B' : 90 },
+    { 'C' : 90 }
+    ];
     return result;
 
     // Annotation:
@@ -460,22 +467,27 @@ const scope = {
     var num = 5;
 
     function first() {
-      // Log A: num
+      // Log A: num 5
       num = 6;
-      // Log B: num
+      // Log B: num 6
     }
 
     function second() {
-      // Log C: num
+      // Log C: num reference error because num hasn't been declared yet, and because it's declared with let, it won't be hoisted. 
       let num = 7;
     }
 
     first();
     second();
 
-    // Log D: num
+    // Log D: num 6 because 477 is declaring a new variable, not reassigning the value of num on line 467.
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'A' : 5 },
+    { 'B' : 6 },
+    { 'C' : 'reference error' },
+    { 'D' : 6 }
+    ];
     return result;
 
     // Annotation:
@@ -487,7 +499,7 @@ const scope = {
 
     function changeInstructor() {
 
-      // Log A: instructor
+      // Log A: instructor #2 still Pam
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -495,26 +507,33 @@ const scope = {
         let instructor = 'Brittany';
       }
 
-      // Log B: instructor
+      // Log B: #3 instructor still Pam
 
       function rename() {
         instructor = 'Louisa';
-        // Log C: instructor
+        // Log C: instructor #4 Louisa
       }
 
       rename();
 
-      // Log D: instructor
+      // Log D: instructor #5 Louisa
 
     }
 
-    // Log E: instructor
+    // Log E: instructor #1 Pam
 
     changeInstructor();
 
-    // Log F: instructor
+    // Log F: instructor #6 Louisa
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'E' : 'Pam'},
+    { 'A' : 'Pam'},
+    { 'B' : 'Pam'},
+    { 'C' : 'Louisa'},
+    { 'D' : 'Louisa'},
+    { 'F' : 'Louisa'}
+    ];
     return result;
 
     // Annotation:
@@ -525,15 +544,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe flipflop
+      console.log(shoe);
       var shoe = 'boot';
     }
-
-    // Log B: shoe
+    // Log B: shoe flipflop
     putOnShoe();
-    // Log C: shoe
+    // Log C: shoe flipflop
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'A' : 'reference error' },
+    { 'B' : 'flipflop' },
+    { 'C' : 'flipflop' }
+    ];
     return result;
 
     // Annotation:
@@ -544,7 +567,7 @@ const scope = {
     let lunch;
     function orderLunch() {
       if (lunch) {
-        // Log A: lunch
+        // Log A: lunch #1 undefined
         let lunch = 'sandwich';
       }
 
@@ -552,14 +575,18 @@ const scope = {
         lunch = 'soup';
       }
 
-      // Log B: lunch
+      // Log B: lunch soup
     }
 
     orderLunch();
 
-    // Log C: lunch
+    // Log C: lunch soup
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { 'A' : undefined },
+    { 'B' : 'soup' },
+    { 'C' : 'soup' }
+    ];
     return result;
 
     // Annotation:
