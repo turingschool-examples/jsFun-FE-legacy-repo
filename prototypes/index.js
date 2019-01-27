@@ -24,17 +24,23 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => {
+        return kitty.color === 'orange';
+    }).map(kitty => {
+        return kitty.name;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we're using the filter method on the kitties array to return each object in the array with a color property that is strictly equal to 'orange '. However, because we're only looking for the name of each orange kitty (not the entire object), we have to use the map function on the newly created array of orange kitties and use dot notating to access and return the name property of each kitty in the array. 
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kittyObj1, kittyObj2) => {
+        return kittyObj2.age - kittyObj1.age;
+    });
     return result;
 
     // Annotation:
@@ -55,9 +61,13 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+        kitty.age = kitty.age + 2;
+        return kitty;
+    });
     return result;
-  }
+    // Annotation: 
+  },
 };
 
 
@@ -87,11 +97,27 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, currentClub) => {
+        currentClub.members.forEach((member) => {
+            if (!acc[member]) {
+                acc[member] = [currentClub.club]
+            } else {
+                acc[member].push(currentClub.club);
+            };            
+        })
+        return acc
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We're using the reduce method here because we want to return a new object containing the names as keys with an array of clubs as each key's value. 
+
+    //The reduce method takes two arguments: a callback function and the new empty object that we're modifying with the reduce method. The callback function also takes two arguments: the accumulator (which we'll then return as the new object), and the "current value", in this case, each "club" object in the clubs array. 
+
+    //The callback function uses the forEach method to iterate over the "members" property in each currentClub object and execute a conditional: if the member does not exist as a key in the accumulater object (referenced using bracket notation: !acc[member]), the function creates a key of that member and gives it a value of the club value (referenced using dot notation: currentClub.club). If the member does exist as a key in the accumulator object, the function adds the club value to the array of values for that key in the accumulator object. 
+
+    //When the forEach method has iterated through each object in the clubs array it returns the accumulator to the result variable.  
   }
 };
 
@@ -123,11 +149,16 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+        var newMod = {"mod": mod.mod, "studentsPerInstructor" : mod.students / mod.instructors}
+        return newMod;
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want to modify the current array and return a new one, so we're using the map prototype method. The map method iterates through the mods array and for each mod creates a new object literal with keys of "mod" and "studentsPerInstructor" and values of mod.mod (using dot notation to access the value of each "mod" key) and students/instructors (using dot notation to access the value of each student and each instructor). It then returns the new object to the array created by the map method. Finally, it returns the new array as the value of the const result. 
+
+  
   }
 };
 
@@ -158,12 +189,15 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+        const newCake = {"flavor" : cake.cakeFlavor, "inStock" : cake.inStock};
+        return newCake;
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    // Here we're using the map method to return a modified version of the cakes array. We're iterating over the cakes array and for each cake we're declaring a new variable of newCake and assigning it an object literal that has "flavor" and "inStock" as its keys. For the "flavor" key, we're using dot notation to access the cakeFlavor or each cake and assigning its value to the "flavor" key. For the "inStock" key, we're using dot notation to access the inStock value for each cake and assigning it to the "inStock" key.   
+},
 
   onlyInStock() {
     // Return an array of only the cakes that are in stock
@@ -186,18 +220,24 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+        return cake.inStock >= 1;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Here we're using the filter function because we want to return a particular representation of the cakes array. In this case, we want to iterate over the array and use dot notation to only return the cakes that have a key of inStock with a value that is at least 1. 
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        acc += currentCake.inStock;
+        return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -209,7 +249,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        currentCake.toppings.forEach(topping => {
+            if (acc.indexOf(topping) === -1) {
+                acc.push(topping);
+            };
+        });
+        return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -227,7 +274,16 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currentCake) => {
+        currentCake.toppings.forEach(topping => {
+            if (!acc[topping]) {
+                acc[topping] = 1;
+            } else {
+                acc[topping] ++;  
+            };
+        });
+        return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -262,7 +318,10 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => {
+        return classroom.program === "FE";
+
+    });
     return result;
 
     // Annotation:
@@ -277,7 +336,14 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, currentClassroom) => {
+        if (currentClassroom.program === "FE") {
+            acc["feCapacity"] += currentClassroom.capacity;
+        } else {
+            acc["beCapacity"] += currentClassroom.capacity;
+        }
+        return acc;
+    }, {feCapacity : 0, beCapacity: 0});
     return result;
 
     // Annotation:
@@ -287,7 +353,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((obj1, obj2) => {
+        return obj1.capacity - obj2.capacity;
+    });
     return result;
 
     // Annotation:
@@ -317,7 +385,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, currentBrewery) => {
+        acc += currentBrewery.beers.length;
+        return acc;
+    }, 0);
     return result;
 
     // Annotation:
@@ -333,7 +404,9 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+        return {"name" : brewery.name, "beerCount" : brewery.beers.length};
+    });
     return result;
 
     // Annotation:
@@ -345,7 +418,14 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, currentBrewery) => {
+        currentBrewery.beers.forEach(beer => {
+            acc.push(beer);
+        });
+        return acc;
+    }, []).sort((obj1, obj2) => {
+        return obj2.abv - obj1.abv;
+    })[0];
     return result;
 
     // Annotation:
