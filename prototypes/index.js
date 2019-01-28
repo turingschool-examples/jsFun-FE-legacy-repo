@@ -24,21 +24,22 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter((cat) => {return cat.color === "orange"}).map((cat) => {return cat.name});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // i want to filter to get only the cats who are orange\
+    // after filtering ill want to map to change the current value to the name only
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort(function(ageA, ageB){return ageB.age - ageA.age;});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // sort to change the array by its age
   },
 
   growUp() {
@@ -55,8 +56,11 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(function(cat){return {name: cat.name, age: cat.age + 2, color: cat.color }});
     return result;
+
+    // Annotation:
+    //  ill want to map because the array is the same length but one thing is changing in ti which is just adding two to the age.
   }
 };
 
@@ -87,11 +91,22 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, club)=> {
+      club.members.forEach((member) => {
+        if(!acc[member]){
+          acc[member] = [];
+        }
+        acc[member].push(club.club)
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // first ill want to reduce because it wants me to change a array to an object
+    //then i want to get into the array inside the object to create the new keys 
+    // ill use a foreach to go thru the array with a if statement to make sure i dont create duplicates
+    // and after the if statement ill want to push the club to the member
   }
 };
 
@@ -123,11 +138,13 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((mod) => {
+      return { mod: mod.mod, studentsPerInstructor: mod.students / mod.instructors }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this one is map because i want the same length array and im just doing math inside it 
   }
 };
 
@@ -158,11 +175,14 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((cake) => {
+      return { flavor: cake.cakeFlavor, inStock: cake.inStock}
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want to map because the array is the same length 
+    // ill just want the object inside this array have the same as the other but with less info
   },
 
   onlyInStock() {
@@ -186,22 +206,26 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => {
+      return cake.inStock > 0;
+    })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // filter to only return cakes that are still in stock
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      return acc += cake.inStock;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce because i want a different data type then want i was orignally given 
   },
 
   allToppings() {
@@ -209,11 +233,20 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if(!acc.includes(topping)){
+          acc.push(topping);
+        }
+      });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this is reduce because i have to return array larger then the first array 
+    // i need to go thru all the toppings array
+    // when going thru the topping arrays ill have to make sure i have no duplicates
   },
 
   groceryList() {
@@ -227,11 +260,22 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if(!acc[topping]){
+          acc[topping] = 0;
+        }
+        acc[topping]++;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this is reduce because i want a object from an array
+    // ill have to go thru the current element array so ill have to foreach within
+    // create a new key value pair if it doesnt exist in the object
+    // and add one everytime the topping is listed
   }
 };
 
@@ -262,11 +306,13 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter((fe) => {
+      return fe.program === 'FE';
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // filter to only return the fe
   },
 
   totalCapacities() {
@@ -277,21 +323,31 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, room) => {
+      if(!acc[`${room.program.toLowerCase()}Capacity`]){
+        acc[`${room.program.toLowerCase()}Capacity`] = 0;
+      }
+      acc[`${room.program.toLowerCase()}Capacity`] += room.capacity;
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce because i want a object from an array
+    // ill have to check if the key value pair doesnt exist so i can create it
+    //after creating it ill want to add up the students
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // its in the descriptions ill just want to sort
   }
 };
 
@@ -317,11 +373,14 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, el) => {
+      acc += el.beers.length;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce because i want a different datatype other then an array
   },
 
   getBreweryBeerCount() {
@@ -333,11 +392,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map((beer) => {
+      return { name: beer.name, beerCount: beer.beers.length };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map because its the same length its just the object inside the array is modified
   },
 
   findHighestAbvBeer() {
@@ -345,11 +406,22 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery, i, arr) => {
+      acc = arr.reduce((acc, beer) => {
+        acc = acc.concat(beer.beers);
+        return acc;
+      }, []).sort((numa, numb) => {
+        return numb.abv - numa.abv;
+      }).shift();
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // it wants a object from an array so ill have to reduce
+    // i have to compare all the beer so ill want to concat them
+    // after concating them ill want to sort them
+    // after sorting them ill just want to shift the highest abv out of the array
   }
 };
 
@@ -393,12 +465,20 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+      return { name: instructor.name, studentCount: cohorts.reduce((acc, count) => {
+        instructor.module === count.module ? acc += count.studentCount : acc;
+        return acc;
+      }, 0) };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // due to the array being the same length ill want to map 
+    // with the map ill want to do math between two dataset so ill reduce the second dataset
+    // the reduce will return a number due to the value for the key being a number
   },
+
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
@@ -407,11 +487,17 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, curr) => {
+      acc[`cohort${curr.cohort}`] = curr.studentCount / instructors.filter((module) => {
+        return module.module === curr.module;
+      }).length;
+      return acc; 
+    }, {} );
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce due to the end result being an object
+    // i filter the instructor to get the class they belong in so i can get the length of the array to use it to divide it by the students 
   },
 
   modulesPerTeacher() {
@@ -424,11 +510,26 @@ const turingPrompts = {
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      acc[instructor.name] = [];
+      instructor.teaches.forEach((teach) => {
+        cohorts.forEach((cohort) => {
+          if(cohort.curriculum.includes(teach) && !acc[instructor.name].includes(cohort.module)) {
+            acc[instructor.name].push(cohort.module);
+          }
+        });
+      })
+      return acc;
+    }, {});
+
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce because it wants an object
+    // create a new key value pair with the instructors name
+    // ill want to go inside the instructors array to compare it with the array of cohorts.
+    // if the instructors skill match any of the cohorts class ill push the mod into the instructors array.
   },
 
   curriculumPerTeacher() {
@@ -441,11 +542,22 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      instructor.teaches.forEach((teach) => {
+        if(!acc[teach]) {
+          acc[teach] = [];
+        }
+        acc[teach].push(instructor.name);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this is the same as how clubs work 
+    // reduce because i want an object
+    // go inside the instructors array to pull the skills to make them to keys
+    // then ill push the instructors names to the array of the skills 
   }
 };
 
@@ -476,11 +588,25 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+
+    const result =  Object.keys(bosses).reduce((acc, boss) => {
+      acc.push({bossName: bosses[boss].name , sidekickLoyalty: sidekicks.reduce((acc, side) => {
+        if(side.boss.toLowerCase() === boss) {
+          acc += side.loyaltyToBoss;
+        }
+        return acc;
+      }, 0)});
+      return acc;
+    }, []);
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want the boss object to be an array so ill use the key method to make the names to a array
+    //ill reduce to create the end result
+    // and want to push into the array 
+    // and for the numbers ill want to reduce the sidekicks to add up all the loyalt to the boss
   }
 };
 
@@ -518,11 +644,21 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.filter((star) => {
+      return star.constellation
+       === Object.keys(constellations).reduce((acc, constellation) => {
+        if( constellation === star.constellation.toLowerCase()){
+          acc = star.constellation;
+        }
+        return acc;
+      }, ' ');
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want to filter because im return a smaller length array
+    // withen the filter ill want to reduce the constellations so i can compare it to the star to only return stars in constellations
   },
 
   starsByColor() {
@@ -536,11 +672,18 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((acc, star) => {
+      if(!acc[star.color]) {
+        acc[star.color] = [];
+      }
+      acc[star.color].push(star);
+      return acc
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // this is the same as clubs
   },
 
   constellationsStarsExistIn() {
@@ -587,11 +730,21 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.reduce((acc, character) => {
+      Object.keys(weapons).forEach((stats) => {
+        if(character.weapons.includes(stats)){
+          acc += weapons[stats].damage;
+        }
+      });
+      return acc; 
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want to reduce because the end result is a number
+    // withen the reduce ill have to make weapons to an array 
+    // then ill want to compare the weapons to the characters
+    // if match add the weapons damage to the acc
   },
 
   charactersByTotal() {
@@ -599,11 +752,23 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = characters.map((character) => {
+      return Object.keys(weapons).reduce((acc, char) => {
+        if(!acc[character.name]){
+          acc[character.name] = { damage: 0, range: 0}
+        }
+        if(character.weapons.includes(char)){
+          acc[character.name].damage += weapons[char].damage;
+          acc[character.name].range +=  weapons[char].range;
+        }
+        return acc;
+      }, {});
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map because the array is the same length
+    // ill going to reduce becuase i want the current element to be an object and im using an array to get the info
   },
 };
 
@@ -636,11 +801,21 @@ const dinosaurPrompts = {
     //   'Jurassic World: Fallen Kingdom': 18
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = movies.reduce((acc, movie) => {
+      acc[movie.title] = 0;
+      Object.keys(dinosaurs).forEach((dino) => {
+        if( movie.dinos.includes(dino) && dinosaurs[dino].isAwesome ) {
+          acc[movie.title]++;
+        }
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want to reduce because im returning an object 
+    // i need dino to be an array so i use the keys method for object
+    // ill go through dinosuar to make sure is the movie includes it and the dino is also awesome to add it the the value
   },
 
   averageAgePerMovie() {
@@ -669,11 +844,25 @@ const dinosaurPrompts = {
       }
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = movies.reduce((acc, movie) => {
+      if(!acc[movie.director]){
+        acc[movie.director] = {};
+      }
+      acc[movie.director][movie.title] = 0;
+      movie.cast.forEach((human) => {
+        if(Object.keys(humans).includes(human)) {
+          acc[movie.director][movie.title] += movie.yearReleased - humans[human].yearBorn;
+        }
+      });
+      acc[movie.director][movie.title] = Math.floor(acc[movie.director][movie.title] / movie.cast.length);
+      return acc; 
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce because i want an object of the dierectors
+    // then i want to go thru the array within the movies 
+    // then ill have to compare the object humans name to the array in the movies
   },
 
   uncastActors() {
@@ -688,11 +877,31 @@ const dinosaurPrompts = {
       { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(humans).reduce((acc, human) => {
+      let wholeCast = movies.reduce((acc, movie) => {
+        acc = acc.concat(movie.cast)
+        return acc;
+      }, [])
+      if(!wholeCast.includes(human)) {
+        acc.push({name: human, nationality: humans[human].nationality, imdbStarMeterRating: humans[human].imdbStarMeterRating})
+      }
+      return acc; 
+    }, []).sort((numa, numb) => {
+      if (numa.nationality < numb.nationality){
+        return -1;
+      }
+      if (numa.nationality  > numb.nationality){
+        return 1;
+      }else{
+        return 0;
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // ill want to make the cast to a array and reduce it because im making a completely different array
+    // i need to go through the cast array to compare it to the human array to only return me the difference
+    // and at the end ill want to sort it by nationality
   },
 
   actorsAgesInMovies() {
@@ -711,12 +920,61 @@ const dinosaurPrompts = {
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(humans).reduce((acc, human) => {
+      if(humans[human].imdbStarMeterRating > 1){
+        acc.push( { name: human, ages: movies.reduce((acc, movie) => {
+          if(movie.cast.includes(human)){
+            acc.push(movie.yearReleased - humans[human].yearBorn);
+          }
+          return acc;
+        }, [])});
+      }
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
+};
+
+const cooking = {
+  groceryList() {
+    /*
+    Return an object of ingredients missing from the fridge array for each recipe. the ingredient as the key and the amount missing as the value.
+    */
+  
+
+    const result = "";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+  costPerMeal() {
+    /*
+    Return an objects with the food name as the key and the cost to make the recipe by the ingredients.
+    */
+  
+
+    const result = "";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+  costOfMissingItems() {
+    /*
+    Return an object with the key being the recipe and the value an object with keys value pair of an array of missing ingredients and the price to buy the missing ingredients
+    */
+  
+
+    const result = "";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
 };
 
 module.exports = {
