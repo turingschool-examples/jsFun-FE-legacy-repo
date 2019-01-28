@@ -91,7 +91,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Defaults to the global as per 1 because the function is declared in the global space using ES6 
+    // Defaults to the global as per rule 1 because the function is declared in the global space using ES6 
   },
 
   exerciseF() {
@@ -114,7 +114,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // New instantiation of the hero object
   },
 
   exerciseG() {
@@ -142,7 +142,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // The console log is being run by the anonymous function. Because the function is nested inside of a method for the instance, it hits the Global Window Object
   },
 
   exerciseH() {
@@ -162,7 +162,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Because the arrowfunction is declared with an ES6 arrow function, binding the context of this to the object 'obj'
   },
 
   exerciseI() {  
@@ -185,7 +185,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+    // The thisArg optional argument for the map() array prototype defines the context of 'this'.
   },
 
   exerciseJ() {
@@ -199,7 +199,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment.
+    // 'el' is the context in this, because onClick is firing/binding the context.
   },
 
   exerciseK() {
@@ -213,7 +213,7 @@ const context = {
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment.
+    // The ES6 arrow function binds the context before the onClick event happens. 
   }
 
 };

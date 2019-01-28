@@ -103,10 +103,10 @@ const clubPrompts = {
         peopleObj[member] = [];
       };
     
-       peopleObj[member].push(clubObj.club);
+      peopleObj[member].push(clubObj.club);
     })
-       return peopleObj;
-       
+      return peopleObj;
+      
     }, {});;
     return result;
 
@@ -218,7 +218,10 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) =>{
+      return cake.inStock;
+
+    }) ;
     return result;
 
     // Annotation:
@@ -229,8 +232,12 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((sum, cake) => {
+      sum += cake.inStock;
+      return sum
+    }, 0)
+    return result
+
 
     // Annotation:
     // Write your annotation here as a comment
