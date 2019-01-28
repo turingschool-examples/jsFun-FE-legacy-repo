@@ -22,23 +22,35 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 const kittyPrompts = {
   orangeKittyNames() {
     // Return an array of just the names of kitties who are orange e.g.
+
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(function(ele) {
+      return ele.color === 'orange';
+    }).map(function(ele) {
+      return ele.name;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // so within this problem we needed to filter through this array of objects and 
+    // once we got array back of the objects that hit those conditions we will link
+    // a method using map to return an array of the kittens name
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => {
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // so within this this problem we had sort through our array of objects in order to return an array  
+    // of objects sorted by their age. So iv'e created a function that will be our argument for our our sort
+    // method and this function is taking in our objects and comparing thier ages in the conditionals and 
+    // assigning them their numerical values and the end we return those values back
   },
 
   growUp() {
@@ -55,7 +67,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age = kitty.age + 2;
+      return kitty;
+    });
     return result;
   }
 };
@@ -87,7 +102,27 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // Go through the array of objects
+    // Grab the array of members
+    // Assign each name to a new key of a brand new object 
+    // assign the values to an empty array
+    // check if the names are already a key
+    // skip if already a key
+    // once we have the keys, we will have to go through each object 
+    // push every club into the value if it contains their name
+    // return the brand new object
+
+    
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach((member) => {
+        if (!acc[member]) {
+          acc[member] = [club.club];
+        } else {
+          acc[member].push(club.club);
+        }
+      });
+      return acc;
+    },{});
     return result;
 
     // Annotation:
@@ -123,11 +158,21 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(objects => {
+      let division = objects.students / objects.instructors;
+      delete objects.students;
+      delete objects.instructors;
+      objects.studentsPerInstructor = division;
+      return objects;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Wso intially i understood that i was going to work with array of objects and
+    // that i was going to map over the array to return the same amount of objects
+    // after that i had to divide the students with instructors using dot notation
+    // and will have to delete the students and instructor keys and replace it with
+    // a new key
   }
 };
 
@@ -158,11 +203,22 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(function(ele) {
+      let flavors = ele.cakeFlavor;
+      let stock = ele.inStock;
+      let newObj = {
+        flavor: flavors,
+        inStock: stock
+      };
+      return newObj;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Within this problem i was prompted to return an array of objects equevilent
+    // to the amount of cakes theyre, so i decided to use a map to irritate
+    // though the array and by using dot notation im returnin the flavor and stock
+    // number and asssigning it the key value pairs
   },
 
   onlyInStock() {
@@ -186,22 +242,31 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(ele => {
+      return !ele.inStock <= 0;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // So right away i knew i would have to return one array of all of the objects
+    // that will hit my citera so i used a filter  and my filter returns everything
+    // that isnt equevilent to 0
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, val) => {
+      return acc + val.inStock;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I know i was going to use a prototype that was going to return a single value
+    // and this single value was going to have to keep track of its initial value
+    // by using reduce we are going through the array and using our acc which initally starts
+    // at 0 and add each cake instock number using dot notation
   },
 
   allToppings() {
@@ -209,7 +274,13 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if (acc.indexOf(topping) === -1) {
+          acc.push(topping);
+        }
+      });
+    }, []);
     return result;
 
     // Annotation:
@@ -227,7 +298,14 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      let arr = [];
+      cake.toppings.forEach(ele => {
+        if (!arr.includes(ele)) {
+          arr.push(ele);
+        }
+      });
+    }, {});
     return result;
 
     // Annotation:
@@ -262,11 +340,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(ele => ele.program === 'FE');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Initally i knew i would have to return all the objects that will hit the citeria
+    // of the key value pair only being a string of fe so i used a filter
   },
 
   totalCapacities() {
@@ -287,11 +366,15 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a , b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I knew i was going to to have to use a sort in order to return an 
+    // array of objects with the same objects, and by using dot notation
+    // i was able to compare by numbers
   }
 };
 
@@ -317,11 +400,15 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brew) => {
+      return acc + brew.beers.length;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I knew i had to return a single value by the ammount of beers theyre
+    // so i used a reduce in order to add all of the values together
+    // and by using dot notation i was able to grab that keys length
   },
 
   getBreweryBeerCount() {
@@ -333,11 +420,20 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(ele => {
+      let newObj = {
+        name: ele.name,
+        beerCount: ele.beers.length
+      };
+      return newObj;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I knew right away i was going to have to return an array of the same 
+    // amount objects theyre so used a map to go through the array. I created
+    // a new object that will have key value pairs of the value of the name
+    // and beers.length by using dot notation
   },
 
   findHighestAbvBeer() {
@@ -345,11 +441,16 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, company) => {
+      let nested = company.beers;
+      return nested.find(ele => ele.abv > 10);
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // so in order to return an object from an array we had to use reduce
+    // then we had to use find to go through the nested array and find the highest abv
+    // lastlty we created a last argument to return that object
   }
 };
 
@@ -393,7 +494,13 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(ele => {
+      let matchingCohort = cohorts.find((cohort) => {
+        return cohort.module === ele.module;
+      });
+      let numberOfStudents = matchingCohort.studentCount;
+      return { name: ele.name, studentCount: numberOfStudents };
+    });
     return result;
 
     // Annotation:
@@ -407,7 +514,13 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      let arr = instructors.filter(instructor => {
+        return cohort.module = instructor.module;
+      });
+      acc['cohort' + cohort.cohort] = cohort.studentCount / arr.length;
+      return arr;
+    }, {});
     return result;
 
     // Annotation:
@@ -719,6 +832,54 @@ const dinosaurPrompts = {
   }
 };
 
+const avengerPrompts = {
+  redColorScheme() {
+    // Return an array of just the names of avngers who have the color
+    // of red in their colorScheme e.g.
+
+    // ['Ironman', 'Captian America']
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  SortByApearence() {
+    // Sort through the avangers by firstAppearance
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  filterByPowers() {
+    // Return the objects that have superHuman powers set to true
+
+    // [{
+    //   name: 'Captian America',
+    //   firstAppearance: 1941,
+    //   colorScheme: ['red', 'blue', 'white'],
+    //   superHuman: true
+    // },
+    // {
+    //   name: 'Hulk',
+    //   firstAppearance: 1962,
+    //   colorScheme: ['green', 'purple'],
+    //   superHuman: true
+    // }]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+   
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
 module.exports = {
   breweryPrompts,
   turingPrompts,
@@ -730,5 +891,6 @@ module.exports = {
   cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
-  dinosaurPrompts
+  dinosaurPrompts,
+  avengerPrompts
 };
