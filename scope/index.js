@@ -6,7 +6,7 @@ const scope = {
 
     function changePerson() {
       if (personA === 'Paul') {
-        person = 'CardiB';
+        person = 'CardiB'; //automatically declared with var, so it's hoisted
         beautifyPerson();
       }
 
@@ -76,7 +76,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Log A has a value of 75 because the number variable is functionally scoped inside numberFunction. Log B is 64 because the variable 'number' at line 50 has been reassigned to 64. Log C is also 64 because the variable 'number' at line 50 has been reassigned to 64. Log D is 30 because the variable 'number' is globally scoped. 
+    // Log A has a value of 75 because the number variable is functionally scoped inside numberFunction. Log B is 64 because the 'number' at line 50 has been reassigned to 64. Log C is also 64 because the variable 'number' at line 50 has been reassigned to 64. Log D is 30 because the variable 'number' is globally scoped. 
   },
 
   exerciseC() {
@@ -545,7 +545,6 @@ const scope = {
 
     function putOnShoe() {
       // Log A: shoe flipflop
-      console.log(shoe);
       var shoe = 'boot';
     }
     // Log B: shoe flipflop
@@ -553,10 +552,9 @@ const scope = {
     // Log C: shoe flipflop
 
     const result = [
-    { 'A' : 'reference error' },
     { 'B' : 'flipflop' },
-    { 'C' : 'flipflop' }
-    ];
+    { 'A' : undefined },
+    { 'C' : 'flipflop' }];
     return result;
 
     // Annotation:
@@ -583,14 +581,14 @@ const scope = {
     // Log C: lunch soup
 
     const result = [
-    { 'A' : undefined },
+    // { 'A' : undefined },
     { 'B' : 'soup' },
     { 'C' : 'soup' }
     ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I'm not sure why the answer array is only looking for the logs for B and C, not for A, which would be undefined. 
   },
 
   exerciseQ(){
@@ -598,13 +596,13 @@ const scope = {
     let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-      // Log A: kid
+      // Log A: kid Pandora
       wildKids.push(kid);
-      // Log B: wildKids
+      // Log B: wildKids ['Antigone', 'Pandora']
   
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
-        // Log C: myKid
+        // Log C: myKid 'Mandy'
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
@@ -612,12 +610,12 @@ const scope = {
 
       let myAmazingKid = () => {
         let myKid = wildKids.shift();
-        // Log D: myKid
+        // Log D: myKid 'Antigone'
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
-      // Log E: myKid;
+      // Log E: myKid; Pandora
       return `All these kids are wild, especially, ${myKid}!`;
     };
 
@@ -632,15 +630,15 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName Rody
 
     const parentFunc = () => {
       myName += 'Toy';
-      // Log B: myName
+      // Log B: myName 'RodyToy'
 
       let innerFunc = () => {
         let myName = 'Tesla'; 
-        // Log C: myName
+        // Log C: myName Tesla
       };
 
       innerFunc();
@@ -648,7 +646,7 @@ const scope = {
     };
 
     parentFunc();
-    // Log D: myName
+    // Log D: myName RodyToyDaniels
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
