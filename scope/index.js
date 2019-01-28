@@ -11,29 +11,42 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB // Ben 
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC // Cardi B
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB // Cardi B
     }
 
     changePerson();
 
-    // Log D: personC
+    // Log D: personC // Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:'Ben'},
+      {B:'CardiB'},
+      {C:'CardiB'},
+      {D:'Paul'}
+    ];
     return result;
 
+     //WHEN WE SAY PERSON = CARDIB  ... IS THAT MAKING A NEW VAR? I THOUGHT THAT WAS ORGINALLY JSUT TO REASSIGN A VARIABLE THAT HAS ALREADY BEEN DECLARED?? 
+
+     //YES THAT IS A NEW GLOABL VARIABLE 
+
+
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A, we are asked to log personB. If we look up the scope chain, we see the global variable where personB was assigned to Ben. 
+    //Log B, we are asked to log personC. We see a conditonal that reads 'if personB includes the letter "B"'... Since person B is Ben, that conditional evaulates to true. We then assign personB to person. Then we assign personC to the value of personB. That leaves us with personC having the value of Cardi B 
+    //Log C, we are asked to log personB. On line 18 we then assign the value of personC to personB, which is Cardi
+    //Log D, we are asked to log person B. We are now in the global scope and look up to our global variables and see that personB is Paul. 
   },
 
   exerciseB() {
@@ -46,28 +59,33 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number //75 
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number/64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number//64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: number//30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:75},
+      {B:64},
+      {C:64},
+      {D:30}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We enter the exection context when we reach line 75. That jumps us back to the function numberFunction. LogA is asking for the value of the number. Because we dont have access to the if block, we look up and find that number is 75. We then jump to line 70 where we are invoking newNumber. That brings us to line 64 where we reassign number to 64.  We then log 64. Then we are asked to LogC. Since we reassigned number without a variable declaration, it is still 64. Finally we are asked to logD. This is completely out of the function scope so we look up to our global variable where number is 30.
   },
 
   exerciseC() {
@@ -80,28 +98,33 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting // Yo 
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting// Hey
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting// Hey 
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting// Hello 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:'Yo'},
+      {B:'Hey'},
+      {C:'Hey'},
+      {D:'Hello'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We invoke greeting function and are ask to logA, in this scope we dont have acess to whats in the if block so are greeting is Yo. Then we invoke new phrase and reassing the greeting Yo to hey. Below newPhrase we are asked to logC. Because we reassigned the functionall scoped var greeting, it is still 'hey'. Finally we are outside of the greetingFunction and asked to logD which is 'Hello.'
   },
 
   exerciseD() {
@@ -114,28 +137,33 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting// hi 
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting// welcome
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting// welcome 
     };
 
-    greetingGenerator();
+    greetingGenerator();// howdy 
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:'hi'},
+      {B:'welcome'},
+      {C:'welcome'},
+      {D:'howdy'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Just like the one above.
   },
 
   exerciseE() {
@@ -151,58 +179,70 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name // Nathaniel 
       }
 
-      // Log B: name
+      // Log B: name // Nathaniel ..
     }
 
-    // Log C: name
+    // Log C: name // BRittany
 
     sayName();
 
-    // Log D: name
+    // Log D: name // Brittany 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    // The difference in this how they are ordered. We are asked to console logC before we jump into the functionSayName. For logA and logB, we have reassigned the value of pam to be nathaniel because we did not have a declaration for the name variable in our first if statement.
+
+    },
 
   exerciseF() {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog // spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog // spot 
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog biscuit 
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog biscuit 
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog biscuit 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:'Spot'},
+      {B:'Spot'},
+      {C:'Biscuit'},
+      {D:'Biscuit'},
+      {E:'Biscuit'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseG() {
@@ -214,21 +254,26 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit/ error 
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit, mango 
       }
 
-      // Log C: fruit
+      // Log C: fruit, mango 
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit, apple 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -241,7 +286,7 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num
+      // Log A: num, 4
 
       if (num < 5) {
         const num = 9;
@@ -250,25 +295,30 @@ const scope = {
 
         const newNum = num;
 
-        // Log B: newNum
+        // Log B: newNum 9 
       }
 
       newNum = num;
 
-      // Log C: newNum
+      // Log C: newNum 4 
     };
 
     const fn2 = function(num){
-      // Log D: num
+      // Log D: num 9 
 
       num = num + 1;
 
-      // Log E: num
+      // Log E: num 10
     };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -299,7 +349,12 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -340,7 +395,12 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -361,7 +421,12 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -381,19 +446,24 @@ const scope = {
           let grade = 97;
         }
 
-        // Log A: grade
+        // Log A: grade 95 
       }
 
       addPoints();
 
-      // Log B: grade
+      // Log B: grade 90 
     }
 
     losePoints();
 
-    // Log C: grade
+    // Log C: grade 90
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -419,7 +489,12 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -458,7 +533,12 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {},
+      {},
+      {},
+      {}
+    ];
     return result;
 
     // Annotation:
@@ -469,19 +549,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe   // REFERENCE ERROR BECAUSE IT IS BEFORE THE SHOE/ UNDEFINED
       var shoe = 'boot';
     }
 
-    // Log B: shoe
+    // Log B: shoe // FLIPFLOP
     putOnShoe();
-    // Log C: shoe
+    // Log C: shoe // FLIPFLOP
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // BECAUSE IT FOUND SHOE INSIDE THE FUNCTION putOnShoe, 
   },
 
   exerciseP() {
@@ -549,15 +629,15 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName - rody 
 
     const parentFunc = () => {
       myName += 'Toy';
-      // Log B: myName
+      // Log B: myName -- roddyToy
 
       let innerFunc = () => {
         let myName = 'Tesla'; 
-        // Log C: myName
+        // Log C: myName -- 
       };
 
       innerFunc();
@@ -565,7 +645,7 @@ const scope = {
     };
 
     parentFunc();
-    // Log D: myName
+    // Log D: myName- r
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;

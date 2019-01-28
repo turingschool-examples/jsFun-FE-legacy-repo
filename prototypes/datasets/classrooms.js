@@ -12,3 +12,13 @@ const classrooms = [
 module.exports = {
   classrooms
 };
+
+ classrooms.reduce((newObj, currentVal) => {
+  if (currentVal.program === 'FE'){
+    newObj.feCapactiy += currentVal.capacity
+  } else {
+    newObj.beCapactiy += currentVal.capacity
+  }
+  return newObj
+  
+ },{})

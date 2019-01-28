@@ -13,8 +13,6 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
-
-
 // SINGLE DATASETS
 // =================================================================
 
@@ -24,21 +22,33 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = kitties.filter(cat => cat.color ==='orange').map(cat => cat.name)
+
+
+      let orange =  kitties.filter((cat)=> {
+            return cat.color ==='orange'
+        })
+
+    let names =     orange.map((cat)=>{
+            return cat.name
+        })
+
+      return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want only the orange cats so we filter through the array and grab the cat objects that have a color property of orange. Then we map over that array and grab just the names.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a,b) => {
+    return b.age - a.age 
+      })
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want to sort the kitties by age. We pass in the paramters of a and b, and since we want the cats age from biggest to smallest, we subtract b - a which will give us the greatest to least.
   },
 
   growUp() {
@@ -55,13 +65,16 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-  }
-};
+    const result = kitties.map((cat) => {
+    cat.age += 2
+      return cat
+    })
+      return result;
+      }
+    };
 
-
-
+    //Annotation:
+    // We map over the kitties array and we grab the propery of age and add 2 to it.
 
 
 
@@ -87,8 +100,16 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = clubs.reduce((obj, currentClub) => {
+      currentClub.members.forEach((member) => {
+       if (!obj[member]){
+          obj[member] = []
+       }
+          obj[member].push(currentClub.club)
+       })
+        return obj
+         },{});
+        return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -123,8 +144,10 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = mods.map((currentMod) => {
+                     return {mod:currentMod.mod, studentsPerInstructor:currentMod.students/currentMod.instructors }
+                     });
+                    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -158,7 +181,12 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 
+    cakes.map((currentCake) => {
+        return {flavor:currentCake.cakeFlavor,
+                inStock: currentCake.inStock}
+            });
+
     return result;
 
     // Annotation:
@@ -186,7 +214,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter((cake) => {
+    return cake.inStock > 0 
+    })
     return result;
 
     // Annotation:
@@ -197,11 +227,15 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((sum, currentCake) => {
+        sum += currentCake.inStock
+            return sum
+            },0)
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I think the thing you are getting confused with is the naming of acc/sum etc.... 
   },
 
   allToppings() {
@@ -209,7 +243,13 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cakes.reduce((acc, currentCake) => {
+      currentCake.toppings.forEach((topping) => {
+        if(!acc.includes(topping))
+        acc.push(topping)
+      })
+      return acc  
+    },[]);
     return result;
 
     // Annotation:
@@ -227,7 +267,17 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((newObj, currentCake) => {
+  currentCake.toppings.forEach((topping)=> {
+    if(!newObj[topping]){
+      newObj[topping] = 1 
+      } else {
+        newObj[topping]++
+        }
+      })
+     return newObj;
+    },{});
+
     return result;
 
     // Annotation:
@@ -262,7 +312,10 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  classrooms.filter((classroom) => {
+      return classroom.program === 'FE'
+    })
+
     return result;
 
     // Annotation:
@@ -277,7 +330,15 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((newObj,currentRoom)=> {
+    if(currentRoom.program === 'FE') {
+      newObj.feCapacity += currentRoom.capacity
+    } else if(currentRoom.program === 'BE'){
+      newObj.beCapacity += currentRoom.capacity
+    }
+    return newObj
+    },{feCapacity: 0, beCapacity: 0})
+
     return result;
 
     // Annotation:
@@ -287,8 +348,13 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => {
+                    return a.capacity - b.capacity
+                    })
     return result;
+
+
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -317,8 +383,11 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = breweries.reduce((sum, currentBrewery) => { 
+                    sum += currentBrewery.beers.length
+                    return sum
+                     },0)
+                    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -333,8 +402,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = breweries.map((currentBrewery) => {
+                return {name: currentBrewery.name, beerCount: currentBrewery.beers.length}
+                 })
+                 return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -393,7 +464,15 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor)=> {
+        let matchingCohorts
+   cohorts.forEach((cohort)=> {
+    if(cohort.module === instructor.module){
+      matchingCohorts = cohort.studentCount
+    }
+  })
+  return {name:instructor.name, studentCount:matchingCohorts}
+})
     return result;
 
     // Annotation:
@@ -407,7 +486,14 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((newObj, currentCohort) => {
+        newObj[`cohort${currentCohort.cohort}`] = currentCohort.studentCount / instructors.filter((currentInstructor)=>{
+       return currentInstructor.module === currentCohort.module
+    }).length
+
+      return newObj
+    },{})
+
     return result;
 
     // Annotation:
@@ -423,6 +509,8 @@ const turingPrompts = {
     //   Robbie: [4],
     //   Pam: [2, 4]
     // }
+    
+/// THIS MIGHT BE BROKEN!!!!!!!!!!!!!!!!!!
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -718,6 +806,8 @@ const dinosaurPrompts = {
     // Write your annotation here as a comment
   }
 };
+
+
 
 module.exports = {
   breweryPrompts,

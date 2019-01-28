@@ -21,3 +21,12 @@ module.exports = {
   instructors,
   cohorts
 };
+
+// instructors.map((instructor)=> {
+//   let matchingCohorts = cohorts.reduce((num, cohort)=> {
+//     if(cohort.module === instructor.module){
+//       return studentCount
+//     }
+//   },0)
+//   return {name:instructor.name, studentCount:matchingCohorts}
+// })
