@@ -3,10 +3,12 @@ const { mods } = require('./datasets/mods');
 const { cakes } = require('./datasets/cakes');
 const { classrooms } = require('./datasets/classrooms');
 const { breweries } = require('./datasets/breweries');
+const { murder} = require('./datasets/murder');
 const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
+
 
 // SINGLE DATASETS
 // =================================================================
@@ -256,6 +258,90 @@ const breweryPrompts = {
     // sort that array highest to lowest and return the 0 index
   
 };
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+// DATASET: murder from ./datasets/murder
+const murderPrompts = {
+
+  //Return an array of episodes that are culturally insensitive
+  insensitiveEpisodes() {
+// Expected answer
+// [ { name: 'Birds of a Feather',
+//     season: 1,
+//     episode: 2,
+//     synopsis: 'Drag murderer suspect',
+//     culturallyInsensitive: true,
+//     guestStars: [ 'Jeff Conaway', 'Gabe Kaplan', 'Martin Landau' ] },
+//   { name: 'Curse of the Daanav',
+//     season: 4,
+//     episode: 14,
+//     synopsis: 'Cursed Indian ruby',
+//     culturallyInsensitive: true,
+//     guestStars: [ 'Jane Badler', 'Kabir Bedi', 'Larry Linville' ] } ]
+
+    const result = murder.topFiveEpisodes.filter((episode) => {
+      return episode.culturallyInsensitive
+    })
+    return result
+    //filter over the episodes array
+    //return only the epiodes where culturallyInsesitve = true
+  },
+
+  //Retrun the episode that crosses over with Magnum PI
+  incluedsMagnum() = {
+// excpected result
+// { name: 'Magnum on Ice ',
+//   season: 3,
+//   episode: 8,
+//   synopsis: 'Magnum PI crossover',
+//   culturallyInsensitive: false,
+//   guestStars: [ 'John McMartin', 'Tom Selleck', 'Jessica Walter' ] }
+
+    const result = murder.topFiveEpisodes.find((episode) => {
+      return episode.name.includes('Magnum')
+    })
+    return result
+    // Use the find method over the episodes array to see
+    // which episode includs Magnum.PI
+  },
+
+  //return an array of all guest stars in the topFiveEpisodes Array
+  allStars() = {
+// [ 'Jeff Conaway',
+//   'Gabe Kaplan',
+//   'Martin Landau',
+//   'Vicki Lawrence',
+//   'Leslie Nielsen',
+//   'Jo Anne Worley',
+//   'Bryan Cranston',
+//   'Linda Hamilton',
+//   'David Spielberg',
+//   'John McMartin',
+//   'Tom Selleck',
+//   'Jessica Walter',
+//   'Jane Badler',
+//   'Kabir Bedi',
+//   'Larry Linville' ]
+
+  const result = murder.topFiveEpisodes.reduce((acc, episode) => {
+    acc.push(...episode.guestStars)
+      return acc
+  }, [])
+  return result
+  }
+
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
