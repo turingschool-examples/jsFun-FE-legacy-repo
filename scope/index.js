@@ -11,31 +11,29 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: Ben
+        // Log A: personB
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: CardiB
+          // Log B: personC
         }
       }
 
       personC = personA;
 
-      // Log C: CardiB
+      // Log C: personB
     }
 
     changePerson();
 
-    // Log D: Paul;
+    // Log D: personC
 
-    const result = [{A: 'Ben'}, {B: 'CardiB'}, {C: 'CardiB'},{D: 'Paul'},
-    ];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
-    // Annotation: 
-    // In the creation phase, persons A, B, and C are declared globally on lines 3-5. Then the change Person function is stored in memory. Then execution phase starts. Person A is assigned the value of 'Paul. Person B is assigned the value of 'Ben'. Person C is assigned the value of 'Tom'. The interpreter does not execute the function decleration on lines 7-26. It then exectues changePerson() on line 28. This creates a new local execution context and a new creation phase begins. The function beautifyPerson is saved in memory. Then the interpreter goes to execution phase starting on line 8. The conditional is evaluated. THe interpreter looks for personA in changePerson()'s functional scope and does not find it, so it looks in the global scope. It finds that person B is strictly equal to 'Paul', so the execution goes inside the if block. On line 9, the interpreter attempts to reassign person and looks for it in the functional scope. Person is not there, so it looks for person in the global scope. person is still not there, so person is then declared as a new global variable assigned 'CardiB'. Then beautifyPerson is executed, and a new local execution context is created. Nothing happens in the creation phase. In the execution phase, the if looks for personB. Person B isn't found until; the global scope where it has the value of 'Ben'. 'Ben' includes 'B', so the conditional evaluates to true and execution goes into the if block. On line 17, the interpeter looks for personB in the block scope, beautifyPerson functional scope, changePerson functional scope, and lastly in the global scope where it is finally found. It assigns the global variable person B to the value of person which is also found in the global scope  with the value 'CardiB'. Then person C is found in the global scope as well and is assigned the value of person B which is in the global scope. So person C has the value of 'CardiB'. Then that local execution context is done, and removed from the call stack. And the changePerson local execution context is done and removed from the call stack. 
-    // 
+    // Annotation:
+    // Write your annotation here as a comment
   },
 
   exerciseB() {
@@ -48,29 +46,28 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: 75
+      // Log A: number
 
       function newNumber() {
         number = 64;
 
-        // Log B: 64
+        // Log B: number
       }
 
       newNumber();
 
-      // Log C: 64
+      // Log C: number
     }
 
     numberFunction();
 
-    // Log D: 30
+    // Log D: number
 
-    const result = [{A: 75}, {B: 64}, {C: 64},{D: 30},
-    ];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // number is declared and assigned to 30 globally. Inside numberFunction, number is declared and assigned to 75 in the functional scope. Inside the if block, number is declared and assigned to 28 in the block scope. At Log A, number is found in the functional scope with the value of 75. Inside newNumber, number (the variable inside numberFunction’s scope) is reassigned to 64 so at Log B, number is 64. At log C, number is looked for in numberFunction’s scope and is found to be 64. At Log D, number is looked for in the global scope and is found to be 30.
+    // Write your annotation here as a comment
   },
 
   exerciseC() {
@@ -83,28 +80,28 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: Yo
+      // Log A: greeting
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: Hey
+        // Log B: greeting
       }
 
       newPhrase();
 
-      // Log C: Hey
+      // Log C: greeting
     }
 
     greetingFunction();
 
-    // Log D: Hello
+    // Log D: greeting
 
-    const result = [{A: 'Yo'}, {B:'Hey'}, {C:'Hey'},{D:'Hello'}];
-    return result
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
 
     // Annotation:
-    // In the global scope, greeting is declared and assigned to ‘Hello’. When greetingFunction is called, a new variable greeting is declared and assigned to ‘Yo’ in the functional scope. Inside the if block, a new let greeting is declared and assigned to ‘Howdy’ in the block scope. At Log A, greeting is found in the functional scope where it has the value of ‘Yo’. When newPhrase is called, greeting is reassigned. The greeting which is reassigned is the one in greetingFunction’s functional scope. It is reassigned to ‘Hey’,so at Log B, greeting is ‘Hey’. At Log C, greeting is found in the functional scope of greetingFunction where its value is ‘Hey’. At Log D, greeting is found in the global scope where its value is ‘Hello’.
+    // Write your annotation here as a comment
   },
 
   exerciseD() {
@@ -117,24 +114,24 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: hi
+      // Log A: greeting
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: welcome
+        // Log B: greeting
       };
 
       newGreeting();
 
-      // Log C: welcome
+      // Log C: greeting
     };
 
     greetingGenerator();
 
-    // Log D: howdy
+    // Log D: greeting
 
-    const result = [{A: 'hi'}, {B:'welcome'}, {C:'welcome'},{D:'howdy'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -166,11 +163,11 @@ const scope = {
 
     // Log D: name
 
-    const result = [{C:'Brittany'}, {A:'Nathaniel'},{B: 'Nathaniel'},{D:'Brittany'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Log 'A' defaults to the global variable as it's the first log to be tripped. Afterwards, sayName gets invoked and trips log A, B, and finally D. 
+    // Write your annotation here as a comment
   },
 
   exerciseF() {
@@ -201,11 +198,11 @@ const scope = {
 
     // Log E: dog
 
-    const result = [{A:'Spot'}, {B:'Spot'}, {C:'Biscuit'}, {D:'Biscuit'}, {E:'Biscuit'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // 
+    // Write your annotation here as a comment
   },
 
   exerciseG() {
@@ -219,7 +216,6 @@ const scope = {
         if (fruit) {
           // Log A: fruit
           const fruit = 'strawberry';
-
         }
 
         // Log B: fruit
@@ -228,15 +224,15 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit(); 
+    eatFruit();
 
     // Log D: fruit
 
-    const result = [{A: 'reference error'}, {B: 'mango'},{C: 'mango'},{D:'apple'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // A is a reference error to line 217, where fruit is being double declared using 'var', creating a reference error. 
+    // Write your annotation here as a comment
   },
 
   exerciseH() {
@@ -272,7 +268,7 @@ const scope = {
 
     fn1();
 
-    const result = [{A: 4}, {D:9},{E:10},{B:9},{C:4}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -284,27 +280,26 @@ const scope = {
 
     function eatSnack() {
       hunger -= 25;
-      // Log A: 75
-      // Log A2: 55
+      // Log A: hunger
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
-        // Log B: 0
+        // Log B: hunger
       }
 
-      // Log C: 75
+      // Log C: hunger
     }
 
     eatSnack();
- 
+
     hunger += 5;
-    // Log D: 80
+    // Log D: hunger
 
     eatSnack();
-    // Log E: 
+    // Log E: hunger
 
-    const result = [{A: 75},{B: 0},{C: 75}, {D: 80},{A: 55},{B: 0},{C: 55}, {E: 55}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -345,7 +340,7 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = [{A: 'ketchup sandwich'},{D: 'gouda'}, {B: undefined}, {C: 'not a mediocre sandwich'},{E: 'not a mediocre sandwich'},{F: 'National Treasure'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -366,7 +361,7 @@ const scope = {
 
     // Log B: num
 
-    const result = [{A: 7}, {B: 7}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -398,7 +393,7 @@ const scope = {
 
     // Log C: grade
 
-    const result = [{A: 95},{B:90},{C:90}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -424,7 +419,7 @@ const scope = {
 
     // Log D: num
 
-    const result = [{A: 5},{B: 6},{C: 'reference error'},{D: 6}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -463,8 +458,7 @@ const scope = {
 
     // Log F: instructor
 
-    const result = [{E: 'Pam'},{A: 
-    'Pam'},{B: 'Pam'},{C: 'Louisa'},{D: 'Louisa'},{F: 'Louisa'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -483,7 +477,7 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = [{B: 'flipflop'},{A: undefined},{C: 'flipflop'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -509,7 +503,7 @@ const scope = {
 
     // Log C: lunch
 
-    const result = [{B: 'soup'},{C: 'soup'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -546,7 +540,7 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = [{A:"Pandora"},{B:["Antigone","Pandora"]},{C:"Mandy"},{D:"Antigone"},{E:"Pandora"}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -573,11 +567,35 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = [{A: 'Rody'},{B: 'RodyToy'},{C: 'Tesla'},{D: 'RodyToyDaniels'}];
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+
+  exerciseS() {
+    let jelly = 'strawberry';
+    console.log('A', jelly)
+
+    function makeLunch() {
+      if( 1 === 1){
+        jelly = 'apple';
+        console.log('B', jelly)
+          }   
+      var jelly = 'blackberry';
+      console.log('C', jelly)
+        }
+    
+      makeLunch()
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+
   }
 };
 

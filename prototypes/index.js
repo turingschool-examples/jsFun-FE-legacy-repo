@@ -1,3 +1,4 @@
+const { musicInstruments } = require('./datasets/musicInstruments');
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -8,6 +9,7 @@ const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
+const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
@@ -17,17 +19,48 @@ const { weapons, characters } = require('./datasets/ultima');
 // SINGLE DATASETS
 // =================================================================
 
+// DATASET: musicInstruments from ./datasets/musicinstruments
+const instrumentPrompts = {
+  combineProps() {
+    // combine brass and woodwinds into a single array and return the musicInstruments object
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  createNewArray() {
+    // create an array with the instrument keys that only have 4 elements.
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  addInstruments() {
+    // Return the number of all instruments.
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+}
+
+
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
   orangeKittyNames() {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = kitties.filter((kitten) =>{
-      return kitten.color === 'orange';
-    }).map((kitten) => {
-      return kitten.name;
-    });
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -37,10 +70,7 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = kitties.sort((a,b) => {
-      return b.age - a.age;
-
-    });
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -61,10 +91,7 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = kitties.map((kitty) => {
-      kitty.age = (kitty.age + 2);
-      return kitty;
-    });
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
   }
 };
@@ -96,18 +123,7 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = clubs.reduce((peopleObj, clubObj) => {
-      clubObj.members.forEach((member) => {
-    
-      if(peopleObj[member] === undefined) {
-        peopleObj[member] = [];
-      };
-    
-      peopleObj[member].push(clubObj.club);
-    })
-      return peopleObj;
-      
-    }, {});;
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -143,17 +159,7 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = mods.map((mod) => {
-      let studentsPerInstructor = mod.students / mod.instructors;
-      return {'mod': mod.mod, 'studentsPerInstructor':studentsPerInstructor};
-      
-      // assign it to mod.students / mod.instructors
-      // return object with mod # and students per instructors
-
-
-    });
-    
-    
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -188,9 +194,7 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = cakes.map((cake) =>{
-      return {flavor: `${cake.cakeFlavor}`, inStock: cake.inStock};
-    }) ;
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -218,10 +222,7 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = cakes.filter((cake) =>{
-      return cake.inStock;
-
-    }) ;
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -232,12 +233,8 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = cakes.reduce((sum, cake) => {
-      sum += cake.inStock;
-      return sum
-    }, 0)
-    return result
-
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -432,19 +429,7 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    // Map over our instructors array
-    // find the matching cohort for our current instructor
-    // grab the student count value from the matching cohort
-    // return oan object witht the instructor name and studentCOunt
-
-    const result = instructors.map((instructor) => {
-      let matchingCohort = cohorts.find((cohort) => {
-        return cohort.module === instructor.module;
-      });
-      let numberOfStudents = matchingCohort.studentCount;
-
-      return {name: instructor.name, studentCount: numberOfStudents};
-    });
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -468,12 +453,17 @@ const turingPrompts = {
   modulesPerTeacher() {
     // Return an object where each key is an instructor name and each value is
     // an array of the modules they can teach based on their skills. e.g.:
-    // { 
-    //   Leta: [2, 4],
-    //   Nathaniel: [2],
-    //   Robbie: [4],
-    //   Pam: [2, 4]
-    // }
+    // {
+    //     Pam: [2, 4],
+    //     Brittany: [2, 4],
+    //     Nathaniel: [2, 4],
+    //     Robbie: [4],
+    //     Leta: [4, 2],
+    //     Travis: [1, 2, 3, 4],
+    //     Louisa: [1, 2, 3, 4],
+    //     Christie: [1, 2, 3, 4],
+    //     Will: [1, 2, 3, 4]
+    //   }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -660,6 +650,116 @@ const ultimaPrompts = {
 
 
 
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
+const dinosaurPrompts = {
+  countAwesomeDinosaurs() {
+    // Return an object where each key is a movie title and each value is the 
+    // number of awesome dinosaurs in that movie. e.g.:
+    // {
+    //   'Jurassic Park': 5,
+    //   'The Lost World: Jurassic Park': 8,
+    //   'Jurassic Park III': 9,
+    //   'Jurassic World': 11,
+    //   'Jurassic World: Fallen Kingdom': 18
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  averageAgePerMovie() {
+    /* Return an object where each key is a movie director's name and each value is
+        an object whose key is a movie's title and whose value is the average age
+        of the cast on the release year of that movie.
+      e.g.:
+      { 
+        'Steven Spielberg': 
+          { 
+            'Jurassic Park': 34,
+            'The Lost World: Jurassic Park': 37 
+          },
+        'Joe Johnston': 
+          { 
+            'Jurassic Park III': 44 
+          },
+        'Colin Trevorrow': 
+          { 
+            'Jurassic World': 56
+           },
+        'J. A. Bayona': 
+          { 
+            'Jurassic World: Fallen Kingdom': 59 
+          } 
+      }
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  uncastActors() {
+    /*
+    Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
+
+    e.g.
+
+    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
+      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
+      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
+      { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  actorsAgesInMovies() {
+    /*
+    Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
+
+    e.g.
+    [ { name: 'Sam Neill', ages: [ 46, 54 ] },
+      { name: 'Laura Dern', ages: [ 26, 34 ] },
+      { name: 'Jeff Goldblum', ages: [ 41, 45, 63, 66 ] },
+      { name: 'Richard Attenborough', ages: [ 70, 74, 92, 95 ] },
+      { name: 'Ariana Richards', ages: [ 14, 18 ] },
+      { name: 'Joseph Mazello', ages: [ 10, 14 ] },
+      { name: 'BD Wong', ages: [ 33, 55, 58 ] },
+      { name: 'Chris Pratt', ages: [ 36, 39 ] },
+      { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
+    */
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
 module.exports = {
   breweryPrompts,
   turingPrompts,
@@ -670,5 +770,7 @@ module.exports = {
   kittyPrompts,
   cakePrompts,
   astronomyPrompts,
-  ultimaPrompts
+  ultimaPrompts,
+  dinosaurPrompts,
+  musicinstrumentsPrompts
 };
