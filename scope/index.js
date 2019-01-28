@@ -556,7 +556,7 @@
     putOnShoe();
     // Log C: shoe
 
-    const result = [{B:'flipflop'}, {A:undefined}, {C:'flipflop'}];
+    const result = [{B:'flipflop'}, {A: undefined}, {C:'flipflop'}];
     return result;
 
     // Log B fires first and looks globally to see shoe is a string of flip flop

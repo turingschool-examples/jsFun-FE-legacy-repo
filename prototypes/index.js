@@ -148,7 +148,7 @@ const cakePrompts = {
         if(!listObj[topping]) {
           listObj[topping] = 0;
         }  
-        listObj[topping]++
+      listObj[topping]++
     })
     return listObj
   },{})  
@@ -172,44 +172,39 @@ const cakePrompts = {
 const classPrompts = {
 
   feClassrooms() {
-    // Create an array of just the front-end classrooms. e.g.
-    // [
-    //   { roomLetter: 'A', program: 'FE', capacity: 32 },
-    //   { roomLetter: 'C', program: 'FE', capacity: 27 },
-    //   { roomLetter: 'E', program: 'FE', capacity: 22 },
-    //   { roomLetter: 'G', program: 'FE', capacity: 29 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter((classroom) => {
+      return classroom.program === 'FE';
+    })
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    // filter over classrooms array
+    // if classroom's program = FE
+    // return that class to the new array
   },
 
   totalCapacities() {
-    // Create an object where the keys are 'feCapacity' and 'beCapacity',
-    // and the values are the total capacity for all classrooms in each program e.g.
-    // { 
-    //   feCapacity: 110,
-    //   beCapacity: 96
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((accObj, classroom) => {
+      if (classroom.program === 'FE'){
+        accObj.feCapacity += classroom.capacity
+      } else {
+        accObj.beCapacity += classroom.capacity
+      }
+      return accObj
+    },{feCapacity: 0, beCapacity: 0})
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    // reduce over classrooms
+    // if the classroom has a program of FE add it's capacity to feCapacity
+    // else if the classroom has a program of BE add it's capacity to beCapacity
+    // I hard coded the keys into my accumulator since we know what they are supposed to be
   },
 
   sortByCapacity() {
-    // Return the array of classrooms sorted by their capacity (least capacity to greatest)
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((classroom1, classroom2) => {
+      return classroom1.capacity - classroom2.capacity
+    })
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    // sort the classrooms array by capacity
+    // return an array of classrooms that are in accending capacity order
   }
 };
 
@@ -221,44 +216,45 @@ const classPrompts = {
 
 // DATASET: breweries from ./datasets/breweries
 const breweryPrompts = {
+
   getBeerCount() {
-    // Return the total beer count of all beers for every brewery e.g.
-    // 40
+    const result = breweries.reduce((numBeers, brewerie)  => {
+     brewerie.beers.forEach((beer) => {
+       numBeers++
+     })
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return numBeers
+  }, 0);
+  return result;
+  // reduce over breweries
+  // for each beer ++ the total count of beers
 
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   getBreweryBeerCount() {
-    // Return an array of objects where each object has the name of a brewery
-    // and the count of the beers that brewery has e.g.
-    // [
-    //  { name: 'Little Machine Brew', beerCount: 12 },
-    //  { name: 'Ratio Beerworks', beerCount: 5},
-    // ...etc.
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map((brewerie) => {
+      return {name: brewerie.name, beerCount: brewerie.beers.length}
+    })
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    // map over breweries return and array of objects
+    // the keys will be name and beerCount and 
+    // the values will be the brewery name and the length of each beers array
   },
 
   findHighestAbvBeer() {
-    // Return the beer which has the highest ABV of all beers
-    // e.g.
-    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((allBeers, brewery) => {
+      allBeers.push(...brewery.beers)
+      return allBeers
+    }, []).sort((beer1, beer2) => {
+      return beer2.abv - beer1.abv
+    })[0]
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
+  }  
+    // This probem was a tricky one! I rewrote it like five times 
+    // Then Jeo reminded me what the spread operator was for
+    // but basically I knew I had to get all the beers into one array
+    // sort that array highest to lowest and return the 0 index
+  
 };
 
 // ---------------------------------------------------------------------------
@@ -276,9 +272,11 @@ const turingPrompts = {
   studentsForEachInstructor() {
     const result = instructors.map((instructor) => {
       let matchingCohort = cohorts.find((cohort) => {
-        return instructor.module === cohort.module
-      })
-    })
+        return cohort.module === instructor.module;
+      });
+      let numberOfStudents = matchingCohort.studentCount;
+      return { name: instructor.name, studentCount: numberOfStudents };
+    });
       return result
     // map over the instructorsArray
     // find the matching cohort for our current instructor

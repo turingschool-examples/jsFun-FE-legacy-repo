@@ -142,7 +142,7 @@ const context = {
     const result = 'global window object';
     return result;
 
-    // becasue this is in an anonymous fuction it defaults to the global windo object
+    // becasue this is in an anonymous/nested fuction it defaults to the global window object
   },
 
   exerciseH() {
