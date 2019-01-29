@@ -85,7 +85,7 @@ const humans = {
   },
   'Karin Ohman': {
     yearBorn: 1995,
-    nationality: 'Chinese',
+    nationality: 'Swedish',
     imdbStarMeterRating: 0
   },
   'Bryce Dallas Howard': {
