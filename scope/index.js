@@ -212,34 +212,40 @@ const scope = {
   },
 
   exerciseF() {
-    var dog = 'Spot';
+    var dog = 'Spot'; // Biscuit
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog // 1st Spot
 
-      if (dog === 'Spot') {
-        let dog = 'Fluffy';
-      }
+      // if (dog === 'Spot') {
+      //   let dog = 'Fluffy';
+      // }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog // 2nd Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog // 3rd Biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog // 4th Biscuit
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog // 5th Biscuit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Spot'},
+      { B: 'Spot'},
+      { C: 'Biscuit'},
+      { D: 'Biscuit'},
+      { E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
@@ -255,21 +261,26 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit // reference error
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit // mango
       }
 
-      // Log C: fruit
+      // Log C: fruit // mango
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit // apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'reference error'},
+      { B: 'mango'},
+      { C: 'mango'},
+      { D: 'apple'}
+    ];
     return result;
 
     // Annotation:
