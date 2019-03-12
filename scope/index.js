@@ -1,8 +1,8 @@
 const scope = {
   exerciseA() {
     let personA = 'Paul';
-    let personB = 'Ben';
-    let personC = 'Tom';
+    let personB = 'CardiB';
+    let personC = 'Paul';
 
     function changePerson() {
       if (personA === 'Paul') {
@@ -41,7 +41,7 @@ const scope = {
     // First we initialize the global variable PersonA with the string 'Paul'
     // Next, we initialize the global variable PersonB with the string 'Ben'
     // Next, we initialize the global variable PersonC with the string 'Tom'
-    // Next, we declare a function called 'changePerson'
+    // Next, we declare a function called 'changePerson' and then skip down to line 26
     // Next, on line 28, we invoke the 'changePerson' function which brings us back up to line 8
     // On line 8 the if conditional is true so we execute the code inside the if block
     // Next, on line 9, because the var keyword isn't used a global variable is created called Person with the string 'CardiB'
@@ -122,11 +122,17 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Yo'},
+      { B: 'Hey'},
+      { C: 'Hey'},
+      { D: 'Hello'}
+
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseD() {
@@ -139,24 +145,29 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting // hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting // welcome
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting // welcome
     };
 
     greetingGenerator();
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'hi'},
+      { B: 'welcome'},
+      { C: 'welcome'},
+      { D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
