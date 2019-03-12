@@ -178,7 +178,7 @@ const scope = {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';
+      let name = 'Pam';  // Nath
 
       if (name === 'Pam') {
         name = 'Nathaniel';
@@ -187,19 +187,24 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name // 2nd Nathaniel
       }
 
-      // Log B: name
+      // Log B: name // 3rd Nathaniel
     }
 
-    // Log C: name
+    // Log C: name // 1st Brittany
 
     sayName();
 
-    // Log D: name
+    // Log D: name // 4th Brittany
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { C: 'Brittany'},
+      { A: 'Nathaniel'},
+      { B: 'Nathaniel'},
+      { D: 'Brittany'}
+    ];
     return result;
 
     // Annotation:
