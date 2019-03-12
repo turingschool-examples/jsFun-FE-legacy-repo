@@ -29,11 +29,31 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 'Ben'},
+      {'B': 'CardiB'},
+      {'C': 'CardiB'},
+      {'D': 'Paul'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First we initialize the global variable PersonA with the string 'Paul'
+    // Next, we initialize the global variable PersonB with the string 'Ben'
+    // Next, we initialize the global variable PersonC with the string 'Tom'
+    // Next, we declare a function called 'changePerson'
+    // Next, on line 28, we invoke the 'changePerson' function which brings us back up to line 8
+    // On line 8 the if conditional is true so we execute the code inside the if block
+    // Next, on line 9, because the var keyword isn't used a global variable is created called Person with the string 'CardiB'
+    // Next, the beautifyPerson function is invoked which takes us to line 13
+    // Next, on line 14, personB is currently 'Ben'
+    // On line 16 the if conditional is true because personB includes the 'B' character
+    // Next, inside the if statement personB is reassigned to the value of the person variable which is the string 'CardiB'
+    // Next, still inside the if statement personC is reassigned to the value of personB which is the string 'CardiB'
+    // On line 19 personC is currently 'CardiB'
+    // Next, on line 23, personC is reassigned to the value of personA which is the string 'Paul'
+    // On line 25, the value of personB is currently 'CardiB'
+    // Lastly, on line 30, the value of personC is currently 'Paul'
   },
 
   exerciseB() {
@@ -63,7 +83,12 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 75},
+      {'B': 64},
+      {'C': 64},
+      {'D': 30}
+    ];
     return result;
 
     // Annotation:
