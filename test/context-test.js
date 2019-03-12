@@ -19,34 +19,34 @@ chai.use(function(e, t) {
 });
 
 describe("CONTEXT", () => {
-  it("exerciseA", () => {
+  it.skip("exerciseA", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseB", () => {
+  }), it.skip("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseC", () => {
+  }), it.skip("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseD", () => {
+  }), it.skip("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseE", () => {
+  }), it.skip("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseF", () => {
+  }), it.skip("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseG", () => {
+  }), it.skip("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseH", () => {
+  }), it.skip("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseI", () => {
+  }), it.skip("exerciseI", () => {
     const e = "poets" == context.exerciseI();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseJ", () => {
+  }), it.skip("exerciseJ", () => {
     const e = "el" == context.exerciseJ();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   })
