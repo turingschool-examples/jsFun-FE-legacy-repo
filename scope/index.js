@@ -622,10 +622,10 @@ const scope = {
 
     // Log B: num
 
-    // const result = [
-    //   { A: 7},
-    //   { B: 7}
-    // ];
+    const result = [
+      { A: 7},
+      { B: 7}
+    ];
     return result;
 
     // Annotation:
