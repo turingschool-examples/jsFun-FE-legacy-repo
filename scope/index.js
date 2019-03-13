@@ -535,22 +535,22 @@ const scope = {
   exerciseJ() {
     let sandwich = 'ketchup sandwich';
 
-    // Log A: sandwich
+    // Log A: sandwich // ketchup sandwich
 
     const addChipotle = () => {
-      // Log B: toppings
+      // Log B: toppings // undefined
       var toppings = 'chipotle sauce';
 
       if (toppings === 'chipotle sauce') { 
         sandwich = 'not a mediocre sandwich';
       }
 
-      // Log C: sandwich
+      // Log C: sandwich // not a mediocre sandwich
     };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
-      // Log D: cheeseTopping
+      // Log D: cheeseTopping // gouda
 
       const shesTheManReference = () => {
         amandaBynes = 'National Treasure';
@@ -566,7 +566,14 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'ketchup sandwich'},
+      { D: 'gouda'},
+      { B: undefined},
+      { C: 'not a mediocre sandwich'},
+      { E: 'not a mediocre sandwich'},
+      { F: 'National Treasure'}
+    ];
     return result;
 
     // Annotation:
