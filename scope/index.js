@@ -371,7 +371,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 343, the global variable fruit is initialized with the string 'apple'
+    // On line 345, the function eatFruit is declared
+    // We then skip down to line 359
+    // On line 361, the function eatFruit is invoked
+    // The invocation of eatFruit causes us to go back up to line 345
+    // On line 347, the if condition evaluates to true because fruit does not equal 'kiwi' (fruit is currently undefined because the var fruit on line 348 is hoisted)
+    // On line 348, the function scoped variable fruit is initialized with the string 'mango'
+    // On line 350, the if condition evaluates to true because fruit is 'mango' which is a truthy value is Javascript
+    // On line 351, log A fruit is a 'reference error'
+    // The reference error is caused because on line 352 the block scoped variable fruit is declared with const
+    // Since it was declared with const Javascript knows that there is a blocked scoped variable named fruit so it will not go outside of the block and grab the functionally scoped variable fruit from line 348
+    // But since log A, on line 351, is above where const fruit is actually initialized, on line 352, this log resides in the temporal dead zone and we will get a reference error 
+    // On line 355, log B fruit is 'mango'
+    // On line 358, log C fruit is 'mango' because the var on 348 is functionally scoped
+    // We are now done invoking eatFruit so we return to line 361
+    // On line 363, log D fruit is 'apple' because we are back in the global scope
   },
 
   exerciseH() {
