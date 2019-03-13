@@ -11,29 +11,37 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB = Ben
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC  = CardiB
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB = CardiB
     }
 
     changePerson();
 
-    // Log D: personC
+    // Log D: personC = Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Ben'},
+      {B: 'CardiB'},
+      {C: 'CardiB'},
+      {D: 'Paul'}
+    ]
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is Ben because Ben is globally scoped 
+    //Log B is CardiB because personB is Ben so, it includes the letter 'B' and then personB is reassigned to person which is cardiB and then personC is then reassigned to personB
+    //Log C is CardiB because while going through the execution phase, it is still CardiB at this point
+    //Log D is Paul because personC was reassigned to personA which was Paul
   },
 
   exerciseB() {
@@ -47,27 +55,39 @@ const scope = {
       }
 
       // Log A: number
+      console.log('A: ', number) // 75
 
       function newNumber() {
         number = 64;
 
         // Log B: number
+        console.log('B: ', number) // 64
       }
 
       newNumber();
 
       // Log C: number
+      console.log('C: ', number) // 64
     }
 
     numberFunction();
 
     // Log D: number
+    console.log('D: ', number) // 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75}, 
+      {B: 64}, 
+      {C: 64}, 
+      {D: 30}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is 75 because let is block scoped and we have no access to it
+    // Log B is 64 because we have reassigned 75 to be 64 at that time
+    // Log C is 64 because we are inside of the newNumber function so it is still 64
+    // Log D is 30 because it is back in the global scope and so we will look at the global value of 30.
   },
 
   exerciseC() {
@@ -80,28 +100,36 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting = Yo
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting = Hey
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting = Hey
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting = Hello
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Yo'},
+      {B: 'Hey'},
+      {C: 'Hey'},
+      {D: 'Hello'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is Yo because it is functionally scoped and let is block scoped so we never get to 'howdy'
+    // Log B is Hey because it is reassigned to Hey and functionally scoped
+    // Log C is Hey because we never reassigned it again after it was reassigned in newPhrase
+    // Log D is Hello because of the global scope of hello because it is being logged globally
   },
 
   exerciseD() {
@@ -114,7 +142,7 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting = hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
@@ -131,11 +159,19 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'hi'},
+      {B: 'welcome'},
+      {C: 'welcome'},
+      {D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Log A is hi because it is functionally scoped and we aren't able to go into the if block statement because let is block scoped
+    // Log B is welcome because it is takiing our functionally scoped 'hi' and reassigning it to become welcome
+    // Log C is welcome because it is still welcome from being reassigned inside of newGreeting at this point in time
+    // Log D is howdy because it is in the global scope
   },
 
   exerciseE() {
@@ -163,11 +199,19 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ]
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // LogC is Brittany because we are in the global scope to start at this time
+    //LogA is Nathaniel because the name variable is assigned to Pam and our conditional says that if the name is Pam then reassign it to Nathaniel
+    //LogB is still Nathaniel at this point in the execution phase
+    //LogD is Brittany because we are in the global scope
   },
 
   exerciseF() {
@@ -198,11 +242,21 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Spot'},
+      {B: 'Spot'},
+      {C: 'Biscuit'},
+      {D: 'Biscuit'},
+      {E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // LogA is spot because it was spot in the global scope and eveything has access to globally scoped variables and we have not reassigned is re-declared the variable at this point in time
+    // LogB is still spot because let it block scoped and so it will continue to be spot at this point in time
+    // LogC is biscuit because it is being reassigned inside of the rollOver function
+    // LogD is still biscuit because rollOver has been invoked and reassigned the variable to biscuit at this point in time
+    //LogE is biscuit because it is still biscuit at this point in time 
   },
 
   exerciseG() {
@@ -549,15 +603,15 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myName = Rody
 
     const parentFunc = () => {
       myName += 'Toy';
-      // Log B: myName
+      // Log B: myName = RodyToy
 
       let innerFunc = () => {
         let myName = 'Tesla'; 
-        // Log C: myName
+        // Log C: myName = Tesla
       };
 
       innerFunc();
@@ -565,9 +619,14 @@ const scope = {
     };
 
     parentFunc();
-    // Log D: myName
+    // Log D: myName = RodyToyDaniels
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Rody'},
+      {B: 'RodyToy'},
+      {C: 'Tesla'},
+      {D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
