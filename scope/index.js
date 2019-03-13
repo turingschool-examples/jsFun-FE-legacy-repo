@@ -205,7 +205,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First, the global variable greeting is initialized with the string 'howdy'
+    // On line 175, the function expression greetingGenerator is declared
+    // We then skip down to line 193
+    // On line 195, the function greetingGenerator is invoked
+    // We then go back up to line 175
+    // On line 176, the functionally scoped variable greeting is initialized with the sting 'hi'
+    // On line 178, the if condition evaluates to true because greeting equals 'hi'
+    // On line 179, the block scoped variable greeting is initialized with the string 'hello'
+    // This blocked scoped variable is not available anywhere else and will not change the functionally scoped variable declared on line 176
+    // On line 182, for log A greeting is currently 'hi'
+    // On line 184, the function expression newGreeting is declared
+    // We then skip down to line 188
+    // On line 190, the function newGreeting is invoked
+    // The invocation of newGreeting causes us to go back up to line 184
+    // On line 185, the functionally scoped variable greeting that was declared on line 176 is reassigned to the string of 'welcome'
+    // On line 187, for log B greeting is currently 'welcome'
+    // We are now done invoking newGreeting so we return to line 190
+    // On line 192, for log C greeting is 'welcome'
+    // We are now done invoking greetingGenerator so we return to line 195
+    // On line 197, for log D greeting is 'howdy' because we are in the global scope
   },
 
   exerciseE() {
