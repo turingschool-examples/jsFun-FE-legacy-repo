@@ -24,21 +24,21 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(k => k.color === 'orange').map(k => k.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We filter to only the objects where the color prop has a value of orange, and return a map of their name prop values.
   },
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    kitties.sort((a, b) => b.age - a.age);
+    const result = kitties;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We sort the array with the sort method, based on age difference.
   },
 
   growUp() {
@@ -55,8 +55,11 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => ({...kitty, age: kitty.age + 2}));
     return result;
+
+    // Annotation:
+    // We set the result to a map of the objects in kitties with the age increased.
   }
 };
 
@@ -87,11 +90,22 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const memberSet = new Set(clubs.map(club => club.members).flat(1));
+    const members = Array.from(memberSet);
+    const newList = {};
+    for (let i = 0; i < members.length; i++) {
+      const memberClubs = clubs.filter(obj => obj.members.includes(members[i]));
+      newList[members[i]] = memberClubs.map(obj => obj.club);
+    };
+
+    const result = newList;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We create a new set (to avoid duplicates) based on a mapping of the clubs array that's flattened to one level
+    // Then we create an array from that set, and a new variable assigned the value of an empty object
+    // Then we iterate through the number of members, and in each iteration filter to an array of objects that include each member
+    // Then we create new key value pairs based on the member name (key) and the club values within the array of clubs we just filtered to
   }
 };
 
@@ -123,11 +137,17 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const newArray = mods.map(obj => ({
+      mod: obj.mod, 
+      studentsPerInstructor: (obj.students / obj.instructors) 
+    }));
+
+    const result = newArray;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We create a new variable called newArray
+    // We then map the mod array, adding a new object to newArray w/ each mod num and student calculation
   }
 };
 
@@ -158,11 +178,14 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(obj => ({
+      flavor: obj.cakeFlavor, 
+      inStock: obj.inStock
+    }));
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We set result's value to a mapping of cakes that returns the flavor and stock status with the new keys.
   },
 
   onlyInStock() {
@@ -186,30 +209,31 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(obj => obj.inStock > 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We set the result to a filter of only objects where the stock is more than 0.
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((sum, obj) => sum + obj.inStock, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use reduce to get a total of numbers in the objects' inStock properties.
   },
 
   allToppings() {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+    const toppingSet = new Set(cakes.map(cake => cake.toppings).flat(1));
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Array.from(toppingSet);
     return result;
 
     // Annotation:
@@ -226,6 +250,12 @@ const cakePrompts = {
     //    'berries': 2, 
     //    ...etc
     // }
+
+    const toppingSet = new Set(cakes.map(cake => {cake.toppings).flat(1));
+    const toppings = Array.from(toppingSet);
+    toppings.forEach(top => {
+      
+    });
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
