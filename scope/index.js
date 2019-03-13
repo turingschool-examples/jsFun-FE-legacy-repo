@@ -422,7 +422,13 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 4},
+      { D: 9},
+      { E: 10},
+      { B: 9},
+      { C: 4}
+    ];
     return result;
 
     // Annotation:
