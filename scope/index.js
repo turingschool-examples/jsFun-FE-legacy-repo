@@ -499,7 +499,37 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 466, the global variable hunger is initialized with the number 100
+    // On line 468, the function expression eatSnack is declared
+    // We then skip down to line 479
+    // On line 481, the function eatSnack is invoked
+    // The invocation of eatSnack causes us to go back up to line 468
+    // On line 469, the globally scoped variable hunger is reassigned to itself (100) minus 25 which is 75
+    // On line 470, log A hunger is 75
+    // On line 471, the function gorgeYourself is invoked
+    // This is possible because the function is hoisted from line 473
+    // The invocation of gorgeYourself causes us to go down to line 473
+    // On line 474, the functionally scoped variable hunger is initialized with the number 0
+    // On line 475, log B hunger is 0
+    // We are now done invoking gorgeYourself so we return to line 471
+    // We can skip the function declaration of gorgeYourself on 473 and go down to 476
+    // On line 478, log C hunger is 75 because we are referring to the global variable and not the local hunger variable in gorgeYourself
+    // We are now done invoking eatSnack so we return to line 481
+    // On line 483, the global variable hunger is reassigned to itself plus 5 which is 80
+    // On line 484, log D hunger is 80
+    // On line 486, the function eatSnack is invoked again
+    // The invocation of eatSnack causes us to go back up to line 468
+    // On line 469, the globally scoped variable hunger is reassigned to itself (80) minus 25 which is 55
+    // On line 470, we log A again and now hunger is 55
+    // On line 471, the function gorgeYourself is invoked
+    // The invocation of gorgeYourself causes us to go down to line 473
+    // On line 474, the functionally scoped variable hunger is initialized with the number 0
+    // On line 475, we log B again and hunger is 0
+    // We are now done invoking gorgeYourself so we return to line 471
+    // We skip over the gorgeYourself function declaration
+    // On line 478, we log C again and hunger is 55
+    // We are now done invoking eatSnack so we return to line 486
+    // On line 487, we log E and hunger is 55
   },
 
   exerciseJ() {
