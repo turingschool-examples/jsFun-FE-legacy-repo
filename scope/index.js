@@ -577,7 +577,35 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 536, the global variable sandwich is initialized with the string 'ketchup sandwich'
+    // On line 538, log A the value of sandwich is ketchup sandwich
+    // On line 540, the function expression addChipotle is declared
+    // We then skip down to line 549
+    // On line 551, the function expression addCheese is declared
+    // We then skip down to line 560
+    // On line 562, the string 'kraft' is assigned to the global variable cheeseTopping
+    // On 563 the addCheese function is invoked
+    // The invocation of addCheese causes us to go back up to line 551
+    // On line 552, the functionally scoped variable cheeseTopping is initialized with the sting 'gouda'
+    // On line 553, log D the value of cheeseTopping is gouda
+    // On line 555, the function expression shesTheManReference is declared
+    // We then skip down to line 557
+    // On line 559, the function shesTheManReference is invoked
+    // The invocation of shesTheManReference causes us to go back up to line 555
+    // On line 556, we are trying to reassign the string 'National Treasure' but because amandaBynes is not defined anywhere amandaBynes is declared as a global variable
+    // We are now done invoking shesTheManReference so we return to line 559
+    // We are now done invoking addCheese so we return to line 563
+    // On line 565, the function addChipotle is invoked
+    // The invocation of addChipotle causes us to go back up to line 540
+    // On line 541, log B the value of topping is undefined
+    // This is because topping is hoisted to the top of the scope but it isn't initialized until line 542
+    // On line 542, the function scoped variable topping is initialized with the string 'chipotle sauce'
+    // On line 544, the if conditional evaluates to true because toppings is equal to chipotle sauce
+    // On line 545, the global variable sandwich's value is reassigned to the string of 'not a mediocre sandwich'
+    // On line 548, log C the value of sandwich is 'not a mediocre sandwich'
+    // We are now done invoking addChipotle so we return to line 565
+    // On line 566, log E the value of sandwich is 'not a mediocre sandwich'
+    // On line 567, log F the value of amandaBynes is 'National Treasure'
   },
 
   exerciseK() {
@@ -594,7 +622,10 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // const result = [
+    //   { A: 7},
+    //   { B: 7}
+    // ];
     return result;
 
     // Annotation:
