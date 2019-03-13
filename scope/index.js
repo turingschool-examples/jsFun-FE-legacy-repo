@@ -423,11 +423,11 @@ const scope = {
     fn1();
 
     const result = [
-      { A: 4},
-      { D: 9},
+      { A:  4},
+      { D:  9},
       { E: 10},
-      { B: 9},
-      { C: 4}
+      { B:  9},
+      { C:  4}
     ];
     return result;
 
@@ -486,7 +486,16 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 75},
+      { B:  0},
+      { C: 75},
+      { D: 80},
+      { A: 55},
+      { B:  0},
+      { C: 55},
+      { E: 55}
+    ];
     return result;
 
     // Annotation:
