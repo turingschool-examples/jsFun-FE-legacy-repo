@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    let sandwich = 'ketchup sandwich';
+
+    // Log A: sandwich
+    console.log('A', sandwich);
+
+    const addChipotle = () => {
+      // Log B: toppings
+      console.log('B', toppings);
+      var toppings = 'chipotle sauce';
+
+      if (toppings === 'chipotle sauce') { 
+        sandwich = 'not a mediocre sandwich';
+      }
+
+      // Log C: sandwich
+      console.log('C', sandwich);
+    };
+
+    const addCheese = () => {
+      let cheeseTopping = 'gouda';
+      // Log D: cheeseTopping
+      console.log('D', cheeseTopping);
+
+      const shesTheManReference = () => {
+        amandaBynes = 'National Treasure';
+      };
+
+      shesTheManReference();
+    };
+
+    cheeseTopping = 'kraft';
+    addCheese();
+
+    addChipotle();
+    // Log E: sandwich
+    console.log('E', sandwich);
+    // Log F: amandaBynes
+    console.log('F', amandaBynes);
+  </script>
+
+</body>
+</html>
