@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+
+const kitties = [
+  {
+    name: 'Felicia',
+    age: 2,
+    color: 'grey'
+  },
+  {
+    name: 'Tiger',
+    age: 5,
+    color: 'orange'
+  },
+  {
+    name: 'Snickers',
+    age: 8,
+    color: 'orange'
+  },
+  {
+    name: 'Max',
+    age: 1,
+    color: 'tuxedo'
+  }
+];
+
+// Return an array of just the names of kitties who are orange e.g.
+// ['Tiger', 'Snickers']
+
+// let owners = [];
+
+
+const results = kitties.filter( kittie => {
+  return kittie.color === 'orange';
+}).map( kittie => {
+  return kittie.name;
+});
+
+console.log(results);
+
+
+
+
+// kitties.map(kittie => {
+//   if(kittie.color === 'orange') {
+//     // owners.push(kittie.name);
+//   }
+//   return owners;
+// });
+
+   
+  </script>
+
+</body>
+</html>

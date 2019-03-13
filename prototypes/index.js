@@ -24,8 +24,24 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // let owners = [];
+
+    // kitties.forEach(kittie => {
+    //   if(kittie.color === 'orange') {
+    //     owners.push(kittie.name);
+    //   }
+    //   return owners;
+    // });
+
+
+    const results =
+    kitties.filter( kittie => {
+        return kittie.color === 'orange';
+    }).map( kittie => {
+        return kittie.name;
+    });
+
+    return results;
 
     // Annotation:
     // Write your annotation here as a comment
