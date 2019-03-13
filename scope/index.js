@@ -231,7 +231,7 @@ const scope = {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';  // Nath
+      let name = 'Pam';
 
       if (name === 'Pam') {
         name = 'Nathaniel';
@@ -261,7 +261,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 231, the global variable name is initialized with the string 'Brittany'
+    // On line 233, the function sayName is declared
+    // We then skip down to line 247
+    // On line 249, log C name is currently 'Brittany'
+    // On line 251, the function sayName is invoked
+    // The invocation of sayName causes us to go back up to line 233
+    // On line 234, the functionally scoped variable name is initialized with the sting 'Pam'
+    // On line 236, the if condition evaluates to true because name equals 'Pam'
+    // On line 237, the variable name is reassigned to the string 'Nathaniel'
+    // On line 239, the if condition evaluates to true because name.length is greater than 0
+    // On line 240, the block scoped variable name is initialized with the string 'Brittany'
+    // but since this variable is blocked scoped it will not be accessible outside of the if block
+    // On line 243, log A name is currently 'Nathaniel'
+    // On line 246, log B name is still 'Nathaniel'
+    // We are now done invoking sayName so we return to line 251
+    // On line 253, log D name is 'Brittany' because we have left the functional scope of sayName and are back in global scope
   },
 
   exerciseF() {
