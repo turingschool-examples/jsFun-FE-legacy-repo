@@ -285,9 +285,9 @@ const scope = {
     function petDog() {
       // Log A: dog // 1st Spot
 
-      // if (dog === 'Spot') {
-      //   let dog = 'Fluffy';
-      // }
+      if (dog === 'Spot') {
+        let dog = 'Fluffy';
+      }
 
       function rollOver() {
         // Log B: dog // 2nd Spot
@@ -317,7 +317,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 283, the global variable dog is initialized with the string 'Spot'
+    // On line 285, the function petDog is declared
+    // We then skip down to line 304
+    // On line 306, the function petDog is invoked
+    // The invocation of petDog causes us to go back up to line 285
+    // On line 286, log A dog is currently 'Spot'
+    // On line 288, the if condition evaluates to true because dog equals 'Spot'
+    // On line 289, the block scoped variable dog is initialized with the string 'Fluffy'
+    // but since this variable is blocked scoped it will not be accessible outside of the if block
+    // On line 292, the function rollOver is declared
+    // We then skip down to line 299
+    // On line 301, the function rollOver is invoked
+    // The invocation of rollOver causes us to go back up to line 292
+    // On line 293, log B dog is 'Spot'
+    // On line 295, the global variable dog is reassigned to 'Biscuit'
+    // On line 297, log C dog is 'Biscuit'
+    // We are now done invoking rollOver so we return to line 301
+    // On line 303, log D dog is 'Biscuit'
+    // We are now done invoking petDog so we return to line 306
+    // On line 308, log E dog is 'Biscuit'
   },
 
   exerciseG() {
