@@ -629,7 +629,16 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 612, the global variable num is initialized with the number 10
+    // On line 614, the function foo is declared
+    // We then skip down to line 619
+    // On line 621, the function foo is invoked
+    // The invocation of foo causes us to go back up to line 614
+    // On line 615, the if condition evaluates to true because num (10) is greater than 5
+    // On line 616, the value of the global variable num is reassigned to the number 7
+    // On line 618, log A the value of num is 7
+    // We are now done invoking foo so we return to line 621
+    // On line 623, log B the value of num is 7
   },
 
   exerciseL() {
