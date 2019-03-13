@@ -432,7 +432,34 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // On line 393, the global variable num is initialized with the number 6
+    // On line 395, the function expression fn1 is declared
+    // We then skip down to line 413
+    // On line 415, the function expression fn2 is declared
+    // We then skip down to line 421
+    // On line 423, the function fn1 is invoked
+    // The invocation of fn1 causes us to go back up to line 395
+    // On line 396, the functionally scoped variable num is initialized with the number 4
+    // On line 398, log A num is 4
+    // On line 400, the if condition evaluates to true because num is 4 which is less than 5
+    // On line 401, the block scoped variable num is initialized with the number 9
+    // On line 403, the function fn2 is invoked with num as an argument
+    // The invocation of fn2 causes us to go down to line 415
+    // On line 416, log D num is 9
+    // On line 418, the functionally scoped argument variable num is reassigned to itself plus 1 which in this case is 10
+    // On line 420, log E num is 10
+    // We are now done invoking fn2 so we return to line 403
+    // On line 405, the block scoped variable newNum is initialized with the variable num from line 401
+    // Because the num in fn2 is locally scoped to that function it did not change the num variable in fn1's if block (Also the num in fn1's if block can't be changed because it is a const)
+    // Since num wasn't changed newNum is 9
+    // On line 407, log B newNum is 9
+    // On line 410, newNum is reassigned to the value of 4 from the functionally scoped num variable from line 396
+    // It is important to note that the newNum variable is declared as a global variable
+    // This happens because newNum has not been defined in either fn1's function scope or the global scope
+    // So Javascript creates a new global variable called newNum
+    // A better option would be to put var or let in front of newNum on line 410 to prevent this variable from polluting the global namespace
+    // On line 412, log C newNum is 4
+    // We are now done invoking fn1 so we return to line 423
   },
 
   exerciseI() {
