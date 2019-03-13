@@ -29,29 +29,12 @@ const kitties = [
   }
 ];
 
-// Return an array of just the names of kitties who are orange e.g.
-// ['Tiger', 'Snickers']
-
-// let owners = [];
+  // Sort the kitties by their age
 
 
-const results = kitties.filter( kittie => {
-  return kittie.color === 'orange';
-}).map( kittie => {
-  return kittie.name;
-});
+  const result = kitties.sort((a, b) => (b.age - a.age));
 
-console.log(results);
-
-
-
-
-// kitties.map(kittie => {
-//   if(kittie.color === 'orange') {
-//     // owners.push(kittie.name);
-//   }
-//   return owners;
-// });
+  console.log(result);  
 
    
   </script>
