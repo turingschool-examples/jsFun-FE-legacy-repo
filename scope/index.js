@@ -92,7 +92,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First, the global variable number is initialized with the number 30
+    // On line 62, the numberFunction is declared
+    // On line 82, the numberFunction is invoked so we go back up to line 62
+    // On line 63, the function scoped variable number is initialized with the number 75
+    // On line 65, the if conditional evaluates to true because number is currently equal to 75
+    // Inside the if conditional code block the block scoped variable number is initialized with the number 20
+    // Because number is declared with let inside the if block it is scoped inside of it and will not be available in the functional scope of numberFunction
+    // On line 69, number is currently 75 because of functional scope
+    // On line 71, the function newNumber is declared
+    // On line 77, the function newNumber is invoked so we go back up to line 71
+    // Inside the newNumber function, on line 72, the functionally scoped number variable inside numberFunction is reassigned to 64
+    // On line 74, number is currently 64
+    // We are now done invoking newNumber so we return to where we left off on line 77
+    // On line 79, number is still 64
+    // We are now done invoking numberFunction so we return to where we left off on line 82
+    // On line 84, number is 30. This is because we left the functional scope of numberFunction and are now in the global scope where number is 30
   },
 
   exerciseC() {
