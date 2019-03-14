@@ -760,7 +760,21 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of instructor and rename and changeInstructor and their definitions are all stored in global memory
+    //instructor is assigned the value of 'Pam'
+    //The first log (log E) logs 'Pam' as the instructor
+    //The changeInstructor function is invoked
+    //The second log (log A) logs 'Pam'
+    //The if statment is bypassed (The first if is not fulfilled and the else changes instructor to 'Brittany' but only in the if statement scope an thus it is not used anywhere else)
+    //The third log (log B) logs 'Pam'
+    //The function rename is invoked
+    //instructor is reassigned to "Louisa" on the global scope
+    //The fourth log (log C) logs 'Louisa'
+    //The rename function is complete
+    //The fifth log (log D) logs 'Louisa' as instructor was reassigned on the functional and global scope
+    //The changeInstructor function is comeplete
+    //The sixth log (log F) logs 'Louisa', the variable definition on the global scope
+    //The results are returned
   },
 
   exerciseO() {
