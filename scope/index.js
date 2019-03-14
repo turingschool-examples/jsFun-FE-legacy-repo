@@ -266,7 +266,7 @@ const scope = {
     //The second log (log A) is 'Nathaniel' since the log is in the function
     //The third log (log B) is 'Nathaniel'since th log is also inside the function were name is reassigned to 'Nathaniel'
     //sayName is complete
-    // The fourth log (log D) is outside the function and logs the global variable value of 'Brittany'
+    //The fourth log (log D) is outside the function and logs the global variable value of 'Brittany'
   },
 
   exerciseF() {
@@ -312,7 +312,18 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //In the first pass the declaration of dog and petDog and rollOver and their definitions are stored in global memory
+    //dog is defined as 'Spot'
+    //petDog is invoked
+    //The first log (log A) logs the global value of 'Spot'
+    //dog has the value of 'Spot' so it becomes 'Fluffy' in the if statement block scope
+    //The rollOver function is invoked
+    //dog has not been reassigned a value in the function scope so the second log (log B) is 'Spot'
+    //dog is reassigned to 'Biscuit' inside the function scope and globally
+    //The thrid log (log C) is 'Biscuit'
+    //The fourth log (log D) is also 'Biscuit'
+    //The function is complete
+    //The fifth log (log E) is now 'Biscuit' becuase the global variable that was reassigned was declared with var so reassigning it in the function also reassigned it on the global scope
   },
 
   exerciseG() {
