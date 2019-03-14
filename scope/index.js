@@ -842,7 +842,15 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of lunch and orderLunch and its' definition is stored in global memory
+    //The function orderLunch is invoked
+    //The first log (log A) returns nothing as lunch does not existed
+    //lunch is assigned the value of 'sandwich' inside the function scope
+    //The if statement is true as lunch is inly defined as 'sandwich' inside the other if statment block scope, thus lnch is assigned the value of 'soup' on a global scope
+    //The second log (log B) logs 'soup'
+    //The orderLunch function is comeplete
+    //The third log (log C) logs 'soup'
+    //Tge results are returned
   },
 
   exerciseQ(){
