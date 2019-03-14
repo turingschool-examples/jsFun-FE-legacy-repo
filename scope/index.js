@@ -559,8 +559,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the fist pass the declaration of sandwich and addCheese and addChipotle and their definitions are stored in global memory
+    //sandwich is declared as 'ketchup sandwich' on global scope
+    //The first log (log A) logs 'ketchup sandwich'
+    //The addCheese function is invoked
+    //cheeseTopping is assigned to 'gouda' inside the function scope
+    //The second log (logD) logs 'gouda'
+    //The shesTheManReference function is invoked
+    //amandaBynes is assigned the value of 'National Treasure' inside the numberFunction
+    //The addCheese function is complete
+    //The addChipotle function is invoked
+    //The third log (log B) logs undefined becuase toppings is defined below the console log, this it has not been defined yet
+    //toppings is then defined as 'chipolte sauce'
+    //the if statement is true so sandwich is reassigned to 'not a mediocre sandwich'
+    //The fourth log (log C) logs 'not a mediocre sandwich'
+    //The addChipotle function is finished
+    //The fifth log (log E) logs 'not a mediocre sandwich' as the global value of sandwich was reassigned inside the numberFunction
+    //The sixth log (log F) logs the assigned value of amandaBynes, 'National Treasure'
+    //The results are returned
   },
+
 
   exerciseK() {
     let num = 10;
