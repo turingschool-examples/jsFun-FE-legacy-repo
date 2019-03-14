@@ -638,7 +638,7 @@ const scope = {
     losePoints();
 
     // Log C: grade
-    // 3rd 100
+    // 3rd 90
 
     const result = [
       {A: 95},
@@ -648,7 +648,20 @@ const scope = {
     return result;
 
     // Annotation:
-    // In the fist pass the declaration of grade and loosePoints and addPoints and their definitions are stored in global memory
+    // In the fist pass the declaration of grade and losePoints and addPoints and their definitions are stored in global memory
+    //grade is assigned to 100
+    //The function losePoints is invoked
+    //grade is reasigned to 90 on the global scope
+    //The addPoints function is invoked
+    //grade is assigned to 95 in the function block scope
+    //The if statement is true and grade is reassigned to 97 in the if statement scope
+    //The first log (log A) logs 95 as the log is outisde the if statement block scope but inside the function scope
+    //The addPoints function is comeplete
+    //The second log (log B) logs 90 as that is still the function value of the losePoints numberFunction
+    //The losePoints function is comeplete
+    //The third log (log C) logs 90 as the global variable was reassigned to 90 via the function losePoints
+    //The results are returned
+
   },
 
   exerciseM() {
