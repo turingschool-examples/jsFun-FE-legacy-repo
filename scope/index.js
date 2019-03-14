@@ -445,22 +445,19 @@ const scope = {
       hunger -= 25;
       // Log A: hunger
       //1st 75
-      //6th 55
-      console.log(hunger);
+      //5th 55
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
         // Log B: hunger
         //2nd 0
-        //7th 0
-        console.log(hunger);
+        //6th 0
       }
 
       // Log C: hunger
       //3rd 75
-      //8th 55
-      console.log(hunger);
+      //7th 55
     }
 
     eatSnack();
@@ -471,7 +468,7 @@ const scope = {
 
     eatSnack();
     // Log E: hunger
-    //5th 55
+    //8th 55
 
     const result = [
       {A: 75},
@@ -486,7 +483,28 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of hunger and eatSnack and gorgeYourself and their definitions are stored in global memory
+    //hunger is defined as 100
+    //The eatSnack function is invoked
+    //hunger is reassigned the value of 100 - 25, 75
+    //The first log (log A) logs 75
+    //The gorgeYourself function is invoked
+    //hunger is assigned to 0 in the function scope of gorgeYourself
+    //The second log (log B) logs 0
+    //The function gorgeYourself is complete
+    //The third log (log C) logs 75 as hunger is defined in the function scope as 75
+    //hunger is reassigned to 75 + 5, 80 on a global scope
+    //The fourth log (log D) logs 80
+    //The eatSnack function is invoked
+    //hunger is 80 but becomes 55 in the function eatSnack
+    //The fifth log (log A), logs 55
+    //The gorgeYourself function is invoked
+    //hunger is reassigned to 0
+    //The sixth log (log B) logs 0
+    //The seventh log (log C) logs 55, the value hunger was reassigned to in the function and global scope since it was originally declared using var
+    //The eatSnack function is complete
+    //The eigth log (log E) logs hunger as 55
+    //The result is returned
   },
 
   exerciseJ() {
