@@ -898,7 +898,21 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //In the first pass the declaration of myKid and wildKids and myCrazyKidAntics and drawOnTheWall and myAmazingKid their definitions are stored in global memory
+    //myKid is defined as 'Pandora'
+    //wildKids are defined as ['Antigone']
+    //myCrazyKidAntics is invoked
+    //The first log (logA) logs the value of myKid, 'Pandora' as its' value is passed into the functiona
+    //'Pandora' is pushed into the wildKids array
+    //The second log (log B) logs the array of wildKids with ['Antigone', 'Pandora']
+    //Inside the myCrazyKidAntics function the drawOnTheWall function is invoked
+    //myKid is reassigned to 'Mandy' in the function scope
+    //The thrid log (log C) logs 'Mandy'
+    //The drawOnTheWall function is complete
+    //The myAmazingKid function is invoked
+    //The first element from wildKids is remove and returned via arr.shift, thus log (log D) logs 'Antigone'
+    //The myAmazingKid function is comeplete
+    //The fifth log (log E) logs 'Pandora', this gloabl value of myKid, which has not been globally reassigned
   },
 
   exerciseR() {
