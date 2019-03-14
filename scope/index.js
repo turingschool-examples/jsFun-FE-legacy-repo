@@ -459,8 +459,6 @@ const scope = {
 
 
 
-
-
   
 
   exerciseL() {

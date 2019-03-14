@@ -17,10 +17,10 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it.skip("orangeKittyNames", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
-    }), it.skip("sortByAge", () => {
+    }), it("sortByAge", () => {
       const e = kittyPrompts.sortByAge();
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -265,7 +265,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }), describe("Turing Prompts", () => {
-    it.skip("studentsForEachInstructor", () => {
+    it("studentsForEachInstructor", () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
         name: "Pam",
