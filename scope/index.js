@@ -696,7 +696,19 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of num and first and second and their definitions are stored in global memory
+    //num is assigned the value of 5
+    //The first function is invoked
+    //The first log (log A) logs 5 since num has been defined on the global scope
+    //num is reassigned on a global scope to 6
+    //The second log (log B) logs num as 6
+    //The first function in comeplete
+    //The second function is invoked
+    //The third log (log C) logs num and there is a reference error becuase it knows num is being defined below the log and so it cannot refer to it's value yet
+    //num is assigned to 7 in the function scope
+    //The second function is comeplete
+    //The fourth log (log D) logs num as 6 as the global variable was reassigned to 6 in the first function
+    //The results are returned
   },
 
   exerciseN() {
