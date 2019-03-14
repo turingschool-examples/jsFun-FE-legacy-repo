@@ -40,6 +40,21 @@ const scope = {
     return result;
 
     // Annotation:
+//     In the first pass the declarations of personA, personB, and personC are all stored in global memory as well as changePerson and beautifyPerson and their definitions.
+// personA  is assigned to ‘Paul’
+// personB is assigned to ‘Ben’
+// personC is assigned to ‘Tom’
+// changePerson is invoked
+// personA is Paul so it is reassigned to CardiB, changing its’ value on the current scope and global scope
+// beautifyPerson is invoked
+// personB is logged and its’ has not changed so it is still ‘Ben’
+// personB includes a ‘B’ so personB is reassigned to person which was declared as CardiB in the parent scope
+// personC is reassigned to personB which is now CardiB
+// personC is logged as CardiB
+// Still inside the function of changePerson, personC is reassigned to personA which is becomes Paul and is declared in the function scope and the global scope
+// personB is logged still as CardiB
+// The function is complete and the final log of personC is logged as Paul which was just reassigned in the function changePerson.
+// The results are returned.
   },
 
   exerciseB() {
@@ -82,7 +97,17 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declarations of number as well as numberFunction and newNumber and their declarations are stored in global memory.
+    //number is assigned the value of 30
+    // The numberFunction is invoked
+    // number is assigned to 75 only in the function block
+    // Since number is 75, it is assigned 25 only in the if statement block
+    // number is logged as 75 for the first log since it is still in the function block
+    // newNumber is invoked
+    // In newNumber number is reassigned to 64 in the function scope and logged as 64
+    // The function newNumber is complete and the third log logs number as the reassigned value of 64
+    // The function numberFunction is complete and the fourth log logs greeting as at the global value of 30 since greeting inly had the value of 64 inside the function scope
+    // The results are returned
   },
 
   exerciseC() {
@@ -108,7 +133,7 @@ const scope = {
       newPhrase();
 
       // Log C: greeting
-      // 3rd Heyt
+      // 3rd Hey
     }
 
     greetingFunction();
@@ -125,7 +150,18 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //     In the first pass the declaration of greeting and greetingFunction and newPhrase and its definitions are stored in global memory
+    // greeting is assigned a value of ‘Hello’
+    // The greetingFunction is invoked
+    // greeting is reassigned to ‘Yo’ on the function and global scope using var
+    // Since greeting has a value of ‘Yo’, it is reassigned to ‘Howdy’ in the if statement block
+    // The first log logs ‘Yo’ since it is outside the if statement and the variable has been reassigned to the function and global scope
+    // The function newPhase is invoked
+    // greeting is reassigned to ‘Hey’ and logged as ‘Hey’
+    // The function is complete
+    // The third log return ‘Hey’ as well since the variable has been reassigned inside the function scope
+    // The function is complete and greeting is logged as it’s global value of ‘Hello’
+    // The results are returned
   },
 
   exerciseD() {
@@ -168,7 +204,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    
   },
 
   exerciseE() {
@@ -716,7 +752,7 @@ const scope = {
 
   exerciseR() {
     let myName = 'Rody';
-    // Log A: myName
+    // Log A: myNameB ng
     //1st Rody
 
     const parentFunc = () => {
