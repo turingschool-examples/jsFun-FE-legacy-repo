@@ -801,7 +801,15 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of shoe and putOnShoe and its' definition are stored in global memory
+    //shoe is assigned the value of 'flipflop'
+    //The first log (log B) logs the value of 'flipflop'
+    //The putOnShoe function is invoked
+    //The second log (log A) logs the value of undefined because it knows shoe will be defined in the function but the definition hasn't happened yet
+    //shoe is assigned to 'boot' inside the function, but it does not reassign the global variable
+    //The function putOnShoe is comeplete
+    //The third log (log C) logs 'flipflop', the global variable definition
+    //The results are returned
   },
 
   exerciseP() {
