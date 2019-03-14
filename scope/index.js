@@ -40,21 +40,21 @@ const scope = {
     return result;
 
     // Annotation:
-//     In the first pass the declarations of personA, personB, and personC are all stored in global memory as well as changePerson and beautifyPerson and their definitions.
-// personA  is assigned to ‘Paul’
-// personB is assigned to ‘Ben’
-// personC is assigned to ‘Tom’
-// changePerson is invoked
-// personA is Paul so it is reassigned to CardiB, changing its’ value on the current scope and global scope
-// beautifyPerson is invoked
-// personB is logged and its’ has not changed so it is still ‘Ben’
-// personB includes a ‘B’ so personB is reassigned to person which was declared as CardiB in the parent scope
-// personC is reassigned to personB which is now CardiB
-// personC is logged as CardiB
-// Still inside the function of changePerson, personC is reassigned to personA which is becomes Paul and is declared in the function scope and the global scope
-// personB is logged still as CardiB
-// The function is complete and the final log of personC is logged as Paul which was just reassigned in the function changePerson.
-// The results are returned.
+    // In the first pass the declarations of personA, personB, and personC are all stored in global memory as well as changePerson and beautifyPerson and their definitions.
+    // personA  is assigned to ‘Paul’
+    // personB is assigned to ‘Ben’
+    // personC is assigned to ‘Tom’
+    // changePerson is invoked
+    // personA is Paul so it is reassigned to CardiB, changing its’ value on the current scope and global scope
+    // beautifyPerson is invoked
+    // personB is logged and its’ has not changed so it is still ‘Ben’
+    // personB includes a ‘B’ so personB is reassigned to person which was declared as CardiB in the parent scope
+    // personC is reassigned to personB which is now CardiB
+    // personC is logged as CardiB
+    // Still inside the function of changePerson, personC is reassigned to personA which is becomes Paul and is declared in the function scope and the global scope
+    // personB is logged still as CardiB
+    // The function is complete and the final log of personC is logged as Paul which was just reassigned in the function changePerson.
+    // The results are returned
   },
 
   exerciseB() {
@@ -98,7 +98,7 @@ const scope = {
 
     // Annotation:
     // In the first pass the declarations of number as well as numberFunction and newNumber and their declarations are stored in global memory.
-    //number is assigned the value of 30
+    // number is assigned the value of 30
     // The numberFunction is invoked
     // number is assigned to 75 only in the function block
     // Since number is 75, it is assigned 25 only in the if statement block
@@ -150,7 +150,7 @@ const scope = {
     return result;
 
     // Annotation:
-    //     In the first pass the declaration of greeting and greetingFunction and newPhrase and its definitions are stored in global memory
+    // In the first pass the declaration of greeting and greetingFunction and newPhrase and its definitions are stored in global memory
     // greeting is assigned a value of ‘Hello’
     // The greetingFunction is invoked
     // greeting is reassigned to ‘Yo’ on the function and global scope using var
@@ -204,19 +204,19 @@ const scope = {
     return result;
 
     // Annotation:
-    //In the first pass the declaration of greeting and greetingGenerator and newGreeting and its definitions are stored in global memory
-   // greeting is defined as 'howdy'
-   //greetingGenerator is invoked
-   //greeting is assigned to 'hi' inside the function scope
-   //greeting is 'hi' so it is reassigned to 'hello' inside the if statement block scope
-   //The first log logs greeting as 'hi' since 'hello' only existed inside the if statment scope
-   //newGreeting is invoked
-   //greeting is reassigned to 'welcome' inside the function scope
-   //The secind log logs greeting as 'welcome'
-   //The third log logs greeting as 'welcome' since the thrid log is still inside the function scope
-   //greetingGenerator is complete
-   //The fourth log logs greeting as 'howdy', the global value since the other values of greeting were defined in block scope and only existed inside the function
-  },
+    // In the first pass the declaration of greeting and greetingGenerator and newGreeting and its definitions are stored in global memory
+    // greeting is defined as 'howdy'
+    // greetingGenerator is invoked
+    // greeting is assigned to 'hi' inside the function scope
+    // greeting is 'hi' so it is reassigned to 'hello' inside the if statement block scope
+    // The first log logs greeting as 'hi' since 'hello' only existed inside the if statment scope
+    // newGreeting is invoked
+    // greeting is reassigned to 'welcome' inside the function scope
+    // The secind log logs greeting as 'welcome'
+    // The third log logs greeting as 'welcome' since the thrid log is still inside the function scope
+    // greetingGenerator is complete
+    // The fourth log logs greeting as 'howdy', the global value since the other values of greeting were defined in block scope and only existed inside the function
+    },
 
   exerciseE() {
     let name = 'Brittany';
@@ -257,16 +257,16 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of name and sayName and its definitions are stored in global memory
-    //name is defined as 'Brittany'
-    //The first log (log C) logs name as its' global value of 'Brittany'
-    //sayName is invoked
-    //name is assigned to 'Pam' in the function scope
-    //Since name is 'Pam' it is reassigned to 'Nathaniel'
-    //The length of name is greater than 0 so it becomes 'Brittany' but only in the if statement block scope
-    //The second log (log A) is 'Nathaniel' since the log is in the function
-    //The third log (log B) is 'Nathaniel'since th log is also inside the function were name is reassigned to 'Nathaniel'
-    //sayName is complete
-    //The fourth log (log D) is outside the function and logs the global variable value of 'Brittany'
+    // name is defined as 'Brittany'
+    // The first log (log C) logs name as its' global value of 'Brittany'
+    // sayName is invoked
+    // name is assigned to 'Pam' in the function scope
+    // Since name is 'Pam' it is reassigned to 'Nathaniel'
+    // The length of name is greater than 0 so it becomes 'Brittany' but only in the if statement block scope
+    // The second log (log A) is 'Nathaniel' since the log is in the function
+    // The third log (log B) is 'Nathaniel'since th log is also inside the function were name is reassigned to 'Nathaniel'
+    // sayName is complete
+    // The fourth log (log D) is outside the function and logs the global variable value of 'Brittany'
   },
 
   exerciseF() {
@@ -312,18 +312,18 @@ const scope = {
     return result;
 
     // Annotation:
-    //In the first pass the declaration of dog and petDog and rollOver and their definitions are stored in global memory
-    //dog is defined as 'Spot'
-    //petDog is invoked
-    //The first log (log A) logs the global value of 'Spot'
-    //dog has the value of 'Spot' so it becomes 'Fluffy' in the if statement block scope
-    //The rollOver function is invoked
-    //dog has not been reassigned a value in the function scope so the second log (log B) is 'Spot'
-    //dog is reassigned to 'Biscuit' inside the function scope and globally
-    //The thrid log (log C) is 'Biscuit'
-    //The fourth log (log D) is also 'Biscuit'
-    //The function is complete
-    //The fifth log (log E) is now 'Biscuit' becuase the global variable that was reassigned was declared with var so reassigning it in the function also reassigned it on the global scope
+    // In the first pass the declaration of dog and petDog and rollOver and their definitions are stored in global memory
+    // dog is defined as 'Spot'
+    // petDog is invoked
+    // The first log (log A) logs the global value of 'Spot'
+    // dog has the value of 'Spot' so it becomes 'Fluffy' in the if statement block scope
+    // The rollOver function is invoked
+    // dog has not been reassigned a value in the function scope so the second log (log B) is 'Spot'
+    // dog is reassigned to 'Biscuit' inside the function scope and globally
+    // The thrid log (log C) is 'Biscuit'
+    // The fourth log (log D) is also 'Biscuit'
+    // The function is complete
+    // The fifth log (log E) is now 'Biscuit' becuase the global variable that was reassigned was declared with var so reassigning it in the function also reassigned it on the global scope
   },
 
   exerciseG() {
@@ -362,15 +362,15 @@ const scope = {
     return result;
 
     // Annotation:
-    //In the first pass the declaration of fruit and eatFruit and its' definitions are stored in global memory
-    //eatFruit is invoked
-    //The first if statement is true so fruit is assigned to 'mango' on a function scope
-    //The first log (log A) logs fruit as a reference error because JS know there is a variable of fruit being defined in the if statement block, so it does not go up the scope chain and simply declares a reference error. This is called the temporal dead zone.
-    //fruit is reassigned to 'strawberry' only in the if statement block scope
-    //The second log (log B) logs fruit as 'mango' becuase it has been reassigned in function scope
-    //The third log (log C) also logs 'mango'becuase it has been reassigned in function scope
-    //The eatFruit function is complete
-    //The fourth log (log D) logs fruit as 'apple' becuase it has not been reassigned on the global scope
+    // In the first pass the declaration of fruit and eatFruit and its' definitions are stored in global memory
+    // eatFruit is invoked
+    // The first if statement is true so fruit is assigned to 'mango' on a function scope
+    // The first log (log A) logs fruit as a reference error because JS know there is a variable of fruit being defined in the if statement block, so it does not go up the scope chain and simply declares a reference error. This is called the temporal dead zone.
+    // fruit is reassigned to 'strawberry' only in the if statement block scope
+    // The second log (log B) logs fruit as 'mango' becuase it has been reassigned in function scope
+    // The third log (log C) also logs 'mango'becuase it has been reassigned in function scope
+    // The eatFruit function is complete
+    // The fourth log (log D) logs fruit as 'apple' becuase it has not been reassigned on the global scope
   },
 
   exerciseH() {
@@ -422,20 +422,20 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of num and fn1 and fn2 and their definitions are stored in global memory
-    //num is defined as 6
-    //The fn1 function is invoked
-    //num is reassigned to 4 in the function scope
-    //The first log (log A) is logged as 4
+    // num is defined as 6
+    // The fn1 function is invoked
+    // num is reassigned to 4 in the function scope
+    // The first log (log A) is logged as 4
     // The if statement is true so num is assigned the value of 9 only inside the if statement block scope
-    //The fn2 function is invoked
-    //The second log (log D) logs num as 9 since num is passed through the function
-    //num is reassigned to num plus 1 which becomes 10
-    //The thrid log (log E) logs num as 10
-    //The fn2 function is complete
-    //Back inside the if statement in fn1, newNum is assigned the value of num which is 9 inside the if statement
-    //The fourth log (log B) logs 9
-    //newNum is reassigned to num outside the if statement block but inside the function so newNum takes on the value of 4
-    //The fifth log (log C) logs 4 as the log is inside the function scope.
+    // The fn2 function is invoked
+    // The second log (log D) logs num as 9 since num is passed through the function
+    // num is reassigned to num plus 1 which becomes 10
+    // The thrid log (log E) logs num as 10
+    // The fn2 function is complete
+    // Back inside the if statement in fn1, newNum is assigned the value of num which is 9 inside the if statement
+    // The fourth log (log B) logs 9
+    // newNum is reassigned to num outside the if statement block but inside the function so newNum takes on the value of 4
+    // The fifth log (log C) logs 4 as the log is inside the function scope.
   }
 
   exerciseI() {
@@ -484,27 +484,27 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of hunger and eatSnack and gorgeYourself and their definitions are stored in global memory
-    //hunger is defined as 100
-    //The eatSnack function is invoked
-    //hunger is reassigned the value of 100 - 25, 75
-    //The first log (log A) logs 75
-    //The gorgeYourself function is invoked
-    //hunger is assigned to 0 in the function scope of gorgeYourself
-    //The second log (log B) logs 0
-    //The function gorgeYourself is complete
-    //The third log (log C) logs 75 as hunger is defined in the function scope as 75
-    //hunger is reassigned to 75 + 5, 80 on a global scope
-    //The fourth log (log D) logs 80
-    //The eatSnack function is invoked
-    //hunger is 80 but becomes 55 in the function eatSnack
-    //The fifth log (log A), logs 55
-    //The gorgeYourself function is invoked
-    //hunger is reassigned to 0
-    //The sixth log (log B) logs 0
-    //The seventh log (log C) logs 55, the value hunger was reassigned to in the function and global scope since it was originally declared using var
-    //The eatSnack function is complete
-    //The eigth log (log E) logs hunger as 55
-    //The result is returned
+    // hunger is defined as 100
+    // The eatSnack function is invoked
+    // hunger is reassigned the value of 100 - 25, 75
+    // The first log (log A) logs 75
+    // The gorgeYourself function is invoked
+    // hunger is assigned to 0 in the function scope of gorgeYourself
+    // The second log (log B) logs 0
+    // The function gorgeYourself is complete
+    // The third log (log C) logs 75 as hunger is defined in the function scope as 75
+    // hunger is reassigned to 75 + 5, 80 on a global scope
+    // The fourth log (log D) logs 80
+    // The eatSnack function is invoked
+    // hunger is 80 but becomes 55 in the function eatSnack
+    // The fifth log (log A), logs 55
+    // The gorgeYourself function is invoked
+    // hunger is reassigned to 0
+    // The sixth log (log B) logs 0
+    // The seventh log (log C) logs 55, the value hunger was reassigned to in the function and global scope since it was originally declared using var
+    // The eatSnack function is complete
+    // The eigth log (log E) logs hunger as 55
+    // The result is returned
   },
 
   exerciseJ() {
@@ -560,23 +560,23 @@ const scope = {
 
     // Annotation:
     // In the fist pass the declaration of sandwich and addCheese and addChipotle and their definitions are stored in global memory
-    //sandwich is declared as 'ketchup sandwich' on global scope
-    //The first log (log A) logs 'ketchup sandwich'
-    //The addCheese function is invoked
-    //cheeseTopping is assigned to 'gouda' inside the function scope
-    //The second log (logD) logs 'gouda'
-    //The shesTheManReference function is invoked
-    //amandaBynes is assigned the value of 'National Treasure' inside the numberFunction
-    //The addCheese function is complete
-    //The addChipotle function is invoked
-    //The third log (log B) logs undefined becuase toppings is defined below the console log, this it has not been defined yet
-    //toppings is then defined as 'chipolte sauce'
-    //the if statement is true so sandwich is reassigned to 'not a mediocre sandwich'
-    //The fourth log (log C) logs 'not a mediocre sandwich'
-    //The addChipotle function is finished
-    //The fifth log (log E) logs 'not a mediocre sandwich' as the global value of sandwich was reassigned inside the numberFunction (when it was reassigned const nor let were used to declare the value, which would have created a block scope for the reassignment)
-    //The sixth log (log F) logs the assigned value of amandaBynes, 'National Treasure'
-    //The results are returned
+    // sandwich is declared as 'ketchup sandwich' on global scope
+    // The first log (log A) logs 'ketchup sandwich'
+    // The addCheese function is invoked
+    // cheeseTopping is assigned to 'gouda' inside the function scope
+    // The second log (logD) logs 'gouda'
+    // The shesTheManReference function is invoked
+    // amandaBynes is assigned the value of 'National Treasure' inside the numberFunction
+    // The addCheese function is complete
+    // The addChipotle function is invoked
+    // The third log (log B) logs undefined becuase toppings is defined below the console log, this it has not been defined yet
+    // toppings is then defined as 'chipolte sauce'
+    // The if statement is true so sandwich is reassigned to 'not a mediocre sandwich'
+    // The fourth log (log C) logs 'not a mediocre sandwich'
+    // The addChipotle function is finished
+    // The fifth log (log E) logs 'not a mediocre sandwich' as the global value of sandwich was reassigned inside the numberFunction (when it was reassigned const nor let were used to declare the value, which would have created a block scope for the reassignment)
+    // The sixth log (log F) logs the assigned value of amandaBynes, 'National Treasure'
+    // The results are returned
   },
 
 
@@ -604,12 +604,12 @@ const scope = {
 
     // Annotation:
     // In the fist pass the declaration of num and foo and its' definitions are stored in global memory
-    //num is assigned the global value of 10
-    //The function foo is invoked
-    //The if statement is true so num is globally reassigned to 7
-    //The first log (log A) logs 7
-    //The foo function is comeplete
-    //The second log (log B) logs 7, the new value of num on the global scope
+    // num is assigned the global value of 10
+    // The function foo is invoked
+    // The if statement is true so num is globally reassigned to 7
+    // The first log (log A) logs 7
+    // The foo function is comeplete
+    // The second log (log B) logs 7, the new value of num on the global scope
   },
 
   exerciseL() {
@@ -649,18 +649,18 @@ const scope = {
 
     // Annotation:
     // In the fist pass the declaration of grade and losePoints and addPoints and their definitions are stored in global memory
-    //grade is assigned to 100
-    //The function losePoints is invoked
-    //grade is reasigned to 90 on the global scope
-    //The addPoints function is invoked
-    //grade is assigned to 95 in the function block scope
-    //The if statement is true and grade is reassigned to 97 in the if statement scope
-    //The first log (log A) logs 95 as the log is outisde the if statement block scope but inside the function scope
-    //The addPoints function is comeplete
-    //The second log (log B) logs 90 as that is still the function value of the losePoints numberFunction
-    //The losePoints function is comeplete
-    //The third log (log C) logs 90 as the global variable was reassigned to 90 via the function losePoints
-    //The results are returned
+    //g rade is assigned to 100
+    // The function losePoints is invoked
+    // grade is reasigned to 90 on the global scope
+    // The addPoints function is invoked
+    // grade is assigned to 95 in the function block scope
+    // The if statement is true and grade is reassigned to 97 in the if statement scope
+    // The first log (log A) logs 95 as the log is outisde the if statement block scope but inside the function scope
+    // The addPoints function is comeplete
+    // The second log (log B) logs 90 as that is still the function value of the losePoints numberFunction
+    // The losePoints function is comeplete
+    // The third log (log C) logs 90 as the global variable was reassigned to 90 via the function losePoints
+    // The results are returned
 
   },
 
@@ -697,18 +697,18 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of num and first and second and their definitions are stored in global memory
-    //num is assigned the value of 5
-    //The first function is invoked
-    //The first log (log A) logs 5 since num has been defined on the global scope
-    //num is reassigned on a global scope to 6
-    //The second log (log B) logs num as 6
-    //The first function in comeplete
-    //The second function is invoked
-    //The third log (log C) logs num and there is a reference error becuase it knows num is being defined below the log and so it cannot refer to it's value yet
-    //num is assigned to 7 in the function scope
-    //The second function is comeplete
-    //The fourth log (log D) logs num as 6 as the global variable was reassigned to 6 in the first function
-    //The results are returned
+    // num is assigned the value of 5
+    // The first function is invoked
+    // The first log (log A) logs 5 since num has been defined on the global scope
+    // num is reassigned on a global scope to 6
+    // The second log (log B) logs num as 6
+    // The first function in comeplete
+    // The second function is invoked
+    // The third log (log C) logs num and there is a reference error becuase it knows num is being defined below the log and so it cannot refer to it's value yet
+    // num is assigned to 7 in the function scope
+    // The second function is comeplete
+    // The fourth log (log D) logs num as 6 as the global variable was reassigned to 6 in the first function
+    // The results are returned
   },
 
   exerciseN() {
@@ -761,20 +761,20 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of instructor and rename and changeInstructor and their definitions are all stored in global memory
-    //instructor is assigned the value of 'Pam'
-    //The first log (log E) logs 'Pam' as the instructor
-    //The changeInstructor function is invoked
-    //The second log (log A) logs 'Pam'
-    //The if statment is bypassed (The first if is not fulfilled and the else changes instructor to 'Brittany' but only in the if statement scope an thus it is not used anywhere else)
-    //The third log (log B) logs 'Pam'
-    //The function rename is invoked
-    //instructor is reassigned to "Louisa" on the global scope
-    //The fourth log (log C) logs 'Louisa'
-    //The rename function is complete
-    //The fifth log (log D) logs 'Louisa' as instructor was reassigned on the functional and global scope
-    //The changeInstructor function is comeplete
-    //The sixth log (log F) logs 'Louisa', the variable definition on the global scope
-    //The results are returned
+    // instructor is assigned the value of 'Pam'
+    // The first log (log E) logs 'Pam' as the instructor
+    // The changeInstructor function is invoked
+    // The second log (log A) logs 'Pam'
+    // The if statment is bypassed (The first if is not fulfilled and the else changes instructor to 'Brittany' but only in the if statement scope an thus it is not used anywhere else)
+    // The third log (log B) logs 'Pam'
+    // The function rename is invoked
+    // instructor is reassigned to "Louisa" on the global scope
+    // The fourth log (log C) logs 'Louisa'
+    // The rename function is complete
+    // The fifth log (log D) logs 'Louisa' as instructor was reassigned on the functional and global scope
+    // The changeInstructor function is comeplete
+    // The sixth log (log F) logs 'Louisa', the variable definition on the global scope
+    // The results are returned
   },
 
   exerciseO() {
@@ -802,14 +802,14 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of shoe and putOnShoe and its' definition are stored in global memory
-    //shoe is assigned the value of 'flipflop'
-    //The first log (log B) logs the value of 'flipflop'
-    //The putOnShoe function is invoked
-    //The second log (log A) logs the value of undefined because it knows shoe will be defined in the function but the definition hasn't happened yet
-    //shoe is assigned to 'boot' inside the function, but it does not reassign the global variable
-    //The function putOnShoe is comeplete
-    //The third log (log C) logs 'flipflop', the global variable definition
-    //The results are returned
+    // shoe is assigned the value of 'flipflop'
+    // The first log (log B) logs the value of 'flipflop'
+    // The putOnShoe function is invoked
+    // The second log (log A) logs the value of undefined because it knows shoe will be defined in the function but the definition hasn't happened yet
+    // shoe is assigned to 'boot' inside the function, but it does not reassign the global variable
+    // The function putOnShoe is comeplete
+    // The third log (log C) logs 'flipflop', the global variable definition
+    // The results are returned
   },
 
   exerciseP() {
@@ -843,14 +843,14 @@ const scope = {
 
     // Annotation:
     // In the first pass the declaration of lunch and orderLunch and its' definition is stored in global memory
-    //The function orderLunch is invoked
-    //The first log (log A) returns nothing as lunch does not existed
-    //lunch is assigned the value of 'sandwich' inside the function scope
-    //The if statement is true as lunch is inly defined as 'sandwich' inside the other if statment block scope, thus lnch is assigned the value of 'soup' on a global scope
-    //The second log (log B) logs 'soup'
-    //The orderLunch function is comeplete
-    //The third log (log C) logs 'soup'
-    //Tge results are returned
+    // The function orderLunch is invoked
+    // The first log (log A) returns nothing as lunch does not existed
+    // lunch is assigned the value of 'sandwich' inside the function scope
+    // The if statement is true as lunch is only defined as 'sandwich' inside the other if statment block scope, thus lunch is assigned the value of 'soup' on a global scope
+    // The second log (log B) logs 'soup'
+    // The orderLunch function is comeplete
+    // The third log (log C) logs 'soup'
+    // The results are returned
   },
 
   exerciseQ(){
@@ -898,21 +898,21 @@ const scope = {
     return result;
 
     // Annotation:
-    //In the first pass the declaration of myKid and wildKids and myCrazyKidAntics and drawOnTheWall and myAmazingKid their definitions are stored in global memory
-    //myKid is defined as 'Pandora'
-    //wildKids are defined as ['Antigone']
-    //myCrazyKidAntics is invoked
-    //The first log (logA) logs the value of myKid, 'Pandora' as its' value is passed into the functiona
-    //'Pandora' is pushed into the wildKids array
-    //The second log (log B) logs the array of wildKids with ['Antigone', 'Pandora']
-    //Inside the myCrazyKidAntics function the drawOnTheWall function is invoked
-    //myKid is reassigned to 'Mandy' in the function scope
-    //The thrid log (log C) logs 'Mandy'
-    //The drawOnTheWall function is complete
-    //The myAmazingKid function is invoked
-    //The first element from wildKids is remove and returned via arr.shift, thus log (log D) logs 'Antigone'
-    //The myAmazingKid function is comeplete
-    //The fifth log (log E) logs 'Pandora', this gloabl value of myKid, which has not been globally reassigned
+    // In the first pass the declaration of myKid and wildKids and myCrazyKidAntics and drawOnTheWall and myAmazingKid their definitions are stored in global memory
+    // myKid is defined as 'Pandora'
+    // wildKids are defined as ['Antigone']
+    // myCrazyKidAntics is invoked
+    // The first log (logA) logs the value of myKid, 'Pandora' as its' value is passed into the functiona
+    // 'Pandora' is pushed into the wildKids array
+    // The second log (log B) logs the array of wildKids with ['Antigone', 'Pandora']
+    // Inside the myCrazyKidAntics function the drawOnTheWall function is invoked
+    // myKid is reassigned to 'Mandy' in the function scope
+    // The thrid log (log C) logs 'Mandy'
+    // The drawOnTheWall function is complete
+    // The myAmazingKid function is invoked
+    // The first element from wildKids is remove and returned via arr.shift, thus log (log D) logs 'Antigone'
+    // The myAmazingKid function is comeplete
+    // The fifth log (log E) logs 'Pandora', this gloabl value of myKid, which has not been globally reassigned
   },
 
   exerciseR() {
@@ -949,17 +949,17 @@ const scope = {
 
     // Annotation:
     // In the first pass the declarartion of myName and innerFunc and parentFunc and their definitions are stored in global memory
-    //myName is assigned the value of 'Rody'
-    //The first log (log A) logs myName as 'Rody'
-    //The parentFunc is invoked
-    //myName is reassigned globallt to it's original value plus 'Toy'
-    //The second log (log B) logs 'RodyToy'
-    //The innerFunc function is invoked
-    //myName is assigned the value of 'Tesla' in the function scope
-    //The third log(log C) logs 'Tesla'
-    //The innerFunc is comeplete
-    //myName which is now 'RodyToy' globally, is reassigned to 'RodyToy' plus 'Daniels' and logs 'RodyToyDaniels'
-    //The results are returned
+    // myName is assigned the value of 'Rody'
+    // The first log (log A) logs myName as 'Rody'
+    // The parentFunc is invoked
+    // myName is reassigned globallt to it's original value plus 'Toy'
+    // The second log (log B) logs 'RodyToy'
+    // The innerFunc function is invoked
+    // myName is assigned the value of 'Tesla' in the function scope
+    // The third log(log C) logs 'Tesla'
+    // The innerFunc is comeplete
+    // myName which is now 'RodyToy' globally, is reassigned to 'RodyToy' plus 'Daniels' and logs 'RodyToyDaniels'
+    // The results are returned
   }
 };
 
