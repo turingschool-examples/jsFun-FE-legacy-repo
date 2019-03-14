@@ -1,3 +1,5 @@
+    // npm run testScope
+
 const scope = {
   exerciseA() {
     let personA = 'Paul';
@@ -11,29 +13,41 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB 1st, Ben
+        console.log('a: ', personB, 'ben');
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC 2nd, CardiB
+          console.log('b: ', personC, 'cardib');
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB 3rd, CardiB
+      console.log('c: ', personB, 'cardib');
     }
 
     changePerson();
 
     // Log D: personC
+    console.log('d: ', personC, 'paul')
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Ben' },
+      { B: 'CardiB' },
+      { C: 'CardiB' },
+      { D: 'Paul'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A logs 'Ben' because personB references the global variable
+    // B logs 'CardiB' because the if statement reassigns personB to person, which was reassigned to 'CardiB' in the function changePerson().
+    // C logs 'CardiB' because the if statement reassigns personC to personB, which was previously resassigned to 'CardiB' in the function changePerson().
+    // D logs 'Paul' because personC is reassigned to the global variable personA on line 27. 
   },
 
   exerciseB() {
@@ -46,28 +60,37 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number - what is the value of the number variable here? // 75
+      console.log('a: ', number, 75);
 
       function newNumber() {
         number = 64;
 
         // Log B: number
+        console.log('b: ', number, 64);
       }
 
       newNumber();
 
       // Log C: number
+      console.log('c: ', number, 64);
     }
 
     numberFunction();
 
     // Log D: number
+    console.log('d: ', number, 30);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 75 },
+      { B: 64 },
+      { C: 64 },
+      { D: 30 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // step through the code as it would execute
   },
 
   exerciseC() {
@@ -81,27 +104,39 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log('a: ', greeting, 'yo');
 
       function newPhrase() {
         greeting = 'Hey';
 
         // Log B: greeting
+        console.log('b: ', greeting, 'hey');
       }
 
       newPhrase();
 
       // Log C: greeting
+      console.log('c: ', greeting, 'hey');
     }
 
     greetingFunction();
 
     // Log D: greeting
+    console.log('d: ', greeting, 'hello');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Yo' },
+      { B: 'Hey' },
+      { C: 'Hey' },
+      { D: 'Hello' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A logs 'Yo' because greeting is declared functionally scoped within greetingFunction()
+    // B logs 'Hey' because greeting is reassigned within the function newPhrase()
+    // C logs 'Hey' because it references the most recent declaration of greeting (within newPhrase)
+    // D logs 'Hello' because it references the global scope
   },
 
   exerciseD() {
@@ -115,27 +150,39 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log('a: ', greeting, 'hi');
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
         // Log B: greeting
+        console.log('b: ', greeting, 'welcome');
       };
 
       newGreeting();
 
       // Log C: greeting
+      console.log('c: ', greeting, 'welcome');
     };
 
     greetingGenerator();
 
     // Log D: greeting
+    console.log('d: ', greeting, 'howdy');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'hi' },
+      { B: 'welcome' },
+      { C: 'welcome' },
+      { D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A console.logs 'hi' because it's functionally scoped to object function greetingGenerator, which declares greeting = 'hi'
+    // B logs 'welcome' because greeting is reassigned to 'welcome' within newGreeting
+    // C logs 'welcome' because the reassignment within newGreeting bleeds out into parent scope for function greetingGenerator
+    // D logs 'howdy' because the console.log lies outside of the function and is globally scoped
   },
 
   exerciseE() {
@@ -152,22 +199,29 @@ const scope = {
         }
 
         // Log A: name
+        console.log('2a: ', name, 'Nathaniel');
       }
 
       // Log B: name
+      console.log('3b: ', name, 'Nathaniel');
     }
 
     // Log C: name
+    console.log('1c: ', name, 'Brittany');
 
     sayName();
 
     // Log D: name
+    console.log('4d: ', name, 'Brittany');
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A console.logs
+    // B logs
+    // C logs
+    // D logs
   },
 
   exerciseF() {
