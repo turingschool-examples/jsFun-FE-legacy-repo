@@ -33,8 +33,9 @@ const kittyPrompts = {
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kittyA, kittyB) => {
+      return  kittyB.age - kittyA.age;
+    });
     return result;
 
     // Annotation:
@@ -55,7 +56,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age = kitty.age + 2;
+      return kitty;
+    });
     return result;
   }
 };
@@ -93,7 +97,7 @@ const clubPrompts = {
           addMembers[member] = [];
         }
         if (addMembers[member]){
-          addMembers[member].push(club.club)
+          addMembers[member].push(club.club);
         }
       });
       return addMembers;
@@ -404,8 +408,8 @@ const turingPrompts = {
     // ]
 
     const result = instructors.forEach(instructor => {
-        let match = instructors.find(instructor => instructor.module === cohort.module);
-        console.log(match)
+      let match = instructors.find(instructor => instructor.module === cohort.module);
+      console.log(match);
     });
     return result;
 

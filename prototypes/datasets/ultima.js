@@ -51,9 +51,9 @@ const weapons = {
     damage: 12,
     range: 31
   }
-}
+};
 
 module.exports = {
   characters,
   weapons
-}
+};

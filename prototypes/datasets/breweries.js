@@ -1,7 +1,7 @@
 const breweries = [
   { 
-    name: "Little Machine Brew", 
-    neighborhood: "Highlands", 
+    name: 'Little Machine Brew', 
+    neighborhood: 'Highlands', 
     beers: [
       { name: 'B.B. Rodriguez', type: 'Coffee Double Brown', abv: 8, ibu: 30, },
       { name: 'West Side is the Blessed Side', type: 'Barrel-Aged Tripel', abv: 7.3, ibu: 35, },
@@ -18,8 +18,8 @@ const breweries = [
     ]
   },
   { 
-    name: "Ratio Beerworks", 
-    neighborhood: "RiNo",
+    name: 'Ratio Beerworks', 
+    neighborhood: 'RiNo',
     beers: [
       { name: 'Domestica', type: 'American Standard Ale', abv: 4.9, ibu: 11, },
       { name: 'Dear You', type: 'Saison', abv: 5.5, ibu: 25, },
@@ -29,8 +29,8 @@ const breweries = [
     ]
   },
   { 
-    name: "Spangalang Brewery", 
-    neighborhood: "Five Points",
+    name: 'Spangalang Brewery', 
+    neighborhood: 'Five Points',
     beers: [
       { name: 'Sugarfood', type: 'Belgian', abv: 3.5, ibu: 15, },
       { name: 'Sidewinder Wit', type: 'Belgian Style Wit', abv: 5.5, ibu: 12, },
@@ -44,8 +44,8 @@ const breweries = [
     ]
   },
   { 
-    name: "Beryl's Beer Co.", 
-    neighborhood: "RiNo", 
+    name: 'Beryl\'s Beer Co.', 
+    neighborhood: 'RiNo', 
     beers: [
       { name: '5 to 7', type: 'Hoppy Pils', abv: 5.7, ibu: 50, },
       { name: 'Dick Nichols', type: 'India Pale Ale', abv: 7.1, ibu: 60, },
@@ -57,8 +57,8 @@ const breweries = [
     ]
   },
   {
-    name: "Platt Park Brewing Co.", 
-    neighborhood: "Platt Park",
+    name: 'Platt Park Brewing Co.', 
+    neighborhood: 'Platt Park',
     beers: [
       { name: 'Platt Park Porter', type: 'Porter', abv: 5.4, ibu: 22, },
       { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 },
@@ -73,4 +73,4 @@ const breweries = [
 
 module.exports = {
   breweries
-}
+};
