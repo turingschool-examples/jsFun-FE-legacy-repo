@@ -275,14 +275,19 @@ const scope = {
         // Log B: fruit = mango
       }
 
-      // Log C: fruit
+      // Log C: fruit = mango
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit = apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'reference error'},
+      {B: 'mango'},
+      {C: 'mango'},
+      {D: 'apple'}
+    ];
     return result;
 
     // Annotation:
