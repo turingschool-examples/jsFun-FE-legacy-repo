@@ -137,7 +137,15 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.reduce((modRatios, module) => {
+      const studentRatio =  module.students / module.instructors;
+      const modRatio = {
+        mod: module.mod,
+        studentsPerInstructor: studentRatio
+      };
+      modRatios.push(modRatio);
+      return modRatios;
+    }, []);
     return result;
 
     // Annotation:
@@ -171,6 +179,8 @@ const cakePrompts = {
     //    { flavor: 'yellow', inStock: 14 },
     //    ..etc
     // ]
+
+    //
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
