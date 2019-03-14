@@ -8,8 +8,46 @@
 </head>
 <body>
   <script>
-    function
-      console.log(exerciseN())
+    function exerciseG() {
+      var fruit = 'apple';
+
+      function eatFruit() {
+
+        if (fruit !== 'kiwi') {
+          var fruit = 'mango';
+
+          if (fruit) {
+            // Log A: fruit
+            // 1st ref error
+            console.log(fruit)
+            const fruit = 'strawberry';
+          }
+
+          // Log B: fruit
+          //2nd mango
+            console.log(fruit)
+        }
+
+        // Log C: fruit
+        // 3rd mango
+          console.log(fruit)
+      }
+
+      eatFruit();
+
+      // Log D: fruit
+      // 4th apple
+        console.log(fruit)
+
+      // const result = [
+      //   {A: 'reference error'},
+      //   {B: 'mango'},
+      //   {C: 'mango'},
+      //   {D: 'apple'},
+      // ];
+      // return result;
+      console.log(exerciseG());
+    }
   </script>
 </body>
 </html>

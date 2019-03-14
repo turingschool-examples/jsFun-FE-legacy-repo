@@ -336,7 +336,7 @@ const scope = {
 
         if (fruit) {
           // Log A: fruit
-          // 1st mango
+          // 1st ref error
           const fruit = 'strawberry';
         }
 
@@ -362,7 +362,15 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //In the first pass the declaration of fruit and eatFruit and its' definitions are stored in global memory
+    //eatFruit is invoked
+    //The first if statement is true so fruit is assigned to 'mango' on a function scope
+    //The first log (log A) logs fruit as a reference error because JS know there is a variable of fruit being defined in the if statement block, so it does not go up the scope chain and simply declares a reference error. This is called the temporal dead zone.
+    //fruit is reassigned to 'strawberry' only in the if statement block scope
+    //The second log (log B) logs fruit as 'mango' becuase it has been reassigned in function scope
+    //The third log (log C) also logs 'mango'becuase it has been reassigned in function scope
+    //The eatFruit function is complete
+    //The fourth log (log D) logs fruit as 'apple' becuase it has not been reassigned on the global scope
   },
 
   exerciseH() {
