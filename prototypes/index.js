@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -256,9 +257,23 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    //
+    // iterate through cakes using reduce
+    // accumulator = toppingsNeeded (begin with []), currentEl = cake
+    // iterate through cake.toppings with forEach
+    // callback topping =>
+    // if toppingsNeeded array doesn't contain topping,(!toppingsNeeded[topping]) 
+    // add topping to toppingsNeeded (toppingsNeeded += topping)
+    //return toppingsNeeded;
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = cakes.reduce((toppingsNeeded, cake) => {
+        cake.toppings.forEach(topping => {
+            if (!toppingsNeeded.includes(topping)) {
+                toppingsNeeded.push(topping);
+            }
+        });
+        return toppingsNeeded;
+    }, []);
     return result;
 
     // Annotation:
@@ -276,7 +291,28 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // iterate through this.allToppings with reduce
+    // accumulator = list(begin with {}), currentElement = topping
+    // on each iteration, add topping as key with 0 value
+    // (list[topping]= 0)
+    // iterate through cakes using find
+    // callback cake => 
+    // ////////////////////
+    // same as all toppings except
+    // in for Each topping, conditional is 
+    //if list does not contain topping (!list[topping]) 
+    // create key for topping and assign to 0(list[topping]= 0)
+    // outside conditional, increase value by one (list[topping]++)
+
+    const result = cakes.reduce((list, cake) => {
+        cake.toppings.forEach(topping => {
+            if (!list[topping]) {
+                list[topping] = 0;
+            }
+            list[topping]++
+        });
+        return list;
+    }, {});
     return result;
 
     // Annotation:
