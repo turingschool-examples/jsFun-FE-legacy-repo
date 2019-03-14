@@ -937,7 +937,7 @@ const scope = {
 
     parentFunc();
     // Log D: myName
-    //4th Tesla Daniels
+    //4th RodyToyDaniels
 
     const result = [
       {A: 'Rody'},
@@ -948,7 +948,18 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declarartion of myName and innerFunc and parentFunc and their definitions are stored in global memory
+    //myName is assigned the value of 'Rody'
+    //The first log (log A) logs myName as 'Rody'
+    //The parentFunc is invoked
+    //myName is reassigned globallt to it's original value plus 'Toy'
+    //The second log (log B) logs 'RodyToy'
+    //The innerFunc function is invoked
+    //myName is assigned the value of 'Tesla' in the function scope
+    //The third log(log C) logs 'Tesla'
+    //The innerFunc is comeplete
+    //myName which is now 'RodyToy' globally, is reassigned to 'RodyToy' plus 'Daniels' and logs 'RodyToyDaniels'
+    //The results are returned
   }
 };
 
