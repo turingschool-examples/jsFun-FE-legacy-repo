@@ -421,8 +421,22 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    // In the first pass the declaration of num and fn1 and fn2 and their definitions are stored in global memory
+    //num is defined as 6
+    //The fn1 function is invoked
+    //num is reassigned to 4 in the function scope
+    //The first log (log A) is logged as 4
+    // The if statement is true so num is assigned the value of 9 only inside the if statement block scope
+    //The fn2 function is invoked
+    //The second log (log D) logs num as 9 since num is passed through the function
+    //num is reassigned to num plus 1 which becomes 10
+    //The thrid log (log E) logs num as 10
+    //The fn2 function is complete
+    //Back inside the if statement in fn1, newNum is assigned the value of num which is 9 inside the if statement
+    //The fourth log (log B) logs 9
+    //newNum is reassigned to num outside the if statement block but inside the function so newNum takes on the value of 4
+    //The fifth log (log C) logs 4 as the log is inside the function scope.
+  }
 
   exerciseI() {
     var hunger = 100;
