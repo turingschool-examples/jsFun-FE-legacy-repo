@@ -256,7 +256,17 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first pass the declaration of name and sayName and its definitions are stored in global memory
+    //name is defined as 'Brittany'
+    //The first log (log C) logs name as its' global value of 'Brittany'
+    //sayName is invoked
+    //name is assigned to 'Pam' in the function scope
+    //Since name is 'Pam' it is reassigned to 'Nathaniel'
+    //The length of name is greater than 0 so it becomes 'Brittany' but only in the if statement block scope
+    //The second log (log A) is 'Nathaniel' since the log is in the function
+    //The third log (log B) is 'Nathaniel'since th log is also inside the function were name is reassigned to 'Nathaniel'
+    //sayName is complete
+    // The fourth log (log D) is outside the function and logs the global variable value of 'Brittany'
   },
 
   exerciseF() {
