@@ -492,7 +492,7 @@ const turingPrompts = {
     //     Brittany: [2, 4],
     //     Nathaniel: [2, 4],
     //     Robbie: [4],
-    //     Leta: [4, 2],
+    //     Leta: [2, 4],
     //     Travis: [1, 2, 3, 4],
     //     Louisa: [1, 2, 3, 4],
     //     Christie: [1, 2, 3, 4],
@@ -769,11 +769,25 @@ const dinosaurPrompts = {
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
 
     e.g.
-
-    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
-      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
-      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
-      { name: 'Karin Ohman', nationality: 'Chinese', imdbStarMeterRating: 0 } ]
+      [{
+        name: 'Justin Duncan',
+        nationality: 'Alien',
+        imdbStarMeterRating: 0
+      }, 
+      {
+        name: 'Karin Ohman',
+        nationality: 'Chinese',
+        imdbStarMeterRating: 0
+      },
+      {
+        name: 'Tom Wilhoit',
+        nationality: 'Kiwi',
+        imdbStarMeterRating: 1
+      }, {
+        name: 'Jeo D',
+        nationality: 'Martian',
+        imdbStarMeterRating: 0
+      }]
     */
 
     const result = 'REPLACE WITH YOUR RESULT HERE';

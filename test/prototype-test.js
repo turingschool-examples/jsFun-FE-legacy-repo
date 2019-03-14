@@ -310,7 +310,7 @@ describe("PROTOTYPES", () => {
         Brittany: [2, 4],
         Nathaniel: [2, 4],
         Robbie: [4],
-        Leta: [4, 2],
+        Leta: [2, 4],
         Travis: [1, 2, 3, 4],
         Louisa: [1, 2, 3, 4],
         Christie: [1, 2, 3, 4],
@@ -502,17 +502,19 @@ describe("PROTOTYPES", () => {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, {
+      }, 
+      {
+        name: 'Karin Ohman',
+        nationality: 'Chinese',
+        imdbStarMeterRating: 0
+      },
+      {
         name: 'Tom Wilhoit',
         nationality: 'Kiwi',
         imdbStarMeterRating: 1
       }, {
         name: 'Jeo D',
         nationality: 'Martian',
-        imdbStarMeterRating: 0
-      }, {
-        name: 'Karin Ohman',
-        nationality: 'Chinese',
         imdbStarMeterRating: 0
       }])
     }), it("actorsAgesInMovies", () => {
