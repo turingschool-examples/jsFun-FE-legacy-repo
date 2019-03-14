@@ -23,12 +23,12 @@ const kittyPrompts = {
   orangeKittyNames() {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const orangeKitties = kitties.filter(kitty => kitty.color === 'orange');
+    const result = orangeKitties.map(kitty => kitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I knew both filter and map would return a new array, which is what I needed, but kitties.filter returned the entire object of the orange kitty and wouldn't recognize kitty.name, and kitties.map returned an array with 4 items, two of which were kitties' names and two undefined.  Also unhelpful.  So I ended up having to use both.
   },
 
   sortByAge() {
@@ -393,7 +393,10 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.forEach(instructor => {
+        let match = instructors.find(instructor => instructor.module === cohort.module);
+        console.log(match)
+    });
     return result;
 
     // Annotation:
