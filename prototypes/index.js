@@ -33,8 +33,9 @@ const kittyPrompts = {
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kittyA, kittyB) => {
+      return  kittyB.age - kittyA.age;
+    });
     return result;
 
     // Annotation:
@@ -55,7 +56,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age = kitty.age + 2;
+      return kitty;
+    });
     return result;
   }
 };
@@ -87,7 +91,17 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((addMembers, club) => {
+      club.members.find(member => {
+        if(!addMembers[member]) {
+          addMembers[member] = [];
+        }
+        if (addMembers[member]){
+          addMembers[member].push(club.club);
+        }
+      });
+      return addMembers;
+    }, {});
     return result;
 
     // Annotation:
@@ -123,7 +137,15 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.reduce((modRatios, module) => {
+      const studentRatio =  module.students / module.instructors;
+      const modRatio = {
+        mod: module.mod,
+        studentsPerInstructor: studentRatio
+      };
+      modRatios.push(modRatio);
+      return modRatios;
+    }, []);
     return result;
 
     // Annotation:
@@ -158,7 +180,19 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    //Iterate through cakes array with .map
+    //callback for map cake => 
+    // for each cake, return a new object
+    //object properties will be flavor: cake.cakeFlavor,
+    // inStock: cake.inStock;
+
+
+    const result = cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      };
+    });
     return result;
 
     // Annotation:
@@ -186,7 +220,12 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // use .filter
+    // callback fn cake =>
+    // create conditional -- if the number is stock is anything other than 0 (cake.inStock !== 0)
+    // should return array of cake objs without white chiffon and honey cakes
+
+    const result = cakes.filter( cake => cake.inStock !== 0 );
     return result;
 
     // Annotation:
@@ -196,8 +235,16 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // use .reduce on onlyInStock(?) to return a single value
+    // accumulator = inventory (beginning at 0), curEl = cake
+    // inventory += cake.inStock;
+    // return inventory
+    //
+    // const cakesInStock = this.onlyInStock();
+    const result = this.onlyInStock().reduce((inventory, cake) => {
+      inventory += cake.inStock;
+      return inventory;
+    }, 0);
     return result;
 
     // Annotation:
@@ -208,6 +255,8 @@ const cakePrompts = {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+
+    //
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -394,8 +443,8 @@ const turingPrompts = {
     // ]
 
     const result = instructors.forEach(instructor => {
-        let match = instructors.find(instructor => instructor.module === cohort.module);
-        console.log(match)
+      let match = instructors.find(instructor => instructor.module === cohort.module);
+      console.log(match);
     });
     return result;
 
@@ -553,16 +602,18 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
-    // [ 'Canis Major',
-    //   'Carina',
-    //   'Boötes',
-    //   'Lyra',
-    //   'Auriga',
-    //   'Orion',
-    //   'Canis Minor',
-    //   'Eridanus',
-    //   'Orion',
-    //   'Centaurus' ]
+    
+    //  [ "Canis Major",
+    //    "Carina",
+    //    "Boötes",
+    //    "Auriga",
+    //    "Orion",
+    //    "Lyra", 
+    //    "Canis Minor", 
+    //    "The Plow", 
+    //    "Orion", 
+    //    "The Little Dipper" ]
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -689,11 +740,25 @@ const dinosaurPrompts = {
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
 
     e.g.
-
-    [ { name: 'Justin Duncan', nationality: 'Alien', imdbStarMeterRating: 0 },
-      { name: 'Tom Wilhoit', nationality: 'Kiwi', imdbStarMeterRating: 1 },
-      { name: 'Jeo D', nationality: 'Martian', imdbStarMeterRating: 0 },
-      { name: 'Karin Ohman', nationality: 'Swedish', imdbStarMeterRating: 0 } ]
+      [{
+        name: 'Justin Duncan',
+        nationality: 'Alien',
+        imdbStarMeterRating: 0
+      }, 
+      {
+        name: 'Karin Ohman',
+        nationality: 'Chinese',
+        imdbStarMeterRating: 0
+      },
+      {
+        name: 'Tom Wilhoit',
+        nationality: 'Kiwi',
+        imdbStarMeterRating: 1
+      }, {
+        name: 'Jeo D',
+        nationality: 'Martian',
+        imdbStarMeterRating: 0
+      }]
     */
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
