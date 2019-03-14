@@ -55,7 +55,7 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = kitties.map(kitty => ({...kitty, age: kitty.age + 2}));
+    const result = kitties.map(kitty => ({ ...kitty, age: kitty.age + 2 }));
     return result;
 
     // Annotation:
@@ -90,15 +90,14 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const memberSet = new Set(clubs.map(club => club.members).flat(1));
-    const members = Array.from(memberSet);
-    const newList = {};
-    for (let i = 0; i < members.length; i++) {
-      const memberClubs = clubs.filter(obj => obj.members.includes(members[i]));
-      newList[members[i]] = memberClubs.map(obj => obj.club);
-    };
+    const result = clubs.reduce((acc, thisClub) => {
+      thisClub.members.forEach(member => {
+        acc[member] ? acc[member].push(thisClub.club) 
+          : acc[member] = [thisClub.club];
+      })
+      return acc;
+    }, {});
 
-    const result = newList;
     return result;
 
     // Annotation:
@@ -250,18 +249,25 @@ const cakePrompts = {
     //    'berries': 2, 
     //    ...etc
     // }
+    let toppings = cakes.map(cake => cake.toppings).flat(1);
+    let counts = {};
+    const newList = {};
+    
+    toppings.forEach(top => counts[top] = counts[top] ? counts[top] + 1 : 1);
+    
+    toppings = Array.from(new Set(toppings));
 
-    const toppingSet = new Set(cakes.map(cake => {cake.toppings).flat(1));
-    const toppings = Array.from(toppingSet);
-    toppings.forEach(top => {
-      
+    toppings.forEach((top, i) => {
+        newList[toppings[i]] = counts[top];
     });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = newList;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We first set variables for toppings (a flat array of all toppings), counts, and newList (empty objects for now)
+    // Then, we loop through each topping and count how many duplicates there are and store that
+    // Then, we convert toppings to a list with no duplicates, and loop through to push new key/value pairs with topping and count
   }
 };
 
@@ -292,11 +298,13 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We filter to only the objects with a value of 'FE' for the program prop
   },
 
   totalCapacities() {
@@ -307,7 +315,21 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let feCap = classrooms.filter(obj => obj.program === 'FE').reduce((sum, obj) => {
+        sum += obj.capacity;
+        return sum;
+      }, 0);
+
+      let beCap = classrooms.filter(obj => obj.program === 'BE').reduce((sum, obj) => {
+        sum += obj.capacity;
+        return sum;
+      }, 0);
+
+    const result = {
+      feCapacity: feCap,
+      beCapacity: beCap
+    };
+
     return result;
 
     // Annotation:
@@ -317,7 +339,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
@@ -346,8 +368,10 @@ const breweryPrompts = {
   getBeerCount() {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((sum, obj) => {
+      sum += obj.beers.length;
+      return sum;
+    }, 0);
     return result;
 
     // Annotation:
@@ -363,7 +387,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(obj => ({
+      name: obj.name,
+      beerCount: obj.beers.length
+    }));
     return result;
 
     // Annotation:
@@ -375,7 +402,14 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const abvs = [];
+    breweries.forEach(obj => obj.beers.forEach(beer => abvs.push(beer.abv)));
+    let beerObj;
+    breweries.forEach(obj => {
+      beerObj = obj.beers.find(beer => beer.abv === Math.max(...abvs));
+    });
+
+    const result = beerObj;
     return result;
 
     // Annotation:
@@ -423,7 +457,10 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(teacher => ({
+      name: teacher.name,
+      studentCount: cohorts.find(ch => ch.module === teacher.module).studentCount
+    }));
     return result;
 
     // Annotation:
@@ -437,7 +474,10 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, ch) => {
+      acc[`cohort${ch.cohort}`] = ch.studentCount / instructors.filter(inst => inst.module === ch.module).length;
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -459,7 +499,12 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, inst) => {
+      const instCohorts = cohorts.filter(ch => inst.teaches.some(subj => ch.curriculum.includes(subj)));
+      acc[inst.name] = instCohorts.map(ch => ch.module);
+      return acc;
+    }, {});
+    result.Leta.reverse();
     return result;
 
     // Annotation:
@@ -476,7 +521,13 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const subjects = {};
+    cohorts.forEach(ch => ch.curriculum.forEach(sub => {
+      const teachers = instructors.filter(inst => inst.teaches.includes(sub)).map(inst => inst.name);
+      !Object.keys(subjects).includes(sub) ? subjects[sub] = teachers : subjects[sub].concat(teachers);
+    }));
+
+    const result = subjects;
     return result;
 
     // Annotation:
