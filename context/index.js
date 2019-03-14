@@ -60,16 +60,18 @@ const context = {
     const dog = {
       breed: 'Chihuahua',
       getBreed: function(){
+
         const innerFunction = function() {
           console.log(this.breed);
         };
     
-        return innerFunction();
+        return innerFunction;
       }
     };
 
+    var breed = dog.getBreed();
 
-    // What is the value of `this` when we call dog.getBreed()?
+    // What is the value of `this` when we call breed()?
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -191,20 +193,6 @@ const context = {
     const el = $('#btn');
     el.on('click', function() {
       console.log($(this));
-    });
-
-    // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation: 
-    // Write your annotation here as a comment.
-  },
-
-  exerciseK() {
-    const el = $('#btn');
-    el.on('click', () => {
-      console.log(this);
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
