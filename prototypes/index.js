@@ -180,9 +180,19 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    //
+    //Iterate through cakes array with .map
+    //callback for map cake => 
+    // for each cake, return a new object
+    //object properties will be flavor: cake.cakeFlavor,
+    // inStock: cake.inStock;
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      };
+    });
     return result;
 
     // Annotation:
@@ -210,7 +220,12 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // use .filter
+    // callback fn cake =>
+    // create conditional -- if the number is stock is anything other than 0 (cake.inStock !== 0)
+    // should return array of cake objs without white chiffon and honey cakes
+
+    const result = cakes.filter( cake => cake.inStock !== 0 );
     return result;
 
     // Annotation:
@@ -220,8 +235,16 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // use .reduce on onlyInStock(?) to return a single value
+    // accumulator = inventory (beginning at 0), curEl = cake
+    // inventory += cake.inStock;
+    // return inventory
+    //
+    // const cakesInStock = this.onlyInStock();
+    const result = this.onlyInStock().reduce((inventory, cake) => {
+      inventory += cake.inStock;
+      return inventory;
+    }, 0);
     return result;
 
     // Annotation:
@@ -232,6 +255,8 @@ const cakePrompts = {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
+
+    //
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
