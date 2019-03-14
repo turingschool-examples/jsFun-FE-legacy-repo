@@ -24,21 +24,28 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties
+    .filter(kitty => kitty.color === 'orange')
+    .map(kitty => kitty.name);
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // First we want to find the kitties in the array 
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties
+    .sort((a, b) => a.age - b.age)
+    .reverse();
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // First we want to use the .sort() method. We do not want to compare just the current element with the next element as a whole, we want to compare an element's specific property value with the next. So we add a callback function as an argument to compare the first el.age to the next el.age. We then need to reverse the result in order to have the ages sorted from oldest to youngest.
   },
 
   growUp() {
@@ -54,8 +61,15 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
+    // let grownKitties = kitties.map(kitty => kitty.age += 2)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+
+    kitties.forEach(kitty => {
+        kitty.age += 2;
+        result.push(kitty);
+    });
+    
     return result;
   }
 };

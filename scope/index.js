@@ -12,28 +12,39 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
+        console.log('A: ', personB, ':Ben'); 
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
           // Log B: personC
+          console.log('B: ', personC, ':CardiB'); 
         }
       }
 
       personC = personA;
 
       // Log C: personB
+      console.log('C: ', personB, ':CardiB');
     }
 
     changePerson();
 
     // Log D: personC
+    console.log('D: ', personC, ':Paul');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Ben'},
+      {B: 'CardiB'},
+      {C: 'CardiB'},
+      {D: 'Paul'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // When we invoke changePerson, we are "reassigning" person to CardiB within the if block (if personA is Paul). However, since there is no person variable declared within the if block, the interpretor looks outside the block into the parent function but still does not find a person variable so then it looks outside the function into the global scope but still does not find a person variable so it then creates the person variable within the global scope. We then invoke beautifyPerson within changePerson. We log personB and get Ben because that is the value assigned to personB in the global scope. We then move into an if block and reassign personB to person, which we earlier defined as CardiB. We then reassign personC to personB which had just become CardiB. So now we log personC and get CardiB. We then move out of the block and out of it's parent function and back into changePerson. We are reassigning personC as personA. We are then logging personB and getting CardiB because of the reassignment that happened in the if block. We then move out of the function and log personC and get Paul since we are back in the global scope and only have access to global variables.
   },
 
   exerciseB() {
@@ -47,27 +58,38 @@ const scope = {
       }
 
       // Log A: number
+      console.log('A: ', number); //75
 
       function newNumber() {
         number = 64;
 
         // Log B: number
+        console.log('B: ', number); //64
       }
 
       newNumber();
 
       // Log C: number
+      console.log('C: ', number); //64
     }
 
     numberFunction();
 
     // Log D: number
+    console.log('D: ', number); //30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75},
+      {B: 64},
+      {C: 64},
+      {D: 30}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is 75 because we are logging within numberFunction() and we declared let number at the top of the function as 75. Log B is 64 because we are logging within newNumber() which is nested within numberFunction() and has reassigned number to 64. Log C is 64 becuase we are still in the functional scope of the let that we have reassigned. Log D is 30 because we are back to the global scope and only have access to the global variables.
   },
 
   exerciseC() {
@@ -81,27 +103,39 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log('A: ', greeting, ':Yo');
 
       function newPhrase() {
         greeting = 'Hey';
 
         // Log B: greeting
+        console.log('B: ', greeting, ':Hey');
       }
 
       newPhrase();
 
       // Log C: greeting
+      console.log('C: ', greeting, ':Hey');
+
     }
 
     greetingFunction();
 
     // Log D: greeting
+    console.log('D: ', greeting, ':Hello');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Yo'},
+      {B: 'Hey'},
+      {C: 'Hey'},
+      {D: 'Hello'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is Yo becuase we are defining a new variable named greeting within the greetingFunction with a value of Yo. Log B is Hey becuase we are logging within the function that reassigned the value of greeting. Log C is Hey because we are still within the scope of the greeting var that we reassigned. Log D is Hello because we are logging within the global scope and only have access to the global greeting variable.
   },
 
   exerciseD() {
@@ -115,27 +149,38 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log('A: ', greeting, ':hi');
 
-      const newGreeting = ()  => {
+      const newGreeting = () => {
         greeting = 'welcome';
 
         // Log B: greeting
+        console.log('B: ', greeting, ':welcome');
       };
 
       newGreeting();
 
       // Log C: greeting
+      console.log('C: ', greeting, ':welcome');
     };
 
     greetingGenerator();
 
     // Log D: greeting
+    console.log('D: ', greeting, ':howdy');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'hi'},
+      {B: 'welcome'},
+      {C: 'welcome'},
+      {D: 'howdy'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is hi. Since we do not have access to the let greeting within the if block, we have to look within the functional scope where we find a let greeting with a value of hi. Log B is welcome because we are logging within a function that reassigns the parent function's let greeting to welcome. Log C is still welcome. We are no longer in the nested function that reassigned let greeting but we are in its parent function where the reassigned greeting is declared. Log D is howdy because we are back into the global scope and only have access to global let greeting.
   },
 
   exerciseE() {
@@ -151,23 +196,34 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name 2nd
+        console.log('A:', name, ':Nathaniel');
       }
 
-      // Log B: name
+      // Log B: name 3rd
+      console.log('B:', name, ':Nathaniel');
     }
 
-    // Log C: name
+    // Log C: name 1st
+    console.log('C:', name, ':Brittany');
 
     sayName();
 
-    // Log D: name
+    // Log D: name 4th
+    console.log('D:', name, ':Brittany');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We first execute Log C because it is being invoked before we invoke our sayName function. Log C is Brittany because we are logging within the global scope and only have access to the global let name. We then invoke sayName() and have a new let name of Pam. We reassign let name to Nathaniel within the nested if block. Which then makes Log A return Nathaniel. It is not Brittany because we are declaring a new let name within that nested if block and do not have access inside of that block. We move out of the if blocks and back into the nayName function where Log B still returns Nathaniel becuase we are within the environment where the let name we reassigned is declared. However, when we move back out of sayName() and into the global scope, Log D will again log Brittany because we only have access to the global let name.
   },
 
   exerciseF() {
