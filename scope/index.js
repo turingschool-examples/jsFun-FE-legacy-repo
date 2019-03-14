@@ -204,7 +204,18 @@ const scope = {
     return result;
 
     // Annotation:
-    
+    //In the first pass the declaration of greeting and greetingGenerator and newGreeting and its definitions are stored in global memory
+   // greeting is defined as 'howdy'
+   //greetingGenerator is invoked
+   //greeting is assigned to 'hi' inside the function scope
+   //greeting is 'hi' so it is reassigned to 'hello' inside the if statement block scope
+   //The first log logs greeting as 'hi' since 'hello' only existed inside the if statment scope
+   //newGreeting is invoked
+   //greeting is reassigned to 'welcome' inside the function scope
+   //The secind log logs greeting as 'welcome'
+   //The third log logs greeting as 'welcome' since the thrid log is still inside the function scope
+   //greetingGenerator is complete
+   //The fourth log logs greeting as 'howdy', the global value since the other values of greeting were defined in block scope and only existed inside the function
   },
 
   exerciseE() {
