@@ -574,7 +574,7 @@ const scope = {
     //the if statement is true so sandwich is reassigned to 'not a mediocre sandwich'
     //The fourth log (log C) logs 'not a mediocre sandwich'
     //The addChipotle function is finished
-    //The fifth log (log E) logs 'not a mediocre sandwich' as the global value of sandwich was reassigned inside the numberFunction
+    //The fifth log (log E) logs 'not a mediocre sandwich' as the global value of sandwich was reassigned inside the numberFunction (when it was reassigned const nor let were used to declare the value, which would have created a block scope for the reassignment)
     //The sixth log (log F) logs the assigned value of amandaBynes, 'National Treasure'
     //The results are returned
   },
@@ -603,7 +603,13 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the fist pass the declaration of num and foo and its' definitions are stored in global memory
+    //num is assigned the global value of 10
+    //The function foo is invoked
+    //The if statement is true so num is globally reassigned to 7
+    //The first log (log A) logs 7
+    //The foo function is comeplete
+    //The second log (log B) logs 7, the new value of num on the global scope
   },
 
   exerciseL() {
@@ -642,7 +648,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the fist pass the declaration of grade and loosePoints and addPoints and their definitions are stored in global memory
   },
 
   exerciseM() {
