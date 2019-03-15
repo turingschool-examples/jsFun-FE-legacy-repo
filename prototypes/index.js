@@ -11,10 +11,6 @@ const { weapons, characters } = require('./datasets/ultima');
 const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
-
-
-
-
 // SINGLE DATASETS
 // =================================================================
 
@@ -71,20 +67,11 @@ const kittyPrompts = {
   //We know we want an array back of the same length so we use map to map over  each kitty and then find the kitties who have grown up +2 years and then return the kitty
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: clubs from ./datasets/clubs
@@ -114,21 +101,11 @@ const clubPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
@@ -156,19 +133,11 @@ const modPrompts = {
 };
 
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: cakes from ./datasets/cakes
@@ -182,11 +151,17 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 
+    cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want an arr back the same length so we use map and map over each cake to return an obj with key-value pairs that are the flavor and the inStock status.
   },
 
   onlyInStock() {
@@ -210,22 +185,27 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock > 0;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know we want an arr back that's a different length that meets a condition we set so, we look at each cake and find the cakes that have an instock value greater than zero.
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cakes.reduce((num, currentCake) => {
+      num += currentCake.inStock
+      return num;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want a single value back that is a sum of our inStock values so, we use reduce and iterate over our cakes array to look at the currentCake and keep track in our num accumulator and set our initial value to 0. We return our num which is 59.
   },
 
   allToppings() {
@@ -233,11 +213,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cakes.reduce((uniqueToppings, currentCake) => {
+      currentCake.toppings.forEach(topping => {
+        if(!uniqueToppings.includes(topping)) {
+          uniqueToppings.push(topping)
+        }
+      })
+      return uniqueToppings
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We need to create a single array with no duplicates so we start with reduce. We set our accumulator up as our uniqueToppings arr, set initial val to empty arr, and iterate over each currentCake. We look at each topping on the currentCake and if the new arr doesnt include the topping, we add the topping to the add with .push(). Finally, we retrurn the arr.
   },
 
   groceryList() {
@@ -251,11 +238,19 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((groceryList, currentCake) => {
+      currentCake.toppings.forEach(topping => {
+        if(!groceryList[topping]) {
+          groceryList[topping] = 0;
+        }
+        groceryList[topping]++;
+      })
+      return groceryList;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want an obj returned so we use reduce and set our accum as our groceryList, initial val as an empty obj, and our curr val as currentCake and iterate over each cake. We use forEach to iterate over the toppings in the currentCake and look at each topping. We check to see if the new obj contains the topping and if it doesn't, we create it. In order to assign a value to these keys, we set them equal to 0 and then increment in order to count how many of each topping we need for our grocery list. Finally, we return our groceryList obj.
   }
 };
 
