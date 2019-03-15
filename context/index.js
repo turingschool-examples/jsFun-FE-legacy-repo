@@ -62,18 +62,23 @@ const context = {
     const dog = {
       breed: 'Chihuahua',
       getBreed: function(){
+
         const innerFunction = function() {
           console.log(this.breed);
         };
     
-        return innerFunction();
+        return innerFunction;
       }
     };
+
+    var breed = dog.getBreed();
 
 
     // What is the value of `this` when we call dog.getBreed()?
     // unknown as `this` is referring to the global window object
     const result = 'global window object';
+
+    // What is the value of `this` when we call breed()?
     return result;
 
     // Annotation: 
