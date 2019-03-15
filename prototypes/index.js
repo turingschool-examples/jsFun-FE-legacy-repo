@@ -24,21 +24,27 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  kitties.filter(kitty => {
+      return kitty.color === 'orange'
+    }).map(orangeKitty => {
+      return orangeKitty.name
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know we need an array back that it is a different length than the opriginal length that also meets a condition so, we use filter. Then we chain on map to our filter to return an array of the same length as our new returned filtered array which gives us the kitty names of orange kitties.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => {
+      return b.age - a.age
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use the sort comparison function on our kitties array to find the sorted ages by greatest to smallest
   },
 
   growUp() {
@@ -55,9 +61,14 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age = kitty.age + 2;
+      return kitty;
+    });
     return result;
   }
+  // Annotation:
+  //We know we want an array back of the same length so we use map to map over  each kitty and then find the kitties who have grown up +2 years and then return the kitty
 };
 
 
@@ -87,11 +98,19 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((newObj, currentClub) => {
+      currentClub.members.forEach(member => {
+        if(!newObj[member]) {
+          newObj[member] = [];
+        }
+        newObj[member].push(currentClub.club)
+      })
+      return newObj;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know that we want an obj returned so, we use reduce. We start by using our accumulator of newObj to keep track and the currentObj to represent the currentObj we are on. We iterate over our currentClub which represents our array of club objects and look at each memeber in the objects. THen we say that if the new object doesn't contain a member, make it contain a member and set that to an empty array that we can push members into.  Finally we return our new object that now contains the members and the clubs they belong to.
   }
 };
 
@@ -393,25 +412,39 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      let studentNum = cohorts.find(cohort => {
+        return instructor.module === cohort.module 
+      })
+      return {
+        name: instructor.name,
+        studentCount: studentNum.studentCount
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know we want an array of the same size back so, we start with map on our instructors array. Next, we iterate over each instructor and create a var assigned to our find method on cohorts arr. We use find because we know we only need the first thing that meets the condition. We then return the modules that equal each other in each arr. Finally, we create an object with the name of our instructor and the studentcount using our find var and dot notation to access the literal key.
   },
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
     // { 
-    // cohort1806: 9,
-    // cohort1804: 10.5
+    // cohort1806: 15,
+    // cohort1804: 7
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cohorts.reduce((newObj, cohort) => {
+      const moduleNum = instructors.filter(instructor => {
+        return instructor.module === cohort.module
+      })
+    newObj[`cohort${cohort.cohort}`] = cohort.studentCount / moduleNum.length;
+      return newObj;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know we want an obj back so we use reduce method to iterate over our cohorts array and create a new object. Next, we set our filter method to a var and inside of this method we want our instructor mod to equal our cohort mod so that we can use this num later. Next, we create a cohort key on our newObj and assign the value of students per teacher to it.Finally, we return our newObj with the new key-value pairs.
   },
 
   modulesPerTeacher() {
@@ -433,7 +466,7 @@ const turingPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   curriculumPerTeacher() {
