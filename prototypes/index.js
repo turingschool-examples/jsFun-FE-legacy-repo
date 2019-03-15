@@ -254,20 +254,11 @@ const cakePrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: classrooms from ./datasets/classrooms
@@ -281,11 +272,13 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => {
+      return classroom.program === 'FE'
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use filter to filter out just the FE classrooms. We look at each classroom and if it is strictly equal to 'FE', we return the array of just those FE classrooms.
   },
 
   totalCapacities() {
@@ -296,37 +289,40 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  classrooms.reduce((total, classroom) => {
+      if(classroom.program === 'FE') {
+        total.feCapacity += classroom.capacity;
+      } else {
+        total.beCapacity += classroom.capacity;
+      }
+      return total;
+    }, {feCapacity: 0, beCapacity: 0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want an obj returned so we use reduce and set our accumulator as our total, initial value as our object with key-value pairs, and curr val as each classroom. We iterate over each classroom and look to see if the classroom contains the program 'FE' and if it does, we add the capacity, else we add the back end ccapacity and then return our total obj.
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // To sort the capacity by leat to greatest, we set up our comparison func in sort. We then sort our capacity by subtracting a - b.
   }
 };
 
 
 
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
 
 
 
@@ -336,11 +332,16 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((total, brewery) => {
+      brewery.beers.forEach(beer => {
+        total++;
+      })
+      return total;
+    }, 0);;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want the total so we use reduce and keep track with out total and iterate over each brewery. We then look at each beer in the beers arr inside of each brewery obj to find the beer. Finally, we increment the total and return the total obj.
   },
 
   getBreweryBeerCount() {
@@ -352,11 +353,16 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  breweries.map(brewery => {
+      return {
+        name: brewery.name,
+        beerCount: brewery.beers.length
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We want an arr back the same length so we use map to iterate over each brewery and return key-val pairs of the brewery name and the length of the beers array to get the total count of beer that brewery has.
   },
 
   findHighestAbvBeer() {
