@@ -1,4 +1,5 @@
-/*eslint-disable*/
+
+
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -267,12 +268,12 @@ const cakePrompts = {
 
 
     const result = cakes.reduce((toppingsNeeded, cake) => {
-        cake.toppings.forEach(topping => {
-            if (!toppingsNeeded.includes(topping)) {
-                toppingsNeeded.push(topping);
-            }
-        });
-        return toppingsNeeded;
+      cake.toppings.forEach(topping => {
+        if (!toppingsNeeded.includes(topping)) {
+          toppingsNeeded.push(topping);
+        }
+      });
+      return toppingsNeeded;
     }, []);
     return result;
 
@@ -305,13 +306,13 @@ const cakePrompts = {
     // outside conditional, increase value by one (list[topping]++)
 
     const result = cakes.reduce((list, cake) => {
-        cake.toppings.forEach(topping => {
-            if (!list[topping]) {
-                list[topping] = 0;
-            }
-            list[topping]++
-        });
-        return list;
+      cake.toppings.forEach(topping => {
+        if (!list[topping]) {
+          list[topping] = 0;
+        }
+        list[topping]++;
+      });
+      return list;
     }, {});
     return result;
 
@@ -347,7 +348,11 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // iterate using filter
+    // callback => room
+    // condition room.program === 'FE'
+
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
@@ -362,9 +367,27 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    // reduce classrooms to return object
+    // acc = capacity, current el = room
+    // create variables feCapacity and beCapacity, assign to 0
+    // conditional, if room.program is FE, add room.capacity to feCapacity(feCapacity = feCapacity + room.capacity) 
+    // otherwise, add room.capacity to beCapacity
+//  🤬
 
+    const result = classrooms.reduce((capacity, room) => {
+      const feCap = classrooms.filter(room => room.program === 'FE').reduce((capacity, room) => {
+        capacity += room.capacity;
+        return capacity;
+      }, 0);
+      const beCap = classrooms.filter(room => room.program === 'BE').reduce((capacity, room) => {
+        capacity += room.capacity;
+        return capacity;
+      }, 0);
+      capacity.feCapacity = feCap;
+      capacity.beCapacity = beCap;
+      return capacity;
+    }, {});
+    return result;
     // Annotation:
     // Write your annotation here as a comment
   },
