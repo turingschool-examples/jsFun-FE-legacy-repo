@@ -142,11 +142,16 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =   mods.map(mod => {
+      return {
+        mod: mod.mod,
+        studentsPerInstructor: mod.students / mod.instructors
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know that we want an array of the same length back so we use map. We iterate over the mods array and loojk at each mod. Then, we create and object within our array with key-value pairs that represent the mod and then the students per instructor by dividing the students and instructors.
   }
 };
 
