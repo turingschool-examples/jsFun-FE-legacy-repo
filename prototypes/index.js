@@ -315,20 +315,26 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    let feCap = classrooms.filter(obj => obj.program === 'FE').reduce((sum, obj) => {
-        sum += obj.capacity;
-        return sum;
-      }, 0);
+    // let feCap = classrooms.filter(obj => obj.program === 'FE').reduce((sum, obj) => {
+    //     sum += obj.capacity;
+    //     return sum;
+    //   }, 0);
 
-      let beCap = classrooms.filter(obj => obj.program === 'BE').reduce((sum, obj) => {
-        sum += obj.capacity;
-        return sum;
-      }, 0);
+    //   let beCap = classrooms.filter(obj => obj.program === 'BE').reduce((sum, obj) => {
+    //     sum += obj.capacity;
+    //     return sum;
+    //   }, 0);
 
-    const result = {
-      feCapacity: feCap,
-      beCapacity: beCap
-    };
+    // const result = {
+    //   feCapacity: feCap,
+    //   beCapacity: beCap
+    // };
+
+    const result = classrooms.reduce((acc, room) => {
+      room.program === 'FE' ? acc.feCapacity += room.capacity
+       : acc.beCapacity += room.capacity;
+      return acc;
+    }, { feCapacity: 0, beCapacity: 0 });
 
     return result;
 
@@ -402,14 +408,17 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const abvs = [];
-    breweries.forEach(obj => obj.beers.forEach(beer => abvs.push(beer.abv)));
-    let beerObj;
-    breweries.forEach(obj => {
-      beerObj = obj.beers.find(beer => beer.abv === Math.max(...abvs));
-    });
+    // const abvs = [];
+    // breweries.forEach(obj => obj.beers.forEach(beer => abvs.push(beer.abv)));
+    // let beerObj;
+    // breweries.forEach(obj => {
+    //   beerObj = obj.beers.find(beer => beer.abv === Math.max(...abvs));
+    // });
 
-    const result = beerObj;
+    // const result = beerObj;
+
+    const result = breweries.map(brewery => brewery.beers).flat().sort((a,b) => b.abv - a.abv)[0];
+
     return result;
 
     // Annotation:
@@ -504,7 +513,6 @@ const turingPrompts = {
       acc[inst.name] = instCohorts.map(ch => ch.module);
       return acc;
     }, {});
-    result.Leta.reverse();
     return result;
 
     // Annotation:
@@ -562,7 +570,16 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = Object.keys(bosses).map(boss => ({
+      bossName: bosses[boss].name,
+      sidekickLoyalty: sidekicks.reduce((sum, obj) => {
+        if (obj.boss === bosses[boss].name) {
+          sum += obj.loyaltyToBoss
+        }
+        return sum;
+      }, 0)
+    }));
     return result;
 
     // Annotation:
@@ -604,7 +621,10 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const conStars = Object.keys(constellations)
+      .map(con => constellations[con].stars).flat(1);
+
+    const result = stars.filter(star => conStars.includes(star.name));
     return result;
 
     // Annotation:
@@ -622,7 +642,15 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const arr = {};
+    stars.map(star => {
+      const color = star.color;
+      const colorStars = stars.filter(obj => obj.color === color);
+      !Object.keys(arr).includes(color) ? arr[color] = colorStars 
+        : arr[color].concat(colorStars)
+    });
+
+    const result = arr;
     return result;
 
     // Annotation:
@@ -644,7 +672,8 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.map(star => star.constellation).filter(con => con !== '');
+
     return result;
 
     // Annotation:
@@ -675,7 +704,10 @@ const ultimaPrompts = {
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(weapons).reduce((sum, type) => {
+      sum += weapons[type].damage * characters.filter(char => char.weapons.includes(type)).length;
+      return sum;
+    }, 0);
     return result;
 
     // Annotation:
@@ -687,7 +719,28 @@ const ultimaPrompts = {
     // Return the sum damage and total range for each character as an object. 
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // const array = [];
+    // const arr = {};
+    // characters.forEach(char => {
+    //   arr[char.name] = char.weapons.reduce((acc, type) => {
+    //     acc.damage += weapons[type].damage;
+    //     acc.range += weapons[type].range;
+    //     return acc;
+    //   }, { damage: 0, range: 0 });
+    // });
+
+    const arr = [];
+    characters.forEach(char => {
+      let finalObj = {};
+      finalObj[char.name] = char.weapons.reduce((acc, type) => {
+        acc.damage += weapons[type].damage;
+        acc.range += weapons[type].range;
+        return acc;
+      }, { damage: 0, range: 0 });
+      arr.push(finalObj);
+    });
+
+    const result = arr;
     return result;
 
     // Annotation:
@@ -724,7 +777,12 @@ const dinosaurPrompts = {
     //   'Jurassic World: Fallen Kingdom': 18
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const movieObj = {};
+    movies.map(movie => {
+      movieObj[movie.title] = movie.dinos.length - 2;
+    });
+
+    const result = movieObj;
     return result;
 
     // Annotation:
@@ -757,7 +815,21 @@ const dinosaurPrompts = {
       }
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const dirObj = movies.reduce((acc, movie) => {
+      let ageTotal = 0;
+      movie.cast.forEach(peep => {
+        ageTotal += movie.yearReleased - humans[peep].yearBorn;
+        return ageTotal;
+      });
+      const valObj = {};
+      const avgAge = Math.floor(ageTotal / movie.cast.length)
+      valObj[movie.title] = avgAge;
+      !Object.keys(acc).includes(movie.director) ? acc[movie.director] = valObj
+        : acc[movie.director][movie.title] = avgAge;
+    return acc;
+    }, {});
+
+    const result = dirObj;
     return result;
 
     // Annotation:
@@ -766,7 +838,10 @@ const dinosaurPrompts = {
 
   uncastActors() {
     /*
-    Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
+    Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), 
+    their nationality, and their imdbStarMeterRating. 
+    
+    The object in the array should be sorted alphabetically by nationality.
 
     e.g.
       [{
@@ -788,9 +863,24 @@ const dinosaurPrompts = {
         nationality: 'Martian',
         imdbStarMeterRating: 0
       }]
-    */
+*/
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(humans).reduce((acc, peep) => {
+      if (!movies.map(movie => movie.cast).flat().includes(peep)) {
+        const { nationality, imdbStarMeterRating } = humans[peep];
+        outlierObj = { name: peep, nationality, imdbStarMeterRating };
+        acc.push(outlierObj);
+      }
+      return acc;
+     }, []).sort((a, b) => {
+      if (a.nationality < b.nationality) {
+        return -1;
+      }
+      if (a.nationality > b.nationality) {
+        return 1;
+      }
+      return 0;
+    });
     return result;
 
     // Annotation:
@@ -799,7 +889,8 @@ const dinosaurPrompts = {
 
   actorsAgesInMovies() {
     /*
-    Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
+    Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, 
+    as an array of age(s). Only include humans who were cast in at least one movie.
 
     e.g.
     [ { name: 'Sam Neill', ages: [ 46, 54 ] },
@@ -813,7 +904,15 @@ const dinosaurPrompts = {
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(humans).reduce((acc, peep) => {
+      if (movies.map(movie => movie.cast).flat().includes(peep)) {
+        const ages = movies.filter(movie => movie.cast.includes(peep))
+          .map(movie => Math.floor(movie.yearReleased - humans[peep].yearBorn));
+        outlierObj = { name: peep, ages:  ages};
+        acc.push(outlierObj);
+      }
+      return acc;
+     }, []);
     return result;
 
     // Annotation:

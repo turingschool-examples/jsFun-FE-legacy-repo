@@ -152,7 +152,6 @@ const movies = [
     title: 'Jurassic Park III',
     director: 'Joe Johnston',
     leadingActor: 'Sam Neill',
-    cast: ['Sam Neill', 'Laura Dern'],
     dinos: ['Ankylosaurus', 'Brachiosaurus', 'Ceratosaurus', 'Corythosaurus', 'Parasaurolophus', 'Pteranodon', 'Spinosaurus', 'Stegosaurus', 'Triceratops', 'Tyrannosaurus Rex', 'Velociraptor'],
     cast: [
       'Sam Neill',
