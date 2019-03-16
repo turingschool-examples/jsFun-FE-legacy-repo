@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 const scope = {
   exerciseA() {
     let personA = 'Paul';
@@ -17,7 +19,7 @@ const scope = {
           personB = person;
           personC = personB;
           // Log B: personC
-        }
+        }   
       }
 
       personC = personA;
@@ -28,12 +30,19 @@ const scope = {
     changePerson();
 
     // Log D: personC
+    
+    const result = [
+      {A: 'Ben'},
+      {B: 'CardiB'},
+      {C: 'CardiB'},
+      {D: 'Paul'}
+    ];
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // When we invoke changePerson, we are "reassigning" person to CardiB within the if block (if personA is Paul). However, since there is no person variable declared within the if block, the interpretor looks outside the block into the parent function but still does not find a person variable so then it looks outside the function into the global scope but still does not find a person variable so it then creates the person variable within the global scope. We then invoke beautifyPerson within changePerson. We log personB and get Ben because that is the value assigned to personB in the global scope. We then move into an if block and reassign personB to person, which we earlier defined as CardiB. We then reassign personC to personB which had just become CardiB. So now we log personC and get CardiB. We then move out of the block and out of it's parent function and back into changePerson. We are reassigning personC as personA. We are then logging personB and getting CardiB because of the reassignment that happened in the if block. We then move out of the function and log personC and get Paul since we are back in the global scope and only have access to global variables.
   },
 
   exerciseB() {
@@ -63,11 +72,18 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75},
+      {B: 64},
+      {C: 64},
+      {D: 30}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is 75 because we are logging within numberFunction() and we declared let number at the top of the function as 75. Log B is 64 because we are logging within newNumber() which is nested within numberFunction() and has reassigned number to 64. Log C is 64 becuase we are still in the functional scope of the let that we have reassigned. Log D is 30 because we are back to the global scope and only have access to the global variables.
   },
 
   exerciseC() {
@@ -91,17 +107,25 @@ const scope = {
       newPhrase();
 
       // Log C: greeting
+
     }
 
     greetingFunction();
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Yo'},
+      {B: 'Hey'},
+      {C: 'Hey'},
+      {D: 'Hello'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is Yo becuase we are defining a new variable named greeting within the greetingFunction with a value of Yo. Log B is Hey becuase we are logging within the function that reassigned the value of greeting. Log C is Hey because we are still within the scope of the greeting var that we reassigned. Log D is Hello because we are logging within the global scope and only have access to the global greeting variable.
   },
 
   exerciseD() {
@@ -116,7 +140,7 @@ const scope = {
 
       // Log A: greeting
 
-      const newGreeting = ()  => {
+      const newGreeting = () => {
         greeting = 'welcome';
 
         // Log B: greeting
@@ -131,11 +155,18 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'hi'},
+      {B: 'welcome'},
+      {C: 'welcome'},
+      {D: 'howdy'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Log A is hi. Since we do not have access to the let greeting within the if block, we have to look within the functional scope where we find a let greeting with a value of hi. Log B is welcome because we are logging within a function that reassigns the parent function's let greeting to welcome. Log C is still welcome. We are no longer in the nested function that reassigned let greeting but we are in its parent function where the reassigned greeting is declared. Log D is howdy because we are back into the global scope and only have access to global let greeting.
   },
 
   exerciseE() {
@@ -151,23 +182,30 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name 2nd
       }
 
-      // Log B: name
+      // Log B: name 3rd
     }
 
-    // Log C: name
+    // Log C: name 1st
 
     sayName();
 
-    // Log D: name
+    // Log D: name 4th
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We first execute Log C because it is being invoked before we invoke our sayName function. Log C is Brittany because we are logging within the global scope and only have access to the global let name. We then invoke sayName() and have a new let name of Pam. We reassign let name to Nathaniel within the nested if block. Which then makes Log A return Nathaniel. It is not Brittany because we are declaring a new let name within that nested if block and do not have access inside of that block. We move out of the if blocks and back into the nayName function where Log B still returns Nathaniel becuase we are within the environment where the let name we reassigned is declared. However, when we move back out of sayName() and into the global scope, Log D will again log Brittany because we only have access to the global let name.
   },
 
   exerciseF() {
@@ -198,11 +236,18 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Spot'},
+    {B: 'Spot'},
+    {C: 'Biscuit'},
+    {D: 'Biscuit'},
+    {E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We start with dog being Spot declared as a global variable. We then invoke petDog and before we hit any statements within petDog dog is still Spot from our global scope. In our if statement dog becomes 'Fluffy' but then as soon as we leave our if block, and invoke rollOver, dog goes back to being 'Spot' because 'Fluffy' only existed in our if block and our outside function does not have access to it. In rollOVer we reassign dog to 'Biscuit' so dog logs as 'Biscuit' both in the rollOver function and outside to the petDog function and again outside in the global scope.
   },
 
   exerciseG() {
@@ -228,7 +273,12 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'reference error'},
+    {B: 'mango'},
+    {C: 'mango'},
+    {D: 'apple'}
+    ];
     return result;
 
     // Annotation:
@@ -251,6 +301,7 @@ const scope = {
         const newNum = num;
 
         // Log B: newNum
+
       }
 
       newNum = num;
@@ -268,7 +319,13 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 4},
+    {D: 9},
+    {E: 10},
+    {B: 9},
+    {C: 4}
+    ];
     return result;
 
     // Annotation:
@@ -458,7 +515,14 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+   { E: 'Pam'},
+   { A: 'Pam'},
+   { B: 'Pam'},
+   { C: 'Louisa'},
+   { D: 'Louisa'},
+   { F: 'Louisa'}
+   ];
     return result;
 
     // Annotation:
@@ -469,15 +533,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe // 
       var shoe = 'boot';
     }
 
-    // Log B: shoe
+    // Log B: shoe // 
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { B: 'flipflop'},
+    { A: undefined },
+    { C: 'flipflop'},
+    ];
     return result;
 
     // Annotation:
@@ -497,13 +565,18 @@ const scope = {
       }
 
       // Log B: lunch
+
     }
 
     orderLunch();
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = [
+    { B: 'soup'},
+    { C: 'soup'}
+    ];
     return result;
 
     // Annotation:
@@ -540,7 +613,13 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Pandora'},
+    {B: ['Antigone', 'Pandora']},
+    {C: 'Mandy'},
+    {D: 'Antigone'},
+    {E: 'Pandora'}
+    ];
     return result;
 
     // Annotation:
@@ -567,7 +646,12 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Rody'}, 
+    {B: 'RodyToy'}, 
+    {C: 'Tesla'}, 
+    {D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
