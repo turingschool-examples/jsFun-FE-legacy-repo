@@ -1,3 +1,6 @@
+/*eslint-disable*/
+
+
 const context = {
   exerciseA() {
     const fly = () => {
@@ -16,11 +19,12 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Since we used a arrow function when we first defined fly, this is bound to the global object using lexical scoping and will stay bound to the global object no matter where we call fly.
   },
 
   exerciseB() {
@@ -30,11 +34,12 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Since we are not using any specific binding, this will look to the global window object.
   },
 
   exerciseC() {
@@ -49,11 +54,12 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // since car.get info is simply storing the function console.log(this), and we are now calling that method on el, the context of this is implicitly bound to el/
   },
 
   exerciseD() {
@@ -72,11 +78,12 @@ const context = {
     var breed = dog.getBreed();
 
     // What is the value of `this` when we call breed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // Since we have a closure without a .bind() method being passed in, this is no longer bound to dog and will look outside to the global window object.
   },
 
   exerciseE() {
@@ -88,11 +95,12 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // Since we are using an arrow function, this is not bound to it's context and will look outside to the global window object.
   },
 
   exerciseF() {
@@ -111,11 +119,12 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // Since we used the new keyword followed by Hero when defining storm, storm is now a new instance of Hero and by using new binding, this now refers to storm (which is a instance of Hero) 
   },
 
   exerciseG() {
@@ -139,11 +148,12 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // Since we are using a call back function in the restart method without the bind() method, this is not bound to Game, it will go up the chain to the global window object.
   },
 
   exerciseH() {
@@ -159,11 +169,12 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'obj';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment
+    // When we defined method, and used the arrow function it bound itself to obj using lexical scoping.
   },
 
   exerciseI() {  
@@ -182,11 +193,12 @@ const context = {
     }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'poets';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+    // When passing a second argument into map(), that argument becomes the context for 'this'.
   },
 
   exerciseJ() {
@@ -196,11 +208,12 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
     // Write your annotation here as a comment.
+    // when using a call back function and using a function declaration, the context for this is the object that the method is being called on.
   }
 
 };

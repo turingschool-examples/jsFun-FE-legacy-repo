@@ -1,6 +1,6 @@
 # Understanding Scope
 
-Scope is one of the most fundamental concepts of JavaScript, and is often used as a measure for how well a developer understands the inner workings of the language. Fully understanding how scope works will help you avoid introducing unexpected bugs into your codebase, and help you more easily track down the bugs that do pop up.
+Scope is one of the most fundamental concepts of JavaScript, and is often used as a measure for how well a developer understands the inner workings of the language. Fully understanding how scope works will help you avoid introducing unexpected bugs into your code base, and help you more easily track down the bugs that do pop up.
 
 In order to be successful with scope, you'll need to have a solid understanding of the following concepts:
 
