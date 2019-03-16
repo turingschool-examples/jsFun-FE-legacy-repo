@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 const scope = {
   exerciseA() {
     let personA = 'Paul';
@@ -12,27 +14,23 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
-        console.log('A: ', personB, ':Ben'); 
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
           // Log B: personC
-          console.log('B: ', personC, ':CardiB'); 
-        }
+        }   
       }
 
       personC = personA;
 
       // Log C: personB
-      console.log('C: ', personB, ':CardiB');
     }
 
     changePerson();
 
     // Log D: personC
-    console.log('D: ', personC, ':Paul');
-
+    
     const result = [
       {A: 'Ben'},
       {B: 'CardiB'},
@@ -58,25 +56,21 @@ const scope = {
       }
 
       // Log A: number
-      console.log('A: ', number); //75
 
       function newNumber() {
         number = 64;
 
         // Log B: number
-        console.log('B: ', number); //64
       }
 
       newNumber();
 
       // Log C: number
-      console.log('C: ', number); //64
     }
 
     numberFunction();
 
     // Log D: number
-    console.log('D: ', number); //30
 
     const result = [
       {A: 75},
@@ -103,26 +97,22 @@ const scope = {
       }
 
       // Log A: greeting
-      console.log('A: ', greeting, ':Yo');
 
       function newPhrase() {
         greeting = 'Hey';
 
         // Log B: greeting
-        console.log('B: ', greeting, ':Hey');
       }
 
       newPhrase();
 
       // Log C: greeting
-      console.log('C: ', greeting, ':Hey');
 
     }
 
     greetingFunction();
 
     // Log D: greeting
-    console.log('D: ', greeting, ':Hello');
 
     const result = [
       {A: 'Yo'},
@@ -149,25 +139,21 @@ const scope = {
       }
 
       // Log A: greeting
-      console.log('A: ', greeting, ':hi');
 
       const newGreeting = () => {
         greeting = 'welcome';
 
         // Log B: greeting
-        console.log('B: ', greeting, ':welcome');
       };
 
       newGreeting();
 
       // Log C: greeting
-      console.log('C: ', greeting, ':welcome');
     };
 
     greetingGenerator();
 
     // Log D: greeting
-    console.log('D: ', greeting, ':howdy');
 
     const result = [
       {A: 'hi'},
@@ -197,20 +183,16 @@ const scope = {
         }
 
         // Log A: name 2nd
-        console.log('A:', name, ':Nathaniel');
       }
 
       // Log B: name 3rd
-      console.log('B:', name, ':Nathaniel');
     }
 
     // Log C: name 1st
-    console.log('C:', name, ':Brittany');
 
     sayName();
 
     // Log D: name 4th
-    console.log('D:', name, ':Brittany');
 
     const result = [
       {C: 'Brittany'},
@@ -254,11 +236,18 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Spot'},
+    {B: 'Spot'},
+    {C: 'Biscuit'},
+    {D: 'Biscuit'},
+    {E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We start with dog being Spot declared as a global variable. We then invoke petDog and before we hit any statements within petDog dog is still Spot from our global scope. In our if statement dog becomes 'Fluffy' but then as soon as we leave our if block, and invoke rollOver, dog goes back to being 'Spot' because 'Fluffy' only existed in our if block and our outside function does not have access to it. In rollOVer we reassign dog to 'Biscuit' so dog logs as 'Biscuit' both in the rollOver function and outside to the petDog function and again outside in the global scope.
   },
 
   exerciseG() {
@@ -284,7 +273,12 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'reference error'},
+    {B: 'mango'},
+    {C: 'mango'},
+    {D: 'apple'}
+    ];
     return result;
 
     // Annotation:
@@ -307,6 +301,7 @@ const scope = {
         const newNum = num;
 
         // Log B: newNum
+
       }
 
       newNum = num;
@@ -324,7 +319,13 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 4},
+    {D: 9},
+    {E: 10},
+    {B: 9},
+    {C: 4}
+    ];
     return result;
 
     // Annotation:
@@ -514,7 +515,14 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+   { E: 'Pam'},
+   { A: 'Pam'},
+   { B: 'Pam'},
+   { C: 'Louisa'},
+   { D: 'Louisa'},
+   { F: 'Louisa'}
+   ];
     return result;
 
     // Annotation:
@@ -525,15 +533,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
+      // Log A: shoe // 
       var shoe = 'boot';
     }
 
-    // Log B: shoe
+    // Log B: shoe // 
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    { B: 'flipflop'},
+    { A: undefined },
+    { C: 'flipflop'},
+    ];
     return result;
 
     // Annotation:
@@ -553,13 +565,18 @@ const scope = {
       }
 
       // Log B: lunch
+
     }
 
     orderLunch();
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = [
+    { B: 'soup'},
+    { C: 'soup'}
+    ];
     return result;
 
     // Annotation:
@@ -596,7 +613,13 @@ const scope = {
 
     myCrazyKidAntics(myKid);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Pandora'},
+    {B: ['Antigone', 'Pandora']},
+    {C: 'Mandy'},
+    {D: 'Antigone'},
+    {E: 'Pandora'}
+    ];
     return result;
 
     // Annotation:
@@ -623,7 +646,12 @@ const scope = {
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+    {A: 'Rody'}, 
+    {B: 'RodyToy'}, 
+    {C: 'Tesla'}, 
+    {D: 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:

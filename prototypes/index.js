@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -25,22 +27,29 @@ const kittyPrompts = {
     // ['Tiger', 'Snickers']
 
     const result = kitties
-    .filter(kitty => kitty.color === 'orange')
-    .map(kitty => kitty.name);
+        .filter(kitty => kitty.color === 'orange')
+        .map(kitty => kitty.name);
+
+    // const result = kitties.reduce((a, kitty) => {
+    //     if (kitty.color === 'orange') {
+    //         a.push(kitty.name);
+    //     }
+    //     return a;
+    // }, []);
 
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
-    // First we want to find the kitties in the array 
+    // First we want to filter out the kitties in the array that have a color property with the value of orange. Then we want to return a new array with only the names of the kitty which we can achieve using the map method.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
     const result = kitties
-    .sort((a, b) => a.age - b.age)
-    .reverse();
+        .sort((a, b) => b.age - a.age);
+
     return result;
 
     // Annotation:
@@ -63,13 +72,16 @@ const kittyPrompts = {
     // ...etc]
     // let grownKitties = kitties.map(kitty => kitty.age += 2)
 
-    const result = [];
+    // const result = [];
 
-    kitties.forEach(kitty => {
-        kitty.age += 2;
-        result.push(kitty);
-    });
-    
+    // kitties.forEach(kitty => {
+    //     kitty.age += 2;
+    //     result.push(kitty);
+    // });
+
+    kitties.forEach(kitty => kitty.age += 2);
+
+    const result = kitties;
     return result;
   }
 };
@@ -101,11 +113,36 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let clubMembers = {};
+
+    clubs.forEach(obj => {
+        obj.members.forEach(member => {
+            if (!clubMembers[member]) {
+                clubMembers[member] = [obj.club];
+            } else {
+                clubMembers[member].push(obj.club);
+            }
+        });
+    });
+
+    // const clubMembers = clubs.reduce((array, obj) => {
+    //    obj.members.find(member => {
+    //      if(!array[member]) {
+    //        array[member] = [obj.club];
+    //      } else {
+    //        array[member].push(obj.club);
+    //      }
+    //    });
+    //    return array;
+    //  }, {});
+
+    const result = clubMembers;
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We want to start with an empty object that we can manipulate. Then, for each object within the clubs array we want to dive into that objects members property. Within the members array, we want to look at each member and compare each value in the array with the keys in our empty object. If the key does not yet exist, we want to add that member name as a key to our clubMembers object and go ahead and assign it a array of an element with the value of the club value that we can find within the original object that we found club and members. If the member name has already been added to the clubMembers object, then we only want to push the additional club name as an additional value to the array belonging to that member.
   }
 };
 
@@ -137,11 +174,45 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // new array modules
+    // for each object in mods, 
+    // // create a new obj
+    // // add mod and mod value as a key value to new obj
+    // // add new key of studentsPerInstructor to new obj
+    // // divide students by instructors, return to studentsPerInstructor
+    // // push new obj into modules array
+
+    // let modules = [];
+
+    // mods.forEach(obj => {
+    //     let newObj = {};
+    //     newObj.mod = obj.mod;
+    //     newObj.studentsPerInstructor = obj.students / obj.instructors;
+    //     modules.push(newObj);
+    // });
+
+    let modules = mods.map(obj => {
+        return {
+        mod: obj.mod, 
+        studentsPerInstructor: obj.students / obj.instructors
+        };
+    });
+
+    // let modules = Object.assign([], mods);
+
+    // modules.forEach(obj => {
+    //     obj.studentsPerInstructor = obj.students / obj.instructors;
+    //     delete obj.students;
+    //     delete obj.instructors;
+    // });
+
+    const result = modules;
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We must first create a new array called modules that will hold all our new objects. Then for each oject in the mods array we want to pull each objects mod key and its value and add it as a key value pair into a new object. We then add a new key of studentsPerInstructor and use the current object's students value divided by the instructrors value to get our studentsPerInstructor value. After we have both our new key value pairs set we can then push the new object into our new modules array.
   }
 };
 
@@ -172,11 +243,25 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let cakeFlavorsAndStock = [];
+
+    // cakes.forEach(cake => {
+    //     let newCake = {};
+    //     newCake.flavor = cake.cakeFlavor;
+    //     newCake.inStock = cake.inStock;
+    //     cakeFlavorsAndStock.push(newCake);
+    // });
+
+    let flavorsInStock = cakes.map(cake => {
+        return {flavor: cake.cakeFlavor, inStock: cake.inStock};
+    });
+
+    const result = flavorsInStock;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We need to create a new array to hold our new objects. We then need to iterate through each object in the cakes array and assign the value of each objects cakeFlavor to a new key called flavor to add to our new object. Then we assign the current objects inStock value to a new key called inStock to add to our new obj. We then push eash new obj into the new array.
   },
 
   onlyInStock() {
@@ -200,22 +285,27 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let cakesInStock = cakes.filter(cake => cake.inStock > 0);
+
+    const result = cakesInStock;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // I filtered out the cakes with an inStock property value greater than 0.
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((a, cake) => 
+        a + cake.inStock, 0);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We can use the reduce method to pull out the values of all the cakes instock property and add them all together
   },
 
   allToppings() {
@@ -223,11 +313,29 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let toppings = cakes.flatMap(cake => cake.toppings);
+
+    let uniqueToppings = cakes
+        .flatMap(cake => cake.toppings)
+        .filter((topping, i, array) => 
+        array.indexOf(topping) === i);
+
+    // let toppings = [];
+
+    // cakes.forEach(obj => {
+    //     obj.toppings.forEach(topping => {
+    //         if (!toppings.includes(topping)) {
+    //             toppings.push(topping)
+    //         }
+    //     });
+    // });
+
+    const result = uniqueToppings;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We need to use the reduce method to access all of the cakes and their toppings and combine them into one array. The reduce method compares each item and does not add duplicates
   },
 
   groceryList() {
@@ -241,11 +349,21 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let toppings = cakes.flatMap(obj => obj.toppings)
+
+    let groceryList = {};
+
+    toppings.forEach(topping => {
+      !groceryList[topping] ? groceryList[topping] = 1
+      : groceryList[topping] ++;
+    });
+
+    const result = groceryList;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We know we want an array of all of the toppings but map will return an array of arrays so we want to use flat to get a single array. We then want to create a new object that we can manipulate. We iterate through all of the toppings and if the a property does not exist yet in the groceryList object we want to add it as a property and assign it with a starting value of 1 and if that property already exists then we want to increment that value by 1.
   }
 };
 
@@ -276,11 +394,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(obj => obj.program === 'FE');
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We simply need to filter each object from the classrooms array that matches the condition of obj.program = FE into a new array.
   },
 
   totalCapacities() {
@@ -291,21 +410,56 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let feRooms = [];
+    // let beRooms = [];
+
+    // const roomCapacities = classrooms.forEach(classroom => {
+    //   if (classroom.program === 'FE') {
+    //     feRooms.push(classroom.capacity);
+    //   } else {
+    //     beRooms.push(classroom.capacity);
+    //   }
+    // });
+
+    // const capacity = {
+    //   feCapacity: feRooms.reduce((a, current) =>
+    //   a + current),
+    //   beCapacity: beRooms.reduce((a, current) =>
+    //   a + current)
+    // }
+
+    // const capacity = {
+    //     feCapacity: classrooms.filter(classroom => classroom.program === 'FE')
+    //       .reduce((a, classroom) => a + classroom.capacity, 0),
+    //     beCapacity: classrooms.filter(classroom => classroom.program === 'BE')
+    //       .reduce((a, classroom) => a + classroom.capacity, 0)
+    // }
+
+    const capacity = {
+        feCapacity: classrooms.reduce((a, classroom) => 
+        classroom.program === 'FE' ? a + classroom.capacity : a, 0),
+        beCapacity: classrooms.reduce((a, classroom) => 
+        classroom.program === 'BE' ? a + classroom.capacity : a, 0)
+    }
+
+    const result = capacity;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We need to create a new object with new keys of feCapacity and beCapacity. To get the value for each of those keys we need to first filter and return a new array of just the fe or be classrooms and then reduce all of the classroom capacity values into one value
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) =>
+        a.capacity - b.capacity);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We use the sort method to compare the classrooms using their property of capacity. The method sorts the objects in place.
   }
 };
 
@@ -331,11 +485,19 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let numOfBeers = [];
+
+    // breweries.forEach(obj => numOfBeers.push(obj.beers.length));
+
+    // let numOfBeers = breweries.map(obj => obj.beers.length);
+
+    const result = breweries.reduce((a, obj) => a + obj.beers.length, 0)
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We can use reduce to iterate through every object in breweries and access each object's properties. We then set our accumulator to 0 and add the length of the beers array in each object together to get a total count
   },
 
   getBreweryBeerCount() {
@@ -347,11 +509,24 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let breweryNames = [];
+
+    // breweries.forEach(obj => {
+    //   let newObj = {};
+    //   newObj.name = obj.name;
+    //   newObj.beerCount = obj.beers.length;
+    //   breweryNames.push(newObj);
+    // })
+
+    const result = breweries.map(obj => {
+        return {name: obj.name, beerCount: obj.beers.length}
+    });
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // We can use map to iterate through every object and access that object's properties. For each object we will return a new object with the current object's name being passed in for the new objects name and the current object's beers.length for the new object's beer count.
   },
 
   findHighestAbvBeer() {
@@ -359,11 +534,25 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // breweries.forEach(obj => {
+    //  obj.beers.forEach(beer => {
+    //    beers.push(beer);
+    //    beersabv.push(beer.abv);
+    //  })
+    // })
+
+    let beers = breweries.flatMap(obj => obj.beers);
+
+    let beersabv = beers.map(beer => beer.abv);
+
+    let highestBeerAbv = beers.find(obj => obj.abv === Math.max(...beersabv));
+
+    const result = highestBeerAbv;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // First we need to creat an array of just the beers from all of the breweries. And then we need to create an array of all of the beer's abv so that we can find the highest number in that array. Then once we have both lists we can find the beer that satisfies the condition of that beer's abv matching the highest number in the beersabv list.
   }
 };
 
