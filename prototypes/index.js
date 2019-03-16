@@ -370,11 +370,24 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      brewery.beers.forEach((beer) => {
+        if(beer.abv > acc['abv']){
+          acc = beer;
+        }
+      });
+      return acc;
+    },{ name: '', type: '', abv: 0, ibu: 0 });;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We know we want a single obj back so we use reduce and pass in our acc and brewery as our current val, we iterate over each brewery
+      //Once we are inside of that breweries obj, we dig into the beers array with forEach and look at each beer
+        //We create a conditional that checks if the beer's abv is greater than the acc's abv
+          //We reassign the acc to be the beer that is greatest
+      //We return our acc
+    //We set the initial value to the object we create which is {name:'', type: '', abv: 0, ibu: 0}
+
   }
 };
 

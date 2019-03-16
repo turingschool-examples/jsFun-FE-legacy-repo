@@ -218,28 +218,20 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
+      var dog = 'Fido';
       // Log A: dog
-
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
-
       function rollOver() {
         // Log B: dog
-
-        dog = 'Biscuit';
-
+       dog = 'Biscuit';
         // Log C: dog
-
       }
-
       rollOver();
-
       // Log D: dog
     }
-
     petDog();
-
     // Log E: dog
 
     const result = [
