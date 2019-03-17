@@ -191,13 +191,13 @@ describe('PROTOTYPES', () => {
         program: 'FE',
         capacity: 29
       }]);
-    }), it.skip('totalCapacities', () => {
+    }), it('totalCapacities', () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
       });
-    }), it.skip('sortByCapacity', () => {
+    }), it('sortByCapacity', () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: 'H',
@@ -265,7 +265,7 @@ describe('PROTOTYPES', () => {
       });
     });
   }), describe('Turing Prompts', () => {
-    it.skip('studentsForEachInstructor', () => {
+    it('studentsForEachInstructor', () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
         name: 'Pam',
