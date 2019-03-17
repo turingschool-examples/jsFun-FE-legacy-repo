@@ -49,10 +49,16 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    //********************************* */
+    //* this is the element( because this is a callback function upon invocation, and was invoked by click ON AN ELEMENT)
+
+
+
+    const result = 'el';
     return result;
 
     // Annotation: 
+    // 
     // Write your annotation here as a comment
   },
 

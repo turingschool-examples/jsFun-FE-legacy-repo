@@ -91,7 +91,7 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting--1st, Hello
+      // Log A: greeting--1st, Yo
 
       function newPhrase() {
         greeting = 'Hey';
@@ -440,14 +440,17 @@ const scope = {
       if (num > 5) {
         num = 7;
       }
-      // Log A: num
+      // Log A: 1. 7
     }
 
     foo();
 
-    // Log B: num
+    // Log B: 2. 7
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 7 },
+      { B: 7 }
+    ];
     return result;
 
     // Annotation:

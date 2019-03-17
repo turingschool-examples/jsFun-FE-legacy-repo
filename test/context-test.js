@@ -19,13 +19,13 @@ chai.use(function(e, t) {
 });
 
 describe('CONTEXT', () => {
-  it.skip('exerciseA', () => {
+  it('exerciseA', () => {
     const e = 'global window object' == context.exerciseA();
     expect(e).withMessage('Your result is not the correct context').to.be.true;
   }), it.skip('exerciseB', () => {
     const e = 'global window object' == context.exerciseB();
     expect(e).withMessage('Your result is not the correct context').to.be.true;
-  }), it.skip('exerciseC', () => {
+  }), it('exerciseC', () => {
     const e = 'el' == context.exerciseC();
     expect(e).withMessage('Your result is not the correct context').to.be.true;
   }), it.skip('exerciseD', () => {

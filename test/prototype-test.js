@@ -172,7 +172,7 @@ describe('PROTOTYPES', () => {
       });
     });
   }), describe('Class Prompts', () => {
-    it('feClassrooms', () => {
+    it.skip('feClassrooms', () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: 'A',
@@ -191,7 +191,7 @@ describe('PROTOTYPES', () => {
         program: 'FE',
         capacity: 29
       }]);
-    }), it('totalCapacities', () => {
+    }), it.skip('totalCapacities', () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -234,10 +234,10 @@ describe('PROTOTYPES', () => {
       }]);
     });
   }), describe('Brewery Prompts', () => {
-    it.skip('getBeerCount', () => {
+    it('getBeerCount', () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40);
-    }), it.skip('getBreweryBeerCount', () => {
+    }), it('getBreweryBeerCount', () => {
       const e = breweryPrompts.getBreweryBeerCount();
       expect(e).to.deep.equal([{
         name: 'Little Machine Brew',
@@ -255,7 +255,7 @@ describe('PROTOTYPES', () => {
         name: 'Platt Park Brewing Co.',
         beerCount: 7
       }]);
-    }), it.skip('findHighestAbvBeer', () => {
+    }), it('findHighestAbvBeer', () => {
       const e = breweryPrompts.findHighestAbvBeer();
       expect(e).to.deep.equal({
         name: 'Barrel Aged Nature\'s Sweater',
