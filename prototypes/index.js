@@ -543,28 +543,17 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+    
+    const result = breweries.reduce((mostAbvBeer, brewery) => {
+      const currentHighest = brewery.beers.sort((beerA, beerB) => beerB.abv - beerA.abv)[0];
+      let newHighest;
+      if (newHighest === undefined || currentHighest.abv > newHighest.abv) {
+        newHighest = currentHighest;
+      }
+      mostAbvBeer = newHighest;
+      return mostAbvBeer;
+    });
 
-
-
-    const result = 'result';
-
-
-
-
-
-
-
-
-
-
-    // const result = breweries.reduce((highestABV, brewery) => {
-    //   let breweryHighest = brewery.beers.sort((beerA, beerB) => beerB.abv - beerA.abv)[0];
-    //   console.log(breweryHighest)
-    //   if (breweryHighest.abv > highestABV.abv) {
-    //     highestABV = breweryHighest;
-    //   }
-    //   return highestABV;
-    // });
     return result;
 
     // Annotation:
