@@ -364,6 +364,42 @@ const breweryPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+/// DATASET: doctorWho from ./datasets/doctorWho
+const doctorPrompts = {
+  getCompanionList() {
+//     Return an array with all companion names
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+  
+ 
+
+  getEpisodeCount() {
+//    Return how many episodes have these companions been in combined
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+  
+
+  findHighestAbvBeer() {
+//  Return an object with a key of Doctors and who their companions are
+
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
 
 
 
