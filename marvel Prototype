@@ -1,0 +1,109 @@
+const marvel = {
+  heros: [
+    { 
+      name: "Black Panther", 
+      group: false,  
+      superHeroPowers: ["Strength", "Speed", "Durability", "Stamina", "Agility", "Reflexes", "SuperHuman Senses"], 
+      home: "Wakanda", 
+      bestLine: "We must look after each other, as if we are one single tribe.", 
+      villian: false, 
+      damage: 150
+    },
+    { 
+      name: "Thor", 
+      group: false,  
+      superHeroPowers: ["Strength", "Speed", "Flight"], 
+      home: "Asgard", 
+      bestLine: "I make mistakes all the time, things seem to work out.", 
+      villian: false, 
+      damage: 100 
+    },
+    { 
+      name: "Iron Man", 
+      group: false,  
+      superHeroPowers: ["Strength", "Engineer", "Genius", "Flight"], 
+      home: "Earth", 
+      bestLine: "If we can’t protect the world, you can be damn sure we will avenge it.", 
+      villian: false, 
+      damage: 75 
+    },
+    { 
+      name: "Dr. Strange", 
+      group: false,  
+      superHeroPowers: ["Genius", "Flight", "Time", "Magic", "Transport"], 
+      home: "Earth",  
+      bestLine: "We're in the endgame now", 
+      villian: false, 
+      damage: 50 
+    },
+    { 
+      name: "Avengers", 
+      group: true,  
+      superHeroPowers: ["Strength", "Speed", "Flight", "Durability", "Reflexes", "Genius", "Engineer", "Stamina", "Transport", "Time", "Agility", "SuperHuman Senses", "Magic"], 
+      home: "none", 
+      bestLine: "Drax: I'll do YOU one better! WHY is Gamora?", 
+      villian: false, 
+      damage: 500 
+    }
+  ],
+    villian: [
+    { 
+      name: "Thanos", 
+      group: null, 
+      superHeroPowers: ["Infinity Gauntlet", "Finger Snap", "Matter", "Energy Maniuplation", "Strength" ], 
+      home: "Titan", 
+      bestLine: "You should have gone for the head",  
+      villian: true, 
+      damage: 600 
+    }
+  ]
+};
+
+
+module.exports = { marvel }
+
+const { marvel } = require('./datasets/marvel');
+
+// DATASET: marvel from ./dataset/marvel
+const marvelPrompts = {
+    marvelDamage() {
+      // Return an array of marvel heros whose damage is 100 or greater.
+      // [ 'Black Panther', 'Thor', 'Avengers' ]
+
+      const result = 'REPLACE WITH YOUR RESULT HERE'
+      return result;
+    },
+
+    marvelQuotes() {
+      // Return an Array of quotes where the characters are not villians
+      // ["We must look after each other, as if we are one single tribe.", "I make mistakes all the time, things seem to work out.",
+      //  "If we can’t protect the world, you can be damn sure we will avenge it.",
+      //  "We're in the endgame now", "Drax: I'll do YOU one better! WHY is Gamora?"]
+      const result = 'REPLACE WITH YOUR RESULT HERE'
+      return result
+    },
+
+    heroVSheroVSvillian() {
+      // Create an array of Objects where the keys are Winner and Loser, the values are the marvel marvel hero or villians that face off against each other.
+      // [ { Winner: 'Black Panther', Loser: 'Thor' },
+      // { Winner: 'Black Panther', Loser: 'Iron Man' },
+      // { Winner: 'Black Panther', Loser: 'Dr. Strange' },
+      // { Winner: 'Thor', Loser: 'Iron Man' },
+      // { Winner: 'Thor', Loser: 'Dr. Strange' },
+      // { Winner: 'Iron Man', Loser: 'Dr. Strange' },
+      // { Winner: 'Avengers', Loser: 'Black Panther' },
+      // { Winner: 'Avengers', Loser: 'Thor' },
+      // { Winner: 'Avengers', Loser: 'Iron Man' },
+      // { Winner: 'Avengers', Loser: 'Dr. Strange' },
+      // { Winner: 'Thanos', Loser: 'Black Panther' },
+      // { Winner: 'Thanos', Loser: 'Thor' },
+      // { Winner: 'Thanos', Loser: 'Iron Man' },
+      // { Winner: 'Thanos', Loser: 'Dr. Strange' },
+      // { Winner: 'Thanos', Loser: 'Avengers' } ]
+      const result = 'REPLACE WITH YOUR RESULT HERE'
+      return result
+    }
+}
+
+
+module.exports = marvel
