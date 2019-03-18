@@ -572,7 +572,51 @@ const scope = {
 
     // Annotation:
     // Write your annotation here as a comment
+  },
+  
+  exerciseS(){
+    let animal = "Zebra"
+
+    const animals  = () =>{
+
+      // Log D: animal
+
+      if(animal === "Zebra"){
+        let animal = "Giraffe"
+      } 
+     animal = "Monkey"
+  
+      //Log B: animal
+  
+     let animalsAlso = () =>{
+        animalsToo()
+        if(animal === "Baboon"){
+          let animal = "Moose"
+
+          // Log D: animal    
+        }
+      }
+
+      let animalsToo = () =>{
+        return animal = "Baboon"
+      }
+  animalsAlso()
+
+  // Log C: animal
   }
+
+  animals()
+
+  // Log E: animal
+  
+  const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+}
 };
+
+
 
 module.exports = scope;
