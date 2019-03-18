@@ -349,18 +349,30 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{
-        name: "Rigel",
-        visualMagnitude: .13,
-        constellation: "Orion",
+      expect(e).to.deep.equal([{ 
+        name: 'Rigel',
+        visualMagnitude: 0.13,
+        constellation: 'Orion',
         lightYearsFromEarth: 860,
-        color: "blue"
-      }, {
-        name: "Betelgeuse",
-        visualMagnitude: .5,
-        constellation: "Orion",
+        color: 'blue'
+      }, { 
+        name: 'Achernar',
+        visualMagnitude: 0.46,
+        constellation: 'The Plow',
+        lightYearsFromEarth: 140,
+        color: 'blue' 
+      }, { 
+        name: 'Betelgeuse',
+        visualMagnitude: 0.5,
+        constellation: 'Orion',
         lightYearsFromEarth: 640,
-        color: "red"
+        color: 'red'
+      }, { 
+        name: 'Hadar',
+        visualMagnitude: 0.61,
+        constellation: 'The Little Dipper',
+        lightYearsFromEarth: 350,
+        color: 'blue' 
       }])
     }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
