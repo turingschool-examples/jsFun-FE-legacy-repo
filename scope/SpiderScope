@@ -1,0 +1,22 @@
+function spidermen() {
+  let spideyA = 'Spider-Man';
+  let spideyB = 'Spider-Gwen';
+  let spideyC = 'Spider-Man Noir';
+
+  function changeEarth() {
+    // logA: spideyA
+    spideyA = 'Spider-Ham';
+    bite();
+    // logB: spideyB
+    // logC: spideyC
+  };
+  
+  function bite() {
+    spideyB = 'Spider-Woman';
+    spideyC = 'Spider-Punk';
+  };
+
+  // logD: spideyA
+  changeEarth();
+  // logE: spideyA
+}
