@@ -1,0 +1,83 @@
+const marvel = [
+  {alias: 'Captain America', name: 'Steven Rogers', species: 'human', debutYear: 1941, teams: ['The Avengers'], powers: ['Superhuman Agility', 'Superhuman Stamina', 'Superhamn Durability', 'Superhuman Strength', 'Superhuman Reflexes']},
+  {alias: 'Iron Man', name: 'Anthony Stark', species: 'human', debutYear: 1963, teams: ['The Avengers', 'S.H.I.E.L.D.'], powers: ['Heightened Senses', 'Supherman Strength', 'Regeneration', 'Genius Intelligence']},
+  {alias: 'Black Widow', name: 'Natosha Romanoff', species: 'human', debutYear: 2009, teams: ['The Avengers', 'S.H.I.E.L.D.'], powers: ['Slowed Aging', 'Superhuman Durability']},
+  {alias: 'Star-Lord', name: 'Peter Quill', species: 'human', debutYear: 1976, teams: ['Guardians of the Galaxy'], powers: ['Force Field', 'Healing Factor', 'Control of Elements', 'Interstellar Travel', 'Armed Combat']},
+  {alias: 'Gamora', name: 'Gamora', species: 'Zen-Whoberis', debutYear: 1975, teams: ['Guardians of the Galaxy'], powers: ['Hand to Hand Combat', 'Precognition', 'Sword-Fighting', 'Superhuman Speed']},
+  {alias: 'Professor X', name: 'Charles Xavier', species: 'mutant', debutYear: 1963, teams: ['X-Men'], powers: ['Genius Intelligence', 'Psychic', 'Omega Level']},
+  {alias: 'Phoenix', name: 'Jean Grey', species: 'mutant', debutYear: 1963, teams: ['X-Men'], powers: ['Telekinesis', 'Telepathy', 'Astral Projection', 'Phoenix Force', 'Omega Level']},
+  {alias: 'Storm', name: 'Ororo Munroe', species: 'mutant', debutYear: 1975, teams: ['X-Men'], powers: ['Atmokinetic Combat', 'Psionics', 'Control of Elements' ,'Flight', 'Heightened Senses']},
+  {alias: 'Nick Fury', name: 'Nicholas Fury', species: 'human', debutYear: 1963, teams: ['S.H.I.E.L.D.'], powers: ['Military Strategist', 'Hand to Hand Combat', 'Armed Combat', 'Slowed Aging']},
+  {alias: 'Doctor Strange', name: 'Stephen Strange', species: 'human', debutYear: 1963, teams: ['Defenders'], powers: ['Magic', 'Martial Artist', 'Energy Manipulation', 'Teleportation', 'Chronokinesis']},
+  {alias: 'Daredevil', name: 'Matthew Murdock', species: 'human', debutYear: 1964, teams: ['Defenders'], powers: ['Heightened Senses', 'Martial Artist']},
+  {alias: 'Spider-Man', name: 'Peter Parker', species: 'human', debutYear: 1964, teams: [], powers: ['Superhuman Strength', 'Superhuman Speed', 'Superhuman Reflexes', 'Supherhuman Durability', 'Healing Factor', 'Spider-Sense', 'Heightened Senses', 'Wallcrawling']},
+  {alias: 'Captain Marvel', name: 'Carol Danvers', species: 'human', debutYear: 1968, teams: ['Alpha Flight', 'The Avengers'], powers: ['Flight', 'Energy Blasts', 'Superhuman Durability', 'Superhuman Strength']},
+  {alias: 'Wolverine', name: 'Logan', species: 'mutant', debutYear: 1974, teams: ['Alpha Flight', 'X-Men'], powers: ['Superhuman Senses', 'Superhuman Agility', 'Superhuman Reflexes', 'Slowed Aging', 'Adamantium-Infused Skeleton', 'Retractable Claws','Hand to Hand Combat']},
+  {alias: 'Scarlet Witch', name: 'Wanda Maximoff', species: 'mutant', debutYear: 1964, teams: ['Brotherhood of Mutants', 'Avengers'], powers: ['Reality Warping', 'Magic', 'Probability Manipulation', 'Teleportation', 'Matter Manipulation', 'Time Manipulation', 'Energy Projection', 'Energy Manipulation', 'Energy Absorption', 'Omega Level']}
+]
+
+
+
+
+// create an obj with each characters name as a key and their powers as the value
+
+// example:'Steven Rogers': 
+  //  [ 'Superhuman Agility',
+  //    'Superhuman Stamina',
+  //    'Superhamn Durability',
+  //    'Superhuman Strength',
+  //    'Superhuman Reflexes' ]
+
+const result = marvel.reduce((acc, char) => {
+  if (!acc[char.name]) {
+    acc[char.name] = []
+  }
+  char.powers.forEach(power => acc[char.name].push(power))
+  return acc
+}, {})
+
+
+
+// create a object with the teams as the keys and the alias of the characters belonging to those groups as the values
+// example: 
+// 'The Avengers': [ 'Captain America', 'Iron Man', 'Black Widow' ]
+
+const teams = marvel.reduce((acc, char) => {
+  char.teams.forEach(team => {
+    if (!acc[team]) {
+      acc[team] = [] 
+    }
+    acc[team].push(char.alias)
+  })
+  return acc
+}, {})
+
+
+
+// create an obj with the keys of debutYear and the values the alias
+// example: 1968: [ 'Captain Marvel' ],
+     // 1974: [ 'Wolverine' ]
+
+const debut = marvel.reduce((acc, char) => {
+  if (!acc[char.debutYear]) {
+    acc[char.debutYear] = []
+  }
+  acc[char.debutYear].push(char.alias)
+  return acc
+}, {})
+
+
+
+//return an array of objects of only the Omega Level Mutants
+// example:
+// [ 'Charles Xavier', 'Jean Grey', 'Wanda Maximoff' ]
+let omega = marvel.reduce((acc, hero) => {
+  hero.powers.forEach(power => {
+    if (power === 'Omega Level' && !acc.includes(hero.name)) {
+      acc.push(hero.name)
+    }
+  })
+  return acc
+}, [])
+
+console.log(omega)
