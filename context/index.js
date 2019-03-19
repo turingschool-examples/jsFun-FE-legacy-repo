@@ -308,13 +308,14 @@ const context = {
     const child = {
       totalScreams : 4,
       scream: () => {
-        this.screams++;
+        this.totalScreams++;
       }
     }
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
+    // What is the value of `this` when we call child.scream();
     // Annotation: 
     // Write your annotation here as a comment
   }
