@@ -201,8 +201,123 @@ const context = {
 
     // Annotation: 
     // Write your annotation here as a comment.
-  }
+  },
 
+  exerciseK() {
+    var store = {
+      fruit: "grapes",
+      sellMe: function() {
+        return this.fruit;
+      }
+    }
+
+    // What is the value of `this` when we call store.sellMe()?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment.
+  },
+
+  exerciseL() {
+    const dog = {
+      breed: 'Chihuahua',
+      getBreed: function(){
+        var _this = this;
+
+        setTimeout(function() {
+          console.log('Your dog is a ' + _this.breed);
+        }) 
+      }
+    };
+
+    // What is the value of `this` when we call dog.getBreed()?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+
+  exerciseM() {
+    const robert = {
+      name: 'Bobo',
+      occupation: 'instructor'
+    }
+
+    const william = {
+      name: 'will',
+      occupation: 'instructor'
+    }
+
+    function makeBirdNoise() {
+      console.log('My name is ' + this.name + ' ... caw! caw!');
+    }
+
+    // What is the value of `this` when we call makeBirdNoise.call(robert);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+
+  exerciseN() {
+    class Bird {
+      constructor(name, species) {
+        this.name = name;
+        this.species = species;
+      }
+
+      delayNoise() {
+        setTimeout(this.makeNoise.bind(this), 1000)
+      }
+
+      makeNoise() {
+        console.log('caw, caw');
+      }
+    }
+    
+    var firstBird = new Bird('Calvin', 'budgie');
+
+    // What is the value of `this` when we call firstBird.delayNoise();
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+
+  exerciseO() {
+    const button = document.querySelector('#submit');
+
+    button.addEventListener('click', () => {
+      console.log(this);
+      this.classList.toggle('on');
+    });
+
+    // What is the value of `this` when a user clicks on our button element and the callback is triggered?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  },
+
+  exerciseP() {
+    const child = {
+      totalScreams : 4,
+      scream: () => {
+        this.screams++;
+      }
+    }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment
+  }
 };
 
 module.exports = context;
