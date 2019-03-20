@@ -24,7 +24,7 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(cats => cats.color === 'orange').map(cats => cats.name);
     return result;
 
     // Annotation:
@@ -34,7 +34,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort ((a,b) => {
+      return b.age-a.age;
+    });
     return result;
 
     // Annotation:
@@ -55,14 +57,17 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    kitties.forEach(cats => {
+      let newResult = {};
+      newResult.name = cats.name;
+      newResult.age = cats.age + 2;
+      newResult.color = cats.color;
+      result.push(newResult);
+    });
     return result;
   }
 };
-
-
-
-
 
 
 // ---------------------------------------------------------------------------
@@ -123,7 +128,13 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  [];
+    mods.forEach(mod => {
+      let newResult = {};
+      newResult.mod = mod.mod;
+      newResult.studentsPerInstructor = mod.students / mod.instructors;
+      result.push(newResult);
+    });
     return result;
 
     // Annotation:
@@ -158,7 +169,13 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    cakes.forEach(cake => {
+      let simpleCakes = {};
+      simpleCakes.flavor = cake.cakeFlavor;
+      simpleCakes.inStock = cake.inStock;
+      result.push(simpleCakes);
+    });
     return result;
 
     // Annotation:
@@ -186,7 +203,11 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      if(cake.inStock >= 1){
+        return cake;
+      }
+    });
     return result;
 
     // Annotation:
@@ -197,7 +218,10 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((sum, stock) => {
+      sum += stock.inStock;
+      return sum;
+    },0);
     return result;
 
     // Annotation:
@@ -209,7 +233,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((cake, onTop) => {
+      onTop.toppings.forEach(type =>{
+        if(cake.indexOf(type) === -1){
+          cake.push(type);
+        }
+      });
+      return cake;
+    },[]);
     return result;
 
     // Annotation:
@@ -227,7 +258,15 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((cake, onTop) => {
+      onTop.toppings.forEach(type => {
+        if(!cake[type]){
+          cake[type] = 0;
+        }
+        cake[type]++;
+      });
+      return cake;
+    },{});
     return result;
 
     // Annotation:
@@ -262,7 +301,11 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classes => {
+      if(classes.program === 'FE'){
+        return classes;
+      }
+    });
     return result;
 
     // Annotation:
@@ -277,7 +320,15 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // Create a new data type use reduce,
+
+    const result = classrooms.reduce((acc, cap)=>{
+      if(!acc[`${cap.program.toLowerCase()}Capacity`]) {
+        acc[`${cap.program.toLowerCase()}Capacity`] = 0;
+      }
+      acc[`${cap.program.toLowerCase()}Capacity`] += cap.capacity;
+      return acc;
+    },{}) ;
     return result;
 
     // Annotation:
@@ -287,7 +338,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
@@ -317,7 +370,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brews) => {
+      acc += brews.beers.length;
+      return acc;
+    },0);
     return result;
 
     // Annotation:
@@ -333,7 +389,13 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  [];
+    breweries.forEach(beer => {
+      let newResult = {};
+      newResult.name = beer.name;
+      newResult.beerCount = beer.beers.length;
+      result.push(newResult);
+    });
     return result;
 
     // Annotation:
