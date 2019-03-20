@@ -310,7 +310,7 @@ describe("PROTOTYPES", () => {
         Brittany: [2, 4],
         Nathaniel: [2, 4],
         Robbie: [4],
-        Leta: [4, 2],
+        Leta: [2, 4],
         Travis: [1, 2, 3, 4],
         Louisa: [1, 2, 3, 4],
         Christie: [1, 2, 3, 4],
@@ -349,18 +349,30 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{
-        name: "Rigel",
-        visualMagnitude: .13,
-        constellation: "Orion",
+      expect(e).to.deep.equal([{ 
+        name: 'Rigel',
+        visualMagnitude: 0.13,
+        constellation: 'Orion',
         lightYearsFromEarth: 860,
-        color: "blue"
-      }, {
-        name: "Betelgeuse",
-        visualMagnitude: .5,
-        constellation: "Orion",
+        color: 'blue'
+      }, { 
+        name: 'Achernar',
+        visualMagnitude: 0.46,
+        constellation: 'The Plow',
+        lightYearsFromEarth: 140,
+        color: 'blue' 
+      }, { 
+        name: 'Betelgeuse',
+        visualMagnitude: 0.5,
+        constellation: 'Orion',
         lightYearsFromEarth: 640,
-        color: "red"
+        color: 'red'
+      }, { 
+        name: 'Hadar',
+        visualMagnitude: 0.61,
+        constellation: 'The Little Dipper',
+        lightYearsFromEarth: 350,
+        color: 'blue' 
       }])
     }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
@@ -439,7 +451,7 @@ describe("PROTOTYPES", () => {
       })
     }), it("constellationsStarsExistIn", () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
-      expect(e).to.deep.equal(["Canis Major", "Carina", "", "Boötes", "Lyra", "Auriga", "Orion", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
+      expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
   }), describe("Ultima Prompts", () => {
     it("totalDamage", () => {
@@ -502,17 +514,19 @@ describe("PROTOTYPES", () => {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, {
+      }, 
+      {
+        name: 'Karin Ohman',
+        nationality: 'Chinese',
+        imdbStarMeterRating: 0
+      },
+      {
         name: 'Tom Wilhoit',
         nationality: 'Kiwi',
         imdbStarMeterRating: 1
       }, {
         name: 'Jeo D',
         nationality: 'Martian',
-        imdbStarMeterRating: 0
-      }, {
-        name: 'Karin Ohman',
-        nationality: 'Swedish',
         imdbStarMeterRating: 0
       }])
     }), it("actorsAgesInMovies", () => {

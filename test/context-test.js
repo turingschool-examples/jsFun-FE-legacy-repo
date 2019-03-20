@@ -49,5 +49,23 @@ describe("CONTEXT", () => {
   }), it("exerciseJ", () => {
     const e = "el" == context.exerciseJ();
     expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseK", () => {
+    const e = "store" == context.exerciseK();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseL", () => {
+    const e = "dog" == context.exerciseL();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseM", () => {
+    const e = "robert" == context.exerciseM();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseN", () => {
+    const e = "instance of Bird" == context.exerciseN();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseO", () => {
+    const e = "global window object" == context.exerciseO();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
+  }), it("exerciseP", () => {
+    const e = "global window object" == context.exerciseP();
+    expect(e).withMessage("Your result is not the correct context").to.be.true
   })
 });
