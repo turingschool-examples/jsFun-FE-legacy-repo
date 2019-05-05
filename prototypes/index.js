@@ -23,22 +23,31 @@ const kittyPrompts = {
   orangeKittyNames() {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
+    const orange = kitties.filter(x => {
+      if (x.color === 'orange') {
+        return x;}
+    });
+    const names = orange.map(x => x.name);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = names;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // starting with an array of cat objects I filtered out each object with
+    // the color value 'orange', having just the objects with the color orange
+    // I used map to make a new array with only the value of each name
   },
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const sort = kitties.sort((a, b) => b.age - a.age);
+    const result = sort;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I used the sort prototype to iterate through the array of objects by the age
+    // using dot notation. Of the objects in the array is puts the largest one first
+    // in a decending order.
   },
 
   growUp() {
@@ -55,8 +64,16 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const grown = kitties.map(x => {
+      x.age = x.age + 2;
+      return x;});
+
+    const result = grown;
     return result;
+
+    // Annotation:
+    // Using map to make a new array of the same objects in the same order
+    // I added 2 to the age value of each object
   }
 };
 
@@ -87,11 +104,28 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let clubMembers = {};
+    let names = [];
+    clubs.map(x => x.members.map(r => names.push(r)));
+    names = [...new Set(names)];
+    names.forEach(x => clubMembers[x] = []);
+    // console.log(clubMembers.Louisa = 'yes');
+
+    let stuff = Object.entries(clubMembers).reduce((members, member) => {
+      clubs.forEach(obj => {
+        if(obj.members.find(name => name === member[0])) {
+          member[1].push(obj.club);
+        }
+      });
+    }, []);
+
+
+    const result = clubMembers;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // First I will make each mamber name show up in an array with no duplicates
+    // second I will make each name a key with an ampty array for the value
   }
 };
 

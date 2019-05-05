@@ -17,11 +17,11 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it.skip("orangeKittyNames", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
-    it.skip("sortByAge", () => {
+    it("sortByAge", () => {
       const e = kittyPrompts.sortByAge();
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -41,7 +41,7 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     });
-    it.skip("growUp", () => {
+    it("growUp", () => {
       const e = kittyPrompts.growUp();
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -62,7 +62,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+    it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
