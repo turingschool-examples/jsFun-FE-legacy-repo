@@ -104,28 +104,39 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    let clubMembers = {};
-    let names = [];
-    clubs.map(x => x.members.map(r => names.push(r)));
-    names = [...new Set(names)];
-    names.forEach(x => clubMembers[x] = []);
-    // console.log(clubMembers.Louisa = 'yes');
+    // let clubMembers = {};
+    // let names = [];
+    // clubs.map(x => x.members.map(r => names.push(r)));
+    // names = [...new Set(names)];
+    // names.forEach(x => clubMembers[x] = []);
 
-    let stuff = Object.entries(clubMembers).reduce((members, member) => {
-      clubs.forEach(obj => {
-        if(obj.members.find(name => name === member[0])) {
-          member[1].push(obj.club);
+    // let stuff = Object.entries(clubMembers).reduce((members, member) => {
+    //   console.log(member);
+    //   clubs.forEach(obj => {
+    //     if(obj.members.find(name => name === member[0])) {
+    //       member[1].push(obj.club);
+    //     }
+    //   });
+
+    // }, []);
+    // const result = clubMembers;
+
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if(!acc[member]){
+          acc[member] = [];
         }
+        acc[member].push(club.club);
       });
-    }, []);
+      return acc;
+    }, {});
 
-
-    const result = clubMembers;
     return result;
 
     // Annotation:
-    // First I will make each mamber name show up in an array with no duplicates
-    // second I will make each name a key with an ampty array for the value
+    // iterate through clubs, then in each object iterate through members array
+    // if the string is not already in the accumulator then add it with a value of an empty array
+    // each time a name in the acc comes up, add it to the respective array value
   }
 };
 
