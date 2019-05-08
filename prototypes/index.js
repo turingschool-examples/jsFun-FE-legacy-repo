@@ -264,7 +264,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let toppings = cakes.reduce((acc, cur) => {
+      cur.toppings.map(x => {
+        !acc.includes(x) ? acc.push(x) : null;
+      });
+      return acc;
+    }, []);
+
+    const result = toppings;
     return result;
 
     // Annotation:
