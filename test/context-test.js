@@ -23,19 +23,19 @@ describe("CONTEXT", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }); 
-  it.skip("exerciseB", () => {
+  it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseC", () => {
+  it("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseD", () => {
+  it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseE", () => {
+  it("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });

@@ -289,7 +289,12 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let list = cakes.reduce((acc, cur) => {
+      cur.toppings.forEach(x => !acc[x] ? acc[x] = 1 : acc[x] = acc[x] + 1);
+      return acc;
+    }, {});
+
+    const result = list;
     return result;
 
     // Annotation:
