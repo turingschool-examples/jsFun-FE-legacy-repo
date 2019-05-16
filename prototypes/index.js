@@ -410,7 +410,9 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let brewCount = breweries.map(x => ({'name' : x.name, 'beerCount' : x.beers.length}));
+
+    const result = brewCount;
     return result;
 
     // Annotation:
@@ -422,7 +424,13 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let topAbv = breweries.reduce((topBeer, beer) => {
+      beer = beer.beers.sort((a, b) => b.abv - a.abv)[0];
+      return beer.abv > topBeer.abv ? beer : topBeer;
+    }, { name: '0', type: '0', abv: 0, ibu: 0, });
+
+
+    const result = topAbv;
     return result;
 
     // Annotation:
