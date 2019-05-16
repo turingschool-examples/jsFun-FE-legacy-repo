@@ -242,7 +242,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Brewery Prompts", () => {
-    it.skip("getBeerCount", () => {
+    it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40)
     });
