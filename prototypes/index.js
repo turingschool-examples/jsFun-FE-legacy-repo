@@ -328,8 +328,9 @@ const classPrompts = {
     //   { roomLetter: 'E', program: 'FE', capacity: 22 },
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
+    let stuff = classrooms.filter(x => x.program === 'FE');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stuff;
     return result;
 
     // Annotation:
@@ -343,8 +344,13 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
+    let totalCapacity = classrooms.reduce((acc, cur) => {
+      cur.program === 'FE' ? acc.feCapacity += cur.capacity 
+        : acc.beCapacity += cur.capacity;
+      return acc;
+    }, {feCapacity: 0, beCapacity: 0});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = totalCapacity;
     return result;
 
     // Annotation:
