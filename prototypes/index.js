@@ -478,7 +478,17 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    //return array of objects ... map
+    // iterate through 1 array of objects 
+
+
+    let studentCount = instructors.map(instructor => {
+      return {name: instructor.name, studentCount: 
+        cohorts.find(cohort => cohort.module === instructor.module).studentCount};
+    });
+    
+
+    const result = studentCount;
     return result;
 
     // Annotation:
