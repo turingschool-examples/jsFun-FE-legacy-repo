@@ -493,20 +493,41 @@ const turingPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
+    // map through each instructor making an object literal
+    // return instructor name for object name
+    // find cohort object that matches the instructor mod, return the student count
   },
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
     // { 
-    // cohort1806: 9,
-    // cohort1804: 10.5
+    // cohort1806: 15,
+    // cohort1804: 7,
+    // cohort1803: 10,
+    // cohort1801: 9
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const students = cohorts.reduce((acc, cohort) => {
+      const teachers = instructors.reduce((acc, teacher)=> {
+        teacher.module === cohort.module ? acc++ : null;
+        return acc;
+      }, 0);
+      if(!acc[`cohort${cohort.cohort}`]) {
+        acc[`cohort${cohort.cohort}`] = cohort.studentCount / teachers;
+      }
+      return acc;
+    }, {});
+
+
+
+    const result = students;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map through cohorts and return object literal
+    // within map, iterate through instuctors and return number that match
+    // the current module
+    // current mod / teacher count
   },
 
   modulesPerTeacher() {
