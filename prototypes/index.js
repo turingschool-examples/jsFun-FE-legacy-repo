@@ -556,7 +556,7 @@ const turingPrompts = {
       });
       return acc;
     }, {});
-    console.log(instructor);
+
 
     const result = instructor;
     return result;
@@ -578,11 +578,24 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const lessonTaught = instructors.reduce((acc, teacher) => {
+      teacher.teaches.forEach(lesson => {
+        if(!acc[lesson]){
+          acc[lesson] = [];
+        }
+        acc[lesson].push(teacher.name);
+      });
+      return acc;
+    }, {});
+
+    const result = lessonTaught;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce through instructors then for each through teaches
+    // if not object, make it one and add instructor name to value
+    // else push current instructor name into object
+
   }
 };
 
