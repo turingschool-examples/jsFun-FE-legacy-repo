@@ -315,7 +315,7 @@ describe("PROTOTYPES", () => {
         cohort1801: 9
       })
     });
-    it.skip("modulesPerTeacher", () => {
+    it("modulesPerTeacher", () => {
       const e = turingPrompts.modulesPerTeacher();
       expect(e).to.deep.equal({
         Pam: [2, 4],

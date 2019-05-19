@@ -545,11 +545,27 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const instructor = instructors.reduce((acc, teacher) => {
+      acc[teacher.name] = [];
+      cohorts.forEach(mod => {
+        teacher.teaches.forEach(lesson => {
+          if(mod.curriculum.includes(lesson) && !acc[teacher.name].includes(mod.module)) {
+            acc[teacher.name].push(mod.module);
+          }
+        });
+      });
+      return acc;
+    }, {});
+    console.log(instructor);
+
+    const result = instructor;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // reduce through the instructors to return object
+    // for each through the mods
+    // if a skill matches and does not already include mod number
+    // then push the mod into the array or that instructor
   },
 
   curriculumPerTeacher() {
