@@ -626,11 +626,26 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const loyalty = sidekicks.reduce((acc, sidekick) => {
+      if(!acc.find(x => x.bossName === sidekick.boss)) {
+        acc.push({'bossName' : sidekick.boss, 'sidekickLoyalty' : 0}) ;
+      }
+      acc.forEach(x => {
+        if (x.bossName === sidekick.boss) {
+          x.sidekickLoyalty += sidekick.loyaltyToBoss;
+        }
+      }) ;
+      return acc;
+    }, []);
+    console.log(loyalty);
+
+    const result = loyalty;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // object.keys through bosses and add names to array
+
+    // reduce through sideKicks and make object for each boss and add loyalty
   }
 };
 
