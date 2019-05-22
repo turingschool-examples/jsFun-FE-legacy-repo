@@ -637,7 +637,6 @@ const bossPrompts = {
       }) ;
       return acc;
     }, []);
-    console.log(loyalty);
 
     const result = loyalty;
     return result;
