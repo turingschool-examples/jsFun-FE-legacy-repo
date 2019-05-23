@@ -39,23 +39,23 @@ describe("CONTEXT", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseF", () => {
+  it("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseG", () => {
+  it("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseH", () => {
+  it("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseI", () => {
+  it("exerciseI", () => {
     const e = "poets" == context.exerciseI();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
-  it.skip("exerciseJ", () => {
+  it("exerciseJ", () => {
     const e = "el" == context.exerciseJ();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   });
