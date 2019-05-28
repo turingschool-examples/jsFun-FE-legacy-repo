@@ -682,7 +682,16 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let constellation = stars.filter(star => {
+      return Object.keys(constellations).find(constellation => {
+        if(constellations[constellation].stars.includes(star.name) || 
+         constellations[constellation].names.includes(star.constellation)) {
+          return constellation;
+        }
+      });
+    });
+
+    const result = constellation;
     return result;
 
     // Annotation:
@@ -699,6 +708,8 @@ const astronomyPrompts = {
     //   orange: [{obj}],
     //   red: [{obj}]
     // }
+
+    
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;

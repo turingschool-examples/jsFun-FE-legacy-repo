@@ -360,7 +360,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
+    it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
       expect(e).to.deep.equal([{ 
         name: 'Rigel',
@@ -388,7 +388,7 @@ describe("PROTOTYPES", () => {
         color: 'blue' 
       }])
     });
-    it.skip("starsByColor", () => {
+    it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
       expect(e).to.deep.equal({
         blue: [{
