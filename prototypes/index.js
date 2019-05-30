@@ -709,9 +709,15 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    
+    let stuff = stars.reduce((acc, star) => {
+      if(!acc[star.color]) {
+        acc[star.color] = [];
+      }
+      acc[star.color].push(star);
+      return acc;
+    }, {});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stuff;
     return result;
 
     // Annotation:
@@ -733,7 +739,10 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let sorted = stars.sort((a, b) => a.visualMagnitude - b.visualMagnitude);
+    let stuff = sorted.map(x => x.constellation);
+
+    const result = stuff.filter(x => x);
     return result;
 
     // Annotation:
