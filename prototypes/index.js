@@ -24,11 +24,18 @@ const kittyPrompts = {
     
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = kitties.filter(function(kitten) {
+        if (kitten.color === 'orange'){
+        return kitten;
+        }
+    });
+    const orangeKittyNames = result.map(function(kit) {
+    return kit.name;
+    });;
+    return orangeKittyNames;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // `kitties` is an array of kitten objects. In order to get the kittens with the key of color set to the value "orange", the array needs to be filtered. Filter iterates through an array and returns a new array with a collection of elements that match the condition provided. The new array consisted of two objects, each with three properties. In order to abstract the value from the `name` property as a strings in an array, the map array prototype method needed to be used.
   },
 
   sortByAge() {
