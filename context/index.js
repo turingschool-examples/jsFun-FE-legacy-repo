@@ -16,11 +16,11 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The `this` console.logged when the ship.fly() is invoked is bound to the global window object because the fly function is inside and being invoke inside the global execution context. It is not the property of fly being retrieved from the class SpaceProbe which binds the `this` inside that class to the ship object being instantiated.
   },
 
   exerciseB() {
@@ -30,11 +30,11 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // There is no object for `this` to bind to other than the global window object.
   },
 
   exerciseC() {
@@ -49,11 +49,11 @@ const context = {
     el.addEventListener('click', car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // When assigning an event listener to an element an event object is created and the value of `this` inside the method or function being invoked on the event is bound to that element.
   },
 
   exerciseD() {
