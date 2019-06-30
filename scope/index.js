@@ -123,34 +123,34 @@ const scope = {
     let greeting = 'howdy';
 
     const greetingGenerator = () => {
-      let greeting = 'hi';
+      let greeting = 'hi'; // new block scope greeting
 
-      if (greeting === 'hi') {
-        let greeting = 'hello';
+      if (greeting === 'hi') { // true
+        let greeting = 'hello'; //another new block scope greeting
       }
 
-      // Log A: greeting
+      // Log A: greeting, sees 126
 
       const newGreeting = () => {
-        greeting = 'welcome';
+        greeting = 'welcome'; //reassigns 126 to 'welcome'
 
         // Log B: greeting
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting, sees 126 'welcome'
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting, sees 123 'howdy'
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 'hi' },
+      { 'B': 'welcome' },
+      { 'C': 'welcome' },
+      { 'D': 'howdy' }
     ];
     return result;
 
