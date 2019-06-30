@@ -38,23 +38,23 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The undeclared person variable either becomes a function or global variable
   },
 
   exerciseB() {
     let number = 30;
 
     function numberFunction() {
-      let number = 75;
+      let number = 75; //new block scoped number
 
-      if (number === 75) {
-        let number = 28;
+      if (number === 75) { // sees line 48, is true
+        let number = 28; // new block scoped number that quickly clears
       }
 
       // Log A: number
 
       function newNumber() {
-        number = 64;
+        number = 64; //reassigns line 48
 
         // Log B: number
       }
@@ -68,7 +68,12 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 75 },
+      { 'B': 64 },
+      { 'C': 64 },
+      { 'D': 30 }
+    ];
     return result;
 
     // Annotation:
@@ -102,7 +107,12 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -136,7 +146,12 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -168,7 +183,12 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -203,7 +223,12 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -233,7 +258,12 @@ const scope = {
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -273,7 +303,12 @@ const scope = {
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -304,7 +339,12 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -345,7 +385,12 @@ const scope = {
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -366,7 +411,12 @@ const scope = {
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -398,7 +448,12 @@ const scope = {
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
@@ -424,7 +479,12 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 1 },
+      { 'B': 1 },
+      { 'C': 1 },
+      { 'D': 1 }
+    ];
     return result;
 
     // Annotation:
