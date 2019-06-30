@@ -16,11 +16,13 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The context in lines 3 and 4 is set to the GWO when the arrow function is declared, and NOT updated when it is invoked
+    // It doesn't matter that we are calling it as a method on an object, because invocation doesn't change it
+    // It doesn't matter that we are using the new keyword, again because it is an arrow function
   },
 
   exerciseB() {
