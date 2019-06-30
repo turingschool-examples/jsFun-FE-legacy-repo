@@ -24,21 +24,23 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const filtered = kitties.filter(cat => cat.color === 'orange');
+    const result = filtered.map(cat => cat.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Filter based on color prop, then map to create array for each filtered's name
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => b.age - a.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Sort (in place) based on age prop, the test want oldest first
+    // Using implicit return of one liner
   },
 
   growUp() {
@@ -55,9 +57,15 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(cat => {
+      cat.age = cat.age + 2;
+      return cat;
+    });
     return result;
   }
+
+      // Annotation:
+      // Map through to create an array of same length, and return entire changed cat. Implicit return does not work.
 };
 
 
