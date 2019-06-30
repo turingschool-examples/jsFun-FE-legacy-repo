@@ -95,11 +95,18 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        !acc[member] ? acc[member] = [club.club] : acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Two nested layers of data, so two iteration methods are needed
+    // Reduce over clubs array because we can set it to the desired object outcome
+    // forEach over the club.members array because that uses a push, so a return isn't necessary
   }
 };
 
