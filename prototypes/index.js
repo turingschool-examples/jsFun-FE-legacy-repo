@@ -176,11 +176,12 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => ({flavor: cake.cakeFlavor, inStock: cake.inStock}));
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with array of objects, goal is an array of objects of same length
+    // utilize implicit return by wrapping object literal in parens
   },
 
   onlyInStock() {
@@ -204,22 +205,32 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      if (cake.inStock > 0) {
+        return cake;
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with array of objects, goal is an array of objects
+    // Use filter() to sort for conditional matches, tell the callback function what to return
+    // Need to return entire cake object into result array
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is a single number/count
+    // Remember to set initial value to 0 and return acc
   },
 
   allToppings() {
@@ -227,11 +238,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        !acc.includes(topping) ? acc.push(topping) : false;
+      });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is an array of just the toppings (no repeats)
+    // Use reduce with initial array acc, so the cur can check if it is already in the acc
+    // also need a second prototype method to iterate over the nested toppings array and decide what to push
   },
 
   groceryList() {
@@ -245,11 +263,19 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        !acc[topping] ? acc[topping] = 1 : acc[topping]++;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an object
+    // Will need a second iterator method to go over toppings array
+    // Reduce can have an initial value of an object, and we'll set keys: values inside
+    // Each new key will be set to 1 to begin counting, then incremented when they're seen again
   }
 };
 
