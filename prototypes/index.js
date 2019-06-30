@@ -417,6 +417,16 @@ const breweryPrompts = {
     // Annotation:
     // Starting with an array of objects, and goal is one beer object
     // Can either sort and return [0] or use reduce() to check against and reassign the acc
+    // Alternate solution:
+
+    // breweries.reduce((acc, brewery) => {
+    //   brewery.beers.forEach(beer => {
+    //     if (beer.abv > acc.abv) {
+    //       acc = beer;
+    //     }
+    //   })
+    //   return acc;
+    // }, { abv: 0 })
   }
 };
 
