@@ -9,7 +9,7 @@ const context = {
         this.title = title;
         this.classification = classification;
         this.fly = fly;
-      } 
+      }
     }
 
     const ship = new SpaceProbe('voyager', 'classy');
@@ -28,7 +28,7 @@ const context = {
       const value = 2;
       return this.value;
     }
-    
+
     // What is the value of `this` when we call fn()?
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -40,7 +40,7 @@ const context = {
   exerciseC() {
     const car = {
       make: 'Tesla',
-      getInfo: function(){
+      getInfo: function () {
         console.log(this);
       }
     };
@@ -59,12 +59,12 @@ const context = {
   exerciseD() {
     const dog = {
       breed: 'Chihuahua',
-      getBreed: function(){
+      getBreed: function () {
 
-        const innerFunction = function() {
+        const innerFunction = function () {
           console.log(this.breed);
         };
-    
+
         return innerFunction;
       }
     };
@@ -129,7 +129,7 @@ const context = {
       }
 
       restart() {
-        setTimeout(function() {
+        setTimeout(function () {
           console.log(`Restarting ${this.title}...`);
         }, 1000);
       }
@@ -149,8 +149,8 @@ const context = {
   exerciseH() {
     const obj = {
       arrowFunction: null,
-      method: function() {
-        this.arrowFunction = () => { 
+      method: function () {
+        this.arrowFunction = () => {
           return this;
         };
       }
@@ -166,7 +166,7 @@ const context = {
     // Write your annotation here as a comment
   },
 
-  exerciseI() {  
+  exerciseI() {
     const poets = [{
       name: 'Sappho'
     }, {
@@ -177,7 +177,7 @@ const context = {
       name: 'Audre'
     }];
 
-    poets.map(function(poet) {
+    poets.map(function (poet) {
       return this;
     }, poets);
 
@@ -191,7 +191,7 @@ const context = {
 
   exerciseJ() {
     const el = $('#btn');
-    el.on('click', function() {
+    el.on('click', function () {
       console.log($(this));
     });
 
@@ -205,11 +205,11 @@ const context = {
 
   exerciseK() {
     var store = {
-      fruit: "grapes",
-      sellMe: function() {
+      fruit: 'grapes',
+      sellMe: function () {
         return this.fruit;
       }
-    }
+    };
 
     // What is the value of `this` when we call store.sellMe()?
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -222,12 +222,12 @@ const context = {
   exerciseL() {
     const dog = {
       breed: 'Chihuahua',
-      getBreed: function(){
+      getBreed: function () {
         var _this = this;
 
-        setTimeout(function() {
+        setTimeout(function () {
           console.log('Your dog is a ' + _this.breed);
-        }) 
+        });
       }
     };
 
@@ -243,12 +243,12 @@ const context = {
     const robert = {
       name: 'Bobo',
       occupation: 'instructor'
-    }
+    };
 
     const william = {
       name: 'will',
       occupation: 'instructor'
-    }
+    };
 
     function makeBirdNoise() {
       console.log('My name is ' + this.name + ' ... caw! caw!');
@@ -270,14 +270,14 @@ const context = {
       }
 
       delayNoise() {
-        setTimeout(this.makeNoise.bind(this), 1000)
+        setTimeout(this.makeNoise.bind(this), 1000);
       }
 
       makeNoise() {
         console.log('caw, caw');
       }
     }
-    
+
     var firstBird = new Bird('Calvin', 'budgie');
 
     // What is the value of `this` when we call firstBird.delayNoise();
@@ -306,11 +306,11 @@ const context = {
 
   exerciseP() {
     const child = {
-      totalScreams : 4,
+      totalScreams: 4,
       scream: () => {
         this.totalScreams++;
       }
-    }
+    };
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;

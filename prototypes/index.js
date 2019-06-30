@@ -192,7 +192,7 @@ const cakePrompts = {
     // Annotation:
     // Write your annotation here as a comment
   },
-  
+
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
@@ -550,7 +550,7 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
-    
+
     //  [ "Canis Major",
     //    "Carina",
     //    "Boötes",
@@ -686,7 +686,6 @@ const dinosaurPrompts = {
   uncastActors() {
     /*
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
-
     e.g.
       [{
         name: 'Justin Duncan',
@@ -719,7 +718,6 @@ const dinosaurPrompts = {
   actorsAgesInMovies() {
     /*
     Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
-
     e.g.
     [ { name: 'Sam Neill', ages: [ 46, 54 ] },
       { name: 'Laura Dern', ages: [ 26, 34 ] },

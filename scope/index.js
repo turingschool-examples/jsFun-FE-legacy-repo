@@ -12,7 +12,7 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
-        
+
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
@@ -116,7 +116,7 @@ const scope = {
 
       // Log A: greeting
 
-      const newGreeting = ()  => {
+      const newGreeting = () => {
         greeting = 'welcome';
 
         // Log B: greeting
@@ -238,7 +238,7 @@ const scope = {
   exerciseH() {
     let num = 6;
 
-    const fn1 = function() {
+    const fn1 = function () {
       let num = 4;
 
       // Log A: num
@@ -258,7 +258,7 @@ const scope = {
       // Log C: newNum
     };
 
-    const fn2 = function(num){
+    const fn2 = function (num) {
       // Log D: num
 
       num = num + 1;
@@ -315,7 +315,7 @@ const scope = {
       // Log B: toppings
       var toppings = 'chipotle sauce';
 
-      if (toppings === 'chipotle sauce') { 
+      if (toppings === 'chipotle sauce') {
         sandwich = 'not a mediocre sandwich';
       }
 
@@ -510,7 +510,7 @@ const scope = {
     // Write your annotation here as a comment
   },
 
-  exerciseQ(){
+  exerciseQ() {
     let myKid = 'Pandora';
     let wildKids = ['Antigone'];
 
@@ -518,7 +518,7 @@ const scope = {
       // Log A: kid
       wildKids.push(kid);
       // Log B: wildKids
-  
+
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
         // Log C: myKid
@@ -556,7 +556,7 @@ const scope = {
       // Log B: myName
 
       let innerFunc = () => {
-        let myName = 'Tesla'; 
+        let myName = 'Tesla';
         // Log C: myName
       };
 
