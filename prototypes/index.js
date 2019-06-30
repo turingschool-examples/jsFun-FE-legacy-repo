@@ -306,11 +306,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, end with a shorter array of objects
+    // One liner/implicit return is okay because we want to return the entire room object
   },
 
   totalCapacities() {
@@ -321,21 +322,29 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, room) => {
+      room.program === 'FE' ? acc.feCapacity += room.capacity : acc.beCapacity += room.capacity;
+      return acc;
+    }, {feCapacity : 0, beCapacity : 0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is an object
+    // Going to be adding numbers to a sum
+    // Reduce can begin with initial object and do the counting
+    // Ternary is helpful since we only have to paths: fe and be
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an array of all classrooms
+    // Goal array should be same length, but we don't need to map to make any changes
+    // Sort is mutator, but there's nothing said against that
   }
 };
 
