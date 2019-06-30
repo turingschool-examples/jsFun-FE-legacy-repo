@@ -64,8 +64,8 @@ const kittyPrompts = {
     return result;
   }
 
-      // Annotation:
-      // Map through to create an array of same length, and return entire changed cat. Implicit return does not work.
+  // Annotation:
+  // Map through to create an array of same length, and return entire changed cat. Implicit return does not work.
 };
 
 
