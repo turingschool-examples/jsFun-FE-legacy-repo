@@ -32,11 +32,12 @@ const context = {
     }
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The context is set to the GWO when fn is invoked
+    // What happens inside will not return correctly (2), depending on if it has a 'value' prop or not
   },
 
   exerciseC() {
