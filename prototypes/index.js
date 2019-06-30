@@ -370,11 +370,15 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is counter/total of all the beers
+    // will need to iterate over breweries, then use beers.length
   },
 
   getBreweryBeerCount() {
@@ -386,11 +390,16 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      return {name: brewery.name, beerCount: brewery.beers.length};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an array of objects
+    // Set name key with the brewery.name, set beerCount value with brewery.beers.length;
+    // Array will be same number of objects/length, so we can map()
+    // Two liner requires the return keyword
   },
 
   findHighestAbvBeer() {
@@ -398,11 +407,16 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const allBeers = breweries.reduce((acc, brewery) => {
+      brewery.beers.forEach(beer => acc.push(beer));
+      return acc;
+    }, []);
+    const result = allBeers.sort((a,b) => a.abv - b.abv)[allBeers.length - 1];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, and goal is one beer object
+    // Can either sort and return [0] or use reduce() to check against and reassign the acc
   }
 };
 
