@@ -84,16 +84,16 @@ const scope = {
     let greeting = 'Hello';
 
     function greetingFunction() {
-      var greeting = 'Yo';
+      var greeting = 'Yo'; //new function scoped greeting
 
-      if (greeting === 'Yo') {
-        let greeting = 'Howdy';
+      if (greeting === 'Yo') { //true
+        let greeting = 'Howdy'; //new block scoped greeting
       }
 
-      // Log A: greeting
+      // Log A: greeting //can see line 87, 'yo'
 
       function newPhrase() {
-        greeting = 'Hey';
+        greeting = 'Hey'; //reassigns 87 to 'HEY"
 
         // Log B: greeting
       }
@@ -108,10 +108,10 @@ const scope = {
     // Log D: greeting
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 'Yo' },
+      { 'B': 'Hey' },
+      { 'C': 'Hey' },
+      { 'D': 'Hello' }
     ];
     return result;
 
