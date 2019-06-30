@@ -14,22 +14,27 @@ const scope = {
         // Log A: personB
 
         if (personB.includes('B')) {
-          personB = person;
-          personC = personB;
+          personB = person; //global B becomes CardiB
+          personC = personB; //global C becomes CardiB too
           // Log B: personC
         }
       }
 
-      personC = personA;
+      personC = personA; //global C becomes Paul
 
-      // Log C: personB
+      // Log C: personB 
     }
 
     changePerson();
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Ben' },
+      { 'B': 'CardiB' }, 
+      { 'C': 'CardiB'},
+      { 'D': 'Paul'}
+    ]; 
     return result;
 
     // Annotation:
