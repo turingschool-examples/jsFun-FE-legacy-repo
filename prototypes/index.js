@@ -41,11 +41,15 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 
+        kitties.sort(function(kit1, kit2) {
+        return kit2.age - kit1.age;
+        });   
+    
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because we want to order by a property inside the objects in the kitties array. We have to use the sort array prototype method and dot notation to get to the value of the property age. The test wanted the order to be oldest to youngest. To reverse that order, the current value being compared (kit2.age) has to be set as the greater value.
   },
 
   growUp() {
