@@ -6,21 +6,21 @@ const scope = {
 
     function changePerson() {
       if (personA === 'Paul') {
-        person = 'CardiB';
+        person = 'CardiB'; //person = 'CardiB' has become globally scoped
         beautifyPerson();
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB  //A: 'Ben'
         
         if (personB.includes('B')) {
-          personB = person;
-          personC = personB;
+          personB = person; //globally scoped - personB (reassigned as) = 'CardiB'
+          personC = personB; //globally scoped - personC (reassigned as) = 'CardiB'
           // Log B: personC
         }
       }
 
-      personC = personA;
+      personC = personA; //globally scoped - personC = 'Paul' (reassigned)
 
       // Log C: personB
     }
@@ -29,11 +29,38 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A : 'Ben' },
+      { B : 'CardiB'},
+      { C : 'CardiB' },
+      { D : 'Paul' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Three variables are assigned to the global scope as personA, personB, and personC with the let keyword
+    //On line 7 there is the changePerson function declared with a nested function inside, but we skip over functions until they are invoked
+    //That takes us to line 28 where the function changePerson is invoked which takes us back up to line 7
+    //In the function, there is a conditional met by the globally scoped personA. We go inside the conditional where a new variable is declared without a keyword throwing it into the global scope.
+    //Our global variables are as follows:
+    //let personA = 'Paul';
+    // let personB = 'Ben';
+    // let personC = 'Tom';
+    // person = 'CardiB';
+    //The nested function beautifyPerson is invoked in the conditional
+    //We move to line 13 where the function is declared and log personB, 'Ben'
+    //There is a conditional that personB fulfills and we go into the conditional to globally reassign (without a keyword) personB to person and personC to personB(now same as person):
+    //let personA = 'Paul';
+    // let personB = 'CardiB';
+    // let personC = 'CardiB';
+    // person = 'CardiB';
+    //Now we log personC, 'CardiB'
+    //On line 23 (still in the function, but outside the nested function), we reassign personC = 'Paul' and now:
+    //let personA = 'Paul';
+    // let personB = 'CardiB';
+    // let personC = 'Paul';
+    // person = 'CardiB';
+    //We log personB, 'CardiB' on the last line of the function and hop to line 30 after the function invocation and log personC, 'Paul'
   },
 
   exerciseB() {
