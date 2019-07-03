@@ -90,11 +90,21 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  [
+    { A: 75 },
+    { B: 64 },
+    { C: 64 },
+    { D: 30 }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We start at line 67 where number is assigned to 30, we skip over numberFunction and the nested newNumber toline 89 where numberFunction is invoked which brings us back to line 69.
+    //On line 70 number is reassigned to 75
+    //There is a a conditional that reassigns with let but it is block scoped and the first console.log is outside that block and so Log A: 75
+    //We pass over newNumber, but line 84 invokes it and takes us back up to line 78
+    //In newNumber number is reassigned to 64 without var, let, or const and so it moves up the scope chain to line 70 where it is reassigned in the numberFunction's functional scope so both Log B:64 and Log C:64
+    //We pop out of that function and are back in the global scope where number = 30, so the last Log D:30
   },
 
   exerciseC() {
