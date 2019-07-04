@@ -150,13 +150,13 @@ const scope = {
 
     // Annotation:
 
-//greeting is declared globally with let; the greeting Function is declared with a nested newPhrase Function
-//Both are passed over until greetingFunction is invoked at which time a new variable with the same name of greeting is declared with var in the functional scop of greetingFunction.
-//There is a conditional that assigns another variable of greeting with let to 'Howdy' but there it is block scoped and the first console log is outside the block scope, but still in the functional scope and so A: "Yo"
-//we pass over the newPhrase function until it is invoke later in the greetingFunction at which time we dive into the newPhrase Function where greeting is immediately reassigned to 'Hey' and console logged B: 'Hey'
-//We exit that functional scope, but since it was reassigned without a let, var, or const the value travels up the scope chain ad finds the parent variable to reassign and that is within the greeting Function.
-//The next console log is still in the greeting function and so C: 'Hey'
-//Then we are done with the functions and back in the global scope where greeting is assigned to 'Hello' so the last console log is D: 'Hello'
+  //greeting is declared globally with let; the greeting Function is declared with a nested newPhrase Function
+  //Both are passed over until greetingFunction is invoked at which time a new variable with the same name of greeting is declared with var in the functional scop of greetingFunction.
+  //There is a conditional that assigns another variable of greeting with let to 'Howdy' but there it is block scoped and the first console log is outside the block scope, but still in the functional scope and so A: "Yo"
+  //we pass over the newPhrase function until it is invoke later in the greetingFunction at which time we dive into the newPhrase Function where greeting is immediately reassigned to 'Hey' and console logged B: 'Hey'
+  //We exit that functional scope, but since it was reassigned without a let, var, or const the value travels up the scope chain ad finds the parent variable to reassign and that is within the greeting Function.
+  //The next console log is still in the greeting function and so C: 'Hey'
+  //Then we are done with the functions and back in the global scope where greeting is assigned to 'Hello' so the last console log is D: 'Hello'
   },
 
   exerciseD() {
@@ -187,14 +187,14 @@ const scope = {
     // Log D: greeting
 
     const result = [{
-        A: 'hi' 
-      }, {
-        B: 'welcome'
-      }, {
-        C: 'welcome'
-      }, {
-        D: 'howdy'
-      }];
+      A: 'hi' 
+    }, {
+      B: 'welcome'
+    }, {
+      C: 'welcome'
+    }, {
+      D: 'howdy'
+    }];
     return result;
 
     // Annotation:
@@ -205,7 +205,7 @@ const scope = {
     //greeting assigned to 'Howdy'in global scope
     //Pass grettingGenerator until invoked and then go into greetingGenerator where gretting is assigned to in the functional scope to 'hi'
     //A conditional reassigns in the block of conditional but does not log until back in the functional scope where A: 'hi'
-    //newGreeting is passed, invoked and then entered where greeting is reassigned without var, let or const and so it traverses up the scope chain and attaches to the functional scope as 'welcome'; it is also logged immediately so B: 'welcome' 
+    //newGreeting is passed, invoked and then entered where greeting is reassigned without var, let or const and so it traverses up the scope chain and attaches to the functional scope as welcome; it is also logged immediately so B: welcome 
     //We leave the nested function newGreeting and are back in the parent function where greeting is assigned to C: 'welcome' due to the first line of newGreeting
     //Then we pop back into the global scope where D: 'howdy'
   },
@@ -235,15 +235,15 @@ const scope = {
 
     // Log D: name
 
-      const result = [{
-        C: 'Brittany' 
-      }, {
-        A: 'Nathaniel'
-      }, {
-        B: 'Nathaniel'
-      }, {
-        D: 'Brittany'
-      }];
+    const result = [{
+      C: 'Brittany' 
+    }, {
+      A: 'Nathaniel'
+    }, {
+      B: 'Nathaniel'
+    }, {
+      D: 'Brittany'
+    }];
     return result;
 
     // Annotation:
