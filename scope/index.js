@@ -90,12 +90,15 @@ const scope = {
 
     // Log D: number
 
-    const result =  [
-    { A: 75 },
-    { B: 64 },
-    { C: 64 },
-    { D: 30 }
-    ];
+    const result =  [{
+      A: 75 
+    }, {
+      B: 64
+    }, {
+      C: 64
+    }, {
+      D: 30
+    }];
     return result;
 
     // Annotation:
@@ -134,11 +137,26 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{
+      A: 'Yo' 
+    }, {
+      B: 'Hey'
+    }, {
+      C: 'Hey'
+    }, {
+      D: 'Hello'
+    }];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+
+//greeting is declared globally with let; the greeting Function is declared with a nested newPhrase Function
+//Both are passed over until greetingFunction is invoked at which time a new variable with the same name of greeting is declared with var in the functional scop of greetingFunction.
+//There is a conditional that assigns another variable of greeting with let to 'Howdy' but there it is block scoped and the first console log is outside the block scope, but still in the functional scope and so A: "Yo"
+//we pass over the newPhrase function until it is invoke later in the greetingFunction at which time we dive into the newPhrase Function where greeting is immediately reassigned to 'Hey' and console logged B: 'Hey'
+//We exit that functional scope, but since it was reassigned without a let, var, or const the value travels up the scope chain ad finds the parent variable to reassign and that is within the greeting Function.
+//The next console log is still in the greeting function and so C: 'Hey'
+//Then we are done with the functions and back in the global scope where greeting is assigned to 'Hello' so the last console log is D: 'Hello'
   },
 
   exerciseD() {
@@ -168,11 +186,28 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{
+        A: 'hi' 
+      }, {
+        B: 'welcome'
+      }, {
+        C: 'welcome'
+      }, {
+        D: 'howdy'
+      }];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //A: 'hi'
+    //B: 'welcome'
+    //C: 'welcome'
+    //D: 'howdy'
+    //greeting assigned to 'Howdy'in global scope
+    //Pass grettingGenerator until invoked and then go into greetingGenerator where gretting is assigned to in the functional scope to 'hi'
+    //A conditional reassigns in the block of conditional but does not log until back in the functional scope where A: 'hi'
+    //newGreeting is passed, invoked and then entered where greeting is reassigned without var, let or const and so it traverses up the scope chain and attaches to the functional scope as 'welcome'; it is also logged immediately so B: 'welcome' 
+    //We leave the nested function newGreeting and are back in the parent function where greeting is assigned to C: 'welcome' due to the first line of newGreeting
+    //Then we pop back into the global scope where D: 'howdy'
   },
 
   exerciseE() {
@@ -200,11 +235,26 @@ const scope = {
 
     // Log D: name
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+      const result = [{
+        C: 'Brittany' 
+      }, {
+        A: 'Nathaniel'
+      }, {
+        B: 'Nathaniel'
+      }, {
+        D: 'Brittany'
+      }];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //name is assigned to 'Brittany'
+    //We pass over the sayName function
+    //but log C is called C: 'Brittany'
+    //invoke sayName function.In function name is assigned to 'Pam' in the functional scope. There is a conditional where if name is equal to 'Pam' (which it is) then name is reassigned without let, var, or const to 'Nathaniel' so it traverses up the scope chain to the next assignment of name which is in the functional scope of sayName.
+    //There is another conditional that reassigns it to 'Brittany' but just inside that block scope where no console logis called
+    //the next console log is A inside the sayName function where name is assigned to 'Nathaniel' so A: 'Nathaniel'
+    //We exit the outer conditional and are back in the functional scope where name is still 'Nathanial' so B: 'Nathanial'
+    //Then we exit the functional scope and are in the global scope where D: 'Brittany'
   },
 
   exerciseF() {
