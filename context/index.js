@@ -201,11 +201,11 @@ const context = {
     });
 
     // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'el';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment.
+    // Functions added with addEventListener will reference the bound ELEMENT as 'this', not the function or object
   },
 
   exerciseK() {
@@ -217,11 +217,11 @@ const context = {
     };
 
     // What is the value of `this` when we call store.sellMe()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'store';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment.
+    // Calling an ES5 style function on an obj, so 'this' is set at invocation to be that object
   },
 
   exerciseL() {
