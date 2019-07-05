@@ -470,11 +470,19 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      let cohort = cohorts.find(cohort => cohort.module === instructor.module);
+      return {name: instructor.name, studentCount: cohort.studentCount};
+    }) ;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both arrays of objects
+    // Common threads are the module numbers and topics
+    // Goal is an array of objects, same length as the instructors array
+    // Map over instructors, get studenctCount from cohorts array
+    // Not one liner w/implicit return
+    // return objedts from the callback function
   },
 
   studentsPerInstructor() {
@@ -484,11 +492,22 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      let count = cohort.studentCount;
+      let teachers = instructors.filter(teacher => teacher.module === cohort.module).length;
+
+      acc[`cohort${cohort.cohort}`] = count / teachers;
+      return acc
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both array of objects
+    // Common threads are the instructor.module and cohort.module nums
+    // Goal is a new, lone object
+    // cohort key will come from the cohorts array, with ${} to create key name
+    // value will be studentCount from cohorts array / total number of teachers for that mod
+    // use .length to count the matching filtered teachers
   },
 
   modulesPerTeacher() {

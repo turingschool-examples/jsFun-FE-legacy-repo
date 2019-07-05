@@ -75,11 +75,11 @@ const context = {
     var breed = dog.getBreed();
 
     // What is the value of `this` when we call breed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "global window object";
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseE() {
@@ -91,11 +91,11 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // An arrow function in the highest scope will never be reset from GWO
   },
 
   exerciseF() {
@@ -114,11 +114,11 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseG() {
@@ -142,11 +142,12 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Has something to do with the invocation on line 135 resetting the context
+    // ES5 function
   },
 
   exerciseH() {
@@ -162,11 +163,11 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = '';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseI() {
