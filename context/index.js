@@ -163,11 +163,12 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = '';
+    const result = 'obj';
     return result;
 
     // Annotation: 
-    // 
+    // The arrow function on 157 inherits from the regular function on 156
+    // 156 'this' is set when it is invoked, and inherits from the object it is called on
   },
 
   exerciseI() {
