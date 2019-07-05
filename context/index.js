@@ -187,11 +187,11 @@ const context = {
     }, poets);
 
     // What is the value of `this` that gets returned on each iteration of poets.map()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'poets';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment. Annotation should include explanation regarding the second argument of `poets` that is being passed
+    // A .map() can take in an optional 'this', which is poets here
   },
 
   exerciseJ() {
