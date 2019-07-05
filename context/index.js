@@ -237,11 +237,12 @@ const context = {
     };
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'dog';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // getBreed is an ES5 style function, so 'this' is set when it is invoked
+    // it is set to the object the function is called on, or 'dog'
   },
 
   exerciseM() {
