@@ -75,7 +75,7 @@ const context = {
     var breed = dog.getBreed();
 
     // What is the value of `this` when we call breed()?
-    const result = "global window object";
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -261,11 +261,11 @@ const context = {
     }
 
     // What is the value of `this` when we call makeBirdNoise.call(robert);
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'robert';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // makeBirdNoise is the function, which is being called on the argument for 'this'
   },
 
   exerciseN() {
@@ -287,11 +287,12 @@ const context = {
     var firstBird = new Bird('Calvin', 'budgie');
 
     // What is the value of `this` when we call firstBird.delayNoise();
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'instance of Bird';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // firstBird is an instance of Bird
+    // delayNoise is an ES5 style function, so this is set when the function is called
   },
 
   exerciseO() {
