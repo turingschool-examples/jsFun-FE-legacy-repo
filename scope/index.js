@@ -162,13 +162,13 @@ const scope = {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';
+      let name = 'Pam'; //new block scope Pam
 
-      if (name === 'Pam') {
-        name = 'Nathaniel';
+      if (name === 'Pam') {//true
+        name = 'Nathaniel'; //reassigns 165
 
-        if (name.length > 0) {
-          let name = 'Brittany';
+        if (name.length > 0) { //true
+          let name = 'Brittany'; //new block scoped Brittany, immediately cleared EC
         }
 
         // Log A: name
@@ -177,62 +177,63 @@ const scope = {
       // Log B: name
     }
 
-    // Log C: name
+    // Log C: name //This is outside the function, fires 1st
 
     sayName();
 
     // Log D: name
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'C': 'Brittany' },
+      { 'A': 'Nathaniel' },
+      { 'B': 'Nathaniel' },
+      { 'D': 'Brittany' }
     ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // C executes before the function is invoked
   },
 
   exerciseF() {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog //Spot
 
-      if (dog === 'Spot') {
-        let dog = 'Fluffy';
+      if (dog === 'Spot') { //True
+        let dog = 'Fluffy'; //new block scoped Fluffy, but its EC is immediately gone
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog //Spot
 
-        dog = 'Biscuit';
+        dog = 'Biscuit'; //reassigns 199 to Biscuit
 
-        // Log C: dog
-
+        // Log C: dog //Now Biscuit
+ 
       }
 
-      rollOver();
+      rollOver(); //Come here after line 205
 
-      // Log D: dog
+      // Log D: dog //Here after 213
     }
 
-    petDog();
+    petDog(); //Executes first
 
     // Log E: dog
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 'Spot' },
+      { 'B': 'Spot' },
+      { 'C': 'Biscuit' },
+      { 'D': 'Biscuit'},
+      { 'E': 'Biscuit'}
     ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseG() {
