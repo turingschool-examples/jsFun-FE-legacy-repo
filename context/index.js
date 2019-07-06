@@ -296,19 +296,19 @@ const context = {
   },
 
   exerciseO() {
-    const button = document.querySelector('#submit');
+    // const button = document.querySelector('#submit');
 
-    button.addEventListener('click', () => {
+    // button.addEventListener('click', () => {
       console.log(this);
-      this.classList.toggle('on');
-    });
+      // this.classList.toggle('on');
+    // });
 
     // What is the value of `this` when a user clicks on our button element and the callback is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // Event listeners need an ES5 function so their context is updated whenever they're invoked.
   },
 
   exerciseP() {
