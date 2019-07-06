@@ -240,9 +240,9 @@ const scope = {
     var fruit = 'apple';
 
     function eatFruit() {
-
-      if (fruit !== 'kiwi') {
-        var fruit = 'mango';
+      //"mango" from 245
+      if (fruit !== 'kiwi') { //True
+        var fruit = 'mango';  //New function scope 
 
         if (fruit) {
           // Log A: fruit
@@ -255,7 +255,7 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit();
+    eatFruit(); //First thing that happens
 
     // Log D: fruit
 
@@ -272,48 +272,50 @@ const scope = {
   },
 
   exerciseH() {
-    let num = 6;
+    let num = 6; //Now 10
 
     const fn1 = function () {
-      let num = 4;
+      let num = 4; //new block scoped num
 
-      // Log A: num
+      // Log A: num //4
 
-      if (num < 5) {
-        const num = 9;
+      if (num < 5) { //true
+        const num = 9; //new if block scoped num
 
-        fn2(num);
+        fn2(num); //passes 9 from 283, go to line 297
 
-        const newNum = num;
+        const newNum = num; //new block (282 - 290), and it sees num from 283 (9)
 
         // Log B: newNum
       }
 
-      newNum = num;
+      newNum = num; //attempts to reassign, makes new global = 4
 
       // Log C: newNum
     };
 
     const fn2 = function (num) {
-      // Log D: num
+      // Log D: num //9
 
-      num = num + 1;
+      num = num + 1; //Tries to reassign, finds line 275 and makes it 10
 
-      // Log E: num
+      // Log E: num //Doesn't log the incoming arg, looks to the num on 278 (10)
+      // Go back into fn1
     };
 
-    fn1();
+    fn1(); //first thing that happens
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 4 },
+      { 'D': 9 },
+      { 'E': 10 },
+      { 'B': 9 },
+      { 'C': 4 }
     ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseI() {
