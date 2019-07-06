@@ -319,34 +319,38 @@ const scope = {
   },
 
   exerciseI() {
-    var hunger = 100;
+    var hunger = 100; //global, now 75, now 80, now 55
 
-    function eatSnack() {
-      hunger -= 25;
+    function eatSnack() { 
+      hunger -= 25; //322 is now 75, later 55
       // Log A: hunger
-      gorgeYourself();
+      gorgeYourself(); //Go to 329 inner function
 
-      function gorgeYourself() {
-        const hunger = 0;
-        // Log B: hunger
+      function gorgeYourself() { 
+        const hunger = 0; //new block scoped 0
+        // Log B: hunger //0, then immediately gone
       }
 
-      // Log C: hunger
+      // Log C: hunger //Sees 322, 75
     }
 
-    eatSnack();
+    eatSnack(); //First thing that executes, go to line 324
 
-    hunger += 5;
+    hunger += 5; //global is now 80
     // Log D: hunger
 
     eatSnack();
     // Log E: hunger
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 75 },
+      { 'B': 0 },
+      { 'C': 75 },
+      { 'D': 80 }, 
+      { 'A': 55 },
+      { 'B': 0 },
+      { 'C': 55 }, 
+      { 'E': 55}
     ];
     return result;
 
