@@ -364,7 +364,7 @@ const scope = {
     // Log A: sandwich
 
     const addChipotle = () => {
-      // Log B: toppings
+      // Log B: toppings //name was hoisted, but not initialized
       var toppings = 'chipotle sauce'; //function scoped
 
       if (toppings === 'chipotle sauce') { //true
@@ -403,28 +403,26 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseK() {
-    let num = 10;
+    let num = 10; //block scoped to the function, 'global', now 7
 
     function foo() {
-      if (num > 5) {
-        num = 7;
+      if (num > 5) { //true
+        num = 7; //reassigns 410
       }
       // Log A: num
     }
 
-    foo();
+    foo(); //execute, go to 412
 
     // Log B: num
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 7 },
+      { 'B': 7 }
     ];
     return result;
 
