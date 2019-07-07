@@ -567,15 +567,15 @@ const scope = {
   },
 
   exerciseP() {
-    let lunch;
+    let lunch; // Uninitialized/reference error during creation phase
     function orderLunch() {
-      if (lunch) {
-        // Log A: lunch
-        let lunch = 'sandwich';
+      if (lunch) { 
+        // Log A: lunch //Never enter this block
+        let lunch = 'sandwich'; //Never executes
       }
 
       if (typeof lunch === 'undefined') {
-        lunch = 'soup';
+        lunch = 'soup'; //Tries to reassign, but finally initializes 570
       }
 
       // Log B: lunch
@@ -585,7 +585,10 @@ const scope = {
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'B': 'soup' }, 
+      { 'C': 'soup' }
+    ];
     return result;
 
     // Annotation:
