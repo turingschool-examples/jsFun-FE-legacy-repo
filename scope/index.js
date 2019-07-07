@@ -515,32 +515,38 @@ const scope = {
     let wildKids = ['Antigone'];
 
     let myCrazyKidAntics = kid => {
-      // Log A: kid
+      // Log A: kid //Pandora
       wildKids.push(kid);
-      // Log B: wildKids
+      // Log B: wildKids //the updated array
   
       let drawOnTheWall = () => {
-        let myKid = 'Mandy';
-        // Log C: myKid
+        let myKid = 'Mandy'; //New block scoped
+        // Log C: myKid "Mandy"
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
       drawOnTheWall();
 
       let myAmazingKid = () => {
-        let myKid = wildKids.shift();
-        // Log D: myKid
+        let myKid = wildKids.shift(); //New block scoped
+        // Log D: myKid, shift() returns the thing it took away
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
-      // Log E: myKid;
+      // Log E: myKid; //Sees 514
       return `All these kids are wild, especially, ${myKid}!`;
     };
 
-    myCrazyKidAntics(myKid);
+    myCrazyKidAntics(myKid); //First line to execute, passes 'Pandora'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'A': 'Pandora'},
+      { 'B': ['Antigone', 'Pandora']},
+      { 'C': 'Mandy'},
+      { 'D': 'Antigone'},
+      { 'E': 'Pandora'}
+    ];
     return result;
 
     // Annotation:
