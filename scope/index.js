@@ -635,7 +635,7 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseR() {
@@ -643,26 +643,31 @@ const scope = {
     // Log A: myName
 
     const parentFunc = () => {
-      myName += 'Toy';
-      // Log B: myName
+      myName += 'Toy'; //Reassigns to RodyToy
+      // Log B: myName //RodyToy
 
       let innerFunc = () => {
-        let myName = 'Tesla';
-        // Log C: myName
+        let myName = 'Tesla'; //new block scoped
+        // Log C: myName 
       };
 
       innerFunc();
-      myName += 'Daniels';
+      myName += 'Daniels'; //Sees 642
     };
 
     parentFunc();
     // Log D: myName
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 'Rody'},
+      {'B': 'RodyToy' },
+      {'C': 'Tesla'},
+      {'D': 'RodyToyDaniels'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   }
 };
 
