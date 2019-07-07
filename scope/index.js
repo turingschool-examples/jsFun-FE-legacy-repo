@@ -244,8 +244,8 @@ const scope = {
       if (fruit !== 'kiwi') { //True
         var fruit = 'mango';  //New function scope 
 
-        if (fruit) {
-          // Log A: fruit
+        if (fruit) { //string variables are truthy
+          // Log A: fruit 
           const fruit = 'strawberry';
         }
 
@@ -255,7 +255,7 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit(); //First thing that happens
+    eatFruit(); //First thing that executes
 
     // Log D: fruit
 
@@ -431,35 +431,34 @@ const scope = {
   },
 
   exerciseL() {
-    let grade = 100;
+    let grade = 100; //Now 90
 
-    function losePoints() {
-      grade = 90;
+    function losePoints() { 
+      grade = 90; //Reassigns 434
 
       function addPoints() {
-        const grade = 95;
+        const grade = 95; //Creates new block scoped
 
-        if (grade === 95) {
-          let grade = 97;
+        if (grade === 95) { //true
+          let grade = 97; //New block scoped, immediately EC is gone
         }
 
-        // Log A: grade
+        // Log A: grade //Sees 440
       }
 
-      addPoints();
+      addPoints(); 
 
-      // Log B: grade
+      // Log B: grade //Sees 434
     }
 
-    losePoints();
+    losePoints(); //first thing to execute
 
     // Log C: grade
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 95 },
+      { 'B': 90 },
+      { 'C': 90 }
     ];
     return result;
 
