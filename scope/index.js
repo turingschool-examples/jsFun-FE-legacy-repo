@@ -237,33 +237,34 @@ const scope = {
   },
 
   exerciseG() {
-    var fruit = 'apple';
+    var fruit = 'apple'; //hoists and initializes globally
 
     function eatFruit() {
       //"mango" from 245
-      if (fruit !== 'kiwi') { //True
-        var fruit = 'mango';  //New function scope 
+      if (fruit !== 'kiwi') { //True, sees 240
+        var fruit = 'mango';  //New function scoped
 
         if (fruit) { //string variables are truthy
+          // When this block is executed, the new block scoped 'fruit' is hoisted to the top of the execution context, but not initialized. The log then executes on that.
           // Log A: fruit 
-          const fruit = 'strawberry';
+          const fruit = 'strawberry'; //new block scoped fruit, garbage collected immediately
         }
 
-        // Log B: fruit
+        // Log B: fruit //Mango
       }
 
-      // Log C: fruit
+      // Log C: fruit //Still Mango, because we're inside the same func
     }
 
     eatFruit(); //First thing that executes
 
-    // Log D: fruit
+    // Log D: fruit //Sees 240, which was never reassigned
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 'reference error' },
+      { 'B': 'mango' },
+      { 'C': 'mango' },
+      { 'D': 'apple' }
     ];
     return result;
 
