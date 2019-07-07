@@ -355,37 +355,37 @@ const scope = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   exerciseJ() {
-    let sandwich = 'ketchup sandwich';
+    let sandwich = 'ketchup sandwich'; //"global" block scoped
 
     // Log A: sandwich
 
     const addChipotle = () => {
       // Log B: toppings
-      var toppings = 'chipotle sauce';
+      var toppings = 'chipotle sauce'; //function scoped
 
-      if (toppings === 'chipotle sauce') {
-        sandwich = 'not a mediocre sandwich';
+      if (toppings === 'chipotle sauce') { //true
+        sandwich = 'not a mediocre sandwich'; // reassigns 362
       }
 
       // Log C: sandwich
     };
 
     const addCheese = () => {
-      let cheeseTopping = 'gouda';
+      let cheeseTopping = 'gouda'; //block scoped
       // Log D: cheeseTopping
 
       const shesTheManReference = () => {
-        amandaBynes = 'National Treasure';
+        amandaBynes = 'National Treasure'; // global
       };
 
       shesTheManReference();
     };
 
-    cheeseTopping = 'kraft';
+    cheeseTopping = 'kraft'; //new 'global' variable
     addCheese();
 
     addChipotle();
@@ -393,10 +393,12 @@ const scope = {
     // Log F: amandaBynes
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 'ketchup sandwich' },
+      { 'D': 'gouda' },
+      { 'B': undefined },
+      { 'C': 'not a mediocre sandwich' },
+      { 'E': 'not a mediocre sandwich'},
+      { 'F': 'National Treasure'}
     ];
     return result;
 
