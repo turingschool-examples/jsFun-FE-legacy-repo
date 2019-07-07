@@ -24,21 +24,23 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const filtered = kitties.filter(cat => cat.color === 'orange');
+    const result = filtered.map(cat => cat.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Filter based on color prop, then map to create array for each filtered's name
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => b.age - a.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Sort (in place) based on age prop, the test want oldest first
+    // Using implicit return of one liner
   },
 
   growUp() {
@@ -55,9 +57,15 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(cat => {
+      cat.age = cat.age + 2;
+      return cat;
+    });
     return result;
   }
+
+  // Annotation:
+  // Map through to create an array of same length, and return entire changed cat. Implicit return does not work.
 };
 
 
@@ -87,11 +95,18 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        !acc[member] ? acc[member] = [club.club] : acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Two nested layers of data, so two iteration methods are needed
+    // Reduce over clubs array because we can set it to the desired object outcome
+    // forEach over the club.members array because that uses a push, so a return isn't necessary
   }
 };
 
@@ -123,11 +138,14 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      return {mod: mod.mod, studentsPerInstructor: mod.students / mod.instructors};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with array with length of 4, and goal is array of objects with length of 4
+    // Map can return array with objects, same length
   }
 };
 
@@ -158,11 +176,12 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => ({flavor: cake.cakeFlavor, inStock: cake.inStock}));
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with array of objects, goal is an array of objects of same length
+    // utilize implicit return by wrapping object literal in parens
   },
 
   onlyInStock() {
@@ -186,22 +205,32 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      if (cake.inStock > 0) {
+        return cake;
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with array of objects, goal is an array of objects
+    // Use filter() to sort for conditional matches, tell the callback function what to return
+    // Need to return entire cake object into result array
   },
-  
+
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is a single number/count
+    // Remember to set initial value to 0 and return acc
   },
 
   allToppings() {
@@ -209,11 +238,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        !acc.includes(topping) ? acc.push(topping) : false;
+      });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is an array of just the toppings (no repeats)
+    // Use reduce with initial array acc, so the cur can check if it is already in the acc
+    // also need a second prototype method to iterate over the nested toppings array and decide what to push
   },
 
   groceryList() {
@@ -227,11 +263,19 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        !acc[topping] ? acc[topping] = 1 : acc[topping]++;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an object
+    // Will need a second iterator method to go over toppings array
+    // Reduce can have an initial value of an object, and we'll set keys: values inside
+    // Each new key will be set to 1 to begin counting, then incremented when they're seen again
   }
 };
 
@@ -262,11 +306,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(room => room.program === 'FE');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, end with a shorter array of objects
+    // One liner/implicit return is okay because we want to return the entire room object
   },
 
   totalCapacities() {
@@ -277,21 +322,29 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, room) => {
+      room.program === 'FE' ? acc.feCapacity += room.capacity : acc.beCapacity += room.capacity;
+      return acc;
+    }, {feCapacity : 0, beCapacity : 0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with an array of objects, goal is an object
+    // Going to be adding numbers to a sum
+    // Reduce can begin with initial object and do the counting
+    // Ternary is helpful since we only have to paths: fe and be
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an array of all classrooms
+    // Goal array should be same length, but we don't need to map to make any changes
+    // Sort is mutator, but there's nothing said against that
   }
 };
 
@@ -317,11 +370,15 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is counter/total of all the beers
+    // will need to iterate over breweries, then use beers.length
   },
 
   getBreweryBeerCount() {
@@ -333,11 +390,16 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      return {name: brewery.name, beerCount: brewery.beers.length};
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, goal is an array of objects
+    // Set name key with the brewery.name, set beerCount value with brewery.beers.length;
+    // Array will be same number of objects/length, so we can map()
+    // Two liner requires the return keyword
   },
 
   findHighestAbvBeer() {
@@ -345,11 +407,26 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const allBeers = breweries.reduce((acc, brewery) => {
+      brewery.beers.forEach(beer => acc.push(beer));
+      return acc;
+    }, []);
+    const result = allBeers.sort((a,b) => a.abv - b.abv)[allBeers.length - 1];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Starting with an array of objects, and goal is one beer object
+    // Can either sort and return [0] or use reduce() to check against and reassign the acc
+    // Alternate solution:
+
+    // breweries.reduce((acc, brewery) => {
+    //   brewery.beers.forEach(beer => {
+    //     if (beer.abv > acc.abv) {
+    //       acc = beer;
+    //     }
+    //   })
+    //   return acc;
+    // }, { abv: 0 })
   }
 };
 
@@ -393,11 +470,19 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      let cohort = cohorts.find(cohort => cohort.module === instructor.module);
+      return {name: instructor.name, studentCount: cohort.studentCount};
+    }) ;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both arrays of objects
+    // Common threads are the module numbers and topics
+    // Goal is an array of objects, same length as the instructors array
+    // Map over instructors, get studenctCount from cohorts array
+    // Not one liner w/implicit return
+    // return objedts from the callback function
   },
 
   studentsPerInstructor() {
@@ -407,11 +492,22 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      let count = cohort.studentCount;
+      let teachers = instructors.filter(teacher => teacher.module === cohort.module).length;
+
+      acc[`cohort${cohort.cohort}`] = count / teachers;
+      return acc
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both array of objects
+    // Common threads are the instructor.module and cohort.module nums
+    // Goal is a new, lone object
+    // cohort key will come from the cohorts array, with ${} to create key name
+    // value will be studentCount from cohorts array / total number of teachers for that mod
+    // use .length to count the matching filtered teachers
   },
 
   modulesPerTeacher() {
@@ -550,7 +646,7 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
-    
+
     //  [ "Canis Major",
     //    "Carina",
     //    "Boötes",
@@ -686,7 +782,6 @@ const dinosaurPrompts = {
   uncastActors() {
     /*
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
-
     e.g.
       [{
         name: 'Justin Duncan',
@@ -719,7 +814,6 @@ const dinosaurPrompts = {
   actorsAgesInMovies() {
     /*
     Return an array of objects for each human and the age(s) they were in the movie(s) they were cast in, as an array of age(s). Only include humans who were cast in at least one movie.
-
     e.g.
     [ { name: 'Sam Neill', ages: [ 46, 54 ] },
       { name: 'Laura Dern', ages: [ 26, 34 ] },
