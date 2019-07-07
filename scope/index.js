@@ -547,15 +547,19 @@ const scope = {
     var shoe = 'flipflop';
 
     function putOnShoe() {
-      // Log A: shoe
-      var shoe = 'boot';
+      // Log A: shoe 
+      var shoe = 'boot'; //Hoisted as undefined to top of function scope upon invocation, then function scoped and gone
     }
 
-    // Log B: shoe
-    putOnShoe();
+    // Log B: shoe //First thing to execute
+    putOnShoe(); //Go to 549
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'B': 'flipflop' },
+      { 'A': undefined },
+      { 'C': 'flipflop' }
+    ];
     return result;
 
     // Annotation:
