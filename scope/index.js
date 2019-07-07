@@ -468,28 +468,28 @@ const scope = {
   },
 
   exerciseM() {
-    var num = 5; //Global //Now 6
+    var num = 5; //Hoists and initializes first //Now 6
 
     function first() {
-      // Log A: num //5
-      num = 6; //Reassigns 470 to 6
-      // Log B: num //6
+      // Log A: num //Looks up scope chain to 471, 5
+      num = 6; //Reassigns 471 to 6
+      // Log B: num //Sees 471, now 6
     }
 
     function second() {
-      // Log C: num //Sees 470, 6
-      let num = 7; //New block scoped, EC immediately cleared
+      // Log C: num //Sees the uninitializes num from 481, reference error
+      let num = 7; //new block scoped, immediately gone
     }
 
-    first();
+    first(); //first line to execute
     second();
 
-    // Log D: num 6
+    // Log D: num //Sees up scope chain to 471, 6
 
     const result = [
       { 'A': 5 },
       { 'B': 6 },
-      { 'C': 6 },
+      { 'C': 'reference error'},
       { 'D': 6 }
     ];
     return result;
