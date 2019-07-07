@@ -467,53 +467,53 @@ const scope = {
   },
 
   exerciseM() {
-    var num = 5;
+    var num = 5; //Global //Now 6
 
     function first() {
-      // Log A: num
-      num = 6;
-      // Log B: num
+      // Log A: num //5
+      num = 6; //Reassigns 470 to 6
+      // Log B: num //6
     }
 
     function second() {
-      // Log C: num
-      let num = 7;
+      // Log C: num //Sees 470, 6
+      let num = 7; //New block scoped, EC immediately cleared
     }
 
     first();
     second();
 
-    // Log D: num
+    // Log D: num 6
 
     const result = [
-      { 'A': 1 },
-      { 'B': 1 },
-      { 'C': 1 },
-      { 'D': 1 }
+      { 'A': 5 },
+      { 'B': 6 },
+      { 'C': 6 },
+      { 'D': 6 }
     ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // 'Reference error' on 479?
   },
 
   exerciseN() {
-    var instructor = 'Pam';
+    var instructor = 'Pam'; //Now Louisa, from 516
 
     function changeInstructor() {
 
-      // Log A: instructor
+      // Log A: instructor //Sees 501
 
-      if (instructor === 'Brittany') {
-        const instructor = 'Nathaniel';
+      if (instructor === 'Brittany') { //Falsey
+        const instructor = 'Nathaniel'; //Skip
       } else {
-        let instructor = 'Brittany';
+        let instructor = 'Brittany'; //New block scoped, then immediately EC clears
       }
 
-      // Log B: instructor
+      // Log B: instructor //Sees 501
 
       function rename() {
-        instructor = 'Louisa';
+        instructor = 'Louisa'; //Reassigns 501
         // Log C: instructor
       }
 
@@ -523,13 +523,20 @@ const scope = {
 
     }
 
-    // Log E: instructor
+    // Log E: instructor //First line that executes
 
-    changeInstructor();
+    changeInstructor(); //Go to 503
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { 'E': 'Pam' },
+      { 'A': 'Pam' },
+      { 'B': 'Pam' },
+      { 'C': 'Louisa' },
+      { 'D': 'Louisa'}, 
+      { 'F': 'Louisa'}
+    ];
     return result;
 
     // Annotation:
