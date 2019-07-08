@@ -566,7 +566,12 @@ const turingPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both arrays of objects
+    // Goal is an object
+    // Common thread is the instructor[name].teaches topic array and the cohorts[mod].curriculum topic array
+    // Iterate over instructors, then each of their .teaches[], to set up the reduce and set the keys with the topics
+    // First iteration will also put the first teacher.name into the array
+    // Additional iterations will push more names
   }
 };
 
@@ -597,11 +602,28 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = function bossObj() {
+      let bossNames = Object.values(bosses).map(boss => boss.name);
+      return bossNames.map(boss => {
+        let points = sidekicks.reduce((acc, sidekick) => {
+          if (sidekick.boss === boss) {
+            acc += sidekick.loyaltyToBoss;
+          }
+          return acc;
+        }, 0);
+        return { bossName: boss, sidekickLoyalty: points };
+      });
+    };
+    return result();
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Have two datasets, an obj of objs AND an array of objs
+    //Common thread is the bosses[each boss].name and the sidekicks[each sidekick].boss
+    //use Object.values to get an array of the bosses, than can be mapped for their names
+    //Iterate over the bames array with either Map or Reduce to make array of objs
+    //When looking at each boss, iterate over all the sidekicks to see if their .boss prop is === to the cur boss
+    //If so, add points to the acc
+    //Use the acc in the larger map's sidekickLoyalty points
   }
 };
 
