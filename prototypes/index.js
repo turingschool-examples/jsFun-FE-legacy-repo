@@ -480,7 +480,7 @@ const turingPrompts = {
     // Start with two datasets, both arrays of objects
     // Common threads are the module numbers and topics
     // Goal is an array of objects, same length as the instructors array
-    // Map over instructors, get studenctCount from cohorts array
+    // Map over instructors, get studentCount from cohorts array
     // Not one liner w/implicit return
     // return objedts from the callback function
   },
@@ -497,7 +497,7 @@ const turingPrompts = {
       let teachers = instructors.filter(teacher => teacher.module === cohort.module).length;
 
       acc[`cohort${cohort.cohort}`] = count / teachers;
-      return acc
+      return acc;
     }, {});
     return result;
 
@@ -525,11 +525,26 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      acc[instructor.name] = [];
+      cohorts.forEach(mod => {
+        instructor.teaches.forEach(topic => {
+          if (mod.curriculum.includes(topic) && !acc[instructor.name].includes(mod.module)) {
+            acc[instructor.name].push(mod.module);
+          }
+        })
+      })
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Start with two datasets, both array of objects
+    // Common threads are the instructor[teacher].teaches array topics and the cohort[mod].curriculum array topics
+    // Iterate over instructors to set up the reduce and set the name keys, assigned to []
+    // Iterate over each mod in the cohort to look at the topics in the currriculum, then iterate over each teacher in the instructors to look at the topics in their teaches []
+    // When there is a match, push the mod.module # into the acc[instructor.name] array
   },
 
   curriculumPerTeacher() {
