@@ -532,8 +532,8 @@ const turingPrompts = {
           if (mod.curriculum.includes(topic) && !acc[instructor.name].includes(mod.module)) {
             acc[instructor.name].push(mod.module);
           }
-        })
-      })
+        });
+      });
       return acc;
     }, {});
 
@@ -544,7 +544,7 @@ const turingPrompts = {
     // Common threads are the instructor[teacher].teaches array topics and the cohort[mod].curriculum array topics
     // Iterate over instructors to set up the reduce and set the name keys, assigned to []
     // Iterate over each mod in the cohort to look at the topics in the currriculum, then iterate over each teacher in the instructors to look at the topics in their teaches []
-    // When there is a match, push the mod.module # into the acc[instructor.name] array
+    // When there is a match, and the module # doesn't already exist in the acc, push the mod.module # into the acc[instructor.name] array
   },
 
   curriculumPerTeacher() {
@@ -557,7 +557,12 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      instructor.teaches.forEach(topic => {
+        !acc[topic] ? acc[topic] = [instructor.name] : acc[topic].push(instructor.name);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
