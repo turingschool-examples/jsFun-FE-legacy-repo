@@ -104,7 +104,15 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce(function(accum, club) {
+      club.members.forEach(function(member) {
+        if(!accum[member]){
+          accum[member] = [];
+        }
+        accum[member].push(club.club);
+      });
+      return accum;
+    }, {});
     return result;
 
     // Annotation:
@@ -140,7 +148,12 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(obj => {
+      var newArrayOfObjects = {};
+      newArrayOfObjects['mod'] = obj.mod;
+      newArrayOfObjects['studentsPerInstructor'] = obj.students/obj.instructors;
+      return newArrayOfObjects;
+    });
     return result;
 
     // Annotation:
@@ -175,7 +188,11 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(obj => ({
+      // var newArrayOfObjects = {};
+      flavor: obj.cakeFlavor,
+      inStock: obj.inStock})
+    );
     return result;
 
     // Annotation:
