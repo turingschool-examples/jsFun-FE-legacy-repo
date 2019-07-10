@@ -334,7 +334,26 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((allClasses, classObj) => {
+      if (classObj.program === 'FE') {
+        if(allClasses.feCapacity) {
+          allClasses.feCapacity += classObj.capacity;
+        } 
+        if(!allClasses.feCapacity){
+          allClasses.feCapacity = classObj.capacity;
+        }
+      }
+      if (classObj.program === 'BE') {
+        if(allClasses.beCapacity) {
+          allClasses.beCapacity += classObj.capacity;
+        }
+        if(!allClasses.beCapacity){
+          allClasses.beCapacity = classObj.capacity;
+        }
+      } 
+      return allClasses;
+     
+    }, {});
     return result;
 
     // Annotation:
