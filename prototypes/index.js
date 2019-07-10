@@ -363,7 +363,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((low, high) => low.capacity - high.capacity);
     return result;
 
     // Annotation:
