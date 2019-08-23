@@ -145,7 +145,6 @@ const modPrompts = {
     const result = mods.map(mod => {
       let students = mod.students / mod.instructors;
       return { mod: mod.mod, studentsPerInstructor: students};
-      // mod.assign(mod, )
     });
     return result;
 
@@ -185,11 +184,16 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {flavor:cake.cakeFlavor, inStock:cake.inStock};
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Since we are returning an array of equal length we will use .map()
+    //We map through each object and return a new object with a 'falvor' key and assign it the 'cakeFlavor'
+    //Plus we also set a key called 'inStock' and assign it to the number of cakes in stock
   },
 
   onlyInStock() {
