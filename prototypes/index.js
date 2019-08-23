@@ -10,7 +10,8 @@ const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
 const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
-
+//RUN this in the terminal:
+//npm run testPrototypes
 
 
 
@@ -24,21 +25,21 @@ const kittyPrompts = {
     
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = kitties.filter(el => el.color === 'orange');
+    return result.map(el => el.name);
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We are given an array of obects and want to return a single array of names. We first use .filter to return the two objects that have color: 'orange' then map and using dot notation return the name using the .name key.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a,b) => b.age - a.age);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We use the .sort() method comparing one kittens age with the next and return an array that's sorted from oldest to youngest kitten.
   },
 
   growUp() {
@@ -55,8 +56,14 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(el => {
+      el.age += 2;
+      return el;
+    });
     return result;
+
+    //Annotation:
+    //We use .map() as we need to affect each object in the array. We are then able to  modify the objects age key incrementing it by two and return the object
   }
 };
 
@@ -87,11 +94,23 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [];
+        }
+        acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // For this method we need to use reduce to return us a new object with name of the students as a key and an array of culbs they belong to as a value
+    //Inside the reduce we need to use .forEach() on the array of members
+    //We are then checking if there's not a key of the students name make one and set it to an array
+    //Then push the club to the array
+    //Then return the accumulator
   }
 };
 

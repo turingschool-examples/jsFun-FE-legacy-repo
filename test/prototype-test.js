@@ -1,4 +1,4 @@
-const chai = require("chai");
+const chai = require('chai');
 const expect = chai.expect;
 
 const {
@@ -13,71 +13,71 @@ const {
   astronomyPrompts,
   ultimaPrompts,
   dinosaurPrompts
-} = require("../prototypes/index");
+} = require('../prototypes/index');
 
-describe("PROTOTYPES", () => {
-  describe("Kitty Prompts", () => {
-    it("orangeKittyNames", () => {
+describe('PROTOTYPES', () => {
+  describe('Kitty Prompts', () => {
+    it('orangeKittyNames', () => {
       const e = kittyPrompts.orangeKittyNames();
-      expect(e).to.deep.equal(["Tiger", "Snickers"])
+      expect(e).to.deep.equal(['Tiger', 'Snickers']);
     });
 
-    it("sortByAge", () => {
+    it('sortByAge', () => {
       const e = kittyPrompts.sortByAge();
       expect(e).to.deep.equal([{
-        name: "Snickers",
+        name: 'Snickers',
         age: 8,
-        color: "orange"
+        color: 'orange'
       }, {
-        name: "Tiger",
+        name: 'Tiger',
         age: 5,
-        color: "orange"
+        color: 'orange'
       }, {
-        name: "Felicia",
+        name: 'Felicia',
         age: 2,
-        color: "grey"
+        color: 'grey'
       }, {
-        name: "Max",
+        name: 'Max',
         age: 1,
-        color: "tuxedo"
-      }])
+        color: 'tuxedo'
+      }]);
     });
 
-    it.skip("growUp", () => {
+    it('growUp', () => {
       const e = kittyPrompts.growUp();
       expect(e).to.deep.equal([{
-        name: "Snickers",
+        name: 'Snickers',
         age: 10,
-        color: "orange"
+        color: 'orange'
       }, {
-        name: "Tiger",
+        name: 'Tiger',
         age: 7,
-        color: "orange"
+        color: 'orange'
       }, {
-        name: "Felicia",
+        name: 'Felicia',
         age: 4,
-        color: "grey"
+        color: 'grey'
       }, {
-        name: "Max",
+        name: 'Max',
         age: 3,
-        color: "tuxedo"
-      }])
+        color: 'tuxedo'
+      }]);
     });
   });
    
-  describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+  describe('Club Prompts', () => {
+    it('membersBelongingToClubs', () => {
       const e = clubPrompts.membersBelongingToClubs({
-        Louisa: ["Drama", "Art"],
-        Pam: ["Drama", "Chess", "Newspaper"],
-        Nathaniel: ["Drama", "Astronomy"],
-        Leta: ["Band", "Newspaper", "Astronomy"],
-        Robbie: ["Band", "Chess", "FBLA"],
-        Jhun: ["Band", "Art"],
-        Will: ["Band"],
-        David: ["Chess", "Newspaper", "FBLA"],
-        Brittany: ["Chess", "Newspaper"],
-        Christie: ["Newspaper", "FBLA"]
+        Louisa: ['Drama', 'Art'],
+        Pam: ['Drama', 'Chess', 'Newspaper'],
+        Nathaniel: ['Drama', 'Astronomy'],
+        Leta: ['Band', 'Newspaper', 'Astronomy'],
+        Robbie: ['Band', 'Chess', 'FBLA'],
+        Jhun: ['Band', 'Art'],
+        Will: ['Band'],
+        David: ['Chess', 'Newspaper', 'FBLA'],
+        Brittany: ['Chess', 'Newspaper'],
+        Christie: ['Newspaper', 'FBLA']
       });
       expect(e).to.deep.equal({
         Louisa: ['Drama', 'Art'],
@@ -90,12 +90,12 @@ describe("PROTOTYPES", () => {
         David: ['Chess', 'Newspaper', 'FBLA'],
         Brittany: ['Chess', 'Newspaper'],
         Christie: ['Newspaper', 'FBLA']
-      })
-    })
+      });
+    });
   });
   
-  describe("Mod Prompts", () => {
-    it.skip("studentsPerMod", () => {
+  describe('Mod Prompts', () => {
+    it.skip('studentsPerMod', () => {
       const e = modPrompts.studentsPerMod();
       expect(e).to.deep.equal([{
         mod: 1,
@@ -109,237 +109,237 @@ describe("PROTOTYPES", () => {
       }, {
         mod: 4,
         studentsPerInstructor: 8
-      }])
-    });
-  })
-  
-  describe("Cake Prompts", () => {
-    it.skip("stockPerCake", () => {
-      const e = cakePrompts.stockPerCake();
-      expect(e).to.deep.equal([{
-        flavor: "dark chocolate",
-        inStock: 15
-      }, {
-        flavor: "yellow",
-        inStock: 14
-      }, {
-        flavor: "white chiffon",
-        inStock: 0
-      }, {
-        flavor: "butter rum",
-        inStock: 9
-      }, {
-        flavor: "vanilla",
-        inStock: 21
-      }, {
-        flavor: "honey",
-        inStock: 0
-      }])
-    });
-    
-    it.skip("onlyInStock", () => {
-      const e = cakePrompts.onlyInStock();
-      expect(e).to.deep.equal([{
-        cakeFlavor: "dark chocolate",
-        filling: null,
-        frosting: "dark chocolate ganache",
-        toppings: ["dutch process cocoa", "toasted sugar", "smoked sea salt"],
-        inStock: 15
-      }, {
-        cakeFlavor: "yellow",
-        filling: "citrus glaze",
-        frosting: "chantilly cream",
-        toppings: ["berries", "edible flowers"],
-        inStock: 14
-      }, {
-        cakeFlavor: "butter rum",
-        filling: "ginger cardamom swirl",
-        frosting: "spiced rum glaze",
-        toppings: ["crystallized ginger", "toasted sugar"],
-        inStock: 9
-      }, {
-        cakeFlavor: "vanilla",
-        filling: "St Germaine",
-        frosting: "whipped cream",
-        toppings: ["smoked sea salt", "crystallized ginger", "berries"],
-        inStock: 21
-      }])
-    })
-    
-    it.skip("totalInventory", () => {
-      const e = cakePrompts.totalInventory();
-      expect(e).to.deep.equal(59)
-    });
-    
-    it.skip("allToppings", () => {
-      const e = cakePrompts.allToppings();
-      expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
-    });
-    
-    it.skip("groceryList", () => {
-      const e = cakePrompts.groceryList();
-      expect(e).to.deep.equal({
-        "dutch process cocoa": 1,
-        "toasted sugar": 3,
-        "smoked sea salt": 3,
-        berries: 2,
-        "edible flowers": 2,
-        mint: 1,
-        cranberry: 1,
-        "crystallized ginger": 2
-      })
+      }]);
     });
   });
   
-  describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
-      const e = classPrompts.feClassrooms();
+  describe('Cake Prompts', () => {
+    it.skip('stockPerCake', () => {
+      const e = cakePrompts.stockPerCake();
       expect(e).to.deep.equal([{
-        roomLetter: "A",
-        program: "FE",
-        capacity: 32
+        flavor: 'dark chocolate',
+        inStock: 15
       }, {
-        roomLetter: "C",
-        program: "FE",
-        capacity: 27
+        flavor: 'yellow',
+        inStock: 14
       }, {
-        roomLetter: "E",
-        program: "FE",
-        capacity: 22
+        flavor: 'white chiffon',
+        inStock: 0
       }, {
-        roomLetter: "G",
-        program: "FE",
-        capacity: 29
-      }])
+        flavor: 'butter rum',
+        inStock: 9
+      }, {
+        flavor: 'vanilla',
+        inStock: 21
+      }, {
+        flavor: 'honey',
+        inStock: 0
+      }]);
     });
     
-    it.skip("totalCapacities", () => {
+    it.skip('onlyInStock', () => {
+      const e = cakePrompts.onlyInStock();
+      expect(e).to.deep.equal([{
+        cakeFlavor: 'dark chocolate',
+        filling: null,
+        frosting: 'dark chocolate ganache',
+        toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
+        inStock: 15
+      }, {
+        cakeFlavor: 'yellow',
+        filling: 'citrus glaze',
+        frosting: 'chantilly cream',
+        toppings: ['berries', 'edible flowers'],
+        inStock: 14
+      }, {
+        cakeFlavor: 'butter rum',
+        filling: 'ginger cardamom swirl',
+        frosting: 'spiced rum glaze',
+        toppings: ['crystallized ginger', 'toasted sugar'],
+        inStock: 9
+      }, {
+        cakeFlavor: 'vanilla',
+        filling: 'St Germaine',
+        frosting: 'whipped cream',
+        toppings: ['smoked sea salt', 'crystallized ginger', 'berries'],
+        inStock: 21
+      }]);
+    });
+    
+    it.skip('totalInventory', () => {
+      const e = cakePrompts.totalInventory();
+      expect(e).to.deep.equal(59);
+    });
+    
+    it.skip('allToppings', () => {
+      const e = cakePrompts.allToppings();
+      expect(e).to.deep.equal(['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', 'edible flowers', 'mint', 'cranberry', 'crystallized ginger']);
+    });
+    
+    it.skip('groceryList', () => {
+      const e = cakePrompts.groceryList();
+      expect(e).to.deep.equal({
+        'dutch process cocoa': 1,
+        'toasted sugar': 3,
+        'smoked sea salt': 3,
+        berries: 2,
+        'edible flowers': 2,
+        mint: 1,
+        cranberry: 1,
+        'crystallized ginger': 2
+      });
+    });
+  });
+  
+  describe('Class Prompts', () => {
+    it.skip('feClassrooms', () => {
+      const e = classPrompts.feClassrooms();
+      expect(e).to.deep.equal([{
+        roomLetter: 'A',
+        program: 'FE',
+        capacity: 32
+      }, {
+        roomLetter: 'C',
+        program: 'FE',
+        capacity: 27
+      }, {
+        roomLetter: 'E',
+        program: 'FE',
+        capacity: 22
+      }, {
+        roomLetter: 'G',
+        program: 'FE',
+        capacity: 29
+      }]);
+    });
+    
+    it.skip('totalCapacities', () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
-      })
+      });
     });
     
-    it.skip("sortByCapacity", () => {
+    it.skip('sortByCapacity', () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
-        roomLetter: "H",
-        program: "BE",
+        roomLetter: 'H',
+        program: 'BE',
         capacity: 18
       }, {
-        roomLetter: "F",
-        program: "BE",
+        roomLetter: 'F',
+        program: 'BE',
         capacity: 19
       }, {
-        roomLetter: "E",
-        program: "FE",
+        roomLetter: 'E',
+        program: 'FE',
         capacity: 22
       }, {
-        roomLetter: "C",
-        program: "FE",
+        roomLetter: 'C',
+        program: 'FE',
         capacity: 27
       }, {
-        roomLetter: "B",
-        program: "BE",
+        roomLetter: 'B',
+        program: 'BE',
         capacity: 29
       }, {
-        roomLetter: "G",
-        program: "FE",
+        roomLetter: 'G',
+        program: 'FE',
         capacity: 29
       }, {
-        roomLetter: "D",
-        program: "BE",
+        roomLetter: 'D',
+        program: 'BE',
         capacity: 30
       }, {
-        roomLetter: "A",
-        program: "FE",
+        roomLetter: 'A',
+        program: 'FE',
         capacity: 32
-      }])
+      }]);
     });
   });
   
-  describe("Brewery Prompts", () => {
-    it.skip("getBeerCount", () => {
+  describe('Brewery Prompts', () => {
+    it.skip('getBeerCount', () => {
       const e = breweryPrompts.getBeerCount();
-      expect(e).to.deep.equal(40)
+      expect(e).to.deep.equal(40);
     });
     
-    it.skip("getBreweryBeerCount", () => {
+    it.skip('getBreweryBeerCount', () => {
       const e = breweryPrompts.getBreweryBeerCount();
       expect(e).to.deep.equal([{
-        name: "Little Machine Brew",
+        name: 'Little Machine Brew',
         beerCount: 12
       }, {
-        name: "Ratio Beerworks",
+        name: 'Ratio Beerworks',
         beerCount: 5
       }, {
-        name: "Spangalang Brewery",
+        name: 'Spangalang Brewery',
         beerCount: 9
       }, {
-        name: "Beryl's Beer Co.",
+        name: 'Beryl\'s Beer Co.',
         beerCount: 7
       }, {
-        name: "Platt Park Brewing Co.",
+        name: 'Platt Park Brewing Co.',
         beerCount: 7
-      }])
+      }]);
     });
     
-    it.skip("findHighestAbvBeer", () => {
+    it.skip('findHighestAbvBeer', () => {
       const e = breweryPrompts.findHighestAbvBeer();
       expect(e).to.deep.equal({
-        name: "Barrel Aged Nature's Sweater",
-        type: "Barley Wine",
+        name: 'Barrel Aged Nature\'s Sweater',
+        type: 'Barley Wine',
         abv: 10.9,
         ibu: 40
-      })
+      });
     });
   });
   
-  describe("Turing Prompts", () => {
-    it.skip("studentsForEachInstructor", () => {
+  describe('Turing Prompts', () => {
+    it.skip('studentsForEachInstructor', () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
-        name: "Pam",
+        name: 'Pam',
         studentCount: 21
       }, {
-        name: "Brittany",
+        name: 'Brittany',
         studentCount: 21
       }, {
-        name: "Nathaniel",
+        name: 'Nathaniel',
         studentCount: 21
       }, {
-        name: "Robbie",
+        name: 'Robbie',
         studentCount: 18
       }, {
-        name: "Leta",
+        name: 'Leta',
         studentCount: 18
       }, {
-        name: "Travis",
+        name: 'Travis',
         studentCount: 30
       }, {
-        name: "Louisa",
+        name: 'Louisa',
         studentCount: 30
       }, {
-        name: "Christie",
+        name: 'Christie',
         studentCount: 20
       }, {
-        name: "Will",
+        name: 'Will',
         studentCount: 20
-      }])
+      }]);
     });
     
-    it.skip("studentsPerInstructor", () => {
+    it.skip('studentsPerInstructor', () => {
       const e = turingPrompts.studentsPerInstructor();
       expect(e).to.deep.equal({
         cohort1806: 15,
         cohort1804: 7,
         cohort1803: 10,
         cohort1801: 9
-      })
+      });
     });
     
-    it.skip("modulesPerTeacher", () => {
+    it.skip('modulesPerTeacher', () => {
       const e = turingPrompts.modulesPerTeacher();
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -351,45 +351,45 @@ describe("PROTOTYPES", () => {
         Louisa: [1, 2, 3, 4],
         Christie: [1, 2, 3, 4],
         Will: [1, 2, 3, 4]
-      })
+      });
     });
     
-    it.skip("curriculumPerTeacher", () => {
+    it.skip('curriculumPerTeacher', () => {
       const e = turingPrompts.curriculumPerTeacher();
       expect(e).to.deep.equal({
-        html: ["Travis", "Louisa"],
-        css: ["Travis", "Louisa"],
-        javascript: ["Travis", "Louisa", "Christie", "Will"],
-        recursion: ["Pam", "Leta"],
-        scope: ["Pam", "Nathaniel", "Will"],
-        oop: ["Brittany", "Nathaniel", "Will"],
-        react: ["Christie", "Will"],
-        redux: ["Will"],
-        pwas: ["Brittany", "Robbie", "Leta", "Louisa"],
-        mobile: ["Nathaniel"],
-        node: ["Pam", "Robbie", "Leta", "Louisa", "Christie"]
-      })
+        html: ['Travis', 'Louisa'],
+        css: ['Travis', 'Louisa'],
+        javascript: ['Travis', 'Louisa', 'Christie', 'Will'],
+        recursion: ['Pam', 'Leta'],
+        scope: ['Pam', 'Nathaniel', 'Will'],
+        oop: ['Brittany', 'Nathaniel', 'Will'],
+        react: ['Christie', 'Will'],
+        redux: ['Will'],
+        pwas: ['Brittany', 'Robbie', 'Leta', 'Louisa'],
+        mobile: ['Nathaniel'],
+        node: ['Pam', 'Robbie', 'Leta', 'Louisa', 'Christie']
+      });
     });
   });
   
-  describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
+  describe('Boss Prompts', () => {
+    it.skip('bossLoyalty', () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
-        bossName: "Scar",
+        bossName: 'Scar',
         sidekickLoyalty: 16
       }, {
-        bossName: "Ursula",
+        bossName: 'Ursula',
         sidekickLoyalty: 20
       }, {
-        bossName: "Jafar",
+        bossName: 'Jafar',
         sidekickLoyalty: 3
-      }])
-    })
+      }]);
+    });
   });
   
-  describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
+  describe('Astronomy Prompts', () => {
+    it.skip('starsInConstellations', () => {
       const e = astronomyPrompts.starsInConstellations();
       expect(e).to.deep.equal([{ 
         name: 'Rigel',
@@ -402,97 +402,97 @@ describe("PROTOTYPES", () => {
         constellation: 'Orion',
         lightYearsFromEarth: 640,
         color: 'red' 
-      }])
+      }]);
     });
     
-    it.skip("starsByColor", () => {
+    it.skip('starsByColor', () => {
       const e = astronomyPrompts.starsByColor();
       expect(e).to.deep.equal({
         blue: [{
-          name: "Sirius",
+          name: 'Sirius',
           visualMagnitude: -1.46,
-          constellation: "Canis Major",
+          constellation: 'Canis Major',
           lightYearsFromEarth: 8.6,
-          color: "blue"
+          color: 'blue'
         }, {
-          name: "Vega",
+          name: 'Vega',
           visualMagnitude: .3,
-          constellation: "Lyra",
+          constellation: 'Lyra',
           lightYearsFromEarth: 25,
-          color: "blue"
+          color: 'blue'
         }, {
-          name: "Rigel",
+          name: 'Rigel',
           visualMagnitude: .13,
-          constellation: "Orion",
+          constellation: 'Orion',
           lightYearsFromEarth: 860,
-          color: "blue"
+          color: 'blue'
         }, {
-          name: "Achernar",
+          name: 'Achernar',
           visualMagnitude: .46,
-          constellation: "The Plow",
+          constellation: 'The Plow',
           lightYearsFromEarth: 140,
-          color: "blue"
+          color: 'blue'
         }, {
-          name: "Hadar",
+          name: 'Hadar',
           visualMagnitude: .61,
-          constellation: "The Little Dipper",
+          constellation: 'The Little Dipper',
           lightYearsFromEarth: 350,
-          color: "blue"
+          color: 'blue'
         }],
         white: [{
-          name: "Canopis",
+          name: 'Canopis',
           visualMagnitude: -.74,
-          constellation: "Carina",
+          constellation: 'Carina',
           lightYearsFromEarth: 310,
-          color: "white"
+          color: 'white'
         }, {
-          name: "Procyon",
+          name: 'Procyon',
           visualMagnitude: .34,
-          constellation: "Canis Minor",
+          constellation: 'Canis Minor',
           lightYearsFromEarth: 11,
-          color: "white"
+          color: 'white'
         }],
         yellow: [{
-          name: "Alpha Centauri",
+          name: 'Alpha Centauri',
           visualMagnitude: -.27,
-          constellation: "",
+          constellation: '',
           lightYearsFromEarth: 4.4,
-          color: "yellow"
+          color: 'yellow'
         }, {
-          name: "Capella",
+          name: 'Capella',
           visualMagnitude: .08,
-          constellation: "Auriga",
+          constellation: 'Auriga',
           lightYearsFromEarth: 42,
-          color: "yellow"
+          color: 'yellow'
         }],
         orange: [{
-          name: "Arcturus",
+          name: 'Arcturus',
           visualMagnitude: -.05,
-          constellation: "Boötes",
+          constellation: 'Boötes',
           lightYearsFromEarth: 37,
-          color: "orange"
+          color: 'orange'
         }],
         red: [{
-          name: "Betelgeuse",
+          name: 'Betelgeuse',
           visualMagnitude: .5,
-          constellation: "Orion",
+          constellation: 'Orion',
           lightYearsFromEarth: 640,
-          color: "red"
+          color: 'red'
         }]
-      })
+      });
     });
     
-    it.skip("constellationsStarsExistIn", () => {
+    it.skip('constellationsStarsExistIn', () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
-      expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
+      expect(e).to.deep.equal(['Canis Major', 'Carina', 'Boötes', 'Auriga', 'Orion', 'Lyra', 'Canis Minor', 'The Plow', 'Orion', 'The Little Dipper']);
     });
-  })
+  });
   
-  describe("Ultima Prompts", () => {
-    it.skip("totalDamage", () => {
+  describe('Ultima Prompts', () => {
+    it.skip('totalDamage', () => {
       const e = ultimaPrompts.totalDamage();
-      expect(e).to.deep.equal(113)
-    }), it.skip("charactersByTotal", () => {
+      expect(e).to.deep.equal(113);
+    }), it.skip('charactersByTotal', () => {
       const e = ultimaPrompts.charactersByTotal();
       expect(e).to.deep.equal([{
         Avatar: {
@@ -514,12 +514,12 @@ describe("PROTOTYPES", () => {
           damage: 27,
           range: 24
         }
-      }])
+      }]);
     });
   });
   
-  describe("Dinosaur Prompts", () => {
-    it.skip("countAwesomeDinosaurs", () => {
+  describe('Dinosaur Prompts', () => {
+    it.skip('countAwesomeDinosaurs', () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
       expect(e).to.deep.equal({
         'Jurassic Park': 5,
@@ -527,10 +527,10 @@ describe("PROTOTYPES", () => {
         'Jurassic Park III': 9,
         'Jurassic World': 11,
         'Jurassic World: Fallen Kingdom': 18
-      })
+      });
     });
     
-    it.skip("averageAgePerMovie", () => {
+    it.skip('averageAgePerMovie', () => {
       const e = dinosaurPrompts.averageAgePerMovie();
       expect(e).to.deep.equal({
         'Steven Spielberg': {
@@ -546,10 +546,10 @@ describe("PROTOTYPES", () => {
         'J. A. Bayona': {
           'Jurassic World: Fallen Kingdom': 59
         }
-      })
+      });
     });
     
-    it.skip("uncastActors", () => {
+    it.skip('uncastActors', () => {
       const e = dinosaurPrompts.uncastActors();
       expect(e).to.deep.equal([{
         name: 'Justin Duncan',
@@ -569,10 +569,10 @@ describe("PROTOTYPES", () => {
         name: 'Jeo D',
         nationality: 'Martian',
         imdbStarMeterRating: 0
-      }])
+      }]);
     });
     
-    it.skip("actorsAgesInMovies", () => {
+    it.skip('actorsAgesInMovies', () => {
       const e = dinosaurPrompts.actorsAgesInMovies();
       expect(e).to.deep.equal([{
         name: 'Sam Neill',
@@ -601,7 +601,7 @@ describe("PROTOTYPES", () => {
       }, {
         name: 'Bryce Dallas Howard',
         ages: [34, 37]
-      }])
+      }]);
     });
   });
-})
+});
