@@ -142,7 +142,11 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      let students = mod.students / mod.instructors;
+      return { mod: mod.mod, studentsPerInstructor: students};
+      // mod.assign(mod, )
+    });
     return result;
 
     // Annotation:
