@@ -217,11 +217,18 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake=> {
+      if (cake.inStock > 0) {
+        return cake;
+      }
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We're want to return a new array of cakes that only have a stock valye of greater than 0
+    //So we use filter to iterate through the cakes array checking that if the stock number of that cake is greater than 0 return us that cake
+    //We end up returning a new array of cakes whose stock number is greater than 0
   },
   
   totalInventory() {

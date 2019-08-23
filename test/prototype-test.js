@@ -137,7 +137,7 @@ describe('PROTOTYPES', () => {
       }]);
     });
     
-    it.skip('onlyInStock', () => {
+    it('onlyInStock', () => {
       const e = cakePrompts.onlyInStock();
       expect(e).to.deep.equal([{
         cakeFlavor: 'dark chocolate',
