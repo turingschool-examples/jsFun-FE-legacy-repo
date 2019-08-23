@@ -95,7 +95,7 @@ describe('PROTOTYPES', () => {
   });
   
   describe('Mod Prompts', () => {
-    it.skip('studentsPerMod', () => {
+    it('studentsPerMod', () => {
       const e = modPrompts.studentsPerMod();
       expect(e).to.deep.equal([{
         mod: 1,

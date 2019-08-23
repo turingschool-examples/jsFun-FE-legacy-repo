@@ -142,11 +142,19 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      let students = mod.students / mod.instructors;
+      return { mod: mod.mod, studentsPerInstructor: students};
+      // mod.assign(mod, )
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Since we are tyring to return an array of the same length we will use .map() here
+    //Inside the .map() we set a varible named 'students' to the number of students divided by the number of instructors
+    //we then return a new object with the 'mod' as a key and the 'mod number' as the value
+    //we also set a new key called 'studentsPerInstructor' and set the variable of 'students' as the value
+    //thus we get a new array of objects with the same length
   }
 };
 
