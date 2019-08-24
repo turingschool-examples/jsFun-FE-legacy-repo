@@ -235,11 +235,18 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((totalCakes, cakeStock) => {
+      totalCakes += cakeStock.inStock;
+      return totalCakes;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We need to iterate through each object in the array and return the sum of the total amount of cakes in stock
+    //We use .reduce() as it will return us a single value
+    //Using reduce we set 'totalCakes' to store our value
+    //When we iterate through each object aka 'cakeStock', we add that stock number to the previous one until we iterate through the entire array.
+    //We then return the total number of cakes in stock
   },
 
   allToppings() {
@@ -247,11 +254,29 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((allToppings, cake) => {
+      // console.log('cake', cake);
+      cake.toppings.forEach(topping => {
+        if(!allToppings.includes(topping)) {
+          allToppings.push(topping);
+        }
+      });
+      return allToppings;
+    }, []);
     return result;
 
+    //iterate through each cake
+    //iterate through each toppings array
+    //if the topping is not in our array
+    //push that topping into our array
+    //return that array
+
     // Annotation:
-    // Write your annotation here as a comment
+    //Since we are trying to return a single value, an array, we will use reduce
+    //We set an accumulator, an empty array
+    //We set initial value which is a single cake
+    //For each cake we will iterate through each topping and if it's NOT(!) in our allToppings array push it otherwise skip it
+    //Do this for all toppings for each cake and return the allToppings array
   },
 
   groceryList() {
