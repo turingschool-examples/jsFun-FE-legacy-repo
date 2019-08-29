@@ -125,11 +125,6 @@ const clubPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-
-
-
-
-
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
   studentsPerMod() {
@@ -217,22 +212,36 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake=> {
+      if (cake.inStock > 0) {
+        return cake;
+      }
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We're want to return a new array of cakes that only have a stock valye of greater than 0
+    //So we use filter to iterate through the cakes array checking that if the stock number of that cake is greater than 0 return us that cake
+    //We end up returning a new array of cakes whose stock number is greater than 0
   },
   
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((totalCakes, cakeStock) => {
+      totalCakes += cakeStock.inStock;
+      return totalCakes;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //We need to iterate through each object in the array and return the sum of the total amount of cakes in stock
+    //We use .reduce() as it will return us a single value
+    //Using reduce we set 'totalCakes' to store our value
+    //When we iterate through each object aka 'cakeStock', we add that stock number to the previous one until we iterate through the entire array.
+    //We then return the total number of cakes in stock
   },
 
   allToppings() {
@@ -240,11 +249,23 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((allToppings, cake) => {
+      // console.log('cake', cake);
+      cake.toppings.forEach(topping => {
+        if(!allToppings.includes(topping)) {
+          allToppings.push(topping);
+        }
+      });
+      return allToppings;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Since we are trying to return a single value, an array, we will use reduce
+    //We set an accumulator, an empty array
+    //We set initial value which is a single cake
+    //For each cake we will iterate through each topping and if it's NOT(!) in our allToppings array push it otherwise skip it
+    //Do this for all toppings for each cake and return the allToppings array
   },
 
   groceryList() {
@@ -258,11 +279,21 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(ing => {
+        if(!acc[ing]) {
+          acc[ing] = 0;
+        }
+        acc[ing] += 1;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Since we need to return a single object we will use reduce
+    //We then iterate through each topping in the toppings array using a forEach()
+    //Using a conditional we check to see.....
   }
 };
 
