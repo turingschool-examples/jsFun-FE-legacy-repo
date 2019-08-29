@@ -125,11 +125,6 @@ const clubPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-
-
-
-
-
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
   studentsPerMod() {
@@ -265,12 +260,6 @@ const cakePrompts = {
     }, []);
     return result;
 
-    //iterate through each cake
-    //iterate through each toppings array
-    //if the topping is not in our array
-    //push that topping into our array
-    //return that array
-
     // Annotation:
     //Since we are trying to return a single value, an array, we will use reduce
     //We set an accumulator, an empty array
@@ -290,11 +279,21 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(ing => {
+        if(!acc[ing]) {
+          acc[ing] = 0;
+        }
+        acc[ing] += 1;
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Since we need to return a single object we will use reduce
+    //We then iterate through each topping in the toppings array using a forEach()
+    //Using a conditional we check to see.....
   }
 };
 
