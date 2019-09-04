@@ -34,7 +34,7 @@ const kittyPrompts = {
 
   sortByAge() {
     // Sort the kitties by their age
-
+ 
     const result = kitties.sort((a,b) => b.age - a.age);
     return result;
 
@@ -324,11 +324,14 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(rooms => {
+      return rooms.program === 'FE';
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Since we need to grab the objects/classrooms that are just the frontend ones we will just the filter method.
+    //We are saying to filter through each room(object) and if the rooms program is 'FE' set it to result
   },
 
   totalCapacities() {
@@ -339,21 +342,31 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((capacity, room) => {
+      if (room.program === 'FE') {
+        capacity.feCapacity += room.capacity;
+      } else {
+        capacity.beCapacity += room.capacity;
+      }
+      return capacity;
+    }, {feCapacity: 0, beCapacity:0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Here we need to return a single value, this case an object with the total feCapacity & beCapacity
+    //We say if the rooms program matches 'FE' add the rooms capacity to our FE key.
+    //Otherwise, add the rooms capcity to the backends capacity
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Since we need to sort by capacity we will use the sort method
+    //We say, check the first objects capacity and subtract it by the seconds object capacity, and sort it from least to greatest
   }
 };
 

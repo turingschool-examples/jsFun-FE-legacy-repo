@@ -61,7 +61,7 @@ describe("CONTEXT", () => {
   }), it.skip("exerciseN", () => {
     const e = "instance of Bird" == context.exerciseN();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseO", () => {
+  }), it.skip("exerciseO", () => {
     const e = "global window object" == context.exerciseO();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseP", () => {

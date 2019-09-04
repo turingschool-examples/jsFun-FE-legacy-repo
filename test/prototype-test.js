@@ -188,11 +188,11 @@ describe('PROTOTYPES', () => {
         cranberry: 1,
         'crystallized ginger': 2
       });
-    });;
+    });
   });
   
   describe('Class Prompts', () => {
-    it.skip('feClassrooms', () => {
+    it('feClassrooms', () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: 'A',
@@ -213,7 +213,7 @@ describe('PROTOTYPES', () => {
       }]);
     });
     
-    it.skip('totalCapacities', () => {
+    it('totalCapacities', () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -221,7 +221,7 @@ describe('PROTOTYPES', () => {
       });
     });
     
-    it.skip('sortByCapacity', () => {
+    it('sortByCapacity', () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: 'H',
