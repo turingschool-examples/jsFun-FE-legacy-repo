@@ -11,29 +11,38 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
+        // Log A: personB | 'A':'Ben'
         
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
-          // Log B: personC
+          // Log B: personC | 'B': 'CardiB'
         }
       }
 
       personC = personA;
 
-      // Log C: personB
+      // Log C: personB 'B': 'Ben'
     }
 
     changePerson();
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 'Ben'}, {'B': 'CardiB'}, {'C': 'CardiB'}, {'D': 'Paul'}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the execution phase of exerciseA() method we hoist personA, personB, personC, and the changePerson() function
+    // We invoke changePerson() on line 28 and go into the function
+    // In the first 'if' block since personA equal 'Paul' we go into it and set person to 'CardiB plus invoke beatifyPerson()
+    // We next go into beautifyPerson() and LOG 'Ben'
+    // In the 'if' condition since personB('Ben') includes a 'B' we go into the block and reassign personB to person which is 'CardiB', this works because 'person' is a global variable
+    // 'personC' is reassigned to the vaule of 'personB' which happens to be 'CardiB'
+    // We then LOG 'CardiB' and exit the 'if' block and the beautifyPerson function
+    // Then on line 23 we reassign 'personC' to 'personA's vaule which our function has to go up the scope chain to see that it's 'Paul'
+    // Then we LOG personB which has to go up the scope chain and see that personB is 'Ben' and log it
+    // We leave the exerciseA function then lastly LOG personC which is now 'Paul'
   },
 
   exerciseB() {
