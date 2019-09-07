@@ -55,28 +55,33 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number | 75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number | 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number | 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: number | 64
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 75}, {'B': 64}, {'C': 64}, {'D': 30}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We set number to 30, pass the numberFunction(), then invoke the function on line 71 and enter it
+    // We have a new variable called number and set it to 75, we enter the if block since number equals 75, we then change number to 28 but it stays there since it's block scoped.
+    // We then LOG 75, pass the newNumber function, invoke it, then enter it
+    // In here we set number to 64, and since it's a global variable it follows it after we escape it
+    // We then LOG 64 and exit the numberFunction()
+    // We then log 30 since it's grabbing the value of number from the top.
   },
 
   exerciseC() {
