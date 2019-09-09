@@ -55,28 +55,33 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: number | 75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number | 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number | 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: number | 64
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 75}, {'B': 64}, {'C': 64}, {'D': 30}];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We set number to 30, pass the numberFunction(), then invoke the function on line 71 and enter it
+    // We have a new variable called number and set it to 75, we enter the if block since number equals 75, we then change number to 28 but it stays there since it's block scoped.
+    // We then LOG 75, pass the newNumber function, invoke it, then enter it
+    // In here we set number to 64, and since it's a global variable it follows it after we escape it
+    // We then LOG 64 and exit the numberFunction()
+    // We then log 30 since it's grabbing the value of number from the top.
   },
 
   exerciseC() {
@@ -89,24 +94,24 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting | yo 
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting | hey 
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting | hey
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting | hello
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 'Yo'}, {'B': 'Hey'}, {'C': 'Hey'}, {'D': 'Hello'}];
     return result;
 
     // Annotation:
@@ -123,24 +128,24 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting | 'hi'
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting 'welcome'
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting 'welcome'
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting | Howdy
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{'A': 'hi'}, {'B': 'welcome'}, {'C': 'welcome'}, {'D': 'howdy'}];
     return result;
 
     // Annotation:
@@ -160,19 +165,19 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name | 2 'Nathaniel'
       }
 
-      // Log B: name
+      // Log B: name | 3 'Pam' NOPE but 'Nathaniel'
     }
 
-    // Log C: name
+    // Log C: name | 1 'Brittany'
 
     sayName();
 
-    // Log D: name
+    // Log D: name | 'Brittany'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{C: 'Brittany'}, {A: 'Nathaniel'}, {B: 'Nathaniel'}, {D: 'Brittany'}];
     return result;
 
     // Annotation:
