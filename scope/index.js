@@ -188,31 +188,31 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: dog |1 spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: dog | 2 Spot
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: dog | 3 Biscuit
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: dog | Biscuit
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: dog | 4 Spot
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'Spot'}, {B: 'Spot'}, {C: 'Biscuit'}, {D: 'Biscuit'}, {E: 'Biscuit'}];
     return result;
 
     // Annotation:
@@ -228,21 +228,21 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: fruit | 1 Mango
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: fruit | 2 Mango
       }
 
-      // Log C: fruit
+      // Log C: fruit | 3 Mango
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: fruit | 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 'mango'}, {B: 'mango'}, {C: 'mango'}, {D: 'apple'}];
     return result;
 
     // Annotation:
@@ -255,7 +255,7 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num
+      // Log A: num | 1 4
 
       if (num < 5) {
         const num = 9;
@@ -264,25 +264,25 @@ const scope = {
 
         const newNum = num;
 
-        // Log B: newNum
+        // Log B: newNum 4 | 9
       }
 
       newNum = num;
 
-      // Log C: newNum
+      // Log C: newNum 5 | 4
     };
 
     const fn2 = function(num){
-      // Log D: num
+      // Log D: num | 2 9 
 
       num = num + 1;
 
-      // Log E: num
+      // Log E: num | 3 10
     };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{A: 4}, {D: 9}, {E: 10}, {B: 9}, {C: 4}];
     return result;
 
     // Annotation:
