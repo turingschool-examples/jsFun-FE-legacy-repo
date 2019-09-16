@@ -392,11 +392,20 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0)
+    
+    ;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Starting of with an array and I want a single value back
+    //Goona reach out for a reduce
+    //For every brewery count the length of the beers array
+    //and add it to our accumulator
+    //return the total
   },
 
   getBreweryBeerCount() {
@@ -408,11 +417,16 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((acc, brewery) => {
+      acc.push({name: brewery.name, beerCount: brewery.beers.length});
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Starting with an array of objects and want a single array back
+    //Gonna reach out for a reduce
+    //For every brewery make a new object with the name of the brewery and the number of beers it has
   },
 
   findHighestAbvBeer() {
@@ -420,11 +434,20 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = breweries.sort((brewA, brewB) => {
+      brewA.beers.sort((a,b) => {
+        return b.abv - a.abv;
+      })[0] - brewB.beers.sort((a,b) => {
+        return b.abv - a.abv;
+      })[0];
+    });
+    return result[result.length - 1].beers[0];
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Staring with an array of objects
+    //I only want back a single value
+    //Could use a .find() or a .sort()
+    //
   }
 };
 
