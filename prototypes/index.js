@@ -491,11 +491,24 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      cohorts.forEach(cohort => {
+        if (instructor.module === cohort.module) {
+          return acc.push({name: instructor.name, studentCount: cohort.studentCount});
+        }
+      });
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Starting with an Array of objects
+    //Return an array
+    //Gonna reach out for a reduce
+    //Inside the reduce we iterate through each cohort in the cohorts array
+    //if the module of the instructor matches the module of the cohort
+    //Push the object with the instructors name and the instructos total student count into our object
+    //return that object
   },
 
   studentsPerInstructor() {
@@ -505,11 +518,28 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((acc, cohort) => {
+      let numInstructors = 0;
+      instructors.forEach(instructor => {
+        if (instructor.module === cohort.module) {
+          numInstructors++;
+        }
+      });
+      let cohortNum = `cohort${cohort.cohort}`;
+      let studentsPerTeacher = cohort.studentCount / numInstructors;
+      acc[`${cohortNum}`] = studentsPerTeacher;
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We start with an array of objects
+    // We just want a single object back
+    // We use a reduce and set a var of numInstructors to zeo
+    // We iterate through the cohorts array and if the instructor teaches a particular module intrement our number of instructors
+    // We set the key to a variable
+    // then set the number of students per instructor to a variable
+    // finally we set the key to the cohort number and it's value the result of studentsPerTeacher
   },
 
   modulesPerTeacher() {
@@ -527,7 +557,21 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, instructor) => {
+      if (!acc[instructor.name]) {
+        acc[instructor.name] = [];
+      }
+      cohorts.forEach(cohort => {
+        cohort.curriculum.forEach(subject => {
+          if(instructor.teaches.includes(subject)) {
+            if(!acc[instructor.name].includes(cohort.module)) {
+              acc[instructor.name].push(cohort.module);
+            }
+          }
+        });
+      });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -579,11 +623,32 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = Object.keys(bosses).reduce((acc, vil) => {
+      let loyalty = 0;
+      bosses[vil].sidekicks.forEach(sidekick => {
+        sidekicks.forEach(sKick => {
+          if (sidekick.name === sKick.name) {
+            loyalty += sKick.loyaltyToBoss;
+          }
+        });
+      });
+      acc.push({bossName: bosses[vil].name, sidekickLoyalty: loyalty});
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Have an object of objects
+    // Need single value back, will reach for a reduce
+    // Since we have an object of objects, I will use Object.keys to get an array of the keys to be able to access each key.
+    //We set a loyalty var to zero
+    // We then access a villian and it's sidekicks
+    // For each side kick...
+    // We will iterate through the sidekicks array...
+    // if the sidekicks name matches the side kicks name
+      // add that sidekicks loyalty value to our loyalty variable
+    // We then push an object to our acc with the key of bossName and the value as the bosees name, and another key of sidekickLoyalty and the total value of all the sidekicks loyalty
+    //We then return the result
   }
 };
 

@@ -297,7 +297,7 @@ describe('PROTOTYPES', () => {
   });
   
   describe('Turing Prompts', () => {
-    it.skip('studentsForEachInstructor', () => {
+    it('studentsForEachInstructor', () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
         name: 'Pam',
@@ -329,7 +329,7 @@ describe('PROTOTYPES', () => {
       }]);
     });
     
-    it.skip('studentsPerInstructor', () => {
+    it('studentsPerInstructor', () => {
       const e = turingPrompts.studentsPerInstructor();
       expect(e).to.deep.equal({
         cohort1806: 15,
@@ -339,7 +339,7 @@ describe('PROTOTYPES', () => {
       });
     });
     
-    it.skip('modulesPerTeacher', () => {
+    it('modulesPerTeacher', () => {
       const e = turingPrompts.modulesPerTeacher();
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -373,7 +373,7 @@ describe('PROTOTYPES', () => {
   });
   
   describe('Boss Prompts', () => {
-    it.skip('bossLoyalty', () => {
+    it('bossLoyalty', () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
         bossName: 'Scar',
