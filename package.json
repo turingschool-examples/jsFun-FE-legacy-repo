@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/ --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js",
-    "testPrototypes": "./node_modules/mocha/bin/mocha test/prototype-test.js --watch --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js",
-    "testScope": "./node_modules/mocha/bin/mocha test/scope-test.js --watch --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js",
-    "testContext": "./node_modules/mocha/bin/mocha test/context-test.js --watch --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js"
+    "testPrototypes": "./node_modules/mocha/bin/mocha test/prototype-test.js --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js",
+    "testScope": "./node_modules/mocha/bin/mocha test/scope-test.js --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js",
+    "testContext": "./node_modules/mocha/bin/mocha test/context-test.js --reporter dot --require mocha-clean; ./node_modules/.bin/eslint scope/index.js; ./node_modules/.bin/eslint context/index.js; ./node_modules/.bin/eslint prototypes/index.js"
   },
   "keywords": [
     "js"
