@@ -12,7 +12,8 @@ const {
   cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
-  dinosaurPrompts
+  dinosaurPrompts,
+  nationalParksPrompts
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
@@ -233,7 +234,46 @@ describe("PROTOTYPES", () => {
         capacity: 32
       }])
     })
-  }), describe("Brewery Prompts", () => {
+  }),
+  describe("National Park Prompts", () => {
+    it("getParkVisitList", () => {
+      const e = nationalParksPrompts.getParkVisitList();
+      expect(e).to.deep.equal({
+        parksToVist: [ 'Yellowstone', 'Glacier', 'Everglades' ],
+        parksVisited: [ 'Rocky Mountain', 'Acadia', 'Zion' ]
+      })
+    }),
+    it("getParkActivities", () => {
+      const e = nationalParksPrompts.getParkActivities();
+      expect(e).to.deep.equal(
+      [ 'hiking',
+        'shoeshoing',
+        'camping',
+        'fishing',
+        'boating',
+        'watching wildlife',
+        'cross-country skiing',
+        'swimming',
+        'bird watching',
+        'canyoneering',
+        'backpacking',
+        'rock climbing'
+      ])
+    }),
+    it("getParkInEachState", () => {
+      const e = nationalParksPrompts.getParkInEachState();
+      expect(e).to.deep.equal(
+        [
+          { Colorado: 'Rocky Mountain' },
+          { Wyoming: 'Yellowstone' },
+          { Montana: 'Glacier' },
+          { Maine: 'Acadia' },
+          { Utah: 'Zion' },
+          { Florida: 'Everglades' }
+        ])
+    })
+  }),
+  describe("Brewery Prompts", () => {
     it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40)
@@ -349,17 +389,17 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{ 
+      expect(e).to.deep.equal([{
         name: 'Rigel',
         visualMagnitude: 0.13,
         constellation: 'Orion',
         lightYearsFromEarth: 860,
-        color: 'blue' 
+        color: 'blue'
       }, { name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
-        color: 'red' 
+        color: 'red'
       }])
     }), it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
@@ -501,7 +541,7 @@ describe("PROTOTYPES", () => {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, 
+      },
       {
         name: 'Karin Ohman',
         nationality: 'Chinese',
