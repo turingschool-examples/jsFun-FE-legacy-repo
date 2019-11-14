@@ -312,7 +312,7 @@ const nationalParksPrompts = {
     /// Return an object containing the names of which parks I need to visit
     // and the ones I have already visited eg:
     // {
-    //   parksToVist: ["Yellowstone", "Glacier", "Everglades"],
+    //   parksToVisit: ["Yellowstone", "Glacier", "Everglades"],
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 

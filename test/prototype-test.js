@@ -239,7 +239,7 @@ describe("PROTOTYPES", () => {
     it("getParkVisitList", () => {
       const e = nationalParksPrompts.getParkVisitList();
       expect(e).to.deep.equal({
-        parksToVist: [ 'Yellowstone', 'Glacier', 'Everglades' ],
+        parksToVisit: [ 'Yellowstone', 'Glacier', 'Everglades' ],
         parksVisited: [ 'Rocky Mountain', 'Acadia', 'Zion' ]
       })
     }),
