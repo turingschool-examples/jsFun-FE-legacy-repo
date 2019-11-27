@@ -78,7 +78,6 @@ const kittyPrompts = {
       return kitty.age += 2;
     });
 
-    console.log(kitties);
     const result = kitties;
     return result;
   }
@@ -110,6 +109,20 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
+    //create keys with the name of the member
+    //sort their clubs into an array with their name
+
+    let sortName = clubs.map(club => {
+      return club.members;
+    });
+    let sortClub = clubs.map(club => {
+      return club.club;
+    })
+
+    let simplifyName = sortName.forEach(person => {
+      clubs[person] = sortClub;
+    })
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -146,12 +159,31 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
+    let total, totalPerInstructor;
+    let classList = [];
+    let studentMath = mods.forEach(mod => {
+      total = (mod.students / mod.instructors);
+      totalPerInstructor = {
+        "mod": mod.mod,
+        "studentsPerInstructor": total
+      };
+      classList.push(totalPerInstructor)
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classList;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //For the solution we have to start by looping
+    //over the array of objects and creating a new
+    //variable with the value of the students
+    //divided by the instructors for each object.
+    //Then we create a new object with the new key studentsPerInstructor
+    //and assign it to the new variable.
+    //Finally it wants an array so we push each of those new
+    //objects into an array and return the whole array.
+    //This all happens within thw forEach because the value
+    //for total changes with each object 
   }
 };
 
