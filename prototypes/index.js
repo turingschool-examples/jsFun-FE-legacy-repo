@@ -26,10 +26,11 @@ const kittyPrompts = {
     let orangeKits = kitties.filter(kitty => {
       return kitty.color === 'orange';
     });
-    let orangeNames = (orangeKits => {
-      return kitty.name;
-    });
-    console.log(orangeNames);
+
+    let orangeNames = [];
+    orangeKits.forEach(kitty => {
+      return orangeNames.push(kitty.name)
+    })
     // let orangeNames = orangeKits.name;
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
@@ -37,17 +38,27 @@ const kittyPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // In the first function orangeKits we filter over the array of Kitties,
+    // holding 4 kitty objects. We find the kitties that match our conditional
+    // color === 'orange' and return a new array of the two objects that
+    // match. Next we filter over the new array and forEach element in there
+    // we push the kitty.name into an array and return only the name.
   },
 
   sortByAge() {
     // Sort the kitties by their age
+    let orderKitAge = kitties.sort((a,b) => a.age < b.age ? 1 : -1);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = orderKitAge;
+    console.log(orderKitAge);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // When we use sort() we give it two parameters a and b
+    // we compare a.age to b.age (or the kitty age once we pass in
+    // as the argument) and if age a < b we return 1, which gives
+    // precedence in the array to that object, else we return -1
+    // which does the opposite
   },
 
   growUp() {
