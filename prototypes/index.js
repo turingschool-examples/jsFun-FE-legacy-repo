@@ -50,7 +50,6 @@ const kittyPrompts = {
     let orderKitAge = kitties.sort((a,b) => a.age < b.age ? 1 : -1);
 
     const result = orderKitAge;
-    console.log(orderKitAge);
     return result;
 
     // Annotation:
@@ -75,7 +74,12 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let grownKitts = kitties.map(kitty => {
+      return kitty.age += 2;
+    });
+
+    console.log(kitties);
+    const result = kitties;
     return result;
   }
 };
