@@ -29,8 +29,8 @@ const kittyPrompts = {
 
     let orangeNames = [];
     orangeKits.forEach(kitty => {
-      return orangeNames.push(kitty.name)
-    })
+      return orangeNames.push(kitty.name);
+    });
     // let orangeNames = orangeKits.name;
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
@@ -117,9 +117,9 @@ const clubPrompts = {
         if (!acc[member]) {
           acc[member] = [];
         }
-          acc[member].push(club.club);
-        })
-        return acc;
+        acc[member].push(club.club);
+      });
+      return acc;
     }, {});
 
     const result = sortMember;
@@ -162,10 +162,10 @@ const modPrompts = {
     let studentMath = mods.forEach(mod => {
       total = (mod.students / mod.instructors);
       totalPerInstructor = {
-        "mod": mod.mod,
-        "studentsPerInstructor": total
+        'mod': mod.mod,
+        'studentsPerInstructor': total
       };
-      classList.push(totalPerInstructor)
+      classList.push(totalPerInstructor);
     });
 
     const result = classList;
@@ -223,9 +223,9 @@ const cakePrompts = {
 
     let stockCake = cakes.reduce((accumulator, cake) => {
       let cakeVariety = {
-        "flavor": cake.cakeFlavor,
-        "inStock": cake.inStock
-      }
+        'flavor': cake.cakeFlavor,
+        'inStock': cake.inStock
+      };
       accumulator.push(cakeVariety);
       return accumulator;
     }, []);
@@ -283,7 +283,7 @@ const cakePrompts = {
     let availableCakes = cakes.filter(cake => {
       cake.inStock += total;
       console.log(total);
-      return total
+      return total;
     });
 
 
@@ -306,7 +306,7 @@ const cakePrompts = {
         if(!acc[topping]) {
           acc.topping.push(cake.toppings);
         }
-      })
+      });
       console.log(acc[topping]);
       return acc;
     }, []);
@@ -466,7 +466,7 @@ const nationalParksPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 
