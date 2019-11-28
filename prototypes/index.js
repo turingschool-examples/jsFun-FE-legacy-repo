@@ -404,7 +404,17 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let totalCapacity = classrooms.reduce((acc, program) => {
+      // classroom.forEach(program => {
+      if(!acc[program]) {
+        acc[program] = 0;
+      }
+      acc = acc[program] + acc;
+      console.log(acc);
+      return acc;
+    }, {});
+
+    const result = totalCapacity;
     return result;
 
     // Annotation:
