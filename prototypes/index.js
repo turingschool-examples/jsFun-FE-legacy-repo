@@ -281,18 +281,21 @@ const cakePrompts = {
     // 59
     let total = 0;
     let availableCakes = cakes.filter(cake => {
-      cake.inStock += total;
-      console.log(total);
+      total = cake.inStock + total;
       return total;
     });
 
 
 
-    const result = totalInventory();
+    const result = total;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //I use filter to iterate over each cake object
+    //in the cakes array, and take the inStock value
+    //and assign it to total, and then add it again and
+    //reassign total, until it goes through all the elements.
+    //Then return total amount 
   },
 
   allToppings() {
@@ -301,24 +304,23 @@ const cakePrompts = {
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
     let allToppings = cakes.reduce((acc, cake) => {
-      // console.log(cake.toppings);
       cake.toppings.forEach(topping => {
-        if(!acc[topping]) {
-          acc.topping.push(cake.toppings);
+        if(!acc.includes(topping)) {
+          acc.push(topping);
         }
       });
-      console.log(acc[topping]);
       return acc;
     }, []);
-
-
 
 
     const result = allToppings;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //First check through the toppings array on each cake
+    //and using the conditional see if the acc already contains that
+    //topping, and if not push it into the array created with reduce
+
   },
 
   groceryList() {
@@ -331,6 +333,8 @@ const cakePrompts = {
     //    'berries': 2,
     //    ...etc
     // }
+
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
