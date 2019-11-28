@@ -112,19 +112,20 @@ const clubPrompts = {
     //create keys with the name of the member
     //sort their clubs into an array with their name
 
-    let sortName = clubs.map(club => {
-      return club.members;
-    });
-    let sortClub = clubs.map(club => {
-      return club.club;
-    })
+    let sortMember = clubs.reduce((acc, club) => {
+      club.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [];
+        }
+          acc[member].push(club.club);
+        })
+        return acc;
+    }, {});
 
-    let simplifyName = sortName.forEach(person => {
-      clubs[person] = sortClub;
-    })
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = sortMember;
     return result;
 
     // Annotation:
@@ -183,7 +184,7 @@ const modPrompts = {
     //Finally it wants an array so we push each of those new
     //objects into an array and return the whole array.
     //This all happens within thw forEach because the value
-    //for total changes with each object 
+    //for total changes with each object
   }
 };
 
@@ -214,11 +215,32 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // let cakeList = [];
+    // let stockPerCake = cakes.forEach(cake => {
+    //   let cakeVariety = {
+    //     "flavor": cake.cakeFlavor,
+    //     "inStock": cake.inStock
+    //   }
+    //   cakeList.push(cakeVariety);
+    // });
+
+    let stockCake = cakes.reduce((accumulator, cake) => {
+      let cakeVariety = {
+        "flavor": cake.cakeFlavor,
+        "inStock": cake.inStock
+      }
+      accumulator.push(cakeVariety);
+      return accumulator;
+    }, []);
+
+    const result = stockCake;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A forEach method loops over every object in the cake array.
+    //It creates a new object for each cake with the values of cakeFlavor
+    //and cakeInstock count.
+    //Next we push each new object into an array and return the array.
   },
 
   onlyInStock() {
@@ -242,7 +264,11 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let availableCakes = cakes.filter(cake => {
+      return cake.inStock >= 1;
+    });
+
+    const result = availableCakes;
     return result;
 
     // Annotation:

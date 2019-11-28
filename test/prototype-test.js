@@ -61,7 +61,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+    it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
@@ -105,7 +105,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Cake Prompts", () => {
-    it.skip("stockPerCake", () => {
+    it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
       expect(e).to.deep.equal([{
         flavor: "dark chocolate",
@@ -126,7 +126,7 @@ describe("PROTOTYPES", () => {
         flavor: "honey",
         inStock: 0
       }])
-    }), it.skip("onlyInStock", () => {
+    }), it("onlyInStock", () => {
       const e = cakePrompts.onlyInStock();
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
