@@ -295,7 +295,7 @@ const cakePrompts = {
     //in the cakes array, and take the inStock value
     //and assign it to total, and then add it again and
     //reassign total, until it goes through all the elements.
-    //Then return total amount 
+    //Then return total amount
   },
 
   allToppings() {
@@ -334,13 +334,27 @@ const cakePrompts = {
     //    ...etc
     // }
 
+    let groceryList = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if(!acc[topping]) {
+          acc[topping] = 0;
+        }
+        acc[topping]++;
+      });
+      return acc;
+    }, {});
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = groceryList;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //When going through the cakes array of objects and
+    //looking at the key toppings. Check first if the acc
+    //object already contains a key with the name of that
+    //topping, if not create it and assign it to 0.
+    //Then always increase the number and reassin it by 1
+    //for each time the topping shows up.
   }
 };
 
