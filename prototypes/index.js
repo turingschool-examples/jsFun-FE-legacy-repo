@@ -122,9 +122,6 @@ const clubPrompts = {
         return acc;
     }, {});
 
-
-
-
     const result = sortMember;
     return result;
 
@@ -241,6 +238,7 @@ const cakePrompts = {
     //It creates a new object for each cake with the values of cakeFlavor
     //and cakeInstock count.
     //Next we push each new object into an array and return the array.
+    //update: reformatted to reduce with an array accumulator.
   },
 
   onlyInStock() {
@@ -272,14 +270,25 @@ const cakePrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Using filter, I find all the cakes with an inStock
+    //value greater than or equal to 1. I return only the
+    //cake objects that meet that condition.
+
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
+    let total = 0;
+    let availableCakes = cakes.filter(cake => {
+      cake.inStock += total;
+      console.log(total);
+      return total
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+
+    const result = totalInventory();
     return result;
 
     // Annotation:
@@ -291,7 +300,21 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let allToppings = cakes.reduce((acc, cake) => {
+      // console.log(cake.toppings);
+      cake.toppings.forEach(topping => {
+        if(!acc[topping]) {
+          acc.topping.push(cake.toppings);
+        }
+      })
+      console.log(acc[topping]);
+      return acc;
+    }, []);
+
+
+
+
+    const result = allToppings;
     return result;
 
     // Annotation:
