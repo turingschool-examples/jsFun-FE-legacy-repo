@@ -25,17 +25,34 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    let answer = [];
+
+    let orangeKittens = kitties.filter(kitten => {
+      let orangeKitten = kitten.color === 'orange';
+      return orangeKitten;
+    });
+
+    orangeKittens.forEach(kitty => {
+      answer.push(kitty.name);
+    });
+
+    const result = answer;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // create empty array that will be used to store the names of just the orange kitties
+    // assign a var to a filter method that returns true if kitten.color is orange. assign those elements to a new var orangeKitten,
+    // using forEach, loop through the var assigned to our filter method, and push each name into a new array. 
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = kitties.sort((a, b) => {
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
@@ -56,7 +73,11 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    kitties.forEach(kitty => {
+      kitty.age = kitty.age + 2;
+      return kitties;
+    }); 
+    const result = kitties;
     return result;
   }
 };
@@ -88,7 +109,16 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let groupByName = {};
+    clubs.forEach(group => {
+      group.members.forEach(member => {
+        if (!groupByName[member]) {
+          groupByName[member] = [];
+        }
+        groupByName[member].push(group.club);
+      });
+    });
+    const result =  groupByName;
     return result;
 
     // Annotation:
@@ -124,7 +154,16 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let studentsPerInstructor = [];
+
+    mods.forEach(mod => {
+      let spi = {mod: mod.mod, 
+        studentsPerInstructor: mod.students / mod.instructors
+      };
+      studentsPerInstructor.push(spi);
+    });
+
+    const result = studentsPerInstructor;
     return result;
 
     // Annotation:
@@ -158,8 +197,18 @@ const cakePrompts = {
     //    { flavor: 'yellow', inStock: 14 },
     //    ..etc
     // ]
+    let cakeStock = [];
+    
+ 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    cakes.forEach(cake => {
+      let getCake = { flavor: cake.cakeFlavor, inStock: cake.inStock};
+      cakeStock.push(getCake);
+      return cakeStock;
+    });
+
+    const result = cakeStock;
+    
     return result;
 
     // Annotation:
@@ -186,8 +235,14 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+    let cakesInStock = [];
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    cakes.forEach(cake => {
+      if (cake.inStock) {
+        cakesInStock.push(cake);
+      }
+    });
+    const result = cakesInStock;
     return result;
 
     // Annotation:
@@ -198,7 +253,14 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let totalStockAmount = null;
+    
+    cakes.forEach(cake => {
+      totalStockAmount += cake.inStock;
+    });
+
+
+    const result = totalStockAmount;
     return result;
 
     // Annotation:
@@ -210,7 +272,27 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let allToppings = [];
+
+    cakes.forEach(cake => {
+      allToppings.push(cake.toppings);
+    });
+
+    //pushes each toppings array into allToppings
+
+    let combinedToppings = allToppings.reduce((a, b) => [...a, ...b], []);
+
+    //merges multiple arrays into one
+
+    let noDups = new Set (combinedToppings);
+
+    //removes duplicate items and returns object
+
+    let toppings = [...noDups];
+
+    //turns object back into array
+
+    const result = toppings;
     return result;
 
     // Annotation:
@@ -228,7 +310,30 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    let allToppings = [];
+
+    cakes.forEach(cake => {
+      allToppings.push(cake.toppings);
+    });
+
+    //pushes each toppings array into allToppings
+
+    let combinedToppings = 
+allToppings.reduce((a, b) => [...a, ...b], []);
+    //reduces object into array of toppings, including duplicates
+
+    let toppingQuantity = combinedToppings.reduce(function(acc, item) {
+      acc[item] = (acc[item] || 0) + 1;
+      return acc;
+    }, {});
+
+    // reduces array into object, loops through array to set the keys based on the current value of our accumulator
+    
+
+
+
+    const result = toppingQuantity;
     return result;
 
     // Annotation:
@@ -263,7 +368,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let FEE = classrooms.filter(cohort => {
+      return cohort.program === 'FE';
+    });
+    
+
+    const result = FEE;
     return result;
 
     // Annotation:
@@ -278,7 +388,35 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let FEE = classrooms.filter(cohort => {
+      return cohort.program === 'FE';
+    });
+    
+    let BEE = classrooms.filter(cohort => {
+      return cohort.program === 'BE';
+    });
+    
+    //seperates array into FE and BE
+
+    feCap = 0;
+    beCap = 0;
+    
+    FEE.forEach(cohort => {
+      feCap += cohort.capacity;
+      return feCap;
+    });
+    
+    BEE.forEach(cohort => {
+      beCap += cohort.capacity;
+      return beCap;
+    });
+
+    //returns total capacity of BE and FE programmes.
+
+    let totalCaps = {feCapacity: feCap, beCapacity: beCap};
+    
+
+    const result = totalCaps;
     return result;
 
     // Annotation:
@@ -288,10 +426,14 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let sortByCap = classrooms.sort ((a, b) => {
+      return a.capacity - b.capacity;
+    });
+
+    const result = sortByCap;
     return result;
 
-    // Annotation:
+    // Annotation: use sort method to return in ascending order
     // Write your annotation here as a comment
   }
 };
@@ -316,7 +458,20 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let visited = [];
+    let notVisited = [];
+
+    nationalParks.forEach(park => {
+      if (park.visited === true) {
+        visited.push(park.name);
+      } else {
+        notVisited.push(park.name);
+      }
+    });
+
+    let visitStatus = { parksToVisit: notVisited, parksVisited: visited };
+
+    const result = visitStatus;
     return result;
 
     // Annotation:
@@ -333,7 +488,18 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+ 
+    let allParks = [];
+
+    let parksPerState = nationalParks.reduce((acc, curVal) => {
+      acc[curVal.location] = curVal.name;
+      return acc;
+    }, {});
+
+    allParks.push(parksPerState);
+
+
+    const result = allParks;
     return result;
 
     // Annotation:
@@ -356,13 +522,27 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let activities = [];
+
+    nationalParks.forEach(park => {
+      activities.push(park.activities);
+    });
+
+    let combinedActs = activities.reduce((a, b) => [...a, ...b], []);
+
+    let singular = new Set(combinedActs);
+
+
+    let allActivities = [...singular];
+
+
+    const result = allActivities;
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 
