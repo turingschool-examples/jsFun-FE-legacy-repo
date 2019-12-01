@@ -22,7 +22,7 @@ describe("CONTEXT", () => {
   it("exerciseA", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it.skip("exerciseB", () => {
+  }), it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it.skip("exerciseC", () => {

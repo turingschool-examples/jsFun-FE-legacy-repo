@@ -1,3 +1,14 @@
+//what object global functions are declared on
+//how the invocation of a method changes the value of this
+//when this is set for traditional functions vs. arrow functions
+
+//ANSWERS SHOULD BE
+//'global window object'
+//'nameOfObject'
+//'instance of nameOfClassInstance'
+
+
+
 const context = {
   exerciseA() {
     const fly = () => {
@@ -16,7 +27,7 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
@@ -30,7 +41,7 @@ const context = {
     }
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
     return result;
 
     // Annotation:
