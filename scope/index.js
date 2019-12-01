@@ -91,7 +91,7 @@ const scope = {
     return result;
 
     // Annotation:
-    //The first time we log our number at line 67 the value of number is 
+    //The first time we log our number at line 67 the value of number is
     //75 because the keyword let assigns the number to a value of 75 on line
     //60, and when we log we are still within that first inner function numberFunciton()
     //but not within the third function newNumber so let is scoped to the function were in.
@@ -99,7 +99,7 @@ const scope = {
     //number is assigned to 64. When we log C at line 77 we've run the funciton which reassigns
     //our variable number to the integer of 64. The last log at line 82 is only within the main largest
     //function and the value of number is 30. Let is not global and is declared within the function.
-   },
+  },
 
   exerciseC() {
     let greeting = 'Hello';
@@ -111,28 +111,38 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting = 'yo'
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting = 'hey'
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: greeting = 'hey'
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting = 'hello'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Yo'},
+      {B: 'Hey'},
+      {C: 'Hey'},
+      {D: 'Hello'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Log A is after we declare and run the function greetingFunction() which declares a variable and
+    //assigns it to the string of 'yo', and declares another funciton with a local let key and value.
+    //Log B is within the function newPhrase() which re assigns the value of greeting to 'Hey'.
+    //Log C is after we call the function newPhrase() and because we reassigned the value and the variable is global greeting is still 'Hey'.
+    //Log D is at the end of the exercise outside of all the functions but the big one, so we look up to our variable decleration
+    //and see that greeting is assigned the value of 'Hello' at line 105.
   },
 
   exerciseD() {
@@ -145,28 +155,37 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: greeting = 'hi'
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: greeting = 'welcome'
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: greeting = 'welcome'
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: greeting = 'howdy'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'hi'},
+      {B: 'welcome'},
+      {C: 'welcome'},
+      {D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Log A is after our conditional that locally declares greeting to equal 'welcome', so when we call
+    //log A greeting the interprter looks up to the next global decleration where greeting is assigned to 'hi'.
+    //Log B is within the function newGreeting where greeting is reassigned a value of 'welcome'.
+    //Log c is after we invoke the function newGreeting, so the global variable is given a new value of 'welcome' and can be referenced.
+    //Log D is only inside the main exercise function so the interprter looks to the closest global variable where greeting is declared to 'howdy'.
   },
 
   exerciseE() {
@@ -182,23 +201,33 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: name = nathaniel
       }
 
-      // Log B: name
+      // Log B: name = Nathaniel
     }
 
-    // Log C: name
+    // Log C: name = Brittany
 
     sayName();
 
-    // Log D: name
+    // Log D: name = Brittany
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //Log A we go into the function sayname() where name is declared a value of 'Pam', and then gets into our conditional and reassigns the value to 'Nathaniel'.
+    //Log B we hop out after our conditional that reassigns the value, and because let allows us to reassign, the value of name is still 'Nathaniel'.
+    //Log C is outside the function sayName where we declare our person to have the value of 'Pam', so the interpreter looks to the next global variable,
+    //and on line 192 we assign the value of 'Brittany' to name.
+    //Log D is outside the sayName function, so even though we change the value of name in the sayName funciton, its a local change, and once we're out of it
+    //the value of name becomes 'Brittany'.
   },
 
   exerciseF() {
