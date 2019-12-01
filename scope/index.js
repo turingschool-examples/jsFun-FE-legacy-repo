@@ -61,31 +61,45 @@ const scope = {
 
       if (number === 75) {
         let number = 28;
+        //28 only within this function - let
       }
 
-      // Log A: number
+      // Log A: number = 75
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: number = 64
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: number = 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: number = 30
+    //outside the funcitons again - up to 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75},
+      {B: 64},
+      {C: 64},
+      {D: 30}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  },
+    //The first time we log our number at line 67 the value of number is 
+    //75 because the keyword let assigns the number to a value of 75 on line
+    //60, and when we log we are still within that first inner function numberFunciton()
+    //but not within the third function newNumber so let is scoped to the function were in.
+    //When we log B at line 72 we are within the third function newNumber, where the value of
+    //number is assigned to 64. When we log C at line 77 we've run the funciton which reassigns
+    //our variable number to the integer of 64. The last log at line 82 is only within the main largest
+    //function and the value of number is 30. Let is not global and is declared within the function.
+   },
 
   exerciseC() {
     let greeting = 'Hello';
