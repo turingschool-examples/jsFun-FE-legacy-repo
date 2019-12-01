@@ -11,29 +11,46 @@ const scope = {
       }
 
       function beautifyPerson() {
-        // Log A: personB
-        
+        // Log A: personB = 'Ben'
+
         if (personB.includes('B')) {
-          personB = person;
-          personC = personB;
-          // Log B: personC
+          personB = person; //CardiB
+          personC = personB; //CardiB
+          // Log B: personC //CardiB
         }
       }
 
-      personC = personA;
+      personC = personA; //Paul
 
-      // Log C: personB
+      // Log C: personB //CardiB
     }
 
     changePerson();
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Ben'},
+      {B: 'CardiB'},
+      {C: 'CardiB'},
+      {D: 'Paul'}
+    ];
     return result;
 
+
     // Annotation:
-    // Write your annotation here as a comment
+    //First we declare 3 variables person A, B, & C; and assign them the strings
+    //of 'Paul', 'Ben', and 'Tom' respectively.
+    //When we call the function changePerson () on 28 we move to line 7,
+    //change person has a conditional if personA strictly equals 'Paul', which it
+    //does, so we go into our conditional and declare the variable person to
+    //be assigned to the string 'CardiB'. Then we call a second function beautifyPerson
+    //and move to line 13. The second function has a conditional which states
+    //if personB includes the string 'B' which it does, so we move into our conditional
+    //and reassign personB to the value of person or the string of 'CardiB' and
+    //we reassign the value of personC to equal the value of personB or the string of
+    //'CardiB'. Lastly the variable of personC is reassigned to the value of personA
+    //which is still the string of 'Paul'.
   },
 
   exerciseB() {
@@ -315,7 +332,7 @@ const scope = {
       // Log B: toppings
       var toppings = 'chipotle sauce';
 
-      if (toppings === 'chipotle sauce') { 
+      if (toppings === 'chipotle sauce') {
         sandwich = 'not a mediocre sandwich';
       }
 
@@ -518,7 +535,7 @@ const scope = {
       // Log A: kid
       wildKids.push(kid);
       // Log B: wildKids
-  
+
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
         // Log C: myKid
@@ -556,7 +573,7 @@ const scope = {
       // Log B: myName
 
       let innerFunc = () => {
-        let myName = 'Tesla'; 
+        let myName = 'Tesla';
         // Log C: myName
       };
 
