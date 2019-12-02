@@ -192,7 +192,7 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 29
       }])
-    }), it("totalCapacities", () => {
+    }), it.skip("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -236,7 +236,7 @@ describe("PROTOTYPES", () => {
     })
   }),
   describe("National Park Prompts", () => {
-    it.skip("getParkVisitList", () => {
+    it("getParkVisitList", () => {
       const e = nationalParksPrompts.getParkVisitList();
       expect(e).to.deep.equal({
         parksToVisit: [ 'Yellowstone', 'Glacier', 'Everglades' ],

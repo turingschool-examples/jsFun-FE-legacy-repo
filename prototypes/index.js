@@ -279,15 +279,15 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-    let total = 0;
-    let availableCakes = cakes.filter(cake => {
-      total = cake.inStock + total;
-      return total;
-    });
+    // let total = 0;
+    let availableCakes = cakes.reduce((acc, cake) => {
+      acc = cake.inStock + acc;
+      return acc;
+    }, 0);
 
 
 
-    const result = total;
+    const result = availableCakes;
     return result;
 
     // Annotation:
@@ -451,8 +451,23 @@ const nationalParksPrompts = {
     //   parksToVisit: ["Yellowstone", "Glacier", "Everglades"],
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
+    let sortParks = nationalParks.reduce((acc, park) => {
+      let visited = [];
+      let toVisit = [];
+      if (park.visited) {
+        parksToVisit.push(park.location);
+      } else if (!park.visited) {
+        visited.push(park.location);
+      }
+      acc = {
+        'parksToVisit': toVisit,
+        'parksVisited': visited
+      };
+      console.log(toVisit);
+      return acc;
+    }, {});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = sortParks;
     return result;
 
     // Annotation:
