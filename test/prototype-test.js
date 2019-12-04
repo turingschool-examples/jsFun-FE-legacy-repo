@@ -14,7 +14,8 @@ const {
   ultimaPrompts,
   dinosaurPrompts,
   nationalParksPrompts,
-  weatherPrompts
+  weatherPrompts,
+  bookPrompts,
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
@@ -233,6 +234,33 @@ describe("PROTOTYPES", () => {
         roomLetter: "A",
         program: "FE",
         capacity: 32
+      }])
+    })
+  }),
+  describe("Book prompts", () => {
+    it("removeViolence", () => {
+      const e = bookPrompts.removeViolence();
+      expect(e).to.deep.equal(['1984',
+        'The Great Gatsby',
+        'Lord of the Flies',
+        'Harry Potter and the Sorcerer\'s Stone',
+        'The Hitchhiker\'s Guide to the Galaxy',
+        'Flowers for Algernon',
+        'Slaughterhouse-Five',
+        'The Handmaid\'s Tale',
+        'The Metamorphosis', 'Brave New World',
+        'Life of Pi',
+        'The Curious Incident of the Dog in the Night-Time',
+        'The Bell Jar',
+        'Catch-22',
+        'Treasure Island'])
+    }),
+    it("getNewBooks", () => {
+      const e = bookPrompts.getNewBooks();
+      expect(e).to.deep.equal([{
+        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
+        { title: 'Life of Pi', year: 2001 },
+        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
       }])
     })
   }),
