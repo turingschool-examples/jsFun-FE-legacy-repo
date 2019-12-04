@@ -13,7 +13,9 @@ const {
   astronomyPrompts,
   ultimaPrompts,
   dinosaurPrompts,
-  nationalParksPrompts
+  nationalParksPrompts,
+  weatherPrompts,
+  bookPrompts,
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
@@ -233,6 +235,55 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 32
       }])
+    })
+  }),
+  describe("Book prompts", () => {
+    it("removeViolence", () => {
+      const e = bookPrompts.removeViolence();
+      expect(e).to.deep.equal(['1984',
+        'The Great Gatsby',
+        'Lord of the Flies',
+        'Harry Potter and the Sorcerer\'s Stone',
+        'The Hitchhiker\'s Guide to the Galaxy',
+        'Flowers for Algernon',
+        'Slaughterhouse-Five',
+        'The Handmaid\'s Tale',
+        'The Metamorphosis', 'Brave New World',
+        'Life of Pi',
+        'The Curious Incident of the Dog in the Night-Time',
+        'The Bell Jar',
+        'Catch-22',
+        'Treasure Island'])
+    }),
+    it("getNewBooks", () => {
+      const e = bookPrompts.getNewBooks();
+      expect(e).to.deep.equal([{
+        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
+        { title: 'Life of Pi', year: 2001 },
+        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
+      }])
+    })
+  }),
+  describe("Weather prompts", () => {
+    it("getAverageTemps", () => {
+      const e = weatherPrompts.getAverageTemps();
+      expect(e).to.deep.equal([
+        40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 
+      ])
+    }),
+    it("findSunnySpots", () => {
+      const e = weatherPrompts.findSunnySpots();
+      expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
+      )
+    }),
+    it("findHighestHumidity", () => {
+      const e = weatherPrompts.findHighestHumidity();
+      expect(e).to.deep.equal({
+        location: 'Portland, Oregon',
+        type: 'cloudy',
+        humidity: 84,
+        temperature: { high: 49, low: 38 }
+      })
     })
   }),
   describe("National Park Prompts", () => {
