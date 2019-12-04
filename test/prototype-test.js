@@ -13,7 +13,8 @@ const {
   astronomyPrompts,
   ultimaPrompts,
   dinosaurPrompts,
-  nationalParksPrompts
+  nationalParksPrompts,
+  weatherPrompts
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
@@ -233,6 +234,28 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 32
       }])
+    })
+  }),
+  describe("Weather prompts", () => {
+    it("getAverageTemps", () => {
+      const e = weatherPrompts.getAverageTemps();
+      expect(e).to.deep.equal([
+        40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 
+      ])
+    }),
+    it("findSunnySpots", () => {
+      const e = weatherPrompts.findSunnySpots();
+      expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
+      )
+    }),
+    it("findHighestHumidity", () => {
+      const e = weatherPrompts.findHighestHumidity();
+      expect(e).to.deep.equal({
+        location: 'Portland, Oregon',
+        type: 'cloudy',
+        humidity: 84,
+        temperature: { high: 49, low: 38 }
+      })
     })
   }),
   describe("National Park Prompts", () => {
