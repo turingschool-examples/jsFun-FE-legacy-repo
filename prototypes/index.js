@@ -25,8 +25,15 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+
+    const results = kitties.filter(kitty => {
+    if(kitty.color === "orange") {
+      let newArray = [];
+      newArray.push(kitty.name)
+      return results;
+    }
+  });
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -35,8 +42,9 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const results = kitties.sort(function(a, b){
+      return b.age - a.age;
+    })
 
     // Annotation:
     // Write your annotation here as a comment
@@ -56,9 +64,10 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-  }
+    const ageByTwo = kitties.forEach(kitty => {
+   return kitty.age += 2;
+ });
+}
 };
 
 
@@ -88,7 +97,15 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = clubs.reduce((acc, club) => {
+      club.members.forEach((member) => {
+        acc[member] = [];
+      }
+      acc[member].push(club.club);
+    });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -124,8 +141,11 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = mods.reduce((acc, mod) => {
+
+    acc.push({mod: mod.mod, studentsPerMod: mod.students / mod.instructors});
+    return acc;
+  }, []);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -159,8 +179,10 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+      const result = cakes.reduce((acc, cake) => {
+        acc.push({flavor: cake.cakeFlavor, inStock: cake.inStock});
+        return acc;
+      }, []);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -187,8 +209,12 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+
+    const result = cakes.filter(cake => {
+      if(cake.inStock > 0) {
+        return cake;
+      }
+    });
 
     // Annotation:
     // Write your annotation here as a comment
@@ -198,8 +224,9 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((acc, cake) => {
+      return acc += cake.inStock;
+    }, 0);
 
     // Annotation:
     // Write your annotation here as a comment
@@ -210,9 +237,8 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
+    const results = cakes.map((cake) => {
+      return `${cake.toppings}`;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -263,11 +289,9 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    const result = classrooms.filter(classroom => {
+    return classroom.program === "FE";
+})
   },
 
   totalCapacities() {
@@ -288,12 +312,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
+    const result = classrooms.sort(function(a, b) {
+    return a.capacity - b.capacity;
+});
 };
 
 
@@ -333,8 +354,10 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = nationalParks.reduce((acc, nationalPark) => {
+    acc.push({ [nationalPark.location]: nationalPark.name});
+    return acc;
+    }, []);
 
     // Annotation:
     // Write your annotation here as a comment
