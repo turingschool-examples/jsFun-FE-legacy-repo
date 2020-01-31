@@ -27,8 +27,7 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = kitties.filter(cat => cat.color === "orange")
-      .map(cat => cat.name);
+    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -393,7 +392,7 @@ const weatherPrompts = {
     // Write your annotation here as a comment
 
   }
-}
+};
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -459,7 +458,7 @@ const nationalParksPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 
