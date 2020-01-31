@@ -27,7 +27,8 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(cat => cat.color === "orange")
+      .map(cat => cat.name);
     return result;
 
     // Annotation:
@@ -325,8 +326,8 @@ const bookPrompts = {
 
   },
   getNewBooks() {
-    // return an array of objects containing all books that were 
-    // published in the 90's and 00's. Inlucde the title and the year Eg: 
+    // return an array of objects containing all books that were
+    // published in the 90's and 00's. Inlucde the title and the year Eg:
 
     // [{ title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
     //  { title: 'Life of Pi', year: 2001 },
@@ -338,7 +339,7 @@ const bookPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-  
+
 };
 
 
