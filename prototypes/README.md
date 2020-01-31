@@ -84,6 +84,7 @@ const farmPrompts = {
 }
 ```
 
+Check out [this video](https://vimeo.com/turing/review/388555223/d701e8fdd8) for a demonstration.
 
 # Resources
 
