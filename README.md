@@ -6,6 +6,8 @@ This repo contains practice exercises for fundamental JavaScript concepts includ
 
 **Fork** this repo (do not clone), then clone your forked copy to your machine. `cd` into the directory for the project and run `npm install`.
 
+Check out [this video](https://vimeo.com/turing/review/388545928/baac6f5a2d) if you need help!
+
 ## Running the Tests
 
 To run all tests for all three concepts:
@@ -15,6 +17,7 @@ To run all tests for all three concepts:
 To run the tests for just a *single* concept:
 
 `npm run testContext` or  `npm run testScope` or  `npm run testPrototypes`
+
 
 ## Submission Expectations
 
@@ -46,5 +49,5 @@ Now, whenever instructors tell you to pull down changes, there are two steps:
 1. Make sure you commit and push any changes you have currently made
 2. Run `git pull turing master`
 
-
+Check out [this video](https://vimeo.com/turing/review/388550182/34823726eb) if you need help!
 
