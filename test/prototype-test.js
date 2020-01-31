@@ -268,7 +268,7 @@ describe("PROTOTYPES", () => {
     it("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
       expect(e).to.deep.equal([
-        40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 
+        40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
       ])
     }),
     it("findSunnySpots", () => {

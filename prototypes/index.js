@@ -325,8 +325,8 @@ const bookPrompts = {
 
   },
   getNewBooks() {
-    // return an array of objects containing all books that were 
-    // published in the 90's and 00's. Inlucde the title and the year Eg: 
+    // return an array of objects containing all books that were
+    // published in the 90's and 00's. Inlucde the title and the year Eg:
 
     // [{ title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
     //  { title: 'Life of Pi', year: 2001 },
@@ -338,7 +338,7 @@ const bookPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-  
+
 };
 
 
@@ -392,7 +392,7 @@ const weatherPrompts = {
     // Write your annotation here as a comment
 
   }
-}
+};
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -458,7 +458,7 @@ const nationalParksPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 
