@@ -1,22 +1,19 @@
-const { kitties } = require('./datasets/kitties');
-const { clubs } = require('./datasets/clubs');
-const { mods } = require('./datasets/mods');
-const { cakes } = require('./datasets/cakes');
-const { classrooms } = require('./datasets/classrooms');
-const { breweries } = require('./datasets/breweries');
-const { nationalParks } = require('./datasets/nationalParks');
-const { books } = require('./datasets/books');
-const { weather } = require('./datasets/weather');
-const { instructors, cohorts } = require('./datasets/turing');
-const { bosses, sidekicks } = require('./datasets/bosses');
-const { constellations, stars } = require('./datasets/astronomy');
-const { weapons, characters } = require('./datasets/ultima');
-const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
+/* eslint-disable */
 
-
-
-
-
+const { kitties } = require("./datasets/kitties");
+const { clubs } = require("./datasets/clubs");
+const { mods } = require("./datasets/mods");
+const { cakes } = require("./datasets/cakes");
+const { classrooms } = require("./datasets/classrooms");
+const { breweries } = require("./datasets/breweries");
+const { nationalParks } = require("./datasets/nationalParks");
+const { books } = require("./datasets/books");
+const { weather } = require("./datasets/weather");
+const { instructors, cohorts } = require("./datasets/turing");
+const { bosses, sidekicks } = require("./datasets/bosses");
+const { constellations, stars } = require("./datasets/astronomy");
+const { weapons, characters } = require("./datasets/ultima");
+const { dinosaurs, humans, movies } = require("./datasets/dinosaurs");
 
 // SINGLE DATASETS
 // =================================================================
@@ -24,24 +21,33 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
   orangeKittyNames() {
-
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.reduce((orangeKitties, currentKitty) => {
+      if (currentKitty.color === "orange")
+        orangeKitties.push(currentKitty.name);
+      return orangeKitties;
+    }, []);
+
+    // const result = kitties
+    //   .filter(kitty => kitty.color === "orange")
+    //   .map(kitty => kitty.name);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // An array was provided and required a single return value so I reached for the reduce method. Reduce allowed me to iterate through each element of the starting array and return another array with a specific property value from each object in the starting array. It was a more concise way to filter and map.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => {
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because we were given an array and asked to sort, I reached for the array sort prototype. Sorting via numerical values requires the sort method to utilize a comparison callback. This is accomplished with objects by accessing the value of the key we wish to sort by, in this case the age key. My callback function then compares the value of one element to the value of the next element. Using 1, 0, and -1, the array is sorted one item at a time.
   },
 
   growUp() {
@@ -58,26 +64,21 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      kitty.age += 2;
+      return kitty;
+    });
     return result;
   }
 };
 
-
-
-
-
+// I reached for the map method because I was asked to return a new array of all elements in the current array with an operation performed on each element.
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
@@ -90,29 +91,28 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((clubsByPerson, currentClub) => {
+      currentClub.members.forEach(member => {
+        clubsByPerson[member] = clubsByPerson[member]
+          ? [...clubsByPerson[member], currentClub.club]
+          : [currentClub.club];
+      });
+
+      return clubsByPerson;
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because I am reducing an array to a single value that is not an array, I am utlizing the reduce method as it is the only one that allows me to return a value of a different data type.
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
@@ -126,46 +126,40 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      let ratio = mod.students / mod.instructors;
+      return { mod: mod.mod, studentsPerInstructor: ratio };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I reached for the map method because I am returning a new array using all of the elements from the original array.
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
   stockPerCake() {
-    // Return an array of objects that include just the flavor of the cake and how
-    // much of that cake is in stock e.g.
+    // Return an array of objects that include just the flavor of the cake and how much of that cake is in stock e.g.
     // [
     //    { flavor: 'dark chocolate', inStock: 15 },
     //    { flavor: 'yellow', inStock: 14 },
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(({ cakeFlavor, inStock }) => {
+      return { flavor: cakeFlavor, inStock };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I reached for map because I am returning a new array with the same number of elements as the original array with all elements modified in some way.
   },
 
   onlyInStock() {
@@ -189,22 +183,28 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I reached for the filter method because I am returning a subset of the elements of the original array.
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((total, cake) => {
+      total += cake.inStock;
+      return total;
+    }, 0);
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I reached for the reduce method because I am reducing the array to a single value.
   },
 
   allToppings() {
@@ -212,7 +212,13 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((allToppings, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!allToppings.includes(topping)) allToppings.push(topping);
+      });
+
+      return allToppings;
+    }, []);
     return result;
 
     // Annotation:
@@ -230,7 +236,13 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((shoppingList, cake) => {
+      cake.toppings.forEach(topping => {
+        shoppingList[topping] = shoppingList[topping] + 1 || 1;
+      });
+
+      return shoppingList;
+    }, {});
     return result;
 
     // Annotation:
@@ -238,21 +250,11 @@ const cakePrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
@@ -265,7 +267,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -280,7 +282,7 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -290,7 +292,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -316,13 +318,11 @@ const bookPrompts = {
     //   'The Curious Incident of the Dog in the Night - Time', 'The Bell Jar',
     //   'Catch-22', 'Treasure Island']
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
-
   },
   getNewBooks() {
     // return an array of objects containing all books that were
@@ -332,15 +332,13 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
-
 };
-
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -355,7 +353,7 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -369,7 +367,7 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -385,12 +383,11 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
-
   }
 };
 
@@ -399,7 +396,6 @@ const weatherPrompts = {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
 
 // DATASET: nationalParks from ./datasets/nationalParks
 
@@ -412,7 +408,7 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -428,8 +424,7 @@ const nationalParksPrompts = {
     // { Utah: 'Zion' },
     // { Florida: 'Everglades' } ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -452,7 +447,7 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -460,18 +455,11 @@ const nationalParksPrompts = {
   }
 };
 
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: breweries from ./datasets/breweries
 const breweryPrompts = {
@@ -479,7 +467,7 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -495,7 +483,7 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -507,7 +495,7 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -515,32 +503,17 @@ const breweryPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DOUBLE DATASETS
 // =================================================================
@@ -555,7 +528,7 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -569,7 +542,7 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -591,7 +564,7 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -608,7 +581,7 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -616,21 +589,11 @@ const turingPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
@@ -643,7 +606,7 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -651,21 +614,11 @@ const bossPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
@@ -685,7 +638,7 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -703,7 +656,7 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -724,8 +677,7 @@ const astronomyPrompts = {
     //    "Orion",
     //    "The Little Dipper" ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -733,30 +685,19 @@ const astronomyPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: charaters, weapons from ./datasets/ultima
 const ultimaPrompts = {
   totalDamage() {
-
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -764,33 +705,22 @@ const ultimaPrompts = {
   },
 
   charactersByTotal() {
-
     // Return the sum damage and total range for each character as an object.
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
-  },
+  }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
 const dinosaurPrompts = {
@@ -805,7 +735,7 @@ const dinosaurPrompts = {
     //   'Jurassic World: Fallen Kingdom': 18
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -838,7 +768,7 @@ const dinosaurPrompts = {
       }
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -871,7 +801,7 @@ const dinosaurPrompts = {
       }]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -894,7 +824,7 @@ const dinosaurPrompts = {
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
