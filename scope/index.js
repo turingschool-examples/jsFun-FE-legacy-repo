@@ -26,14 +26,43 @@ const scope = {
     }
 
     changePerson();
-
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Ben' },
+      { B: 'CardiB' },
+      { C: 'CardiB' },
+      { D: 'Paul' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    1. The excersizes are hoised and allocated during the global context.
+    2. When excersizeA is then invoked a new creation phase Starts
+    2.1 personA,personB,personC is then defined
+    2.2 changePerson() is defined
+    3. Execution phase is created for the excersize execution contex.
+    3.1 personA,B,C are assigned to Paul,Ben,Tom
+    3.2 changePerson() is invoked
+    3.2.1 creation phase of changePerson
+    3.2.2 execution phase of changePerson is started
+    3.2.2.1 check the if statement: personA is equal to Paul so the inside of the block is run
+    3.2.2.2 person is declared and set to CardiB
+    3.2.2.3 beautifyPerson() is invoked
+    3.2.2.3.1 beautifyPerson Creation phase
+    3.2.2.3.2 beautifyPerson Execution phase
+    3.2.2.3.2.1 Log A: personB at this time is: Ben
+    3.2.2.3.2.2 PersonB does include a B if Block is run
+    3.2.2.3.2.2.1 personB is set to person IE CardiB
+    3.2.2.3.2.2.2 personC is set to person B IE CardiB
+    3.2.2.3.2.2.3 Log B: is equal to cardiB
+    3.2.2.3.3 beautifyPerson completes removed from stack
+    3.2.2.4 if block is removed from stack
+    3.2.3 person C is set equal to person A => Person C is now equal to Paul
+    3.3 log C is equal to CardiB
+    3.4 log D is equal to Paul
+    */
   },
 
   exerciseB() {
@@ -63,11 +92,36 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 75 },
+      { B: 64 },
+      { C: 64 },
+      { D: 30 }
+    ];
     return result;
 
-    // Annotation:
-    // Write your annotation here as a comment
+    /* Annotation:
+    - excersizeB is invoked:
+      creation phase:
+        - during the creation phase number is declared
+        - numberFunction() is defined
+      execution phase:
+        - number is assigned to 30;
+        - numberFunction() is invoked
+        numberFunction()
+          - a new variable number is declared in creation then assigned to 75;
+          if() 
+            - if block checks to see if number(in the context of the current Execution IE numberFunction)
+            - this resolves to true so then a new number is defined and assigned 28.
+            - if block finishes number in the numberFunctionContext is still 75
+          - log A : 75
+          newNumber()
+            - invoked
+            - number(numberFunction Context) is then assigned to 64
+            - log B: 64
+          log C: 64 
+        log D: 30 <- number here references the
+    */
   },
 
   exerciseC() {
@@ -97,11 +151,30 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'Yo' },
+      { B: 'Hey' },
+      { C: 'Hey' },
+      { D: 'Hello' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    First excerciseC() is invoked
+    we declare greeting to be 'Hello'
+    Next greetingFunction() is invoked
+      var - a new functionally scoped variable greeting is declared and assigned 'Yo'
+      if() conditional is evaluated to true since greeting(functional Scoped) is Yo
+        - block scoped variable greeting is created to 'Howdy'
+      - Log A: Yo <- yo is returned since the scope is within the function
+      newPhrase()
+        - the functionally scoped greeting is assigned to Hey
+        - Log B: Hey
+      - Log C: Functionally scoped greeting is Hey
+    -Log D: 'Hello'
+
+    */
   },
 
   exerciseD() {
@@ -131,11 +204,29 @@ const scope = {
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      { A: 'hi' },
+      { B: 'welcome' },
+      { C: 'welcome' },
+      { D: 'howdy' }
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    excersizeD() is invoked
+    - functionally scoped excersize greeting is assigned to howdy
+      greetingGenerator() is invoked
+        - new functionally scoped greeting is assigned 'hi'
+        if() evaluates true
+          - block scoped greeting is assigned hello
+        - Log A: 'hi'
+        newGreeting() invoked
+          - functionally scoped greeting in greetingGenerator is assigned to welcome
+          - log B: 'welcome'
+        - log C: 'welcome'
+      - log D: 'howdy' 
+    */
   },
 
   exerciseE() {

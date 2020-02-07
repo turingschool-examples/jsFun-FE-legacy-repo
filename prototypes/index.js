@@ -27,21 +27,23 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let orangeKittens = kitties.filter(kitten => kitten.color === 'orange');
+    let kittenNames = orangeKittens.map(kitten => kitten =kitten.name);
+    const result = kittenNames;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are using filter to find all the kitten objects then use map to reduce it to just the names
   },
 
   sortByAge() {
     // Sort the kitties by their age
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let sortedKittens = kitties.sort((a,b)=>  b.age - a.age);
+    const result = sortedKittens;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We can use the sort prototype to sort the objects in the array.
   },
 
   growUp() {
@@ -57,9 +59,12 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    kitties.forEach((kitten) => kitten.age+=2);
+    const result = kitties;
     return result;
+
+    // Annotation:
+    // We can use a forEach here since we are modifying all of the items.
   }
 };
 
@@ -90,11 +95,21 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let resultant = clubs.reduce(function(acc,club){
+      club.members.forEach(function(person){
+        if(!acc[person]){
+          acc[person] = [];
+        }
+        acc[person].push(club.club);
+      })
+      return acc;
+    },{});
+
+    const result = resultant;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // A reduce function is easy enough to use to create a custom resultant.
   }
 };
 
@@ -126,7 +141,9 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let resultant = mods.map(element => element =  {mod:element.mod,studentsPerInstructor: element.students/element.instructors})
+
+    const result = resultant;
     return result;
 
     // Annotation:
@@ -161,7 +178,8 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let newCakeArray = cakes.map(element => element = {flavor:element.cakeFlavor,inStock:element.inStock})
+    const result = newCakeArray;
     return result;
 
     // Annotation:
@@ -188,19 +206,23 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    inStock = ()=>{
+      return cakes.filter((cake)=>cake.inStock>0);
+    }
+    const result = inStock();
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // we should be able to use a filter to find the items that have stock
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    totalStocks = ()=>{
+      
+    }
+    const result = totalStock;
     return result;
 
     // Annotation:

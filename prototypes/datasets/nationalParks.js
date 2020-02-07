@@ -1,70 +1,70 @@
 const nationalParks = [
   {
-    name: "Rocky Mountain",
+    name: 'Rocky Mountain',
     visited: true,
-    location: "Colorado",
+    location: 'Colorado',
     activities: [
-      "hiking",
-      "shoeshoing",
-      "camping",
-      "fishing"
+      'hiking',
+      'shoeshoing',
+      'camping',
+      'fishing'
     ]
   },
   {
-    name: "Yellowstone",
+    name: 'Yellowstone',
     visited: false,
-    location: "Wyoming",
-     activities: [
-      "hiking",
-      "boating",
-      "watching wildlife",
+    location: 'Wyoming',
+    activities: [
+      'hiking',
+      'boating',
+      'watching wildlife',
     ],
   },
   {
-    name: "Glacier",
+    name: 'Glacier',
     visited: false,
-    location: "Montana",
-     activities: [
-      "hiking",
-      "boating",
-      "cross-country skiing",
+    location: 'Montana',
+    activities: [
+      'hiking',
+      'boating',
+      'cross-country skiing',
     ],
   },
   {
-    name: "Acadia",
+    name: 'Acadia',
     visited: true,
-    location: "Maine",
-     activities: [
-      "hiking",
-      "fishing",
-      "swimming",
-      "bird watching"
+    location: 'Maine',
+    activities: [
+      'hiking',
+      'fishing',
+      'swimming',
+      'bird watching'
     ],
   },
   {
-    name: "Zion",
+    name: 'Zion',
     visited: true,
-    location: "Utah",
-     activities: [
-      "hiking",
-      "canyoneering",
-      "backpacking",
-      "rock climbing"
+    location: 'Utah',
+    activities: [
+      'hiking',
+      'canyoneering',
+      'backpacking',
+      'rock climbing'
     ],
   },
   {
-    name: "Everglades",
+    name: 'Everglades',
     visited: false,
-    location: "Florida",
-     activities: [
-      "hiking",
-      "boating",
-      "fishing",
-      "bird watching"
+    location: 'Florida',
+    activities: [
+      'hiking',
+      'boating',
+      'fishing',
+      'bird watching'
     ],
   }
 ];
 
 module.exports = {
   nationalParks
-}
+};

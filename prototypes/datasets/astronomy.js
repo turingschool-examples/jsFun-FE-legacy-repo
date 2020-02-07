@@ -96,4 +96,4 @@ const stars = [
 module.exports = {
   constellations,
   stars
-}
+};
