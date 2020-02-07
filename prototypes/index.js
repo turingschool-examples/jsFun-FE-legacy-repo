@@ -101,7 +101,7 @@ const clubPrompts = {
           acc[person] = [];
         }
         acc[person].push(club.club);
-      })
+      });
       return acc;
     },{});
 
@@ -141,7 +141,7 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    let resultant = mods.map(element => element =  {mod:element.mod,studentsPerInstructor: element.students/element.instructors})
+    let resultant = mods.map(element => element =  {mod:element.mod,studentsPerInstructor: element.students/element.instructors});
 
     const result = resultant;
     return result;
@@ -178,7 +178,7 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    let newCakeArray = cakes.map(element => element = {flavor:element.cakeFlavor,inStock:element.inStock})
+    let newCakeArray = cakes.map(element => element = {flavor:element.cakeFlavor,inStock:element.inStock});
     const result = newCakeArray;
     return result;
 
@@ -208,7 +208,7 @@ const cakePrompts = {
     // ]
     inStock = ()=>{
       return cakes.filter((cake)=>cake.inStock>0);
-    }
+    };
     const result = inStock();
     return result;
 
@@ -219,10 +219,10 @@ const cakePrompts = {
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
-    totalStocks = ()=>{
-      
-    }
-    const result = totalStock;
+    let totalStock = ()=>{
+      return cakes.reduce((acc,cake)=>{return acc +=cake.inStock;},0);
+    };
+    const result = totalStock();
     return result;
 
     // Annotation:
@@ -233,8 +233,17 @@ const cakePrompts = {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let uniqueToppings  = () =>{
+      return cakes.reduce((acc,cake)=>{
+        cake.toppings.forEach(element => {
+          if(!acc.includes(element)){
+            acc.push(element);
+          }
+        });
+        return acc;
+      },[]);
+    };
+    const result = uniqueToppings();
     return result;
 
     // Annotation:
@@ -251,8 +260,15 @@ const cakePrompts = {
     //    'berries': 2,
     //    ...etc
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let shoppingList = ()=>{
+      return cakes.reduce((acc,cake)=>{
+        cake.toppings.forEach((element => {
+          acc[element] = acc[element] ? acc[element] +=1:acc[element] =1;
+        }));
+        return acc;
+      },{});
+    };
+    const result = shoppingList();
     return result;
 
     // Annotation:
