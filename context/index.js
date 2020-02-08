@@ -289,7 +289,7 @@ const context = {
   },
 
   exerciseO() {
-    const button = document.querySelector('#submit');
+    const button = document.getElementById('submit');
 
     button.addEventListener('click', () => {
       console.log(this);
