@@ -302,8 +302,10 @@ const classPrompts = {
     //   { roomLetter: 'E', program: 'FE', capacity: 22 },
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let frontEndClasses = classrooms.filter((room)=>{
+      return room.program === 'FE';
+    });
+    const result = frontEndClasses;
     return result;
 
     // Annotation:
@@ -318,7 +320,14 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc,room)=>{
+      if(room.program === 'FE'){
+        acc.feCapacity +=room.capacity;
+      }else{
+        acc.beCapacity +=room.capacity;
+      }
+      return acc;
+    },{feCapacity:0,beCapacity:0});
     return result;
 
     // Annotation:
@@ -328,7 +337,9 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b)=>{
+      return a.capacity - b.capacity;
+    });
     return result;
 
     // Annotation:
@@ -355,7 +366,10 @@ const bookPrompts = {
     //   'Catch-22', 'Treasure Island']
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((acc,book)=>{
+      if(book.genre!='Horror' && book.genre!='True Crime'){acc.push(book.title);}
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
@@ -370,7 +384,12 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((acc,book)=>{
+      if(book.published<2010 && book.published>=1990){
+        acc.push({title:book.title,year:book.published});
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
@@ -393,7 +412,10 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.map(weatherStation=> {
+      let weatherTemp =weatherStation.temperature;
+      return (weatherTemp.high + weatherTemp.low)/2;
+    });
     return result;
 
     // Annotation:
@@ -406,8 +428,12 @@ const weatherPrompts = {
     // [ 'Atlanta, Georgia is sunny.',
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((acc,weatherStation)=>{
+      if(weatherStation.type.includes('sunny')){
+        acc.push(`${weatherStation.location} is ${weatherStation.type}.`);
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
@@ -423,7 +449,12 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((acc,weatherStation)=>{
+      if(acc.humidity < weatherStation.humidity){
+        acc = weatherStation;
+      }
+      return acc;
+    });
     return result;
 
     // Annotation:
@@ -450,7 +481,12 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    
+
+    const result = nationalParks.reduce((acc,park)=>{
+      !park.visited? acc.parksToVisit.push(park.name) : acc.parksVisited.push(park.name);
+      return acc;
+    },{parksToVisit:[],parksVisited:[]});
     return result;
 
     // Annotation:
@@ -467,7 +503,7 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.map(park=> {return {[park.location]:park.name};});
     return result;
 
     // Annotation:
@@ -490,7 +526,14 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc,park)=>{
+      park.activities.forEach(element =>{
+        if(!acc.includes(element)){
+          acc.push(element);
+        }
+      });
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
@@ -593,7 +636,13 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor=>{
+      let cohortObj = cohorts.find(cohort => {
+        return cohort.module === instructor.module;
+      })
+
+      return {name:instructor.name , studentCount:cohortObj.studentCount}
+    })
     return result;
 
     // Annotation:
@@ -607,7 +656,13 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  cohorts.reduce((acc,cohort) =>{
+      let numInstructors = instructors.filter(instructor =>{
+        return cohort.module === instructor.module;
+      }).length;
+      acc[`cohort${cohort.cohort}`] = cohort.studentCount/numInstructors;
+      return acc;
+    },{})
     return result;
 
     // Annotation:
@@ -629,11 +684,23 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((teacherList,instructor) => {
+      cohorts.forEach((cohort) => {
+        const found = instructor.teaches.some(topic => cohort.curriculum.indexOf(topic) >= 0);
+        if(found){
+          (teacherList[instructor.name] = teacherList[instructor.name] || []).push(cohort.module);
+        }
+      })
+      return teacherList;
+    },{})
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // Iterate through names with reduce
+    //then inside iterate through cohorts and compare teaches with curriculum
+    // use const found = arr1.some(r=> arr2.indexOf(r) >= 0)
+    // 
   },
 
   curriculumPerTeacher() {

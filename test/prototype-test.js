@@ -175,7 +175,7 @@ describe('PROTOTYPES', () => {
       });
     });
   }), describe('Class Prompts', () => {
-    it.skip('feClassrooms', () => {
+    it('feClassrooms', () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: 'A',
@@ -194,13 +194,13 @@ describe('PROTOTYPES', () => {
         program: 'FE',
         capacity: 29
       }]);
-    }), it.skip('totalCapacities', () => {
+    }), it('totalCapacities', () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
       });
-    }), it.skip('sortByCapacity', () => {
+    }), it('sortByCapacity', () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: 'H',
@@ -238,7 +238,7 @@ describe('PROTOTYPES', () => {
     });
   }),
   describe('Book prompts', () => {
-    it.skip('removeViolence', () => {
+    it('removeViolence', () => {
       const e = bookPrompts.removeViolence();
       expect(e).to.deep.equal(['1984',
         'The Great Gatsby',
@@ -255,7 +255,7 @@ describe('PROTOTYPES', () => {
         'Catch-22',
         'Treasure Island']);
     }),
-    it.skip('getNewBooks', () => {
+    it('getNewBooks', () => {
       const e = bookPrompts.getNewBooks();
       expect(e).to.deep.equal([{
         title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
@@ -265,7 +265,7 @@ describe('PROTOTYPES', () => {
     });
   }),
   describe('Weather prompts', () => {
-    it.skip('getAverageTemps', () => {
+    it('getAverageTemps', () => {
       const e = weatherPrompts.getAverageTemps();
       expect(e).to.deep.equal([
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
@@ -276,7 +276,7 @@ describe('PROTOTYPES', () => {
       expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
       );
     }),
-    it.skip('findHighestHumidity', () => {
+    it('findHighestHumidity', () => {
       const e = weatherPrompts.findHighestHumidity();
       expect(e).to.deep.equal({
         location: 'Portland, Oregon',
@@ -287,14 +287,14 @@ describe('PROTOTYPES', () => {
     });
   }),
   describe('National Park Prompts', () => {
-    it.skip('getParkVisitList', () => {
+    it('getParkVisitList', () => {
       const e = nationalParksPrompts.getParkVisitList();
       expect(e).to.deep.equal({
         parksToVisit: [ 'Yellowstone', 'Glacier', 'Everglades' ],
         parksVisited: [ 'Rocky Mountain', 'Acadia', 'Zion' ]
       });
     }),
-    it.skip('getParkActivities', () => {
+    it('getParkActivities', () => {
       const e = nationalParksPrompts.getParkActivities();
       expect(e).to.deep.equal(
         [ 'hiking',
@@ -311,7 +311,7 @@ describe('PROTOTYPES', () => {
           'rock climbing'
         ]);
     }),
-    it.skip('getParkInEachState', () => {
+    it('getParkInEachState', () => {
       const e = nationalParksPrompts.getParkInEachState();
       expect(e).to.deep.equal(
         [
@@ -356,7 +356,7 @@ describe('PROTOTYPES', () => {
       });
     });
   }), describe('Turing Prompts', () => {
-    it.skip('studentsForEachInstructor', () => {
+    it('studentsForEachInstructor', () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
         name: 'Pam',
@@ -386,7 +386,7 @@ describe('PROTOTYPES', () => {
         name: 'Will',
         studentCount: 20
       }]);
-    }), it.skip('studentsPerInstructor', () => {
+    }), it('studentsPerInstructor', () => {
       const e = turingPrompts.studentsPerInstructor();
       expect(e).to.deep.equal({
         cohort1806: 15,
@@ -394,7 +394,7 @@ describe('PROTOTYPES', () => {
         cohort1803: 10,
         cohort1801: 9
       });
-    }), it.skip('modulesPerTeacher', () => {
+    }), it('modulesPerTeacher', () => {
       const e = turingPrompts.modulesPerTeacher();
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -407,7 +407,7 @@ describe('PROTOTYPES', () => {
         Christie: [1, 2, 3, 4],
         Will: [1, 2, 3, 4]
       });
-    }), it.skip('curriculumPerTeacher', () => {
+    }), it('curriculumPerTeacher', () => {
       const e = turingPrompts.curriculumPerTeacher();
       expect(e).to.deep.equal({
         html: ['Travis', 'Louisa'],
