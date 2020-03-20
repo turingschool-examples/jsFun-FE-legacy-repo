@@ -18,15 +18,6 @@ To run the tests for just a *single* concept:
 
 `npm run testContext` or  `npm run testScope` or  `npm run testPrototypes`
 
-
-## Submission Expectations
-
-The cohort will be split up into JS Fun teams. Each team will pick a name, and be collectively responsible for doing a certain number of JS Fun exercises each week.
-
-You'll be expected to push up your completed JS Fun exercises **every Thursday by 6pm** for submission. Instructors will check the amounts each student has done, and update team counts every Friday morning. The team with the most JS Fun exercises completed by week five will get to pick a breakfast or party-snack for the class, which the instructors will bring in during week 6.
-
-In the event of a tie, the winning team will be decided by a live coding showdown on Friday of Week 5.
-
 ## Pulling Down Repo Changes
 
 You have now cloned your forked version of JSFun to your machine. As instructors make changes to the repo (adding exercises, fixing tests, changing problems, etc.) you'll need to pull down those changes. In order to do so, we must link your copy of JSFun on your machine to the Turing github version by adding a new remote repository.
