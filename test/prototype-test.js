@@ -1,6 +1,6 @@
 const chai = require("chai");
 const expect = chai.expect;
-
+eslint-disable
 const {
   breweryPrompts,
   turingPrompts,
@@ -42,7 +42,7 @@ describe("PROTOTYPES", () => {
         age: 1,
         color: "tuxedo"
       }])
-    }), it("growUp", () => {
+    }), it.only("growUp", () => {
       const e = kittyPrompts.growUp();
       expect(e).to.deep.equal([{
         name: "Snickers",

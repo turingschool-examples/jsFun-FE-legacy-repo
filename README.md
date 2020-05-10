@@ -22,7 +22,7 @@ To run the tests for just a *single* concept:
 
 You have now cloned your forked version of JSFun to your machine. As instructors make changes to the repo (adding exercises, fixing tests, changing problems, etc.) you'll need to pull down those changes. In order to do so, we must link your copy of JSFun on your machine to the Turing github version by adding a new remote repository.
 
-In your terminal, from within the root of your JSFun project directory, run:
+In your terminal, from within the root of your JSFun project direct ory, run:
 
 `git remote add turing https://github.com/turingschool-examples/jsFun.git`
 
@@ -41,4 +41,3 @@ Now, whenever instructors tell you to pull down changes, there are two steps:
 2. Run `git pull turing master`
 
 Check out [this video](https://vimeo.com/turing/review/388550182/34823726eb) if you need help!
-
