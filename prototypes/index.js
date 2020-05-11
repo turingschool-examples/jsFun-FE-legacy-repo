@@ -61,12 +61,9 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-    const result = kittyPrompts.sortByAge().map(function(kitty) {
-      return {
-        name : kitty.name,
-        age: kitty.age +2,
-        color: kitty.color
-      };
+    const result = this.sortByAge().map(kitty => {
+      kitty.age += 2;
+      return kitty;
     });
     return result;
   }
@@ -175,7 +172,12 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      };
+    });
     return result;
 
     // Annotation:
@@ -203,7 +205,7 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => cake.inStock > 0);
     return result;
 
     // Annotation:
@@ -214,8 +216,8 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((acc, cake) => ({inStock: acc.inStock + cake.inStock}));
+    return result.inStock;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -226,7 +228,11 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = [];
+    cakes.forEach(cake => cake.toppings.forEach(topping => {
+      if(!result.includes(topping))
+        result.push(topping);
+    }));
     return result;
 
     // Annotation:
@@ -244,7 +250,10 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = {};
+    cakes.forEach(cake => cake.toppings.forEach(topping => {
+      result[topping] = !result[topping] ? 1 : result[topping] + 1;
+    }));
     return result;
 
     // Annotation:
@@ -279,7 +288,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE');
     return result;
 
     // Annotation:
@@ -293,8 +302,13 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = {};
+    let feTotal = this.feClassrooms().reduce((acc, classroom) =>
+      ({capacity : acc.capacity + classroom.capacity}));
+    result['feCapacity'] = feTotal.capacity;
+    let beTotal = classrooms.filter(classroom =>classroom.program === 'BE')
+      .reduce((acc, classroom) => ({capacity : acc.capacity + classroom.capacity}));
+    result['beCapacity'] = beTotal.capacity;
     return result;
 
     // Annotation:
@@ -304,7 +318,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
@@ -331,7 +345,7 @@ const bookPrompts = {
     //   'Catch-22', 'Treasure Island']
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.filter(book => book.genre !== 'Horror' && book.genre !== 'True Crime').map(book => book.title);
     return result;
 
     // Annotation:
@@ -346,7 +360,12 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.filter(book => book.published > 1989).map(book => {
+      return {
+        title : book.title,
+        year : book.published
+      };
+    });
     return result;
 
     // Annotation:
