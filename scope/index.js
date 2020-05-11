@@ -29,12 +29,18 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'Ben'},
+			{ 'B': 'CardiB'},
+			{ 'C': 'CardiB'},
+			{ 'D': 'Paul'}
+		];
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   },
+
 
   exerciseB() {
     let number = 30;

@@ -19,25 +19,37 @@ chai.use(function(e, t) {
 });
 
 describe("CONTEXT", () => {
-  it("exerciseA", () => {
+  it.only("exerciseA", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseB", () => {
+	}),
+	
+	it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseC", () => {
+	}),
+	
+	it("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseD", () => {
+	}),
+	
+	it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseE", () => {
+	}),
+	
+	it("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseF", () => {
+	}),
+	
+	it("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseG", () => {
+	}),
+	
+	it("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   }), it("exerciseH", () => {

@@ -9,7 +9,7 @@ chai.use(function(e, t) {
 })
 
 describe("SCOPE", () => {
-  it("exerciseA", () => {
+  it.only("exerciseA", () => {
     const e = JSON.stringify(scope.exerciseA()) == JSON.stringify([{
       A: "Ben"
     }, {
@@ -20,7 +20,9 @@ describe("SCOPE", () => {
       D: "Paul"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it("exerciseB", () => {
+	}),
+	
+	it("exerciseB", () => {
     const e = JSON.stringify(scope.exerciseB()) == JSON.stringify([{
       A: 75
     }, {
@@ -31,7 +33,9 @@ describe("SCOPE", () => {
       D: 30
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it("exerciseC", () => {
+	}),
+	
+	it("exerciseC", () => {
     const e = JSON.stringify(scope.exerciseC()) == JSON.stringify([{
       A: "Yo"
     }, {
@@ -42,7 +46,9 @@ describe("SCOPE", () => {
       D: "Hello"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it("exerciseD", () => {
+	}),
+	
+	it("exerciseD", () => {
     const e = JSON.stringify(scope.exerciseD()) == JSON.stringify([{
       A: "hi"
     }, {
@@ -53,7 +59,9 @@ describe("SCOPE", () => {
       D: "howdy"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it("exerciseE", () => {
+	}),
+	
+	it("exerciseE", () => {
     const e = JSON.stringify(scope.exerciseE()) == JSON.stringify([{
       C: "Brittany"
     }, {
@@ -64,7 +72,9 @@ describe("SCOPE", () => {
       D: "Brittany"
     }]);
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
-  }), it("exerciseF", () => {
+	}),
+	
+	it("exerciseF", () => {
     const e = JSON.stringify(scope.exerciseF()) == JSON.stringify([{
       A: "Spot"
     }, {

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -14,20 +16,20 @@ const { weapons, characters } = require('./datasets/ultima');
 const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
-
-
-
-
 // SINGLE DATASETS
 // =================================================================
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
   orangeKittyNames() {
-
     // Return an array of just the names of kitties who are orange e.g.
-    // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+		// ['Tiger', 'Snickers']
+		const result = kitties.reduce((acc, kitty) => {
+			if (kitty.color === 'orange') {
+				acc.push(kitty.name);
+			}
+			return acc;
+		}, []);
     return result;
 
     // Annotation:
@@ -37,7 +39,7 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a, b) => b.age - a.age);
     return result;
 
     // Annotation:
@@ -56,28 +58,21 @@ const kittyPrompts = {
     //   age: 7,
     //   color: 'orange'
     // },
-    // ...etc]
+		// ...etc]
+		
+		let growCat = kitties.map(cat => {
+			cat.age += 2;
+			return cat;
+		})
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = growCat.sort((a, b) => b.age - a.age);
     return result;
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
@@ -88,31 +83,35 @@ const clubPrompts = {
     //   Louisa: ['Drama', 'Art'],
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
-    // }
+		// }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+		const result = () => {
+			return clubs.reduce((acc, club) => {
+				club.members.forEach(member => {
+					if (!acc[member]) {
+						acc[member] = [];
+						acc[member].push(club.club);
+					} else {
+						acc[member].push(club.club);
+					}
+				})
+				return acc;
+			}, {})
+		}
+    return result();
 
-    // Annotation:
+		// Annotation:
+			// empty obj
+			// key names = person name
+			// key values = array of club memberships
+
     // Write your annotation here as a comment
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
@@ -126,7 +125,12 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+			return {
+				'mod': mod.mod,
+				'studentsPerInstructor': mod.students / mod.instructors
+			}
+		});
     return result;
 
     // Annotation:
@@ -134,21 +138,9 @@ const modPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
@@ -161,11 +153,16 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+			return {
+				'flavor': cake.cakeFlavor,
+				'inStock': cake.inStock
+			}
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // .map, set new keys for each obj in the array
   },
 
   onlyInStock() {
@@ -189,22 +186,32 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+			return cake.inStock > 0
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// cycle thru cakes array
+		// only return cake obj's w/ inStock key > 0
+		// FILTER() !
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((total, number) => {
+			total += number.inStock;
+			return total;
+		}, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// cycle through cake array
+		// count inStock value on each obj
+		// return total value
+		// REDUCE() !
   },
 
   allToppings() {
@@ -212,11 +219,22 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((accu, cake) => {
+		    cake.toppings.forEach(topping => {
+					if (!accu.includes(topping)) {
+						accu.push(topping);
+					}
+				});
+				return accu
+			}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return 1 array of toppings in the cake obj's
+		// no duplicates (if statement)
+		// use REDUCE()
+		// in each cake obj, check toppings array if accu array contains the same value
+
   },
 
   groceryList() {
@@ -230,29 +248,27 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((accu, cake) => {
+			cake.toppings.forEach(topping => {
+				if (!accu[topping]) {
+					accu[topping] = 0;
+				}
+				accu[topping] += 1;
+			});
+			return accu
+		}, {});
+		return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// REDUCE()
+		// give 1 obj, key for each topping
+		// value for quantity of each
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
@@ -265,11 +281,14 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => {
+			return classroom.program === 'FE';
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return array w/ only FE program's
+		// FILTER()
   },
 
   totalCapacities() {
@@ -280,26 +299,32 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((accu, classroom) => {
+			classroom.program === 'FE' ?
+				accu.feCapacity += classroom.capacity :
+				accu.beCapacity += classroom.capacity
+			return accu;
+		}, { 'feCapacity': 0, 'beCapacity': 0 });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return 1 obj
+		// key feCapacity = total capacity from all FE obj
+		// key beCapacity = total capacity from all BE obj
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// .sort() will sort an array in ascending or descending order
+		// sort by a specific property value by accessing it w/ . notation
   }
 };
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -317,11 +342,17 @@ const bookPrompts = {
     //   'Catch-22', 'Treasure Island']
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((accu, book) => {
+			if (book.genre !== 'Horror' && book.genre !== 'True Crime') {
+				accu.push(book.title)
+			}
+			return accu;
+		}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// reduce() b/c returning array w/ certain qualities
+		// return book.title of books !book.genre === 'Horror' || !book.genre === 'True Crime'
 
   },
   getNewBooks() {
@@ -332,18 +363,22 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((accu, book) => {
+			if (book.published >= 1990) {
+				accu.push({ 'title': book.title, 'year': book.published });
+			}
+			return accu;
+		}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return array of obj
+		// only if books published after 1990
+		// include book.title && book.year
   }
 
 };
 
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -355,11 +390,19 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((accu, location) => {
+			let avg = (location.temperature.high + location.temperature.low) / 2;
+			accu.push(avg);
+
+			return accu;
+		}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return array of avg temps
+		// each element, location.temperature key
+		// inside that key (location.temperature.high + location.temp.low) / 2
+		// push that value into array
   },
 
   findSunnySpots() {
@@ -369,11 +412,19 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((accu, location) => {
+			if (location.type === 'sunny' || location.type === 'mostly sunny') {
+				let sentence = `${location.location} is ${location.type}.`;
+				accu.push(sentence);
+			}
+			return accu;
+		}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// if location.type === 'sunny' || 'mostly sunny', push into array
+		// interpolate sentence using locationName & type
+		// push ^^ sentence into array
   },
 
   findHighestHumidity() {
@@ -385,17 +436,16 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const humiditySorted = weather.sort((a, b) => b.humidity - a.humidity);
+    return humiditySorted[0];
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return obj location w/ highest humidity (descending order)
+		// .sort(), return first element
 
   }
 };
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -412,11 +462,18 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((accu, park) => {
+			(park.visited === false) ? 
+				accu.parksToVisit.push(park.name) : 
+				accu.parksVisited.push(park.name)
+			return accu;
+		}, { 'parksToVisit': [], 'parksVisited': [] });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return 1 obj, 2 keys
+		// key1 parksToVisit = if park.visited === false, push value = park.name --> array
+		// key2 parksVisited = if park.visited === true, push value = park.name --> array
   },
 
   getParkInEachState() {
@@ -428,12 +485,15 @@ const nationalParksPrompts = {
     // { Utah: 'Zion' },
     // { Florida: 'Everglades' } ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.map(park => {
+			return { [park.location]: park.name }
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return same length of array
+		// only return, each obj -- key= ST, value= park.name
+		// map() will return same array, something done to the elements
   },
 
   getParkActivities() {
@@ -452,26 +512,27 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((accu, park) => {
+			park.activities.forEach(activity => {
+				if (!accu.includes(activity)) {
+					accu.push(activity);
+				}
+			})
+			return accu;
+		}, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
-  }
+		// return 1 array, with all the elements from park.activities arrays
+		// reduce()
+		// forEach() inside each park obj, to pick each element of the activities array
+		// no duplicates, so make sure accu array does not include the activity in question
+	}
 };
 
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: breweries from ./datasets/breweries
 const breweryPrompts = {
@@ -479,11 +540,15 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((accu,brewery) => {
+			accu += brewery.beers.length;
+			return accu;
+		}, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return 1 single num, REDUCE()
+		// each obj, beers.length added to accu
   },
 
   getBreweryBeerCount() {
@@ -495,11 +560,17 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+			return {
+				['name']: brewery.name,
+				['beerCount']: brewery.beers.length
+			}
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return same length array -- map()
+		// each obj only have brewery.name key & key beerCount = brewer.beers.length
   },
 
   findHighestAbvBeer() {
@@ -507,40 +578,27 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const beerArray = breweries.reduce((accu,brewery) => {
+			brewery.beers.forEach(beer => {
+				accu.push(beer)
+			})
+			return accu;
+		}, []);
+		const sortedBeer = beerArray.sort((a, b) => b.abv - a.abv);
+		return sortedBeer[0];
 
     // Annotation:
-    // Write your annotation here as a comment
+		// create array list of all beers -- .reduce()
+		// .sort() in descending based on breweries.beers.abv
+		// return first in array
   }
 };
 
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DOUBLE DATASETS
 // =================================================================
@@ -555,11 +613,27 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+			let currentStudentCount = 0;
+			cohorts.forEach(cohort => {
+				if (cohort.module === instructor.module) {
+					currentStudentCount = cohort.studentCount;
+				}
+			})
+			return {
+				name: instructor.name,
+				studentCount: currentStudentCount
+			}
+		});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// return an array of instructors -- map() over instructors
+		// key1 name: instructor name
+		// key2 studentCount: studentCount from COHORT array
+		// loop through each cohort of the array, if the .module matches the current instructor
+		// assign a var to that cohort's cohort.studentCount
+		// make key2 studentCount: created var
   },
 
   studentsPerInstructor() {
