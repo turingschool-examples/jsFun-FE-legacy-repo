@@ -1,6 +1,6 @@
 const chai = require("chai");
 const expect = chai.expect;
-
+/* eslint-disable */
 const {
   breweryPrompts,
   turingPrompts,

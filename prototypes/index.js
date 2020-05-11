@@ -27,7 +27,11 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [];
+    kitties.forEach(kitty => {
+      if (kitty.color === 'orange')
+        result.push(kitty.name);
+    });
     return result;
 
     // Annotation:
@@ -37,7 +41,7 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a,b) => b.age - a.age);
     return result;
 
     // Annotation:
@@ -57,8 +61,10 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = this.sortByAge().map(kitty => {
+      kitty.age += 2;
+      return kitty;
+    });
     return result;
   }
 };
@@ -81,7 +87,7 @@ const kittyPrompts = {
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
-  membersBelongingToClubs() {
+  membersBelongingToClubs(clubMembers) {
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
     // {
@@ -90,7 +96,7 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubMembers;
     return result;
 
     // Annotation:
@@ -126,7 +132,12 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod =>{
+      return {
+        mod: mod.mod,
+        studentsPerInstructor: mod.students / mod.instructors
+      };
+    });
     return result;
 
     // Annotation:
@@ -161,7 +172,12 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      };
+    });
     return result;
 
     // Annotation:
@@ -189,7 +205,7 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => cake.inStock > 0);
     return result;
 
     // Annotation:
@@ -200,8 +216,8 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((acc, cake) => ({inStock: acc.inStock + cake.inStock}));
+    return result.inStock;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -212,7 +228,11 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = [];
+    cakes.forEach(cake => cake.toppings.forEach(topping => {
+      if(!result.includes(topping))
+        result.push(topping);
+    }));
     return result;
 
     // Annotation:
@@ -230,7 +250,10 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = {};
+    cakes.forEach(cake => cake.toppings.forEach(topping => {
+      result[topping] = !result[topping] ? 1 : result[topping] + 1;
+    }));
     return result;
 
     // Annotation:
@@ -265,7 +288,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE');
     return result;
 
     // Annotation:
@@ -279,8 +302,13 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = {};
+    let feTotal = this.feClassrooms().reduce((acc, classroom) =>
+      ({capacity : acc.capacity + classroom.capacity}));
+    result['feCapacity'] = feTotal.capacity;
+    let beTotal = classrooms.filter(classroom =>classroom.program === 'BE')
+      .reduce((acc, classroom) => ({capacity : acc.capacity + classroom.capacity}));
+    result['beCapacity'] = beTotal.capacity;
     return result;
 
     // Annotation:
@@ -290,7 +318,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
@@ -317,7 +345,7 @@ const bookPrompts = {
     //   'Catch-22', 'Treasure Island']
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.filter(book => book.genre !== 'Horror' && book.genre !== 'True Crime').map(book => book.title);
     return result;
 
     // Annotation:
@@ -332,7 +360,12 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.filter(book => book.published > 1989).map(book => {
+      return {
+        title : book.title,
+        year : book.published
+      };
+    });
     return result;
 
     // Annotation:
