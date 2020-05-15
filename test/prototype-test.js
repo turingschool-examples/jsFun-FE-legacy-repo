@@ -1,4 +1,4 @@
-const chai = require("chai");
+const chai = require('chai');
 const expect = chai.expect;
 /* eslint-disable */
 const {
@@ -346,7 +346,7 @@ describe("PROTOTYPES", () => {
         name: "Platt Park Brewing Co.",
         beerCount: 7
       }])
-    }), it("findHighestAbvBeer", () => {
+    }), it.only("findHighestAbvBeer", () => {
       const e = breweryPrompts.findHighestAbvBeer();
       expect(e).to.deep.equal({
         name: "Barrel Aged Nature's Sweater",
