@@ -387,8 +387,13 @@ const weatherPrompts = {
   getAverageTemps() {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
+    const result = weather.map(day => (day.temperature.high + day.temperature.low)/2);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // const result = weather.reduce((accumulator, currentValue, i) => {
+    //   accumulator = accumulator || [];
+    //   accumulator.push( (currentValue.temperature.high + currentValue.temperature.low) / 2);
+    //   return accumulator;
+    // }, []);
     return result;
 
     // Annotation:
@@ -402,7 +407,9 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.filter(day => day.type === 'sunny' || day.type === 'mostly sunny').map(day => {
+      return  `${day.location} is ${day.type}.`;
+    });
     return result;
 
     // Annotation:
@@ -418,7 +425,7 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.sort((a,b) => a.humidity - b.humidity)[weather.length -1 ];
     return result;
 
     // Annotation:
@@ -445,7 +452,13 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((accumulator, currentValue) => {
+      accumulator['parksToVisit'] = accumulator['parksToVisit'] || [];
+      accumulator['parksVisited'] = accumulator['parksVisited'] || [];
+      currentValue.visited ? accumulator['parksVisited'].push(currentValue.name) :
+        accumulator['parksToVisit'].push(currentValue.name);
+      return accumulator;
+    }, {});
     return result;
 
     // Annotation:
@@ -462,7 +475,11 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((accumulator, currentValue,i) => {
+      accumulator[i] = {};
+      accumulator[i][currentValue.location] = currentValue.name;
+      return accumulator;
+    }, []);
     return result;
 
     // Annotation:
@@ -484,9 +501,9 @@ const nationalParksPrompts = {
     //   'canyoneering',
     //   'backpacking',
     //   'rock climbing' ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = nationalParks.map(park => park.activities).join().split(',');
+    const uniq = [...new Set(result)];
+    return uniq;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -512,7 +529,9 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.beers.length;
+    }, 0);
     return result;
 
     // Annotation:
@@ -528,7 +547,12 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      let obj = {};
+      obj.name = brewery.name;
+      obj.beerCount = brewery.beers.length;
+      return obj;
+    });
     return result;
 
     // Annotation:
@@ -540,7 +564,10 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => brewery.beers);
+    console.log(result.reduce((accumulator, currentValue) => accumulator ))
+    const uniq = [...new Set(result)];
+    console.log();
     return result;
 
     // Annotation:
