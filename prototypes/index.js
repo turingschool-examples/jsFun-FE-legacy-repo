@@ -643,11 +643,22 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce((accu, cohort) => {
+			let instructorCount = 0;
+			instructors.forEach(instructor => {
+				if (instructor.module === cohort.module) {
+					instructorCount++;
+				}
+			})
+			accu[`cohort${cohort.cohort}`] = cohort.studentCount / instructorCount;
+			return accu;
+		}, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// reduce()
+		// find teacher # per cohort
+		// return obj, keys: cohort #, values: studentCount / teachers
   },
 
   modulesPerTeacher() {
@@ -665,12 +676,27 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = instructors.reduce((accu, instructor) => {
+			accu[instructor.name] = [];
 
+			cohorts.forEach(cohort => {
+				cohort.curriculum.forEach(topic => {
+					if (instructor.teaches.includes(topic) === true) {
+						if (!accu[instructor.name].includes(cohort.module)) {
+							accu[instructor.name].push(cohort.module)
+						}
+					}
+				})
+			})
+			return accu;
+		}, {});
+    return result;
+	},
     // Annotation:
-    // Write your annotation here as a comment
-  },
+		// return 1 obj -- reduce()
+		// key: instructor.name, value: array modules able to teach
+		// forEach over cohorts.curriculum,
+		// if cohorts.curriculum === any instructor.teaches, add that cohort.module to key valu ^^  },
 
   curriculumPerTeacher() {
     // Return an object where each key is a curriculum topic and each value is
@@ -682,29 +708,29 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cohorts.reduce((accu, cohort) => {
+			cohort.curriculum.forEach(topic => {
+				(!accu[topic])	? accu[topic] = [] : null;
 
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
-
-
-
-
-
+				instructors.forEach(instructor => { instructor.teaches.forEach(taughtTopic => { //replace if's w/ a filter()
+						if (taughtTopic === topic) {
+							(!accu[topic].includes(instructor.name)) ? accu[topic].push(instructor.name) : null;
+						}})
+				})
+			})
+			return accu;
+			}, {})
+    	return result;
+		}
+		
+		// Annotation:
+		// return 1 obj -- reduce()
+		// key: curriculum topic, value: teachers who teach it
+	}
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
@@ -716,30 +742,36 @@ const bossPrompts = {
     //   { bossName: 'Ursula', sidekickLoyalty: 20 },
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
+		
+	const bossKeys = Object.keys(bosses);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+	const result = bossKeys.map(boss => {
+		let newObj = {};
+		newObj['bossName'] = bosses[boss].name;
+		newObj['sidekickLoyalty'] = 0;
+
+		sidekicks.forEach(sidekick => {
+			if (sidekick.boss === bosses[boss].name) {
+				newObj['sidekickLoyalty'] += sidekick.loyaltyToBoss;
+			}
+		})
+
+		return newObj;
+	})
+
+  return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// create array of obj's
+		// key1= bossName, value= bossName
+		// key2= sidekickLoyalty, value= sidekick #
+		// map() ?
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
@@ -807,21 +839,9 @@ const astronomyPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: charaters, weapons from ./datasets/ultima
 const ultimaPrompts = {
@@ -848,23 +868,11 @@ const ultimaPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   },
-};
-
-
-
-
-
+}
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
 const dinosaurPrompts = {
@@ -974,7 +982,7 @@ const dinosaurPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-};
+}
 
 module.exports = {
   breweryPrompts,

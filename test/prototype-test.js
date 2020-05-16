@@ -396,7 +396,7 @@ describe("PROTOTYPES", () => {
 	}),
 	
 	describe("Turing Prompts", () => {
-    it.only("studentsForEachInstructor", () => {
+    it("studentsForEachInstructor", () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
         name: "Pam",
@@ -472,7 +472,7 @@ describe("PROTOTYPES", () => {
 	}),
 	
 	describe("Boss Prompts", () => {
-    it("bossLoyalty", () => {
+    it.only("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
         bossName: "Scar",
