@@ -44,7 +44,7 @@ const stars = [
   },
   {
     name: 'Vega',
-    visualMagnitude: 0.3,
+		visualMagnitude: 0.3,
     constellation: 'Lyra',
     lightYearsFromEarth: 25,
     color: 'blue'

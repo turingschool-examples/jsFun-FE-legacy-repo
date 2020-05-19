@@ -472,7 +472,7 @@ describe("PROTOTYPES", () => {
 	}),
 	
 	describe("Boss Prompts", () => {
-    it.only("bossLoyalty", () => {
+    it("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
         bossName: "Scar",
@@ -581,7 +581,7 @@ describe("PROTOTYPES", () => {
       })
 		}),
 		
-		it("constellationsStarsExistIn", () => {
+		it.only("constellationsStarsExistIn", () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })

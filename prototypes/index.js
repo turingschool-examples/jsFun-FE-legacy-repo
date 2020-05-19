@@ -789,13 +789,31 @@ const astronomyPrompts = {
     //     constellation: 'Orion',
     //     lightYearsFromEarth: 640,
     //     color: 'red' }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+		// ]
+		
+    const result = stars.reduce((accu, star) => {
+			if (constellations.orion.stars.includes(star.name)) {
+				accu.push(star);
+			}
+			if (constellations.ursaMajor.stars.includes(star.name)) {
+				accu.push(star);
+			}
+			if (constellations.ursaMinor.stars.includes(star.name)) {
+				accu.push(star);
+			}
+			return accu;
+		}, [])
+		return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// array of objects required
+		// reduce over stars array
+		// 3 conditions, if obj constellations includes current star name
+		// push that star obj -> accu array
+
+		// ANOTHER WAY?
+		// Object.keys constellations ?
+		// .map then .filter ?
   },
 
   starsByColor() {
@@ -809,11 +827,22 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.reduce((accu, star) => {
+			if (!accu[star.color]) accu[star.color] = [];
+
+			const accuKeys = Object.keys(accu);
+			accuKeys.forEach(key => {
+				if (key === star.color) accu[key].push(star)})
+	
+			return accu;
+		}, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+		// doesn't need to touch constellation obj at all
+		// reduce over stars array
+		// Object.keys so you can compare if the star's prop name
+		// is = to the key string name
   },
 
   constellationsStarsExistIn() {
@@ -831,11 +860,18 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = stars.filter(star => star.constellation.length > 1).map(star => star.constellation);
+		const resultSort = result.sort((a, b) => {
+			b.visualMagnitude - a.visualMagnitude
+		});
+		console.log('HERE :', resultSort);
+		return resultSort //sorting to the 2nd dec. place
 
     // Annotation:
-    // Write your annotation here as a comment
+		// iterate over array, return array
+		// .filter based on visualMagnitude
+		// .map to shorten element value
+		// .sort, to second decimal place, need to do
   }
 };
 
