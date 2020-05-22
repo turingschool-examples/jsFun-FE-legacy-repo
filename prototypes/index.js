@@ -791,16 +791,14 @@ const astronomyPrompts = {
     //     color: 'red' }
 		// ]
 		
+		const constellKeys = Object.keys(constellations);
+
     const result = stars.reduce((accu, star) => {
-			if (constellations.orion.stars.includes(star.name)) {
-				accu.push(star);
-			}
-			if (constellations.ursaMajor.stars.includes(star.name)) {
-				accu.push(star);
-			}
-			if (constellations.ursaMinor.stars.includes(star.name)) {
-				accu.push(star);
-			}
+			constellKeys.forEach(constellName => {
+				if (constellations[constellName].stars.includes(star.name)) {
+					accu.push(star);
+				}
+			})
 			return accu;
 		}, [])
 		return result;
@@ -860,18 +858,19 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = stars.filter(star => star.constellation.length > 1).map(star => star.constellation);
-		const resultSort = result.sort((a, b) => {
-			b.visualMagnitude - a.visualMagnitude
-		});
-		console.log('HERE :', resultSort);
-		return resultSort //sorting to the 2nd dec. place
+    const result = stars.filter(star => star.constellation.length > 1);
+
+		const resultSort = result.sort((a, b) => 
+		a.visualMagnitude - b.visualMagnitude)
+		.map(star => star.constellation);
+
+		return resultSort;
 
     // Annotation:
 		// iterate over array, return array
-		// .filter based on visualMagnitude
-		// .map to shorten element value
-		// .sort, to second decimal place, need to do
+		// filter to get rid of the element w/ no characters in name
+		// sort based on visualMagnitude
+		// .map to only return the name of the constellation
   }
 };
 
@@ -884,13 +883,37 @@ const ultimaPrompts = {
   totalDamage() {
 
     // Return the sum of the amount of damage for all the weapons that our characters can use
-    // Answer => 113
+		// Answer => 113
+		
+		const weaponKeys = Object.keys(weapons);
+		const characterKeys = Object.keys(characters);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = characterKeys.reduce((accu, character) => {
+			characters[character].weapons.forEach(weapon => {
+				const foundW = weaponKeys.find(weaponKey => weaponKey === weapon);
+
+				accu += weapons[foundW].damage;
+			})
+			return accu;
+		}, 0);
+
+    return result; //then add for every time a user uses the weapon
 
     // Annotation:
-    // Write your annotation here as a comment
+		// 1 total num value returned, use reduce
+		// make object.keys for both sets of objects
+		// iterate over each character (key),
+		// check each weapons property of the char
+		// syntax: (object ->) characters[charKey].weapons
+		// forEach over that
+		// search the weaponKeys in the forEach, checking if the weapon ===
+		// this char's weapon
+		// if it does, add it to the accumulator counter
+		// syntax (array ->) weapons[foundWeap].damage
+
+		// w/ obj.keys make sure if you're using it to access that spot
+		// in the original object, you must set up 
+		// origArrayName[objKeysName].propertyName
   },
 
   charactersByTotal() {

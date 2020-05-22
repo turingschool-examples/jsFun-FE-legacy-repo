@@ -9,7 +9,7 @@ chai.use(function(e, t) {
 })
 
 describe("SCOPE", () => {
-  it.only("exerciseA", () => {
+  it("exerciseA", () => {
     const e = JSON.stringify(scope.exerciseA()) == JSON.stringify([{
       A: "Ben"
     }, {
@@ -102,7 +102,7 @@ describe("SCOPE", () => {
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
 	}),
 	
-	it("exerciseH", () => {
+	it.only("exerciseH", () => {
     const e = JSON.stringify(scope.exerciseH()) == JSON.stringify([{
       A: 4
     }, {

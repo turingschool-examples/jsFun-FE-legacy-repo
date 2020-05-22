@@ -52,24 +52,29 @@ const scope = {
         let number = 28;
       }
 
-      // Log A: number
+      // Log A: 28
 
       function newNumber() {
         number = 64;
 
-        // Log B: number
+        // Log B: 28
       }
 
       newNumber();
 
-      // Log C: number
+      // Log C: 64
     }
 
     numberFunction();
 
-    // Log D: number
+    // Log D: 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result =  [
+			{ 'A': 75},
+			{ 'B': 64},
+			{ 'C': 64},
+			{ 'D': 30}
+		];
     return result;
 
     // Annotation:
@@ -86,24 +91,29 @@ const scope = {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: 'Yo'
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: 'Hey'
       }
 
       newPhrase();
 
-      // Log C: greeting
+      // Log C: 'Hey'
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: 'Hello'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'Yo'},
+			{ 'B': 'Hey'},
+			{ 'C': 'Hey'},
+			{ 'D': 'Hello'}
+		];
     return result;
 
     // Annotation:
@@ -120,24 +130,29 @@ const scope = {
         let greeting = 'hello';
       }
 
-      // Log A: greeting
+      // Log A: 'hi'
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
-        // Log B: greeting
+        // Log B: 'welcome'
       };
 
       newGreeting();
 
-      // Log C: greeting
+      // Log C: 'welcome'
     };
 
     greetingGenerator();
 
-    // Log D: greeting
+    // Log D: 'howdy'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'hi'},
+			{ 'B': 'welcome'},
+			{ 'C': 'welcome'},
+			{ 'D': 'howdy'}
+		];
     return result;
 
     // Annotation:
@@ -157,19 +172,24 @@ const scope = {
           let name = 'Brittany';
         }
 
-        // Log A: name
+        // Log A: 'Nathaniel'
       }
 
-      // Log B: name
+      // Log B: 'Nathaniel'
     }
 
-    // Log C: name
+    // Log C: 'Brittany'
 
     sayName();
 
-    // Log D: name
+    // Log D: 'Brittany'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'Nathaniel'},
+			{ 'B': 'Nathaniel'},
+			{ 'C': 'Brittany'},
+			{ 'D': 'Brittany'}
+		];
     return result;
 
     // Annotation:
@@ -180,31 +200,37 @@ const scope = {
     var dog = 'Spot';
 
     function petDog() {
-      // Log A: dog
+      // Log A: 'Spot'
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
       }
 
       function rollOver() {
-        // Log B: dog
+        // Log B: 'Spot'
 
         dog = 'Biscuit';
 
-        // Log C: dog
+        // Log C: 'Biscuit'
 
       }
 
       rollOver();
 
-      // Log D: dog
+      // Log D: 'Biscuit'
     }
 
     petDog();
 
-    // Log E: dog
+    // Log E: 'Spot'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'Spot'},
+			{ 'B': 'Spot'},
+			{ 'C': 'Biscuit'},
+			{ 'D': 'Biscuit'},
+			{ 'E': 'Biscuit'}
+		];
     return result;
 
     // Annotation:
@@ -220,21 +246,26 @@ const scope = {
         var fruit = 'mango';
 
         if (fruit) {
-          // Log A: fruit
+          // Log A: 'mango'
           const fruit = 'strawberry';
         }
 
-        // Log B: fruit
+        // Log B: 'mango'
       }
 
-      // Log C: fruit
+      // Log C: 'mango'
     }
 
     eatFruit();
 
-    // Log D: fruit
+    // Log D: 'apple'
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+			{ 'A': 'reference error'},
+			{ 'B': 'mango'},
+			{ 'C': 'mango'},
+			{ 'D': 'apple'}
+		];
     return result;
 
     // Annotation:
@@ -247,7 +278,7 @@ const scope = {
     const fn1 = function() {
       let num = 4;
 
-      // Log A: num
+      // Log A: 4
 
       if (num < 5) {
         const num = 9;
@@ -256,25 +287,31 @@ const scope = {
 
         const newNum = num;
 
-        // Log B: newNum
+        // Log B: 9
       }
 
       newNum = num;
 
-      // Log C: newNum
+      // Log C: 10
     };
 
     const fn2 = function(num){
-      // Log D: num
+      // Log D: 6
 
       num = num + 1;
 
-      // Log E: num
+      // Log E: 7
     };
 
     fn1();
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+		//TODO: review!
+    const result = [
+			{ 'A': 4 },
+			{ 'B': 9 },
+			{ 'C': 10 },
+			{ 'D': 6 },
+			{ 'E': 7 }
+		];
     return result;
 
     // Annotation:
