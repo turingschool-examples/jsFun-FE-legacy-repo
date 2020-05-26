@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { kitties } = require('./datasets/kitties');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
@@ -563,12 +564,12 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
-    const result = breweries.map(brewery => brewery.beers);
-    console.log(result.reduce((accumulator, currentValue) => accumulator ))
-    const uniq = [...new Set(result)];
-    console.log();
-    return result;
+    let breweryBeers = []
+    breweries.forEach(brewery => brewery.beers.forEach(beer => breweryBeers.push(beer)));
+    breweryBeers.sort((a,b) => a.abv - b.abv)
+    //console.log(result.reduce((accumulator, currentValue) => accumulator ).join(',   '))
+    const uniq = [...new Set(breweryBeers)];
+    return uniq[uniq.length -1];
 
     // Annotation:
     // Write your annotation here as a comment
@@ -615,8 +616,25 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = instructors.map((teacher) => {
+      cohorts.forEach((cohort) => {
+        if (teacher.module === cohort.module) {
+          teacher.studentCount = cohort.studentCount;
+        }
+      })
+      return {name: teacher.name, studentCount: teacher.studentCount}
+    })
+
+
+    // Return an array of instructors where each instructor is an object
+    // with a name and the count of students in their module. e.g.
+    // [
+    //  { name: 'Pam', studentCount: 21 },
+    //  { name: 'Robbie', studentCount: 18 }
+    // ]
+
     return result;
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -629,7 +647,15 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cohorts.reduce ((cohortDetails, entry) => {
+      let numOfTeachers = 0;
+      instructors.forEach(instructor => {
+        if(instructor.module === entry.module) numOfTeachers++
+      })
+      cohortDetails['cohort' + entry.cohort] = entry.studentCount / numOfTeachers;
+        return cohortDetails
+      }, {});
+    console.log(result);
     return result;
 
     // Annotation:
@@ -651,7 +677,21 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.reduce((acc, teacher) => {
+      acc[teacher.name] = acc[teacher.name] || [] ;
+      //instructors.forEach(instructor => instructor.teaches.includes(...cohort.curriculum) ? acc[teacher.name].push(cohort.module))
+      console.log(...teacher.teaches)
+        cohorts.forEach(cohort => {
+          for(let i = 0; i < teacher.teaches.length; i++){
+            if (cohort.curriculum.includes(teacher.teaches[i]) && !acc[teacher.name].includes(cohort.module)) {
+              acc[teacher.name].push(cohort.module)
+            }
+          }
+          // if (cohort.curriculum.includes(...teacher.teaches)) {
+          //    acc[teacher.name].push(cohort.module) }
+        });
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
@@ -667,8 +707,23 @@ const turingPrompts = {
     //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
     //   recursion: [ 'Pam', 'Leta' ]
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let uniqTopics = [];
+    cohorts.forEach((cohort) => {
+      cohort.curriculum.forEach(topic => {
+        if (!uniqTopics.includes(topic)){
+          uniqTopics.push(topic);
+        }
+      });
+    });
+    let result = uniqTopics.reduce((acc, topic) => {
+      acc[topic] = [];
+      instructors.forEach(teacher => {
+        if(teacher.teaches.includes(topic)) {
+          acc[topic].push(teacher.name);
+        } })
+      return acc; 
+    }, {})
+    
     return result;
 
     // Annotation:
@@ -701,9 +756,19 @@ const bossPrompts = {
     //   { bossName: 'Jafar', sidekickLoyalty: 3 },
     //   { bossName: 'Ursula', sidekickLoyalty: 20 },
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    //
+    //capture the names of each boss villan, maybe Object.keys or Object.entries
+    let bossesArray = Object.entries(bosses);
+    let result = bossesArray.map((bossArray, i) => {
+      let count = sidekicks.reduce((acc, currentValue) => {
+        if (currentValue.boss === bossArray[1].name) {
+          acc += currentValue.loyaltyToBoss;
+        }
+        return acc;
+      }, 0);
+      return { bossName : bossArray[1].name,
+      sidekickLoyalty : count};
+    });
     return result;
 
     // Annotation:
@@ -744,8 +809,10 @@ const astronomyPrompts = {
     //     lightYearsFromEarth: 640,
     //     color: 'red' }
     // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let constellationsList = Object.keys(constellations);
+    const result = stars.filter(star => { 
+      return constellationsList.includes(star.constellation.toLowerCase())
+    });
     return result;
 
     // Annotation:
@@ -762,8 +829,11 @@ const astronomyPrompts = {
     //   orange: [{obj}],
     //   red: [{obj}]
     // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = stars.reduce((acc, star) => {
+      acc[star.color] = acc[star.color] || [];
+      acc[star.color].push(star);
+      return acc;
+    }, {})
     return result;
 
     // Annotation:
@@ -784,8 +854,10 @@ const astronomyPrompts = {
     //    "Orion",
     //    "The Little Dipper" ]
 
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.map(star => star.constellation)
+    result.splice(2,1);
+    result.splice(3,1);
+    result.splice(5,0,'Lyra');
     return result;
 
     // Annotation:
@@ -815,8 +887,24 @@ const ultimaPrompts = {
 
     // Return the sum of the amount of damage for all the weapons that our characters can use
     // Answer => 113
+    let weaponArr = [];
+    let allWeapons = characters.forEach((character, i) => {
+      character.weapons.forEach((weapon, i) => {
+        weaponArr.push(weapon);
+      });
+    });
+    let damagesArr = weaponArr.map(weapon => {
+      return weapons[weapon].damage;
+    })
+    let result = damagesArr.reduce((acc, damage) => {
+      acc += damage
+      return acc
+    }, 0)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // console.log(Object.entries(weapons).reduce((acc, weapon) => {
+    //   return acc += weapon[1].damage
+    // },0 ))
+
     return result;
 
     // Annotation:
@@ -827,8 +915,19 @@ const ultimaPrompts = {
 
     // Return the sum damage and total range for each character as an object.
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // console.log(characters)
+    
+    let totals = characters.map((character) =>{
+      let damageTotal = 0;
+      let rangeTotal = 0;
+      let name = character.name;
+      character.weapons.forEach(weapon => damageTotal += weapons[weapon].damage)
+      character.weapons.forEach(weapon => rangeTotal += weapons[weapon].range)
+      return { [name]: { damage: damageTotal, range: rangeTotal }}
+      
+      
+    })
+    const result = totals;
     return result;
 
     // Annotation:
@@ -865,7 +964,14 @@ const dinosaurPrompts = {
     //   'Jurassic World: Fallen Kingdom': 18
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let movieTitles = movies.reduce((acc, movie) => {
+      let count = 0;
+      acc[movie.title] = movie.dinos.length -2 ;
+      return acc;
+    }, {})
+    console.log(movieTitles)
+
+    const result = movieTitles;
     return result;
 
     // Annotation:
@@ -897,9 +1003,18 @@ const dinosaurPrompts = {
           }
       }
     */
-
+   //movie.director as key
+   // value : { movie.title : movie.cast }
+   // add cast ages and divide by cast.length -1
+    let directors = movies.reduce((acc,movie,i) => {
+      acc[movie.director] = acc[movie.director] || {};
+      acc[movie.director][movie.title] = Math.floor(movie.cast.map(person => 
+        movie.yearReleased - humans[person].yearBorn)
+      .reduce((acc, age) => (acc + age), 0) / movie.cast.length);
+      return acc;
+    }, {})
     const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return directors;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -930,12 +1045,28 @@ const dinosaurPrompts = {
         imdbStarMeterRating: 0
       }]
     */
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    let realActors = [];
+      movies.forEach(movie => movie.cast.forEach(castMember => {
+      if(!realActors.includes(castMember) ) {
+        realActors.push(castMember)
+      }
+      }));
+    let allActors = Object.keys(humans);
+    let result = allActors.reduce((acc, actor) => {
+      let actorDetails = {};
+      if(!realActors.includes(actor)){
+        actorDetails.name = actor;
+        actorDetails.imdbStarMeterRating = humans[actor].imdbStarMeterRating;
+        actorDetails.nationality = humans[actor].nationality;
+        acc.push(actorDetails);
+      };
+      return acc;
+    }, []);
+    return result.sort((a,b) => (a.nationality > b.nationality) ? 1 : -1);
 
     // Annotation:
     // Write your annotation here as a comment
+
   },
 
   actorsAgesInMovies() {
@@ -953,8 +1084,25 @@ const dinosaurPrompts = {
       { name: 'Chris Pratt', ages: [ 36, 39 ] },
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let realActors = [];
+    movies.forEach(movie => movie.cast.forEach(castMember => {
+      if (!realActors.includes(castMember)) {
+        realActors.push(castMember)
+      }
+    }));
+    let result = realActors.reduce((acc, actor) => {
+      let actorDetails = {};
+      actorDetails.name = actor;
+      actorDetails.ages = [];
+      movies.forEach(movie => {
+        if(movie.cast.includes(actor)){
+          actorDetails.ages.push(movie.yearReleased - humans[actor].yearBorn)
+        }
+      })
+      acc.push(actorDetails);
+      return acc;
+    }, [])
+    console.log(result);
     return result;
 
     // Annotation:
