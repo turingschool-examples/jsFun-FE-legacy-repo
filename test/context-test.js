@@ -22,49 +22,79 @@ describe("CONTEXT", () => {
   it("exerciseA", () => {
     const e = "global window object" == context.exerciseA();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseB", () => {
+  });
+  
+  it("exerciseB", () => {
     const e = "global window object" == context.exerciseB();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseC", () => {
+  });
+  
+  it("exerciseC", () => {
     const e = "el" == context.exerciseC();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseD", () => {
+  });
+  
+  it("exerciseD", () => {
     const e = "global window object" == context.exerciseD();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseE", () => {
+  });
+  
+  it("exerciseE", () => {
     const e = "global window object" == context.exerciseE();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseF", () => {
+  });
+  
+  it("exerciseF", () => {
     const e = "instance of Hero" == context.exerciseF();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseG", () => {
+  });
+  
+  it("exerciseG", () => {
     const e = "global window object" == context.exerciseG();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseH", () => {
+  });
+  
+  it("exerciseH", () => {
     const e = "obj" == context.exerciseH();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseI", () => {
+  });
+  
+  it("exerciseI", () => {
     const e = "poets" == context.exerciseI();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseJ", () => {
+  });
+  
+  it("exerciseJ", () => {
     const e = "el" == context.exerciseJ();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseK", () => {
+  });
+  
+  it("exerciseK", () => {
     const e = "store" == context.exerciseK();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseL", () => {
+  });
+  
+  it("exerciseL", () => {
     const e = "dog" == context.exerciseL();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseM", () => {
+  });
+  
+  it("exerciseM", () => {
     const e = "robert" == context.exerciseM();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseN", () => {
+  });
+  
+  it("exerciseN", () => {
     const e = "instance of Bird" == context.exerciseN();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseO", () => {
+  });
+  
+  it("exerciseO", () => {
     const e = "global window object" == context.exerciseO();
     expect(e).withMessage("Your result is not the correct context").to.be.true
-  }), it("exerciseP", () => {
+  });
+  
+  it("exerciseP", () => {
     const e = "global window object" == context.exerciseP();
     expect(e).withMessage("Your result is not the correct context").to.be.true
   })
