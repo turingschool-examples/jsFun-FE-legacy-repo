@@ -38,7 +38,7 @@ turing  https://github.com/turingschool-examples/jsFun.git (push)
 Now, whenever instructors tell you to pull down changes, there are two steps:
 
 1. Make sure you commit and push any changes you have currently made
-2. Run `git pull turing master`
+2. Run `git pull turing main`
 
 Check out [this video](https://vimeo.com/turing/review/388550182/34823726eb) if you need help!
 
