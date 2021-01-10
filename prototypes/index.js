@@ -233,11 +233,19 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((count, cake) => {
+      count += cake.inStock;
+      return count;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know I have an array of cakes with inStock props
+    I know I need an integer of total cakes in Stock
+    I can use reduce to go over my cakes array
+    At each cake add the inStock value
+    */
   },
 
   allToppings() {
