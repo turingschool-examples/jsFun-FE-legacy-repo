@@ -346,11 +346,26 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = classrooms.reduce(
+      (capacityTracker, classroom) => {
+        if (classroom.program === "FE") {
+          capacityTracker.feCapacity += classroom.capacity;
+        } else {
+          capacityTracker.beCapacity += classroom.capacity;
+        }
+        return capacityTracker;
+      },
+      { feCapacity: 0, beCapacity: 0 },
+    );
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I have an array of classroom objects with program and capacity properties
+     * I know I need an object with two properties feCapacity and beCapacity
+     * I can use reduce to create my new object
+     * At each classroom I will add to the correct program with a conditional
+     */
   },
 
   sortByCapacity() {
