@@ -36,11 +36,18 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = kitties.sort((kittyA, kittyB) => {
+      return kittyB.age - kittyA.age;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I know that i have an array of kitty objects
+    // I know i need to sort them by age
+    // each kitty has an age property
+    // I know i can use the sort prototype
+    // my result needs to be decending order
+    // in my sort I need my B value first
   },
 
   growUp() {
@@ -57,8 +64,16 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = kitties.map((kitty) => {
+      return;
+    });
     return result;
+
+    // Psuedocode
+    // I know I have an array of kitten objects
+    // I know I need an array of kitten objects of the same length
+    // I can use map to create a same length array
+    // At each kitty i need to just add 2 to the age
   },
 };
 
