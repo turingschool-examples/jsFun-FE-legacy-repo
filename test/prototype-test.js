@@ -136,7 +136,7 @@ describe("PROTOTYPES", () => {
     });
   });
 
-  describe("Cake Prompts", () => {
+  describe.only("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
 

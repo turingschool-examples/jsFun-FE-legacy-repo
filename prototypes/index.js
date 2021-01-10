@@ -178,11 +178,20 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.map(({ cakeFlavor, inStock }) => {
+      return { flavor: cakeFlavor, inStock };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know i have an array of cake objects
+    Each cake object has a cakeFlavor and inStock property
+    I know i need an array of objects
+    Each object will need a flavor and inStock property
+    I can use map to get a same number array
+    At each cake I return an object with the flavor and the stock
+    */
   },
 
   onlyInStock() {
