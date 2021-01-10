@@ -253,11 +253,23 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((allToppings, cake) => {
+      cake.toppings.forEach((topping) => {
+        !allToppings.includes(topping) && allToppings.push(topping);
+      });
+      return allToppings;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I know I have an array of cakes with a toppings property that is also an array
+     * I know I need a new array of just the non-duplicate toppings
+     * I can use a reduce to make my new array
+     * At each cake i need to loop over the toppings array
+     * At each topping I can use includes to check if that topping already exist in my array
+     * If not then push it to my toppings array
+     */
   },
 
   groceryList() {
