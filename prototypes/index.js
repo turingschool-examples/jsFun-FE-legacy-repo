@@ -64,9 +64,14 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = kitties.map((kitty) => {
-      return;
-    });
+    const result = kitties
+      .sort((kittyA, kittyB) => {
+        return kittyB.age - kittyA.age;
+      })
+      .map((kitty) => {
+        kitty.age += 2;
+        return kitty;
+      });
     return result;
 
     // Psuedocode
@@ -74,6 +79,7 @@ const kittyPrompts = {
     // I know I need an array of kitten objects of the same length
     // I can use map to create a same length array
     // At each kitty i need to just add 2 to the age
+    // After I age the kitty i need to return it to the map
   },
 };
 
