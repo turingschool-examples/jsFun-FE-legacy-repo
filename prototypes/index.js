@@ -178,11 +178,20 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.map(({ cakeFlavor, inStock }) => {
+      return { flavor: cakeFlavor, inStock };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know i have an array of cake objects
+    Each cake object has a cakeFlavor and inStock property
+    I know i need an array of objects
+    Each object will need a flavor and inStock property
+    I can use map to get a same number array
+    At each cake I return an object with the flavor and the stock
+    */
   },
 
   onlyInStock() {
@@ -206,22 +215,37 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.filter((cake) => {
+      return cake.inStock;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know I have an array of cake objects with an inStock property
+    I need an array of cake objects but just the ones where inStock > 0
+    I can use filter to get a new array of the cake objects
+    At each cake check the stock
+    */
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((count, cake) => {
+      count += cake.inStock;
+      return count;
+    }, 0);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know I have an array of cakes with inStock props
+    I know I need an integer of total cakes in Stock
+    I can use reduce to go over my cakes array
+    At each cake add the inStock value
+    */
   },
 
   allToppings() {
@@ -229,11 +253,23 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((allToppings, cake) => {
+      cake.toppings.forEach((topping) => {
+        !allToppings.includes(topping) && allToppings.push(topping);
+      });
+      return allToppings;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I know I have an array of cakes with a toppings property that is also an array
+     * I know I need a new array of just the non-duplicate toppings
+     * I can use a reduce to make my new array
+     * At each cake i need to loop over the toppings array
+     * At each topping I can use includes to check if that topping already exist in my array
+     * If not then push it to my toppings array
+     */
   },
 
   groceryList() {
@@ -247,11 +283,28 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((shoppingList, cake) => {
+      cake.toppings.forEach((topping) => {
+        if (shoppingList[topping]) {
+          shoppingList[topping]++;
+        } else {
+          shoppingList[topping] = 1;
+        }
+      });
+      return shoppingList;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I know I have an array of objects that have a toppings property
+     * I know I need an object that has each unique topping as a key and the number of times it occurs at a value
+     * I can use reduce to build the object as a go over my cakes array
+     * At each cake I need to go into the toppings array
+     * At each topping I can check if the topping is already a key
+     * If it is add one to its value
+     * If not add the key with a value of 1
+     */
   },
 };
 
