@@ -19,7 +19,7 @@ const {
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
-  describe.only("Kitty Prompts", () => {
+  describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
 
@@ -81,7 +81,7 @@ describe("PROTOTYPES", () => {
     });
   });
 
-  describe("Club Prompts", () => {
+  describe.only("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
