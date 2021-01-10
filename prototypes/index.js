@@ -100,11 +100,26 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = clubs.reduce((students, club) => {
+      club.members.forEach((member) => {
+        if (students[member]) {
+          students[member].push(club.club);
+        } else {
+          students[member] = [club.club];
+        }
+      });
+      return students;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I know i have an array of club objects with a members array of people
+    // I know I need an object where the key is the name of people and the value is and arry of their clubs
+    // As I am building an object i can use reduce to go over the clubs
+    // at each club i can forEach the members array
+    // at each member I will need to check if they are already a key
+    // If not make  key with value of an array with that club
+    // If already a key push the club to the array
   },
 };
 
