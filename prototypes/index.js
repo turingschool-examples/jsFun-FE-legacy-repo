@@ -325,11 +325,17 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = classrooms.filter((classroom) => {
+      return classroom.program === "FE";
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I know I have an array of classroom objects
+     * I know I need an array of the classroom objects where the program property is "FE"
+     * I can use filter to go through the array and get just the FE classrooms
+     */
   },
 
   totalCapacities() {
