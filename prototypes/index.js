@@ -141,11 +141,23 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = mods.map((module) => {
+      return {
+        mod: module.mod,
+        studentsPerInstructor: module.students / module.instructors,
+      };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know I have an array of mod objects
+    Each mod has a mod, students and instructors property
+    I know I need an array of objects with mod and studentsPerInstructor
+    I know my answer is the same length as my original
+    I can use map
+    At each mod I can return an object with a mod number and use division to get the students per
+    */
   },
 };
 

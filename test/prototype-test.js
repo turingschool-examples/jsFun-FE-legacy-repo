@@ -81,7 +81,7 @@ describe("PROTOTYPES", () => {
     });
   });
 
-  describe.only("Club Prompts", () => {
+  describe("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
