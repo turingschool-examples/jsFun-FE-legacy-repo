@@ -215,11 +215,18 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.filter((cake) => {
+      return cake.inStock;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /*
+    I know I have an array of cake objects with an inStock property
+    I need an array of cake objects but just the ones where inStock > 0
+    I can use filter to get a new array of the cake objects
+    At each cake check the stock
+    */
   },
 
   totalInventory() {
