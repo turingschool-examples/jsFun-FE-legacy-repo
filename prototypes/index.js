@@ -283,11 +283,28 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = cakes.reduce((shoppingList, cake) => {
+      cake.toppings.forEach((topping) => {
+        if (shoppingList[topping]) {
+          shoppingList[topping]++;
+        } else {
+          shoppingList[topping] = 1;
+        }
+      });
+      return shoppingList;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    /**
+     * I know I have an array of objects that have a toppings property
+     * I know I need an object that has each unique topping as a key and the number of times it occurs at a value
+     * I can use reduce to build the object as a go over my cakes array
+     * At each cake I need to go into the toppings array
+     * At each topping I can check if the topping is already a key
+     * If it is add one to its value
+     * If not add the key with a value of 1
+     */
   },
 };
 
