@@ -19,8 +19,8 @@ const {
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
-  describe("Kitty Prompts", () => {
-    it.only("orangeKittyNames", () => {
+  describe.only("Kitty Prompts", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       
       expect(e).to.deep.equal(["Tiger", "Snickers"])
