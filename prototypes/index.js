@@ -24,14 +24,10 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
   orangeKittyNames() {
-
-    // Return an array of just the names of kitties who are orange e.g.
-    // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return kitties.reduce((acc, i) => {
+      if (i.color === 'orange') acc.push(i.name);
+      return acc;
+    }, []);
   },
 
   sortByAge() {

@@ -20,7 +20,7 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it("orangeKittyNames", () => {
+    it.only("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       
       expect(e).to.deep.equal(["Tiger", "Snickers"])
