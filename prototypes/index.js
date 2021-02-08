@@ -68,8 +68,8 @@ const clubPrompts = {
         if (!acc[`${a}`]) {
           acc[`${a}`] = [];
         }
-        acc[`${a}`].push(i.club)
-      })
+        acc[`${a}`].push(i.club);
+      });
       return acc;
     }, {});
   }
@@ -103,8 +103,12 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    return mods.map((i) => {
+      return {
+        mod: i.mod,
+        studentsPerInstructor: Math.floor(i.students / i.instructors)
+      };
+    });
 
     // Annotation:
     // Write your annotation here as a comment
