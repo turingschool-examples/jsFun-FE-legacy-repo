@@ -160,6 +160,7 @@ const cakePrompts = {
   groceryList() {
     // I need to make a grocery list. Please give me an object where the keys are
     // each topping, and the values are the amount of that topping I need to buy e.g.
+    
     // {
     //    'dutch process cocoa': 1,
     //    'toasted sugar': 3,
