@@ -133,29 +133,28 @@ const cakePrompts = {
   onlyInStock() {
     return cakes.reduce((acc, i) => {
       if (i.inStock > 0) {
-        acc.push(i)
+        acc.push(i);
       } 
       return acc;
-    }, [])
+    }, []);
   },
 
   totalInventory() {
     return cakes.reduce((acc, i) => {
       acc += i.inStock;
       return acc;
-    }, 0)
+    }, 0);
   },
 
   allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return cakes.reduce((acc, i) => {
+      i.toppings.forEach(a => {
+        if (!acc.includes(a)) {
+          acc.push(a);
+        };
+      });
+      return acc;
+    }, []);
   },
 
   groceryList() {
