@@ -101,7 +101,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe("Mod Prompts", () => {
+  describe.only("Mod Prompts", () => {
     it("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
 
@@ -121,7 +121,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe("Cake Prompts", () => {
+  describe.only("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
 
