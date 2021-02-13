@@ -208,14 +208,17 @@ const classPrompts = {
         acc[`beCapacity`] += i.capacity;
       }
       return acc;
-    }, {feCapacity: 0, beCapacity: 0, });
+    }, 
+    {
+      feCapacity: 0, beCapacity: 0
+    });
     return result;
   },
 
   sortByCapacity() {
-    // Return the array of classrooms sorted by their capacity (least capacity to greatest)
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    })
     return result;
 
     // Annotation:
