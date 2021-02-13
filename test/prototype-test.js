@@ -204,7 +204,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe("Class Prompts", () => {
+  describe.only("Class Prompts", () => {
     it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
 

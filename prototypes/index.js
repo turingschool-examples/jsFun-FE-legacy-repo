@@ -151,29 +151,24 @@ const cakePrompts = {
       i.toppings.forEach(a => {
         if (!acc.includes(a)) {
           acc.push(a);
-        };
+        }
       });
       return acc;
     }, []);
   },
 
   groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
-    // each topping, and the values are the amount of that topping I need to buy e.g.
-    
-    // {
-    //    'dutch process cocoa': 1,
-    //    'toasted sugar': 3,
-    //    'smoked sea salt': 3,
-    //    'berries': 2,
-    //    ...etc
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, i) => {
+      i.toppings.forEach((a) => {
+        if (!acc[`${a}`]) {
+          acc[`${a}`] = 1;
+        } else {
+          acc[`${a}`] += 1;
+        }
+      });
+      return acc;
+    }, {});
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
 
@@ -196,44 +191,35 @@ const cakePrompts = {
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
   feClassrooms() {
-    // Create an array of just the front-end classrooms. e.g.
-    // [
-    //   { roomLetter: 'A', program: 'FE', capacity: 32 },
-    //   { roomLetter: 'C', program: 'FE', capacity: 27 },
-    //   { roomLetter: 'E', program: 'FE', capacity: 22 },
-    //   { roomLetter: 'G', program: 'FE', capacity: 29 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, i) => {
+      if (i.program === 'FE') {
+        acc.push(i);
+      }
+      return acc;
+    }, []);
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   totalCapacities() {
-    // Create an object where the keys are 'feCapacity' and 'beCapacity',
-    // and the values are the total capacity for all classrooms in each program e.g.
-    // {
-    //   feCapacity: 110,
-    //   beCapacity: 96
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, i) => {
+      if (i.program == 'FE') {
+        acc['feCapacity'] += i.capacity;
+      } else {
+        acc['beCapacity'] += i.capacity;
+      }
+      return acc;
+    }, 
+    {
+      feCapacity: 0, beCapacity: 0
+    });
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   sortByCapacity() {
-    // Return the array of classrooms sorted by their capacity (least capacity to greatest)
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    });
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
 
