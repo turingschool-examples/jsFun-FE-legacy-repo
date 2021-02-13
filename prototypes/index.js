@@ -193,19 +193,19 @@ const classPrompts = {
   feClassrooms() {
     const result = classrooms.reduce((acc, i) => {
       if (i.program === 'FE') {
-        acc.push(i)
+        acc.push(i);
       }
       return acc;
-    }, [])
+    }, []);
     return result;
   },
 
   totalCapacities() {
     const result = classrooms.reduce((acc, i) => {
       if (i.program == 'FE') {
-        acc[`feCapacity`] += i.capacity;
+        acc['feCapacity'] += i.capacity;
       } else {
-        acc[`beCapacity`] += i.capacity;
+        acc['beCapacity'] += i.capacity;
       }
       return acc;
     }, 
@@ -218,11 +218,8 @@ const classPrompts = {
   sortByCapacity() {
     const result = classrooms.sort((a, b) => {
       return a.capacity - b.capacity;
-    })
+    });
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   }
 };
 
