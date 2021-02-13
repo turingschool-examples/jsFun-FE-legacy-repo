@@ -191,19 +191,13 @@ const cakePrompts = {
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
   feClassrooms() {
-    // Create an array of just the front-end classrooms. e.g.
-    // [
-    //   { roomLetter: 'A', program: 'FE', capacity: 32 },
-    //   { roomLetter: 'C', program: 'FE', capacity: 27 },
-    //   { roomLetter: 'E', program: 'FE', capacity: 22 },
-    //   { roomLetter: 'G', program: 'FE', capacity: 29 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, i) => {
+      if (i.program === 'FE') {
+        acc.push(i)
+      }
+      return acc;
+    }, [])
     return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
   },
 
   totalCapacities() {
