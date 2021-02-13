@@ -18,8 +18,8 @@ const {
   bookPrompts,
 } = require("../prototypes/index");
 
-describe("PROTOTYPES", () => {
-  describe.only("Kitty Prompts", () => {
+describe.only("PROTOTYPES", () => {
+  describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       
@@ -71,7 +71,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe.only("Club Prompts", () => {
+  describe("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
@@ -101,7 +101,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe.only("Mod Prompts", () => {
+  describe("Mod Prompts", () => {
     it("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
 
@@ -121,7 +121,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe.only("Cake Prompts", () => {
+  describe("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
 
