@@ -273,17 +273,12 @@ const weatherPrompts = {
   },
 
   findSunnySpots() {
-    // Return an array of sentences of the locations that are sunny
-    // and mostly sunny. Include the location and weather type. Eg:
-    // [ 'Atlanta, Georgia is sunny.',
-    // 'New Orleans, Louisiana is sunny.',
-    // 'Raleigh, North Carolina is mostly sunny.' ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return weather.reduce((acc, i) => {
+      if (i.type == 'sunny' || i.type == 'mostly sunny') {
+        acc.push(`${i.location} is ${i.type}.`);
+      }
+      return acc;
+    }, []);
   },
 
   findHighestHumidity() {
