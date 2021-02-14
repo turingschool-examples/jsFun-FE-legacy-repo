@@ -235,15 +235,18 @@ const bookPrompts = {
   removeViolence() {
     return books.reduce((acc, i) => {
       if (i.genre != 'Horror' && i.genre != 'True Crime') {
-        acc.push(i.title)
-      };
+        acc.push(i.title);
+      }
       return acc;
     }, []);
   },
   getNewBooks() {
     return books.reduce((acc, i) => {
       if (i.published >= 1990) {
-        acc.push(i)
+        acc.push({
+          title: i.title,
+          year: i.published
+        });
       }
       return acc;
     }, []);
