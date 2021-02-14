@@ -275,7 +275,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Book prompts", () => {
+  describe.only("Book prompts", () => {
     it("removeViolence", () => {
       const e = bookPrompts.removeViolence();
 
