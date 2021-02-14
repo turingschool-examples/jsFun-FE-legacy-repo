@@ -275,7 +275,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Book prompts", () => {
+  describe.only("Book prompts", () => {
     it("removeViolence", () => {
       const e = bookPrompts.removeViolence();
 
@@ -306,7 +306,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Weather prompts", () => {
+  describe.only("Weather prompts", () => {
     it("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
 
