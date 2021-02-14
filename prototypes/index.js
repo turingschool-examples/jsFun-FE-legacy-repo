@@ -299,18 +299,17 @@ const weatherPrompts = {
 
 const nationalParksPrompts = {
   getParkVisitList() {
-    /// Return an object containing the names of which parks I need to visit
-    // and the ones I have already visited eg:
-    // {
-    //   parksToVisit: ["Yellowstone", "Glacier", "Everglades"],
-    //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
-    //}
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return nationalParks.reduce((acc, i) => {
+      if (i.visited) {
+        acc.parksVisited.push(i.name);
+      } else {
+        acc.parksToVisit.push(i.name);
+      }
+      return acc;
+    }, {
+      parksToVisit: [],
+      parksVisited: []
+    });
   },
 
   getParkInEachState() {
