@@ -282,20 +282,9 @@ const weatherPrompts = {
   },
 
   findHighestHumidity() {
-    // Return the location with the highest humidity. Eg:
-    // {
-    //   location: 'Portland, Oregon',
-    //   type: 'cloudy',
-    //   humidity: 84,
-    //   temperature: { high: 49, low: 38 }
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
-
+    return weather.sort((a, b) => {
+      return b.humidity - a.humidity;
+    })[0];
   }
 };
 
