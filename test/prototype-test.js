@@ -306,7 +306,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Weather prompts", () => {
+  describe.only("Weather prompts", () => {
     it("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
 

@@ -265,14 +265,11 @@ const bookPrompts = {
 
 const weatherPrompts = {
   getAverageTemps() {
-    // return an array of all the average temperatures. Eg:
-    // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return weather.reduce((acc, i) => {
+      let sum = i.temperature.high + i.temperature.low;
+      acc.push(sum / 2);
+      return acc;
+    }, []);
   },
 
   findSunnySpots() {
