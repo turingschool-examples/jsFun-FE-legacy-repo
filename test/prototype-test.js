@@ -374,7 +374,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Brewery Prompts", () => {
+  describe.only("Brewery Prompts", () => {
     it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
 
