@@ -332,7 +332,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("National Park Prompts", () => {
+  describe.only("National Park Prompts", () => {
     it("getParkVisitList", () => {
       const e = nationalParksPrompts.getParkVisitList();
 
