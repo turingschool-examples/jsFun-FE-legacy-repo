@@ -356,19 +356,15 @@ const breweryPrompts = {
   },
 
   getBreweryBeerCount() {
-    // Return an array of objects where each object has the name of a brewery
-    // and the count of the beers that brewery has e.g.
-    // [
-    //  { name: 'Little Machine Brew', beerCount: 12 },
-    //  { name: 'Ratio Beerworks', beerCount: 5},
-    // ...etc.
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return breweries.reduce((acc, i) => {
+      acc.push(
+        {
+          name: i.name,
+          beerCount: i.beers.length
+        }
+      );
+      return acc;
+    }, []);
   },
 
   findHighestAbvBeer() {
