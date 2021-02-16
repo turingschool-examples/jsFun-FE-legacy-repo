@@ -415,32 +415,30 @@ const breweryPrompts = {
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
   studentsForEachInstructor() {
-    // Return an array of instructors where each instructor is an object
-    // with a name and the count of students in their module. e.g.
-    // [
-    //  { name: 'Pam', studentCount: 21 },
-    //  { name: 'Robbie', studentCount: 18 }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return instructors.reduce((acc, i) => {
+      acc.push(
+        {
+          name: i.name,
+          studentCount: cohorts.find(a => {
+            return a.module == i.module;
+          })['studentCount']
+        }
+      );
+      return acc;
+    }, []);
   },
 
   studentsPerInstructor() {
-    // Return an object of how many students per teacher there are in each cohort e.g.
-    // {
-    // cohort1806: 9,
-    // cohort1804: 10.5
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    let ans = cohorts.reduce((obj, i) => {
+      obj[`cohort${i.cohort}`] = i.studentCount / instructors.reduce((acc, a) => {
+        if (a.module == i.module) {
+          acc += 1;
+        }
+        return acc;
+      }, 0);
+      return obj;
+    }, {});
+    return ans;
   },
 
   modulesPerTeacher() {
@@ -458,11 +456,7 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    //
   },
 
   curriculumPerTeacher() {
