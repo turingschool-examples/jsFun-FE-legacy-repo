@@ -420,26 +420,25 @@ const turingPrompts = {
         {
           name: i.name,
           studentCount: cohorts.find(a => {
-            return a.module == i.module
-          })[`studentCount`]
+            return a.module == i.module;
+          })['studentCount']
         }
-      )
+      );
       return acc;
-    }, [])
+    }, []);
   },
 
   studentsPerInstructor() {
-    // Return an object of how many students per teacher there are in each cohort e.g.
-    // {
-    // cohort1806: 9,
-    // cohort1804: 10.5
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    let ans = cohorts.reduce((obj, i) => {
+      obj[`cohort${i.cohort}`] = i.studentCount / instructors.reduce((acc, a) => {
+        if (a.module == i.module) {
+          acc += 1;
+        }
+        return acc;
+      }, 0);
+      return obj;
+    }, {});
+    return ans;
   },
 
   modulesPerTeacher() {
