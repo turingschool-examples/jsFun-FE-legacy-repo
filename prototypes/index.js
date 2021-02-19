@@ -442,7 +442,6 @@ const turingPrompts = {
   },
 
   modulesPerTeacher() {
-
     return instructors.reduce((acc, i) => {
       acc[`${i.name}`] = [];
       i.teaches.forEach(a => {
@@ -466,10 +465,10 @@ const turingPrompts = {
     let theObj = cohorts.reduce((acc, i) => {
       i.curriculum.forEach(a => {
         acc[`${a}`] = [];
-        //
       });
       return acc;
     }, {});
+
     instructors.forEach(i => {
       i.teaches.forEach(a => {
         if (theObj[a] && !theObj[a].includes(i.name)) {
