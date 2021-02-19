@@ -463,15 +463,6 @@ const turingPrompts = {
   },
 
   curriculumPerTeacher() {
-    // Return an object where each key is a curriculum topic and each value is
-    // an array of instructors who teach that topic e.g.:
-    // {
-    //   html: [ 'Travis', 'Louisa' ],
-    //   css: [ 'Travis', 'Louisa' ],
-    //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
-    //   recursion: [ 'Pam', 'Leta' ]
-    // }
-
     let theObj = cohorts.reduce((acc, i) => {
       i.curriculum.forEach(a => {
         acc[`${a}`] = [];
@@ -479,10 +470,6 @@ const turingPrompts = {
       });
       return acc;
     }, {});
-
-    // Object.entries(theObj)
-    // console.log(Object.keys(theObj))
-
     instructors.forEach(i => {
       i.teaches.forEach(a => {
         if (theObj[a] && !theObj[a].includes(i.name)) {
