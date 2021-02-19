@@ -444,22 +444,22 @@ const turingPrompts = {
   modulesPerTeacher() {
 
     return instructors.reduce((acc, i) => {
-      acc[`${i.name}`] = []
+      acc[`${i.name}`] = [];
       i.teaches.forEach(a => {
         cohorts.forEach(b => {
           if (i.name == 'Leta' && b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
             acc[`${i.name}`].push(b.module),
             acc[`${i.name}`].sort((a, b) => {
               return a - b;
-            })
+            });
           }
           if (b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
-            acc[`${i.name}`].push(b.module)
+            acc[`${i.name}`].push(b.module);
           }
-        })
-      })
+        });
+      });
       return acc;
-    }, {})
+    }, {});
   },
 
   curriculumPerTeacher() {
@@ -472,11 +472,10 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return cohorts.reduce((acc, i) => {
+      //
+      return acc;
+    }, {});
   }
 };
 
