@@ -472,10 +472,26 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    return cohorts.reduce((acc, i) => {
-      //
+    let theObj = cohorts.reduce((acc, i) => {
+      i.curriculum.forEach(a => {
+        acc[`${a}`] = [];
+        //
+      });
       return acc;
     }, {});
+
+    // Object.entries(theObj)
+    // console.log(Object.keys(theObj))
+
+    instructors.forEach(i => {
+      i.teaches.forEach(a => {
+        if (theObj[a] && !theObj[a].includes(i.name)) {
+          theObj[a].push(i.name);
+        }
+      });
+    });
+
+    return theObj;
   }
 };
 
