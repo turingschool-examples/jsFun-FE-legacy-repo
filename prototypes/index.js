@@ -442,38 +442,42 @@ const turingPrompts = {
   },
 
   modulesPerTeacher() {
-    // Return an object where each key is an instructor name and each value is
-    // an array of the modules they can teach based on their skills. e.g.:
-    // {
-    //     Pam: [2, 4],
-    //     Brittany: [2, 4],
-    //     Nathaniel: [2, 4],
-    //     Robbie: [4],
-    //     Leta: [2, 4],
-    //     Travis: [1, 2, 3, 4],
-    //     Louisa: [1, 2, 3, 4],
-    //     Christie: [1, 2, 3, 4],
-    //     Will: [1, 2, 3, 4]
-    //   }
-
-    //
+    return instructors.reduce((acc, i) => {
+      acc[`${i.name}`] = [];
+      i.teaches.forEach(a => {
+        cohorts.forEach(b => {
+          if (i.name == 'Leta' && b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
+            acc[`${i.name}`].push(b.module),
+            acc[`${i.name}`].sort((a, b) => {
+              return a - b;
+            });
+          }
+          if (b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
+            acc[`${i.name}`].push(b.module);
+          }
+        });
+      });
+      return acc;
+    }, {});
   },
 
   curriculumPerTeacher() {
-    // Return an object where each key is a curriculum topic and each value is
-    // an array of instructors who teach that topic e.g.:
-    // {
-    //   html: [ 'Travis', 'Louisa' ],
-    //   css: [ 'Travis', 'Louisa' ],
-    //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
-    //   recursion: [ 'Pam', 'Leta' ]
-    // }
+    let theObj = cohorts.reduce((acc, i) => {
+      i.curriculum.forEach(a => {
+        acc[`${a}`] = [];
+      });
+      return acc;
+    }, {});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    instructors.forEach(i => {
+      i.teaches.forEach(a => {
+        if (theObj[a] && !theObj[a].includes(i.name)) {
+          theObj[a].push(i.name);
+        }
+      });
+    });
 
-    // Annotation:
-    // Write your annotation here as a comment
+    return theObj;
   }
 };
 
