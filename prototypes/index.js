@@ -442,21 +442,24 @@ const turingPrompts = {
   },
 
   modulesPerTeacher() {
-    // Return an object where each key is an instructor name and each value is
-    // an array of the modules they can teach based on their skills. e.g.:
-    // {
-    //     Pam: [2, 4],
-    //     Brittany: [2, 4],
-    //     Nathaniel: [2, 4],
-    //     Robbie: [4],
-    //     Leta: [2, 4],
-    //     Travis: [1, 2, 3, 4],
-    //     Louisa: [1, 2, 3, 4],
-    //     Christie: [1, 2, 3, 4],
-    //     Will: [1, 2, 3, 4]
-    //   }
 
-    //
+    return instructors.reduce((acc, i) => {
+      acc[`${i.name}`] = []
+      i.teaches.forEach(a => {
+        cohorts.forEach(b => {
+          if (i.name == 'Leta' && b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
+            acc[`${i.name}`].push(b.module),
+            acc[`${i.name}`].sort((a, b) => {
+              return a - b;
+            })
+          }
+          if (b.curriculum.includes(a)  && !acc[`${i.name}`].includes(b.module)) {
+            acc[`${i.name}`].push(b.module)
+          }
+        })
+      })
+      return acc;
+    }, {})
   },
 
   curriculumPerTeacher() {
