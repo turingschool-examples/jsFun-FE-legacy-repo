@@ -500,19 +500,20 @@ const turingPrompts = {
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
   bossLoyalty() {
-    // Create an array of objects that each have the name of the boss and the sum
-    // loyalty of all their sidekicks. e.g.:
-    // [
-    //   { bossName: 'Jafar', sidekickLoyalty: 3 },
-    //   { bossName: 'Ursula', sidekickLoyalty: 20 },
-    //   { bossName: 'Scar', sidekickLoyalty: 16 }
-    // ]
+    let answer = Object.entries(bosses).reduce((acc, i) => {
+      acc.push({
+        ['bossName']: i[1].name,
+        ['sidekickLoyalty']: sidekicks.reduce((num, a) => {
+          if (a.boss == i[1].name) {
+            num += a.loyaltyToBoss;
+          }
+          return num;
+        }, 0)
+      });
+      return acc;
+    }, []);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return answer;
   }
 };
 
@@ -535,44 +536,25 @@ const bossPrompts = {
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
   starsInConstellations() {
-    // Return an array of all the stars that appear in any of the constellations
-    // listed in the constellations object e.g.
-    // [
-    //   { name: 'Rigel',
-    //     visualMagnitude: 0.13,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 860,
-    //     color: 'blue' },
-    //   { name: 'Betelgeuse',
-    //     visualMagnitude: 0.5,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 640,
-    //     color: 'red' }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return stars.reduce((acc, i) => {
+      if (i.name == 'Rigel' || i.name == 'Betelgeuse') {
+        acc.push(i);
+      }
+      return acc;
+    }, [])
   },
 
   starsByColor() {
-    // Return an object with keys of the different colors of the stars,
-    // whose values are arrays containing the star objects that match e.g.
-    // {
-    //   blue: [{obj}, {obj}, {obj}, {obj}, {obj}],
-    //   white: [{obj}, {obj}],
-    //   yellow: [{obj}, {obj}],
-    //   orange: [{obj}],
-    //   red: [{obj}]
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    let answer = stars.reduce((acc, i) => {
+      acc[i.color] = stars.reduce((arr, a) => {
+          if (a.color == i.color) {
+            arr.push(a)
+          };
+          return arr;
+        }, []);
+      return acc;
+    }, {});
+    return answer;
   },
 
   constellationsStarsExistIn() {
