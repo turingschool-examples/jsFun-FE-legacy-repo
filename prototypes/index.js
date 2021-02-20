@@ -545,21 +545,16 @@ const astronomyPrompts = {
   },
 
   starsByColor() {
-    // Return an object with keys of the different colors of the stars,
-    // whose values are arrays containing the star objects that match e.g.
-    // {
-    //   blue: [{obj}, {obj}, {obj}, {obj}, {obj}],
-    //   white: [{obj}, {obj}],
-    //   yellow: [{obj}, {obj}],
-    //   orange: [{obj}],
-    //   red: [{obj}]
-    // }
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    let answer = stars.reduce((acc, i) => {
+      acc[i.color] = stars.reduce((arr, a) => {
+          if (a.color == i.color) {
+            arr.push(a)
+          };
+          return arr;
+        }, []);
+      return acc;
+    }, {});
+    return answer;
   },
 
   constellationsStarsExistIn() {
