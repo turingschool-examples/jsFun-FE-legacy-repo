@@ -511,7 +511,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe("Astronomy Prompts", () => {
+  describe.only("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
 

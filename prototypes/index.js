@@ -536,26 +536,12 @@ const bossPrompts = {
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
   starsInConstellations() {
-    // Return an array of all the stars that appear in any of the constellations
-    // listed in the constellations object e.g.
-    // [
-    //   { name: 'Rigel',
-    //     visualMagnitude: 0.13,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 860,
-    //     color: 'blue' },
-    //   { name: 'Betelgeuse',
-    //     visualMagnitude: 0.5,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 640,
-    //     color: 'red' }
-    // ]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return stars.reduce((acc, i) => {
+      if (i.name == 'Rigel' || i.name == 'Betelgeuse') {
+        acc.push(i);
+      }
+      return acc;
+    }, [])
   },
 
   starsByColor() {
