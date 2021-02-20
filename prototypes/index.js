@@ -500,19 +500,20 @@ const turingPrompts = {
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
   bossLoyalty() {
-    // Create an array of objects that each have the name of the boss and the sum
-    // loyalty of all their sidekicks. e.g.:
-    // [
-    //   { bossName: 'Jafar', sidekickLoyalty: 3 },
-    //   { bossName: 'Ursula', sidekickLoyalty: 20 },
-    //   { bossName: 'Scar', sidekickLoyalty: 16 }
-    // ]
+    let answer = Object.entries(bosses).reduce((acc, i) => {
+      acc.push({
+        ['bossName']: i[1].name,
+        ['sidekickLoyalty']: sidekicks.reduce((num, a) => {
+          if (a.boss == i[1].name) {
+            num += a.loyaltyToBoss;
+          }
+          return num;
+        }, 0)
+      });
+      return acc;
+    }, []);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return answer;
   }
 };
 

@@ -494,7 +494,7 @@ describe("PROTOTYPES", () => {
     })
   });
   
-  describe("Boss Prompts", () => {
+  describe.only("Boss Prompts", () => {
     it("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
 
