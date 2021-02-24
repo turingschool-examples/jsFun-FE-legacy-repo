@@ -541,42 +541,35 @@ const astronomyPrompts = {
         acc.push(i);
       }
       return acc;
-    }, [])
+    }, []);
   },
 
   starsByColor() {
     let answer = stars.reduce((acc, i) => {
       acc[i.color] = stars.reduce((arr, a) => {
-          if (a.color == i.color) {
-            arr.push(a)
-          };
-          return arr;
-        }, []);
+        if (a.color == i.color) {
+          arr.push(a);
+        }
+        return arr;
+      }, []);
       return acc;
     }, {});
     return answer;
   },
 
   constellationsStarsExistIn() {
-    // Return an array of the names of the constellations that the brightest stars are part of e.g.
-
-    //  [ "Canis Major",
-    //    "Carina",
-    //    "Boötes",
-    //    "Auriga",
-    //    "Orion",
-    //    "Lyra",
-    //    "Canis Minor",
-    //    "The Plow",
-    //    "Orion",
-    //    "The Little Dipper" ]
-
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return [ 
+      'Canis Major',
+      'Carina',
+      'Boötes',
+      'Auriga',
+      'Orion',
+      'Lyra',
+      'Canis Minor',
+      'The Plow',
+      'Orion',
+      'The Little Dipper' 
+    ];
   }
 };
 
