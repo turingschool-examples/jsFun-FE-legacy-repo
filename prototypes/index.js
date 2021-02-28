@@ -595,9 +595,9 @@ const ultimaPrompts = {
     return characters.reduce((acc, i) => {
       i.weapons.forEach(a => {
         acc += weapons[a].damage;
-      })
+      });
       return acc;
-    }, 0)
+    }, 0);
   },
 
   charactersByTotal() {
@@ -617,13 +617,10 @@ const ultimaPrompts = {
       acc.push({[i.name]: {
         damage: obj['one'],
         range: obj['two']
-      }})
+      }});
       return acc;
-    }, [])
-
-    console.log(answer);
+    }, []);
     return answer;
-    // return answer;
   },
 };
 
