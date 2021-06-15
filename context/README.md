@@ -17,7 +17,12 @@ For each context exercise, we want to know what the value of `this` is when a ce
 * 'nameOfObject'
 * 'instance of nameOfClassInstance'
 
-Though you are technically working inside of a big `context` object with methods for each exercise, treat the code within each method as standalone code. (Imagine the code within the method is in it's own separate JavaScript file.)
+Though you are technically working inside of a big `context` object with methods for each exercise, treat the code within each method as standalone code. (Imagine that you are running the contents of each function within the browser, see gifs below)
+
+
+![gif of context in Node](/instruction-assets/context.gif “What you will see when running these tests locally”) 
+
+![gif of context in the Browser](/instruction-assets/browser-context.gif “What you should imagine when running these tests”) 
 
 For example, given the following exercise:
 
