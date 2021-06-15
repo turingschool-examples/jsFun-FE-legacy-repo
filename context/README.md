@@ -20,9 +20,11 @@ For each context exercise, we want to know what the value of `this` is when a ce
 Though you are technically working inside of a big `context` object with methods for each exercise, treat the code within each method as standalone code. (Imagine that you are running the contents of each function within the browser, see gifs below)
 
 What you will see when running these tests locally:
+
 <img src="./instruction-assets/context.gif" alt="gif of context when running these tests locally" width="450px" />
 
 What you should imagine when running these tests:
+
 <img src="./instruction-assets/browser-context.gif" alt="gif of what context to imagine when running these tests" width="450px"/> 
 
 For example, given the following exercise:
