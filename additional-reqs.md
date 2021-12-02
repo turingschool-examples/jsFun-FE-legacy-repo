@@ -1,9 +1,8 @@
 # For Repeats & Students Who Are Finished
 
+In addition to working through any JSFun problems you may not have solved, we’ll have two additional ideas for extra practice.
 
-In addition to working through any JSFun problems you may not have solved, we’ll have two additional requirements for you all going through JSFun week:
-
-1. Write a blog post on one of the three fundamental concepts taught this week. Your blog post can be published anywhere (portfolio site, medium, etc.), but make sure it will be visible to the public. Blog posts should be about 4-5 paragraphs demonstrating your understanding of the concept and its relevance. This will add to your portfolio for employers when you get to the job hunt phase in Mod 4 and help you ‘pre-prove’ your skills and knowledge. Below are some bullet points to help guide your content for whichever topic you choose.
+1. Write a blog post on one of the three fundamental concepts. Your blog post can be published anywhere (portfolio site, medium, etc.), but make sure it will be visible to the public. Blog posts should be about 4-5 paragraphs demonstrating your understanding of the concept and its relevance. This will add to your portfolio for employers when you get to the job hunt phase in Mod 4 and help you ‘pre-prove’ your skills and knowledge. Below are some bullet points to help guide your content for whichever topic you choose.
 
 *Prototypes:*
 * What a prototype is
@@ -24,6 +23,3 @@ In addition to working through any JSFun problems you may not have solved, we’
 
 
 2. Submit a pull request to the JSFun repo that adds a new prototype dataset along with at least 3 exercises for that dataset, and a new scope exercise. Creating exercises is a more thorough way to build your understanding of the given concepts (you learn more from teaching than by simply doing).
-
-
-Have your PRs in and your blog posts DMed to all three instructors by Monday morning of next week, before we do group evals on JSFun.
