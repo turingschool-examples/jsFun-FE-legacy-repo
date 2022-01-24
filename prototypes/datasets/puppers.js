@@ -17,7 +17,7 @@ const puppers = [
   {
     name: 'Butter',
     age: 1,
-    color: 'Orange'
+    color: 'orange'
   }
 ];
 
