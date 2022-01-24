@@ -68,8 +68,7 @@ const kittyPrompts = {
 // Currently, your functions are probably using the `kitties` global import variable.
 // refactor the above functions using arguments and parameters so that 
 // they can perform the same utility
-// for kitties or puppers, depending on what arguments you send through.
-// no tests for these - just for your practice with args and params
+// for the kitties or puppers datasets, depending on what arguments you send through.
 
 
 // ---------------------------------------------------------------------------

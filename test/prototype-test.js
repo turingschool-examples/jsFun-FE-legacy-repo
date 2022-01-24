@@ -1,6 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
-
+const { puppers } = require('../prototypes/datasets/puppers')
+const { kitties } = require('../prototypes/datasets/kitties')
 const {
   breweryPrompts,
   turingPrompts,
@@ -21,13 +22,13 @@ const {
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
-      const e = kittyPrompts.orangeKittyNames();
-      
+      const e = kittyPrompts.orangePetNames(kitties);
+
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
-    
+
     it("sortByAge", () => {
-      const e = kittyPrompts.sortByAge();
+      const e = kittyPrompts.sortByAge(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -47,9 +48,9 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     });
-    
+
     it("growUp", () => {
-      const e = kittyPrompts.growUp();
+      const e = kittyPrompts.growUp(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -69,8 +70,59 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
+    describe('kittyPrompts refactor', () => {
+      it('should be able to handle orange puppers', () => {
+        const e = kittyPrompts.orangePetNames(puppers);
+
+        expect(e).to.deep.equal(["Hatchet", "Butter"])
+      })
+
+      it('should sort pups too', () => {
+        const e = kittyPrompts.sortByAge(puppers);
+
+        expect(e).to.deep.equal([{
+          name: 'Scout',
+          age: 12,
+          color: 'grey'
+        }, {
+          name: 'Stick',
+          age: 6,
+          color: 'brown'
+        }, {
+          name: 'Hatchet',
+          age: 3,
+          color: 'orange'
+        }, {
+          name: 'Butter',
+          age: 1,
+          color: 'orange'
+        }])
+      })
+
+      it('should age puppers too', () => {
+        const e = kittyPrompts.growUp(puppers);
+
+        expect(e).to.deep.equal([{
+          name: 'Scout',
+          age: 14,
+          color: 'grey'
+        }, {
+          name: 'Stick',
+          age: 8,
+          color: 'brown'
+        }, {
+          name: 'Hatchet',
+          age: 5,
+          color: 'orange'
+        }, {
+          name: 'Butter',
+          age: 3,
+          color: 'orange'
+        }])
+      })
+    })
   });
-  
+
   describe("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
@@ -100,7 +152,7 @@ describe("PROTOTYPES", () => {
       })
     })
   });
-  
+
   describe("Mod Prompts", () => {
     it("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
@@ -120,7 +172,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
-  
+
   describe("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
@@ -145,7 +197,7 @@ describe("PROTOTYPES", () => {
         inStock: 0
       }])
     });
-    
+
     it("onlyInStock", () => {
       const e = cakePrompts.onlyInStock();
 
@@ -175,19 +227,19 @@ describe("PROTOTYPES", () => {
         inStock: 21
       }])
     });
-    
+
     it("totalInventory", () => {
       const e = cakePrompts.totalInventory();
 
       expect(e).to.deep.equal(59)
     });
-    
+
     it("allToppings", () => {
       const e = cakePrompts.allToppings();
 
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     });
-    
+
     it("groceryList", () => {
       const e = cakePrompts.groceryList();
 
@@ -203,7 +255,7 @@ describe("PROTOTYPES", () => {
       })
     })
   });
-  
+
   describe("Class Prompts", () => {
     it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
@@ -226,7 +278,7 @@ describe("PROTOTYPES", () => {
         capacity: 29
       }])
     });
-    
+
     it("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
 
@@ -235,7 +287,7 @@ describe("PROTOTYPES", () => {
         beCapacity: 96
       })
     });
-    
+
     it("sortByCapacity", () => {
       const e = classPrompts.sortByCapacity();
 
@@ -299,9 +351,11 @@ describe("PROTOTYPES", () => {
       const e = bookPrompts.getNewBooks();
 
       expect(e).to.deep.equal([{
-        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
-        { title: 'Life of Pi', year: 2001 },
-        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
+        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
+      },
+      { title: 'Life of Pi', year: 2001 },
+      {
+        title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
       }])
     })
   });
@@ -314,22 +368,22 @@ describe("PROTOTYPES", () => {
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
       ])
     }),
-    it("findSunnySpots", () => {
-      const e = weatherPrompts.findSunnySpots();
+      it("findSunnySpots", () => {
+        const e = weatherPrompts.findSunnySpots();
 
-      expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
-      )
-    }),
-    it("findHighestHumidity", () => {
-      const e = weatherPrompts.findHighestHumidity();
+        expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
+        )
+      }),
+      it("findHighestHumidity", () => {
+        const e = weatherPrompts.findHighestHumidity();
 
-      expect(e).to.deep.equal({
-        location: 'Portland, Oregon',
-        type: 'cloudy',
-        humidity: 84,
-        temperature: { high: 49, low: 38 }
+        expect(e).to.deep.equal({
+          location: 'Portland, Oregon',
+          type: 'cloudy',
+          humidity: 84,
+          temperature: { high: 49, low: 38 }
+        })
       })
-    })
   });
 
   describe("National Park Prompts", () => {
@@ -337,41 +391,41 @@ describe("PROTOTYPES", () => {
       const e = nationalParksPrompts.getParkVisitList();
 
       expect(e).to.deep.equal({
-        parksToVisit: [ 'Yellowstone', 'Glacier', 'Everglades' ],
-        parksVisited: [ 'Rocky Mountain', 'Acadia', 'Zion' ]
+        parksToVisit: ['Yellowstone', 'Glacier', 'Everglades'],
+        parksVisited: ['Rocky Mountain', 'Acadia', 'Zion']
       })
     }),
-    it("getParkActivities", () => {
-      const e = nationalParksPrompts.getParkActivities();
+      it("getParkActivities", () => {
+        const e = nationalParksPrompts.getParkActivities();
 
-      expect(e).to.deep.equal(
-      [ 'hiking',
-        'shoeshoing',
-        'camping',
-        'fishing',
-        'boating',
-        'watching wildlife',
-        'cross-country skiing',
-        'swimming',
-        'bird watching',
-        'canyoneering',
-        'backpacking',
-        'rock climbing'
-      ])
-    }),
-    it("getParkInEachState", () => {
-      const e = nationalParksPrompts.getParkInEachState();
+        expect(e).to.deep.equal(
+          ['hiking',
+            'shoeshoing',
+            'camping',
+            'fishing',
+            'boating',
+            'watching wildlife',
+            'cross-country skiing',
+            'swimming',
+            'bird watching',
+            'canyoneering',
+            'backpacking',
+            'rock climbing'
+          ])
+      }),
+      it("getParkInEachState", () => {
+        const e = nationalParksPrompts.getParkInEachState();
 
-      expect(e).to.deep.equal(
-        [
-          { Colorado: 'Rocky Mountain' },
-          { Wyoming: 'Yellowstone' },
-          { Montana: 'Glacier' },
-          { Maine: 'Acadia' },
-          { Utah: 'Zion' },
-          { Florida: 'Everglades' }
-        ])
-    })
+        expect(e).to.deep.equal(
+          [
+            { Colorado: 'Rocky Mountain' },
+            { Wyoming: 'Yellowstone' },
+            { Montana: 'Glacier' },
+            { Maine: 'Acadia' },
+            { Utah: 'Zion' },
+            { Florida: 'Everglades' }
+          ])
+      })
   });
 
   describe("Brewery Prompts", () => {
@@ -380,7 +434,7 @@ describe("PROTOTYPES", () => {
 
       expect(e).to.deep.equal(40)
     });
-    
+
     it("getBreweryBeerCount", () => {
       const e = breweryPrompts.getBreweryBeerCount();
 
@@ -401,7 +455,7 @@ describe("PROTOTYPES", () => {
         beerCount: 7
       }])
     });
-    
+
     it("findHighestAbvBeer", () => {
       const e = breweryPrompts.findHighestAbvBeer();
 
@@ -413,7 +467,7 @@ describe("PROTOTYPES", () => {
       })
     })
   });
-  
+
   describe("Turing Prompts", () => {
     it("studentsForEachInstructor", () => {
       const e = turingPrompts.studentsForEachInstructor();
@@ -447,7 +501,7 @@ describe("PROTOTYPES", () => {
         studentCount: 20
       }])
     });
-    
+
     it("studentsPerInstructor", () => {
       const e = turingPrompts.studentsPerInstructor();
 
@@ -458,7 +512,7 @@ describe("PROTOTYPES", () => {
         cohort1801: 9
       })
     });
-    
+
     it("modulesPerTeacher", () => {
       const e = turingPrompts.modulesPerTeacher();
 
@@ -474,7 +528,7 @@ describe("PROTOTYPES", () => {
         Will: [1, 2, 3, 4]
       })
     });
-    
+
     it("curriculumPerTeacher", () => {
       const e = turingPrompts.curriculumPerTeacher();
 
@@ -493,7 +547,7 @@ describe("PROTOTYPES", () => {
       })
     })
   });
-  
+
   describe("Boss Prompts", () => {
     it("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
@@ -510,7 +564,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
-  
+
   describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
@@ -521,14 +575,15 @@ describe("PROTOTYPES", () => {
         constellation: 'Orion',
         lightYearsFromEarth: 860,
         color: 'blue'
-      }, { name: 'Betelgeuse',
+      }, {
+        name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
         color: 'red'
       }])
     });
-    
+
     it("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
 
@@ -606,21 +661,21 @@ describe("PROTOTYPES", () => {
         }]
       })
     });
-    
+
     it("constellationsStarsExistIn", () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
 
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
   });
-  
+
   describe("Ultima Prompts", () => {
     it("totalDamage", () => {
       const e = ultimaPrompts.totalDamage();
 
       expect(e).to.deep.equal(113)
     });
-    
+
     it("charactersByTotal", () => {
       const e = ultimaPrompts.charactersByTotal();
 
@@ -647,7 +702,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
-  
+
   describe("Dinosaur Prompts", () => {
     it("countAwesomeDinosaurs", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
@@ -660,7 +715,7 @@ describe("PROTOTYPES", () => {
         'Jurassic World: Fallen Kingdom': 18
       })
     });
-    
+
     it("averageAgePerMovie", () => {
       const e = dinosaurPrompts.averageAgePerMovie();
 
@@ -680,7 +735,7 @@ describe("PROTOTYPES", () => {
         }
       })
     });
-    
+
     it("uncastActors", () => {
       const e = dinosaurPrompts.uncastActors();
 
@@ -704,7 +759,7 @@ describe("PROTOTYPES", () => {
         imdbStarMeterRating: 0
       }])
     });
-    
+
     it("actorsAgesInMovies", () => {
       const e = dinosaurPrompts.actorsAgesInMovies();
 
