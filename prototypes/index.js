@@ -1,4 +1,5 @@
 const { kitties } = require('./datasets/kitties');
+const { puppers } = require('./datasets/puppers');
 const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
 const { cakes } = require('./datasets/cakes');
@@ -23,7 +24,7 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangeKittyNames() {
+  orangePetNames() {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
@@ -63,8 +64,11 @@ const kittyPrompts = {
   }
 };
 
-
-
+// PLEASE READ-----------------------
+// Currently, your functions are probably using the `kitties` global import variable.
+// refactor the above functions using arguments and parameters so that 
+// they can perform the same utility
+// for kitties or puppers, depending on what arguments you send through.
 
 
 
