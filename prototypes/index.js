@@ -69,7 +69,7 @@ const kittyPrompts = {
 // refactor the above functions using arguments and parameters so that 
 // they can perform the same utility
 // for kitties or puppers, depending on what arguments you send through.
-
+// no tests for these - just for your practice with args and params
 
 
 // ---------------------------------------------------------------------------
