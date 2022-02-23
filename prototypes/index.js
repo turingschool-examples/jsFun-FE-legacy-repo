@@ -715,6 +715,7 @@ const astronomyPrompts = {
 
   constellationsStarsExistIn() {
     // Return an array of the names of the constellations that the brightest stars are part of e.g.
+    // Brightest Stars are indicated by visualMagnitude - the lower the number, the brighter the star
 
     //  [ "Canis Major",
     //    "Carina",
