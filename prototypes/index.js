@@ -1,18 +1,16 @@
 const { kitties } = require('./datasets/kitties');
 const { puppers } = require('./datasets/puppers');
-const { clubs } = require('./datasets/clubs');
 const { mods } = require('./datasets/mods');
-const { cakes } = require('./datasets/cakes');
-const { classrooms } = require('./datasets/classrooms');
-const { breweries } = require('./datasets/breweries');
-const { nationalParks } = require('./datasets/nationalParks');
-const { books } = require('./datasets/books');
-const { weather } = require('./datasets/weather');
-const { instructors, cohorts } = require('./datasets/turing');
-const { bosses, sidekicks } = require('./datasets/bosses');
-const { constellations, stars } = require('./datasets/astronomy');
-const { weapons, characters } = require('./datasets/ultima');
-const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
+// const { cakes } = require('./datasets/cakes');
+// const { classrooms } = require('./datasets/classrooms');
+// const { breweries } = require('./datasets/breweries');
+// const { nationalParks } = require('./datasets/nationalParks');
+// const { weather } = require('./datasets/weather');
+// const { instructors, cohorts } = require('./datasets/turing');
+// const { bosses, sidekicks } = require('./datasets/bosses');
+// const { constellations, stars } = require('./datasets/astronomy');
+// const { weapons, characters } = require('./datasets/ultima');
+// const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 // SINGLE DATASETS
@@ -23,8 +21,8 @@ const kittyPrompts = {
   orangePetNames() {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
-        
-    /* CODE GOES HERE */
+
+        /* CODE GOES HERE */
 
     // Annotation:
     // Write your annotation here as a comment
@@ -78,6 +76,7 @@ const kittyPrompts = {
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
+    // Your function should access the clubs data through a parameter (it is being passed as an argument in the test file)
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
     // {
@@ -294,6 +293,7 @@ const classPrompts = {
 
 const bookPrompts = {
   removeViolence() {
+    // Your function should access the books data through a parameter (it is being passed as an argument in the test file)
     // return an array of all book titles that are not horror or true crime. Eg:
 
     //  ['1984', 'The Great Gatsby', 'Lord of the Flies', 'Harry Potter and the Sorcerer\'s Stone',

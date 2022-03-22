@@ -2,6 +2,9 @@ const chai = require("chai");
 const expect = chai.expect;
 const { puppers } = require('../prototypes/datasets/puppers')
 const { kitties } = require('../prototypes/datasets/kitties')
+const { clubs } = require('../prototypes/datasets/clubs')
+const { books } = require('../prototypes/datasets/books')
+
 const {
   breweryPrompts,
   turingPrompts,
@@ -125,18 +128,7 @@ describe("PROTOTYPES", () => {
 
   describe("Club Prompts", () => {
     it.skip("membersBelongingToClubs", () => {
-      const e = clubPrompts.membersBelongingToClubs({
-        Louisa: ["Drama", "Art"],
-        Pam: ["Drama", "Chess", "Newspaper"],
-        Nathaniel: ["Drama", "Astronomy"],
-        Leta: ["Band", "Newspaper", "Astronomy"],
-        Robbie: ["Band", "Chess", "FBLA"],
-        Jhun: ["Band", "Art"],
-        Will: ["Band"],
-        David: ["Chess", "Newspaper", "FBLA"],
-        Brittany: ["Chess", "Newspaper"],
-        Christie: ["Newspaper", "FBLA"]
-      });
+      const e = clubPrompts.membersBelongingToClubs(clubs);
 
       expect(e).to.deep.equal({
         Louisa: ['Drama', 'Art'],
@@ -329,7 +321,7 @@ describe("PROTOTYPES", () => {
 
   describe("Book prompts", () => {
     it.skip("removeViolence", () => {
-      const e = bookPrompts.removeViolence();
+      const e = bookPrompts.removeViolence(books);
 
       expect(e).to.deep.equal(['1984',
         'The Great Gatsby',
@@ -348,7 +340,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("getNewBooks", () => {
-      const e = bookPrompts.getNewBooks();
+      const e = bookPrompts.getNewBooks(books);
 
       expect(e).to.deep.equal([{
         title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
