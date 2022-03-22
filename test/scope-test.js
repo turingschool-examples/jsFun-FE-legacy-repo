@@ -9,7 +9,7 @@ chai.use(function(e, t) {
 })
 
 describe("SCOPE", () => {
-  it("exerciseA", () => {
+  it.skip("exerciseA", () => {
     const e = JSON.stringify(scope.exerciseA()) == JSON.stringify([{
       A: "Ben"
     }, {
@@ -19,11 +19,11 @@ describe("SCOPE", () => {
     }, {
       D: "Paul"
     }]);
-    
+
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseB", () => {
+
+  it.skip("exerciseB", () => {
     const e = JSON.stringify(scope.exerciseB()) == JSON.stringify([{
       A: 75
     }, {
@@ -36,8 +36,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseC", () => {
+
+  it.skip("exerciseC", () => {
     const e = JSON.stringify(scope.exerciseC()) == JSON.stringify([{
       A: "Yo"
     }, {
@@ -50,8 +50,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseD", () => {
+
+  it.skip("exerciseD", () => {
     const e = JSON.stringify(scope.exerciseD()) == JSON.stringify([{
       A: "hi"
     }, {
@@ -64,8 +64,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseE", () => {
+
+  it.skip("exerciseE", () => {
     const e = JSON.stringify(scope.exerciseE()) == JSON.stringify([{
       C: "Brittany"
     }, {
@@ -78,8 +78,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseF", () => {
+
+  it.skip("exerciseF", () => {
     const e = JSON.stringify(scope.exerciseF()) == JSON.stringify([{
       A: "Spot"
     }, {
@@ -94,8 +94,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseG", () => {
+
+  it.skip("exerciseG", () => {
     const e = JSON.stringify(scope.exerciseG()) == JSON.stringify([{
       A: "reference error"
     }, {
@@ -108,8 +108,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseH", () => {
+
+  it.skip("exerciseH", () => {
     const e = JSON.stringify(scope.exerciseH()) == JSON.stringify([{
       A: 4
     }, {
@@ -124,8 +124,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseI", () => {
+
+  it.skip("exerciseI", () => {
     const e = JSON.stringify(scope.exerciseI()) == JSON.stringify([{
       A: 75
     }, {
@@ -146,8 +146,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseJ", () => {
+
+  it.skip("exerciseJ", () => {
     const e = JSON.stringify(scope.exerciseJ()) == JSON.stringify([{
       A: "ketchup sandwich"
     }, {
@@ -164,8 +164,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseK", () => {
+
+  it.skip("exerciseK", () => {
     const e = JSON.stringify(scope.exerciseK()) == JSON.stringify([{
       A: 7
     }, {
@@ -174,8 +174,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseL", () => {
+
+  it.skip("exerciseL", () => {
     const e = JSON.stringify(scope.exerciseL()) == JSON.stringify([{
       A: 95
     }, {
@@ -186,8 +186,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseM", () => {
+
+  it.skip("exerciseM", () => {
     const e = JSON.stringify(scope.exerciseM()) == JSON.stringify([{
       A: 5
     }, {
@@ -200,8 +200,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseN", () => {
+
+  it.skip("exerciseN", () => {
     const e = JSON.stringify(scope.exerciseN()) == JSON.stringify([{
       E: "Pam"
     }, {
@@ -218,8 +218,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseO", () => {
+
+  it.skip("exerciseO", () => {
     const e = JSON.stringify(scope.exerciseO()) == JSON.stringify([{
       B: "flipflop"
     }, {
@@ -230,8 +230,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseP", () => {
+
+  it.skip("exerciseP", () => {
     const e = JSON.stringify(scope.exerciseP()) == JSON.stringify([{
       B: "soup"
     }, {
@@ -240,8 +240,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseQ", () => {
+
+  it.skip("exerciseQ", () => {
     const e = JSON.stringify(scope.exerciseQ()) == JSON.stringify([{
       A: "Pandora"
     }, {
@@ -256,8 +256,8 @@ describe("SCOPE", () => {
 
     expect(e).withMessage("Your order of execution and/or values for variables in your result object are incorrect").to.be.true
   });
-  
-  it("exerciseR", () => {
+
+  it.skip("exerciseR", () => {
     const e = JSON.stringify(scope.exerciseR()) == JSON.stringify([{
       A: "Rody"
     }, {
