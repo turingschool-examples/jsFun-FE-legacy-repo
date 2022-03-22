@@ -67,11 +67,11 @@ const farmPrompts = {
     // total amount of animals on the farm. e.g.
     // 50
 
-    const result = animals.reduce((total, animal) => {
+    const totalAnimals = animals.reduce((total, animal) => {
       return total += animal.count;
     }, 0);
 
-    return result;
+    return totalAnimals;
 
     // Annotation:
     // Because we are given an array, and want a single number back,
