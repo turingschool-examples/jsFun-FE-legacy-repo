@@ -1,16 +1,16 @@
 const { kitties } = require('./datasets/kitties');
 const { puppers } = require('./datasets/puppers');
 const { mods } = require('./datasets/mods');
-// const { cakes } = require('./datasets/cakes');
-// const { classrooms } = require('./datasets/classrooms');
-// const { breweries } = require('./datasets/breweries');
-// const { nationalParks } = require('./datasets/nationalParks');
-// const { weather } = require('./datasets/weather');
-// const { instructors, cohorts } = require('./datasets/turing');
-// const { bosses, sidekicks } = require('./datasets/bosses');
-// const { constellations, stars } = require('./datasets/astronomy');
-// const { weapons, characters } = require('./datasets/ultima');
-// const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
+const { cakes } = require('./datasets/cakes');
+const { classrooms } = require('./datasets/classrooms');
+const { breweries } = require('./datasets/breweries');
+const { nationalParks } = require('./datasets/nationalParks');
+const { weather } = require('./datasets/weather');
+const { instructors, cohorts } = require('./datasets/turing');
+const { bosses, sidekicks } = require('./datasets/bosses');
+const { constellations, stars } = require('./datasets/astronomy');
+const { weapons, characters } = require('./datasets/ultima');
+const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 // SINGLE DATASETS
