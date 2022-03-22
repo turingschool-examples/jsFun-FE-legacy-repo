@@ -16,7 +16,7 @@ To run all tests for all three concepts:
 
 To run the tests for just a *single* concept:
 
-`npm run testContext` or  `npm run testScope` or  `npm run testPrototypes`
+`npm run testScope` or  `npm run testPrototypes`
 
 ## Pulling Down Repo Changes
 
