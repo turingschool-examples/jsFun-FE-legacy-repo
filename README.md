@@ -6,7 +6,7 @@ This repo contains practice exercises for fundamental JavaScript concepts includ
 
 **Fork** this repo (do not clone), then clone your forked copy to your machine. `cd` into the directory for the project and run `npm install`.
 
-Check out [this video](https://vimeo.com/turing/review/388545928/baac6f5a2d) if you need help!
+Check out [this video](https://vimeo.com/691112332/2a9ef1221c) for a walkthrough of the set up and first test!
 
 ## Running the Tests
 
