@@ -82,7 +82,7 @@ const farmPrompts = {
   }
 }
 ```
-You will then check that your solution is correct by running the corresponding test in `tests/prototype/.js`.
+You will then check that your solution is correct by running the corresponding test in `test/prototype-test.js`.
 
 
 # Resources
