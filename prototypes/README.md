@@ -88,25 +88,25 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 ## Prototype Test Checklist
 
 #### Single Data Sets
-- [ ] kitties [][][]
-- [ ] puppers [][][]
-- [ ] club []
-- [ ] mods []
-- [ ] cakes [][][][][]
-- [ ] classrooms [][][]
-- [ ] books [][]
-- [ ] weather [][][]
-- [ ] nationalParks [][][]
-- [ ] breweries [][][]
+- [ ] kitties
+- [ ] puppers
+- [ ] club
+- [ ] mods
+- [ ] cakes
+- [ ] classrooms
+- [ ] books
+- [ ] weather
+- [ ] nationalParks
+- [ ] breweries
 
 ### Double Data Sets
-- [ ] turing (instructors, cohorts) [][][][]
-- [ ] bosses (bosses, sidekicks) []
-- [ ] astronomy (constellations, stars) [][][]
-- [ ] ultima (weapons, characters) [][]
+- [ ] turing (instructors, cohorts)
+- [ ] bosses (bosses, sidekicks)
+- [ ] astronomy (constellations, stars)
+- [ ] ultima (weapons, characters)
 
 #### Triple Data Sets
-- [ ] dinosaurs (dinosaurs, humans, movies) [][][][]
+- [ ] dinosaurs (dinosaurs, humans, movies)
 
 
 # Resources
