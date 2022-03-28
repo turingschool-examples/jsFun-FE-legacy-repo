@@ -84,9 +84,32 @@ const farmPrompts = {
 ```
 You will then check that your solution is correct by running the corresponding test in `test/prototype-test.js`.
 
+If you'd like to keep track of your progress, feel free to use the checklist below"
+## Prototype Test Checklist
+
+#### Single Data Sets
+- [ ] kitties [][][]
+- [ ] puppers [][][]
+- [ ] club []
+- [ ] mods []
+- [ ] cakes [][][][][]
+- [ ] classrooms [][][]
+- [ ] books [][]
+- [ ] weather [][][]
+- [ ] nationalParks [][][]
+- [ ] breweries [][][]
+
+### Double Data Sets
+- [ ] turing (instructors, cohorts) [][][][]
+- [ ] bosses (bosses, sidekicks) []
+- [ ] astronomy (constellations, stars) [][][]
+- [ ] ultima (weapons, characters) [][]
+
+#### Triple Data Sets
+- [ ] dinosaurs (dinosaurs, humans, movies) [][][][]
+
 
 # Resources
-
 * [MDN - Array Prototype Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods)
 * [MDN - Object Prototype Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor)
 * [Turing Prototype Methods Lesson Plan](http://frontend.turing.io/lessons/module-2/arrays-objects/index.html)
