@@ -109,7 +109,7 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 - [ ] dinosaurs (dinosaurs, humans, movies)
 
 # More Practice
-For more practice with iterators, check out [this gist](https://gist.github.com/kaylagordon/c1f62f2c43e27dee3c6176f4d54aa3b6)!
+For more practice with iterators (in an assessment-style format), check out [this gist](https://gist.github.com/kaylagordon/c1f62f2c43e27dee3c6176f4d54aa3b6)!
 
 # Resources
 * [MDN - Array Prototype Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods)
