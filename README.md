@@ -1,6 +1,6 @@
 # jsFun
 
-This repo contains practice exercises for fundamental JavaScript concepts including scope, prototype methods, and context. Each concept has a corresponding folder with a README that includes instructions for solving each type of problem.
+This repo contains practice exercises for the fundamental JavaScript concepts of prototype methods and scope. Each concept has a corresponding folder with a README that includes instructions for solving each type of problem.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ Check out [this video](https://vimeo.com/691112332/2a9ef1221c) for a walkthrough
 
 ## Running the Tests
 
-To run all tests for all three concepts:
+To run all tests for both protoype methods and scope:
 
 `npm test`
 
@@ -40,5 +40,5 @@ Now, whenever instructors tell you to pull down changes, there are two steps:
 1. Make sure you commit and push any changes you have currently made
 2. Run `git pull turing main`
 
-Check out [this video](https://vimeo.com/turing/review/388550182/34823726eb) if you need help!
+Check out [this video](https://vimeo.com/turing/review/388550182/34823726eb) if you need help pulling down new changes!
 
