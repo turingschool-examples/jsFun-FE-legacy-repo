@@ -1,15 +1,15 @@
 const constellations = {
   orion: {
-    names: ['Orion', 'The Hunter', 'The Giant', 'The Deer'],
-    stars: ['Betelgeuse', 'Rigel', 'Bellatrix', 'Mintaka', 'Alnilam', 'Alnitak', 'Saiph']
+    alternateNames: ['Orion', 'The Hunter', 'The Giant', 'The Deer'],
+    starNames: ['Betelgeuse', 'Rigel', 'Bellatrix', 'Mintaka', 'Alnilam', 'Alnitak', 'Saiph']
   },
   ursaMajor: {
-    names: ['Ursa Major', 'The Big Dipper', 'The Great Bear', 'The Plow'],
-    stars: ['Dubhe', 'Merak', 'Phecda', 'Megrez', 'Alioth', 'Mizar', 'Alkaid']
+    alternateNames: ['Ursa Major', 'The Big Dipper', 'The Great Bear', 'The Plow'],
+    starNames: ['Dubhe', 'Achernar', 'Merak', 'Phecda', 'Megrez', 'Alioth', 'Mizar', 'Alkaid']
   },
   ursaMinor: {
-    names: ['Ursa Minor', 'The Little Dipper', 'The Cub', 'The Little Bear'],
-    stars: ['Polaris', 'Kochab', 'Pherkad', 'Delta', 'Epsilon Ursae Minoris', 'Lambda Ursae Minoris']
+    alternateNames: ['Ursa Minor', 'The Little Dipper', 'The Cub', 'The Little Bear'],
+    starNames: ['Polaris', 'Kochab', 'Pherkad', 'Hadar', 'Delta', 'Epsilon Ursae Minoris', 'Lambda Ursae Minoris']
   }
 };
 

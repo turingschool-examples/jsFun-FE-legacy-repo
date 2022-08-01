@@ -640,7 +640,7 @@ const bossPrompts = {
 // DATASET: constellations, stars } from ./datasets/astronomy
 const astronomyPrompts = {
   starsInConstellations() {
-    // Return an array of all the stars that appear in any of the constellations
+    // Return an array of all the star objects that appear in any of the constellations
     // listed in the constellations object e.g.
     // [
     //   { name: 'Rigel',
@@ -652,7 +652,21 @@ const astronomyPrompts = {
     //     visualMagnitude: 0.5,
     //     constellation: 'Orion',
     //     lightYearsFromEarth: 640,
-    //     color: 'red' }
+    //     color: 'red' },
+    //   {
+    //     name: 'Achernar',
+    //     visualMagnitude: 0.46,
+    //     constellation: 'The Plow',
+    //     lightYearsFromEarth: 140,
+    //     color: 'blue'
+    //   },
+    //   {
+    //     name: 'Hadar',
+    //     visualMagnitude: 0.61,
+    //     constellation: 'The Little Dipper',
+    //     lightYearsFromEarth: 350,
+    //     color: 'blue'
+    //   }
     // ]
 
     /* CODE GOES HERE */
@@ -679,9 +693,9 @@ const astronomyPrompts = {
   },
 
   constellationsStarsExistIn() {
-    // Return an array of the names of the constellations that the brightest stars are part of e.g.
+    // Sort the stars by brightness and return an array of the star's constellation names
     // Brightest Stars are indicated by visualMagnitude - the lower the number, the brighter the star
-
+    // e.g.
     //  [ "Canis Major",
     //    "Carina",
     //    "Boötes",
