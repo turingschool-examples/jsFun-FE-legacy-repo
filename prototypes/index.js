@@ -496,6 +496,18 @@ const breweryPrompts = {
     // Write your annotation here as a comment
   },
 
+  getSingleBreweryBeerCount(breweryName) {
+    // Return a number that is the count of beers that the specified
+    // brewery has e.g.
+    // given 'Ratio Beerworks', return 5
+
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
   findHighestAbvBeer() {
     // Return the beer which has the highest ABV of all beers
     // e.g.

@@ -471,6 +471,14 @@ describe("PROTOTYPES", () => {
       }])
     });
 
+    it.skip("getSingleBreweryBeerCount", () => {
+      const ratioCount = breweryPrompts.getSingleBreweryBeerCount('Ratio Beerworks');
+      const plattCount = breweryPrompts.getSingleBreweryBeerCount('Platt Park Brewing Co.');
+
+      expect(ratioCount).to.equal(5);
+      expect(plattCount).to.equal(7);
+    });
+
     it.skip("findHighestAbvBeer", () => {
       const e = breweryPrompts.findHighestAbvBeer();
 
