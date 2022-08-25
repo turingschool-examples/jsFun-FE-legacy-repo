@@ -311,9 +311,11 @@ const bookPrompts = {
     // Write your annotation here as a comment
 
   },
-  getNewBooks() {
+  getBooksByYear(books, year) {
     // return an array of objects containing all books that were
-    // published in the 90's and 00's. Inlucde the title and the year Eg:
+    // published after the specified year without the author or genre data. 
+    // The published property should be changed to year for the returned books.
+    // e.g. given 1990, return
 
     // [{ title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997 },
     //  { title: 'Life of Pi', year: 2001 },
