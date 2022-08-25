@@ -6,11 +6,13 @@ const { classrooms } = require('./datasets/classrooms');
 const { breweries } = require('./datasets/breweries');
 const { nationalParks } = require('./datasets/nationalParks');
 const { weather } = require('./datasets/weather');
+const { boardGames } = require('./datasets/boardGames');
 const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
 const { constellations, stars } = require('./datasets/astronomy');
 const { weapons, characters } = require('./datasets/ultima');
 const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
+
 
 
 // SINGLE DATASETS
@@ -491,6 +493,74 @@ const breweryPrompts = {
 };
 
 
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+// DATASET: weather from './datasets/boardGames
+
+const boardGamePrompts = {
+  listGames(type) {
+    // Return an array of just the names of the games within a specified type. 
+    // e.g. given an argument of "strategy", return
+    // ["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket to Ride"]
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  listGamesAlphabetically(type) {
+    // Return an array of just the names of the games within a specified 
+    // type, sorted alphabetically. 
+    // e.g. given an argument of "childrens", return
+    // ["Candy Land", "Connect Four", "Operation", "Trouble"]
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  findHighestRatedGamesByType(type) {
+    // Return an object which is the highest rated game within the specified type.
+    // e.g. given the argument of 'party', return
+    // { name: 'Codenames', rating: 7.4, maxPlayers: 8 },
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  averageScoreByType(type) {
+    // Return the average score for the specified type.
+    // e.g. given the argument of "strategy", return 7
+    // note: do not worry about rounding your result.
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  averageScoreByTypeAndPlayers(type, maximumPlayers) {
+    // Return the average score of any games that match the specified type
+    // and maximum number of players.
+    // e.g. given the arguments of "strategy" and 2, return 6.16666666667
+    // note: do not worry about rounding your result.
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
 
 
 
@@ -892,5 +962,6 @@ module.exports = {
   nationalParksPrompts,
   weatherPrompts,
   bookPrompts,
-  dinosaurPrompts
+  dinosaurPrompts,
+  boardGamePrompts,
 };
