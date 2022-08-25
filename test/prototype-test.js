@@ -340,7 +340,19 @@ describe("PROTOTYPES", () => {
         'Treasure Island'])
     });
 
-    it("getBooksByYear", () => {
+    it.skip("getNewBooks", () => {
+      const e = bookPrompts.getNewBooks(books);
+
+      expect(e).to.deep.equal([{
+        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
+      },
+      { title: 'Life of Pi', year: 2001 },
+      {
+        title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
+      }])
+    });
+
+    it.skip("getBooksByYear", () => {
       const e = bookPrompts.getBooksByYear(books, 1990);
 
       expect(e).to.deep.equal([{
@@ -350,7 +362,6 @@ describe("PROTOTYPES", () => {
       {
         title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
       }])
-    }); 
 
       const earlyBooks = bookPrompts.getBooksByYear(books, 1970);
       expect(earlyBooks).to.deep.equal([
@@ -361,6 +372,7 @@ describe("PROTOTYPES", () => {
         { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 },
         { title: 'Interview with the Vampire', year: 1976 }
       ]);
+    }); 
   });
 
   describe("Weather prompts", () => {
