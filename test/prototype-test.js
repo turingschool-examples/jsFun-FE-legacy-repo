@@ -20,6 +20,7 @@ const {
   nationalParksPrompts,
   weatherPrompts,
   bookPrompts,
+  boardGamePrompts,
 } = require("../prototypes/index");
 
 describe("PROTOTYPES", () => {
@@ -349,7 +350,29 @@ describe("PROTOTYPES", () => {
       {
         title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
       }])
-    })
+    });
+
+    it.skip("getBooksByYear", () => {
+      const e = bookPrompts.getBooksByYear(books, 1990);
+
+      expect(e).to.deep.equal([{
+        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
+      },
+      { title: 'Life of Pi', year: 2001 },
+      {
+        title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
+      }])
+
+      const earlyBooks = bookPrompts.getBooksByYear(books, 1970);
+      expect(earlyBooks).to.deep.equal([
+        { title: "Harry Potter and the Sorcerer's Stone", year: 1997 },
+        { title: "The Hitchhiker's Guide to the Galaxy", year: 1979 },
+        { title: "The Handmaid's Tale", year: 1985 },
+        { title: 'Life of Pi', year: 2001 },
+        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 },
+        { title: 'Interview with the Vampire', year: 1976 }
+      ]);
+    }); 
   });
 
   describe("Weather prompts", () => {
@@ -448,6 +471,14 @@ describe("PROTOTYPES", () => {
       }])
     });
 
+    it.skip("getSingleBreweryBeerCount", () => {
+      const ratioCount = breweryPrompts.getSingleBreweryBeerCount('Ratio Beerworks');
+      const plattCount = breweryPrompts.getSingleBreweryBeerCount('Platt Park Brewing Co.');
+
+      expect(ratioCount).to.equal(5);
+      expect(plattCount).to.equal(7);
+    });
+
     it.skip("findHighestAbvBeer", () => {
       const e = breweryPrompts.findHighestAbvBeer();
 
@@ -459,6 +490,58 @@ describe("PROTOTYPES", () => {
       })
     })
   });
+
+  describe("Board Game Prompts", () => {
+    it.skip("listGames", () => {
+      const strategyGames = boardGamePrompts.listGames('strategy');
+      const childrensGames = boardGamePrompts.listGames('childrens');
+      const partyGames = boardGamePrompts.listGames('party');
+
+      expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
+      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
+      expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
+    });
+
+    it.skip("listGamesAlphabetically", () => {
+      const strategyGames = boardGamePrompts.listGamesAlphabetically('strategy');
+      const childrensGames = boardGamePrompts.listGamesAlphabetically('childrens');
+      const partyGames = boardGamePrompts.listGamesAlphabetically('party');
+
+      expect(strategyGames).to.deep.equal(["Azul", "Battle Ship", "Catan", "Checkers", "Chess", "Pandemic", "Ticket To Ride"]);
+      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
+      expect(partyGames).to.deep.equal(["Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro", "Werewolf"]);
+    });
+
+    it.skip("findHighestRatedGamesByType", () => {
+      const highestStrategy = boardGamePrompts.findHighestRatedGamesByType('strategy');
+      const highestChildrens = boardGamePrompts.findHighestRatedGamesByType('childrens');
+      const highestParty = boardGamePrompts.findHighestRatedGamesByType('party');
+
+      expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
+      expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
+      expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
+    });
+
+    it.skip("averageScoreByType", () => {
+      const avScoreStrat = boardGamePrompts.averageScoreByType('strategy');
+      const avScoreChildren = boardGamePrompts.averageScoreByType('childrens');
+      const avScoreParty = boardGamePrompts.averageScoreByType('party');
+      
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
+    });
+
+    it.skip("averageScoreByTypeAndPlayers", () => {
+      const avScoreStrat = boardGamePrompts.averageScoreByTypeAndPlayers('strategy', 2);
+      const avScoreChildren = boardGamePrompts.averageScoreByTypeAndPlayers('childrens', 4);
+      const avScoreParty = boardGamePrompts.averageScoreByTypeAndPlayers('party', 8);
+      Math.round(avScoreChildren * 100) / 100
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(7); // 8 players
+    });
+  })
 
   describe("Turing Prompts", () => {
     it.skip("studentsForEachInstructor", () => {
