@@ -100,7 +100,6 @@ const clubPrompts = {
           compilation[member] = [];
         }
         compilation[member].push(clubItem.club)
-        return compilation;
       })
       return compilation;
     }, {})
@@ -138,6 +137,12 @@ const modPrompts = {
     // ]
 
     /* CODE GOES HERE */
+    return mods.map(modItem => {
+      return {
+        mod: modItem.mod,
+        studentsPerInstructor: modItem.students/modItem.instructors
+      }
+    })
 
     // Annotation:
     // Write your annotation here as a comment
