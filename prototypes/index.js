@@ -20,26 +20,28 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(animals) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
 
         /* CODE GOES HERE */
-
+        return animals
+        .filter(animal => animal.color === "orange")
+        .map(animal => animal.name);
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  sortByAge() {
+  sortByAge(animals) {
     // Sort the kitties by their age
 
     /* CODE GOES HERE */
-
+    return animals.sort((a, b) => b.age - a.age);
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  growUp() {
+  growUp(animals) {
     // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
@@ -54,8 +56,12 @@ const kittyPrompts = {
     // ...etc]
 
     /* CODE GOES HERE */
+    return animals.map(animal => {
+      animal.age += 2;
+      return animal;
+    });
   }
-};
+}
 
 // PLEASE READ-----------------------
 // Currently, your functions are probably using the `kitties` global import variable.
@@ -77,7 +83,7 @@ const kittyPrompts = {
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
-  membersBelongingToClubs() {
+  membersBelongingToClubs(clubList) {
     // Your function should access the clubs data through a parameter (it is being passed as an argument in the test file)
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
@@ -88,7 +94,16 @@ const clubPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return clubList.reduce((compilation, clubItem) => {
+      clubItem.members.forEach(member => {
+        if (!compilation[member]) {
+          compilation[member] = [];
+        }
+        compilation[member].push(clubItem.club)
+        return compilation;
+      })
+      return compilation;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   }
