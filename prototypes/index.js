@@ -547,7 +547,7 @@ const breweryPrompts = {
     // 40
 
     /* CODE GOES HERE */
-
+    return breweries.reduce((beerCount, brewery) => beerCount + brewery.beers.length, 0);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -562,7 +562,7 @@ const breweryPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return breweries.map(brewery => ({name: brewery.name, beerCount: brewery.beers.length}));
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -574,7 +574,8 @@ const breweryPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return breweries.find(brewery => brewery.name === breweryName).beers.length
+    // .map(brewery => brewery.beers.length);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -583,8 +584,18 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
+    
     /* CODE GOES HERE */
+    function topAbvBeer(beers) {
+      return beers.reduce((topAbv, beer) => {
+        if (topAbv.abv < beer.abv) {
+          topAbv = beer;
+        }
+        return topAbv;
+      },{abv: 0})
+    }
+    return topAbvBeer(breweries.map(brewery => topAbvBeer(brewery.beers)));
+
 
     // Annotation:
     // Write your annotation here as a comment
