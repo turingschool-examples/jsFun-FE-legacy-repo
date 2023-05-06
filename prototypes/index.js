@@ -618,7 +618,7 @@ const boardGamePrompts = {
     // ["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket to Ride"]
 
     /* CODE GOES HERE */
-
+    return boardGames[type].map(game => game.name);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -630,7 +630,9 @@ const boardGamePrompts = {
     // ["Candy Land", "Connect Four", "Operation", "Trouble"]
 
     /* CODE GOES HERE */
-
+    return (boardGames[type]
+    .map(game => game.name)
+    .sort())
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -641,7 +643,13 @@ const boardGamePrompts = {
     // { name: 'Codenames', rating: 7.4, maxPlayers: 8 },
 
     /* CODE GOES HERE */
-
+    return boardGames[type]
+    .reduce((highestRated, game) => {
+      if (game.rating > highestRated.rating) {
+        highestRated = game;
+      }
+      return highestRated;
+    }, {rating: 0})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -652,7 +660,9 @@ const boardGamePrompts = {
     // note: do not worry about rounding your result.
 
     /* CODE GOES HERE */
-
+    let totalScore = boardGames[type]
+    .reduce(((total, game) => total + game.rating), 0);
+    return totalScore/boardGames[type].length;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -664,7 +674,11 @@ const boardGamePrompts = {
     // note: do not worry about rounding your result.
 
     /* CODE GOES HERE */
+     let filteredGames = boardGames[type]
+     .filter(game => game.maxPlayers === maximumPlayers);
 
+     return filteredGames
+     .reduce((total, game) => total + game.rating, 0)/filteredGames.length;
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -711,7 +725,13 @@ const turingPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return instructors.map(instructor => {
+      let students = cohorts.find(cohort => cohort.module === instructor.module).studentCount;
+      return {
+        name: instructor.name,
+        studentCount: students
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -724,7 +744,12 @@ const turingPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return cohorts.reduce((cohortList, singleCohort) => {
+      let cohortKey = `cohort${singleCohort.cohort}`;
+      let teacherCount = instructors.filter(instructor => instructor.module === singleCohort.module).length;
+      cohortList[cohortKey] = singleCohort.studentCount/teacherCount;
+      return cohortList;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -745,7 +770,20 @@ const turingPrompts = {
     //   }
 
     /* CODE GOES HERE */
+    let canTeach = (instructor, cohort) => {
+      return cohort.curriculum.some(subject => instructor.teaches.includes(subject));
+    }
 
+    return instructors.reduce((instructorsList, teacher) => {
+      let teachableModules = [];
+      cohorts.forEach(cohort => {
+        if (canTeach(teacher, cohort)) {
+          teachableModules.push(cohort.module);
+        }
+      });
+      instructorsList[teacher.name] = teachableModules;
+      return instructorsList;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -761,7 +799,24 @@ const turingPrompts = {
     // }
 
     /* CODE GOES HERE */
+    let checkForTeacher = (subject) => {
+      let availableTeachers = [];
+      instructors.forEach(instructor => {
+        if (instructor.teaches.includes(subject)) {
+          availableTeachers.push(instructor.name);
+        }
+      })
+      return availableTeachers;
+    }
 
+    return cohorts.reduce((allSubjects, cohort) => {
+      cohort.curriculum.forEach(subject => {
+        if (!allSubjects[subject]) {
+          allSubjects[subject] = checkForTeacher(subject);
+        }
+      });
+      return allSubjects;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   }
