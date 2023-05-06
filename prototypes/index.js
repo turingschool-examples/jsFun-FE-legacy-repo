@@ -408,7 +408,7 @@ const weatherPrompts = {
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
     /* CODE GOES HERE */
-
+    return weather.map(area => (area.temperature.high + area.temperature.low)/2);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -421,7 +421,9 @@ const weatherPrompts = {
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
     /* CODE GOES HERE */
-
+    return weather
+    .filter(area => area.type.includes("sunny"))
+    .map(area => `${area.location} is ${area.type}.`);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -436,7 +438,12 @@ const weatherPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return weather.reduce((mostHumidArea, area) => {
+      if (area.humidity > mostHumidArea.humidity) {
+        mostHumidArea = area;
+      }
+      return mostHumidArea;
+    }, {humidity: 0})
     // Annotation:
     // Write your annotation here as a comment
 
