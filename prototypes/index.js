@@ -850,7 +850,13 @@ const bossPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    let allBosses = Object.keys(bosses);
+    return allBosses.map(boss => {
+      return {
+        bossName: bosses[boss].name,
+        sidekickLoyalty: bosses[boss].sidekicks.reduce((loyalty, sidekick) => loyalty + sidekicks.find(theSidekick => theSidekick.name === sidekick.name).loyaltyToBoss, 0)
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   }
