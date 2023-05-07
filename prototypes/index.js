@@ -911,7 +911,18 @@ const astronomyPrompts = {
     // ]
 
     /* CODE GOES HERE */
+    let constellationKeys = Object.keys(constellations);
+    let allConstellationNames = constellationKeys.reduce((nameList, constellation) => {
+      nameList.push(...constellations[constellation].alternateNames)
+      return nameList;
+    }, []);
+    let constellationStars = [];
 
+    allConstellationNames.forEach(aConstellation => {
+      constellationStars.push(...stars.filter(star => star.constellation === aConstellation))
+    })
+
+    return constellationStars;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -928,7 +939,13 @@ const astronomyPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return stars.reduce((starList, star) => {
+      if (!starList[star.color]) {
+        starList[star.color] = [];
+      }
+      starList[star.color].push(star);
+      return starList;
+    }, {})    
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -950,7 +967,10 @@ const astronomyPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return stars
+    .sort((a,b) => a.visualMagnitude - b.visualMagnitude)
+    .map(star => star.constellation)
+    .filter(constellation => constellation.length)
     // Annotation:
     // Write your annotation here as a comment
   }
