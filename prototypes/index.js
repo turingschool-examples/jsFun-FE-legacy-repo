@@ -1060,7 +1060,16 @@ const dinosaurPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return movies.reduce((dinoCounts, movie) => {
+      let awesomeCount = movie.dinos.reduce((count, dino) => {
+        if (dinosaurs[dino].isAwesome) {
+          count++;
+        };
+        return count;
+      }, 0);
+      dinoCounts[movie.title] = awesomeCount;
+      return dinoCounts;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -1092,7 +1101,22 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+    let getAvgAge = movie => {
+      const refYear = movie.yearReleased;
+      let totalAge = movie.cast.reduce((total, actor) => {
+        return total + refYear - humans[actor].yearBorn;
+      }, 0)
+      let numberActors = movie.cast.length;
+      return Math.floor(totalAge/numberActors);
+    }
 
+    return movies.reduce((accumulator, movie) => {
+      if (!accumulator[movie.director]) {
+        accumulator[movie.director] = {}
+      }
+      accumulator[movie.director][movie.title] = getAvgAge(movie);
+      return accumulator;
+    }, {})  
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -1124,6 +1148,36 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+      let castCharacters = movies.reduce((fullCast, movie) => {
+        fullCast.push(movie.cast);
+        return fullCast.flat();
+      }, []);
+
+      let humanNames = Object.keys(humans);
+      let uncastNames = [];
+      humanNames.forEach(humanName => {
+        if (!castCharacters.includes(humanName)) {
+          uncastNames.push(humanName);
+        }
+      })
+
+      return uncastNames
+      .map(actorName => {
+        let actor = {
+          name: actorName,
+          nationality: humans[actorName].nationality,
+          imdbStarMeterRating: humans[actorName].imdbStarMeterRating
+        };
+        return actor;
+      })
+      .sort((a,b) => {
+        if (a.nationality > b.nationality) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -1146,7 +1200,27 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+    let getMovieReleaseAges = actorName => {
+      let releaseYears = [];
+      movies.forEach(movie => {
+        if (movie.cast.includes(actorName)) {
+          releaseYears.push(movie.yearReleased);
+        }
+      })
+      let releaseAges = releaseYears.map(year => year - humans[actorName].yearBorn);
+      return releaseAges;
+    }
 
+    let allHumans = Object.keys(humans);
+    let actorsWithAge =  allHumans.map(human => {
+      return {
+        name: human,
+        ages: getMovieReleaseAges(human)
+      };
+    })
+
+    let castedActorAges = actorsWithAge.filter(actor => actor.ages.length);
+    return castedActorAges;
     // Annotation:
     // Write your annotation here as a comment
   }
