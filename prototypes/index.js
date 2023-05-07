@@ -1000,7 +1000,11 @@ const ultimaPrompts = {
     // Answer => 113
 
     /* CODE GOES HERE */
-
+    let allWeapons = characters.reduce((list, character) => {
+      list.push(...character.weapons);
+      return list;
+    }, []);
+    return allWeapons.reduce((totalDamage, weapon) => totalDamage + weapons[weapon].damage , 0)
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -1011,7 +1015,16 @@ const ultimaPrompts = {
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
     /* CODE GOES HERE */
-
+    return characters.map(character => {
+      let characterStat = character.weapons.reduce((stats, weapon) => {
+        stats.damage += weapons[weapon].damage;
+        stats.range += weapons[weapon].range;
+        return stats;
+      }, {damage: 0, range:0})
+      return {
+        [character.name]: characterStat
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   },
