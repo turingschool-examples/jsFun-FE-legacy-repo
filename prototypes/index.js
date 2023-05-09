@@ -20,7 +20,7 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(kitties) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
 
@@ -28,16 +28,19 @@ const kittyPrompts = {
     return orangeKitties.map(kitty => kitty.name);
 
     // Annotation:
-    // Because we are given an array and want to return an array that is a subset of the original, filter is the most efficient and simple method to use. Because filter returns an array of objects, and we are looking for an array of names (values), we can use map to finally return an array of only the names of orange kitties.
+    // filter array to only get objects back that are orange cats
+    // map to get a new array of only names
   },
 
-  sortByAge() {
+  sortByAge(kitties) {
     // Sort the kitties by their age
 
-    /* CODE GOES HERE */
+    return kitties.sort((a, b) => b.age - a.age);
 
     // Annotation:
-    // Write your annotation here as a comment
+    // sort an array
+    // if return of callbackfn is positive, sort b first
+    // if return of callbackfn is negative, sort a first
   },
 
   growUp() {
