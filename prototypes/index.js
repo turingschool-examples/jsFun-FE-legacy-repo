@@ -24,10 +24,11 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
 
-        /* CODE GOES HERE */
+    const orangeKitties = kitties.filter(kitty => kitty.color === 'orange');
+    return orangeKitties.map(kitty => kitty.name);
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because we are given an array and want to return an array that is a subset of the original, filter is the most efficient and simple method to use. Because filter returns an array of objects, and we are looking for an array of names (values), we can use map to finally return an array of only the names of orange kitties.
   },
 
   sortByAge() {
