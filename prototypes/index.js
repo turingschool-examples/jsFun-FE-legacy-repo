@@ -57,7 +57,8 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    /* CODE GOES HERE */
+    kitties.map(kitty => kitty.age += 2)
+    return kitties;
   }
 };
 
