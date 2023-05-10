@@ -25,13 +25,13 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it.skip("orangeKittyNames", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangePetNames(kitties);
 
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
 
-    it.skip("sortByAge", () => {
+    it("sortByAge", () => {
       const e = kittyPrompts.sortByAge(kitties);
 
       expect(e).to.deep.equal([{
@@ -53,7 +53,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("growUp", () => {
+    it("growUp", () => {
       const e = kittyPrompts.growUp(kitties);
 
       expect(e).to.deep.equal([{
