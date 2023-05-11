@@ -25,13 +25,13 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it.skip("orangeKittyNames", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangePetNames(kitties);
 
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
 
-    it.skip("sortByAge", () => {
+    it("sortByAge", () => {
       const e = kittyPrompts.sortByAge(kitties);
 
       expect(e).to.deep.equal([{
@@ -53,7 +53,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("growUp", () => {
+    it("growUp", () => {
       const e = kittyPrompts.growUp(kitties);
 
       expect(e).to.deep.equal([{
@@ -75,13 +75,13 @@ describe("PROTOTYPES", () => {
       }])
     })
     describe('kittyPrompts refactor', () => {
-      it.skip('should be able to handle orange puppers', () => {
+      it('should be able to handle orange puppers', () => {
         const e = kittyPrompts.orangePetNames(puppers);
 
         expect(e).to.deep.equal(["Hatchet", "Butter"])
       })
 
-      it.skip('should sort pups too', () => {
+      it('should sort pups too', () => {
         const e = kittyPrompts.sortByAge(puppers);
 
         expect(e).to.deep.equal([{
@@ -103,7 +103,7 @@ describe("PROTOTYPES", () => {
         }])
       })
 
-      it.skip('should age puppers too', () => {
+      it('should age puppers too', () => {
         const e = kittyPrompts.growUp(puppers);
 
         expect(e).to.deep.equal([{

@@ -20,40 +20,23 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
-    // Return an array of just the names of kitties who are orange e.g.
-        // ['Tiger', 'Snickers']
-
-        /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
+  orangePetNames(bbPets) {
+      const bois = bbPets.filter(baby => baby.color === 'orange')
+      const names = bois.map(bb => bb.name)
+      return names
   },
 
-  sortByAge() {
-    // Sort the kitties by their age
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
+  sortByAge(bbPets) {
+    const sortedKitties = bbPets.sort((a, b) => b.age - a.age)
+    return sortedKitties
   },
 
-  growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
-
-    /* CODE GOES HERE */
+  growUp(bbPets) {
+    const olderPets = bbPets.map((bb) => {
+      bb.age += 2;
+      return bb;
+    })
+    return olderPets
   }
 };
 
@@ -66,7 +49,7 @@ const kittyPrompts = {
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
+// ------------------------------DONE-----------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
