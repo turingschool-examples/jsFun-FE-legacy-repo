@@ -30,6 +30,14 @@ const kittyPrompts = {
     const sortedKitties = bbPets.sort((a, b) => b.age - a.age)
     return sortedKitties
   },
+
+  growUp(bbPets) {
+    const olderPets = bbPets.map((bb) => {
+      bb.age += 2;
+      return bb;
+    })
+    return olderPets
+  }
 };
 
 // PLEASE READ-----------------------
