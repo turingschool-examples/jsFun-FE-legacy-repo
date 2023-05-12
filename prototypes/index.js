@@ -82,7 +82,7 @@ const kittyPrompts = {
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
-  membersBelongingToClubs() {
+  membersBelongingToClubs(clubs) {
     // Your function should access the clubs data through a parameter (it is being passed as an argument in the test file)
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
@@ -91,13 +91,26 @@ const clubPrompts = {
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
+    
+    const membersClubs = clubs.reduce((students, currentClub) => {
+      currentClub.members.forEach(member => {
+        students[member] ? students[member].push(currentClub.club) : students[member] = [currentClub.club];
+      });
+      return students;
+    }, {});
 
-    /* CODE GOES HERE */
+    return membersClubs;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // use reduce to consolidate an array of objects to a single object
+    // iterate through the array of clubs using reduce
+    // initial value is an empty object which will represent the accumulator (students' clubs)
+    // at the end of each iteration, expect the accumulator to have created a new key (student) with a value pushed in (club), or just push in a value (club)
+    // for each club, iterate through the array of members using forEach
+    // if the accumulator has a key that matches the current member, push in the current club
+    //  if the accuumulator does not already have the key, then create a key with that member name and push in the club
   }
-};
+}
 
 
 
