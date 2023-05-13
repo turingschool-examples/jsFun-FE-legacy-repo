@@ -140,11 +140,19 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    /* CODE GOES HERE */
+   mods.forEach(mod => {
+    mod.studentsPerInstructor = (mod.students / mod.instructors);
+    delete mod.students;
+    delete mod.instructors;
+   });
+
+   return mods;
 
     // Annotation:
-    // Write your annotation here as a comment
-  }
+    // students per instructor = students / instructors
+    // map adding that key
+    // delete the other keys
+  };
 };
 
 
