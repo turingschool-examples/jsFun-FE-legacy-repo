@@ -354,7 +354,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    classrooms.sort(classroom => b.capacity - a.capacity)
+    return classrooms.sort((a, b) => a.capacity - b.capacity)
 
     // Annotation:
     // Write your annotation here as a comment
@@ -370,7 +370,7 @@ const classPrompts = {
 // DATASET: books from './datasets/books
 
 const bookPrompts = {
-  removeViolence() {
+  removeViolence(bookArray) {
     // Your function should access the books data through a parameter (it is being passed as an argument in the test file)
     // return an array of all book titles that are not horror or true crime. Eg:
 
@@ -380,14 +380,15 @@ const bookPrompts = {
     //   'The Curious Incident of the Dog in the Night - Time', 'The Bell Jar',
     //   'Catch-22', 'Treasure Island']
 
-
-    /* CODE GOES HERE */
+    const nonViolentBooks = bookArray.filter(book => book.genre !== 'Horror' && book.genre !== 'True Crime');
+    return nonViolentBooks.map(book => book.title)
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map
+    // if genre of current book is not horror or true trime, map the name of the book
 
   },
-  getNewBooks() {
+  getNewBooks(bookArray) {
     // return an array of objects containing all books that were
     // published in the 90's and 00's. Inlucde the title and the year Eg:
 
@@ -395,7 +396,11 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    /* CODE GOES HERE */
+    const modernBooks = bookArray.filter(book => book.published > 1989)
+    
+    return modernBooks.map(book => ({ title: book.title, year: book.published }))
+    
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -411,7 +416,8 @@ const bookPrompts = {
     //  { title: 'Life of Pi', year: 2001 },
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
-    /* CODE GOES HERE */
+    const selectedBooks = books.filter(book => book.published > year);
+    return selectedBooks.map(book => ({title: book.title, year: book.published}))
 
     // Annotation:
     // Write your annotation here as a comment
