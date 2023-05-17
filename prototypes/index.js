@@ -152,7 +152,7 @@ const modPrompts = {
     // students per instructor = students / instructors
     // map adding that key
     // delete the other keys
-  };
+  }
 };
 
 
@@ -182,10 +182,17 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    /* CODE GOES HERE */
+    const cakeStock = cakes.map(cake => {
+      return {
+        flavor: cake.cakeFlavor,
+        inStock: cake.inStock
+      }
+    });
+
+    return cakeStock;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // create new objects using map
   },
 
   onlyInStock() {
@@ -209,7 +216,8 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    /* CODE GOES HERE */
+    return cakes.filter(cake => cake.inStock);
+    
 
     // Annotation:
     // Write your annotation here as a comment
@@ -221,6 +229,12 @@ const cakePrompts = {
 
     /* CODE GOES HERE */
 
+    const cakesInStock = cakes.filter(cake => cake.inStock);
+    return cakesInStock.reduce((totalCakes, currentCake) => {
+      totalCakes += currentCake.inStock
+      return totalCakes;
+    }, 0);
+  
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -230,10 +244,18 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    /* CODE GOES HERE */
+    return cakes.reduce((newArray, currentCake) => {
+      currentCake.toppings.forEach(topping => {
+        newArray.includes(topping) ? newArray : newArray.push(topping);
+      })
+      return newArray;
+    }, [])
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Iterate over the array of cakes
+    // for each cake, iterate over the array of toppings
+    // if the new array contains the current topping, return the new array
+    // if the new array does not contain the current topping, push the topping into the new array and return the new array
   },
 
   groceryList() {
@@ -249,8 +271,23 @@ const cakePrompts = {
 
     /* CODE GOES HERE */
 
+    return cakes.reduce((newObject, currentCake) => {
+      currentCake.toppings.forEach(topping => {
+        newObject[topping] ? newObject[topping] += 1 : newObject[topping] = 1
+      })
+      return newObject;
+    }, {});
+
     // Annotation:
-    // Write your annotation here as a comment
+    // use reduce to create a new singular object
+    // keys are ingredients
+    // values are the number of times they appear in the cakes array (how many cakes need this ingredient)
+    // accumulator is newObject
+    // currentValue is current cake
+    // iterate over the toppings array of each cake
+    // if newObject.currentTopping does not exist, create it with a value of 1
+    // if newObject.currentTopping does exist, increment the value += 1
+    // return the newObject
   }
 };
 
