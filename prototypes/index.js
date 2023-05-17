@@ -318,7 +318,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    /* CODE GOES HERE */
+    return classrooms.filter(classroom => classroom.program === 'FE')
 
     // Annotation:
     // Write your annotation here as a comment
@@ -332,16 +332,29 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    /* CODE GOES HERE */
+    return classrooms.reduce((newObject, classroom) => {
+      if (classroom.program === 'FE') {
+        newObject.feCapacity ? newObject.feCapacity += classroom.capacity : newObject.feCapacity = classroom.capacity;
+      } else {
+        newObject.beCapacity ? newObject.beCapacity += classroom.capacity : newObject.beCapacity = classroom.capacity;
+      }
+      return newObject;
+    }, {})
 
     // Annotation:
-    // Write your annotation here as a comment
+    // init is new Object
+    // if the current classroom's program is FE,
+    //  check to see if the new object contains the key feCapacity
+    //    if so, assign it the value of itself += the current classroom's capacity 
+    //    if not, create the key and assign it the value of the current classroom's capacity
+    // repeat for BE
+    // refactor
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    /* CODE GOES HERE */
+    classrooms.sort(classroom => b.capacity - a.capacity)
 
     // Annotation:
     // Write your annotation here as a comment
