@@ -227,7 +227,7 @@ describe("PROTOTYPES", () => {
       expect(e).to.deep.equal(59)
     });
 
-    it.skip("allToppings", () => {
+    it("allToppings", () => {
       const e = cakePrompts.allToppings();
 
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])

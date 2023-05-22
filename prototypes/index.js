@@ -133,14 +133,18 @@ const cakePrompts = {
   },
 
   allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    /* CODE GOES HERE */
+    return cakes.reduce((totalToppings, currCake) => {
+      currCake.toppings.forEach(topping => {
+        if (!totalToppings.includes(topping)){
+          totalToppings.push(topping)
+        }
+      })
+      return totalToppings
+    }, [])
 
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over array of cakes to get to cakes.toppings
+    // iterate over array of toppings => if new array of topping !currentCake.topping, push it.
   },
 
   groceryList() {
@@ -161,7 +165,7 @@ const cakePrompts = {
   }
 };
 
-// console.log(cakePrompts.totalInventory());
+// console.log(cakePrompts.allToppings());
 
 
 
