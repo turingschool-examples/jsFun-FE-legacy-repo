@@ -119,45 +119,17 @@ const cakePrompts = {
       return stock
     }, [])
     return results
-    // Annotation:
-    // map over elements and return only flavor and inStock
   },
 
   onlyInStock() {
-    // Return an array of only the cakes that are in stock
-    // e.g.
-    // [
-    //   {
-    //   cakeFlavor: 'dark chocolate',
-    //   filling: null,
-    //   frosting: 'dark chocolate ganache',
-    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
-    //   inStock: 15
-    // },
-    // {
-    //   cakeFlavor: 'yellow',
-    //   filling: 'citrus glaze',
-    //   frosting: 'chantilly cream',
-    //   toppings: ['berries', 'edible flowers'],
-    //   inStock: 14
-    // },
-    // ..etc
-    // ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return cakes.filter(cake => cake.inStock > 0)
   },
 
   totalInventory() {
-    // Return the total amount of cakes in stock e.g.
-    // 59
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
+    return cakes.reduce((totalStock, currCake) => {
+      totalStock += currCake.inStock
+      return totalStock
+    }, 0)
   },
 
   allToppings() {
@@ -189,7 +161,7 @@ const cakePrompts = {
   }
 };
 
-// console.log(cakePrompts.stockPerCake(cakes));
+// console.log(cakePrompts.totalInventory());
 
 
 
