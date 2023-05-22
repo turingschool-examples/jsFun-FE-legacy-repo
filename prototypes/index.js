@@ -91,7 +91,7 @@ const modPrompts = {
   }
 };
 
-console.log(modPrompts.studentsPerMod())
+// console.log(modPrompts.studentsPerMod())
 
 
 
@@ -110,18 +110,17 @@ console.log(modPrompts.studentsPerMod())
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
   stockPerCake() {
-    // Return an array of objects that include just the flavor of the cake and how
-    // much of that cake is in stock e.g.
-    // [
-    //    { flavor: 'dark chocolate', inStock: 15 },
-    //    { flavor: 'yellow', inStock: 14 },
-    //    ..etc
-    // ]
-
-    /* CODE GOES HERE */
-
+    const results = cakes.reduce((stock, currCake) => {
+      let newStock = {
+        flavor: currCake.cakeFlavor,
+        inStock: currCake.inStock
+      }
+      stock.push(newStock)
+      return stock
+    }, [])
+    return results
     // Annotation:
-    // Write your annotation here as a comment
+    // map over elements and return only flavor and inStock
   },
 
   onlyInStock() {
@@ -190,6 +189,7 @@ const cakePrompts = {
   }
 };
 
+// console.log(cakePrompts.stockPerCake(cakes));
 
 
 
