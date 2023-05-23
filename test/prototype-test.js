@@ -233,7 +233,7 @@ describe("PROTOTYPES", () => {
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     });
 
-    it.skip("groceryList", () => {
+    it("groceryList", () => {
       const e = cakePrompts.groceryList();
 
       expect(e).to.deep.equal({

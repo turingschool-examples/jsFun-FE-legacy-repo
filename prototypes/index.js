@@ -148,24 +148,27 @@ const cakePrompts = {
   },
 
   groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
-    // each topping, and the values are the amount of that topping I need to buy e.g.
-    // {
-    //    'dutch process cocoa': 1,
-    //    'toasted sugar': 3,
-    //    'smoked sea salt': 3,
-    //    'berries': 2,
-    //    ...etc
-    // }
-
-    /* CODE GOES HERE */
-
+      return cakes.reduce((toppingList, currCake) => {
+        for (let topping of currCake.toppings){
+          if (!toppingList[topping]){
+            toppingList[topping] = 1
+          } else {
+            toppingList[topping] += 1
+          }
+        }
+        return toppingList
+      }, {})
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over cakes.toppings
+    // change all of those values to keys
+    // their values are the amount of times they show up
+    // output is a new object - no arrays
+    // reduce to make new object
+    // two checks - 1. if key exists 2. if key equals key + 1
   }
 };
 
-// console.log(cakePrompts.allToppings());
+// console.log(cakePrompts.groceryList());
 
 
 
