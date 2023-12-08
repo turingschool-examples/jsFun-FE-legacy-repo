@@ -746,11 +746,6 @@ const astronomyPrompts = {
     //     constellation: 'Orion',
     //     lightYearsFromEarth: 860,
     //     color: 'blue' },
-    //   { name: 'Betelgeuse',
-    //     visualMagnitude: 0.5,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 640,
-    //     color: 'red' },
     //   {
     //     name: 'Achernar',
     //     visualMagnitude: 0.46,
@@ -758,6 +753,11 @@ const astronomyPrompts = {
     //     lightYearsFromEarth: 140,
     //     color: 'blue'
     //   },
+    //   { name: 'Betelgeuse',
+    //     visualMagnitude: 0.5,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 640,
+    //     color: 'red' },
     //   {
     //     name: 'Hadar',
     //     visualMagnitude: 0.61,

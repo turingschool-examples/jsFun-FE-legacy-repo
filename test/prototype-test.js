@@ -651,18 +651,17 @@ describe("PROTOTYPES", () => {
         lightYearsFromEarth: 860,
         color: 'blue'
       }, {
+          name: 'Achernar',
+          visualMagnitude: 0.46,
+          constellation: 'The Plow',
+          lightYearsFromEarth: 140,
+          color: 'blue'
+      }, {
         name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
         color: 'red'
-      },
-      {
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue'
       },
       {
         name: 'Hadar',
@@ -798,11 +797,11 @@ describe("PROTOTYPES", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
 
       expect(e).to.deep.equal({
-        'Jurassic Park': 5,
-        'The Lost World: Jurassic Park': 8,
-        'Jurassic Park III': 9,
-        'Jurassic World': 11,
-        'Jurassic World: Fallen Kingdom': 18
+        'Jurassic Park': 7,
+        'The Lost World: Jurassic Park': 10,
+        'Jurassic Park III': 11,
+        'Jurassic World': 13,
+        'Jurassic World: Fallen Kingdom': 20
       })
     });
 
