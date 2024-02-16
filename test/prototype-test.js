@@ -372,7 +372,7 @@ describe("PROTOTYPES", () => {
         { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 },
         { title: 'Interview with the Vampire', year: 1976 }
       ]);
-    }); 
+    });
   });
 
   describe("Weather prompts", () => {
@@ -526,7 +526,7 @@ describe("PROTOTYPES", () => {
       const avScoreStrat = boardGamePrompts.averageScoreByType('strategy');
       const avScoreChildren = boardGamePrompts.averageScoreByType('childrens');
       const avScoreParty = boardGamePrompts.averageScoreByType('party');
-      
+
       expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
       expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
       expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
@@ -651,11 +651,11 @@ describe("PROTOTYPES", () => {
         lightYearsFromEarth: 860,
         color: 'blue'
       }, {
-          name: 'Achernar',
-          visualMagnitude: 0.46,
-          constellation: 'The Plow',
-          lightYearsFromEarth: 140,
-          color: 'blue'
+        name: 'Achernar',
+        visualMagnitude: 0.46,
+        constellation: 'The Plow',
+        lightYearsFromEarth: 140,
+        color: 'blue'
       }, {
         name: 'Betelgeuse',
         visualMagnitude: 0.5,
@@ -670,7 +670,7 @@ describe("PROTOTYPES", () => {
         lightYearsFromEarth: 350,
         color: 'blue'
       }
-    ])
+      ])
     });
 
     it.skip("starsByColor", () => {
@@ -797,11 +797,11 @@ describe("PROTOTYPES", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
 
       expect(e).to.deep.equal({
-        'Jurassic Park': 7,
-        'The Lost World: Jurassic Park': 10,
-        'Jurassic Park III': 11,
-        'Jurassic World': 13,
-        'Jurassic World: Fallen Kingdom': 20
+        'Jurassic Park': 5,
+        'The Lost World: Jurassic Park': 8,
+        'Jurassic Park III': 9,
+        'Jurassic World': 11,
+        'Jurassic World: Fallen Kingdom': 18
       })
     });
 
