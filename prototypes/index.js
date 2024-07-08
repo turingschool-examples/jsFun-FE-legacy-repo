@@ -20,26 +20,28 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(animals) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
 
         /* CODE GOES HERE */
-
+        return animals
+        .filter(animal => animal.color === "orange")
+        .map(animal => animal.name);
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  sortByAge() {
+  sortByAge(animals) {
     // Sort the kitties by their age
 
     /* CODE GOES HERE */
-
+    return animals.sort((a, b) => b.age - a.age);
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  growUp() {
+  growUp(animals) {
     // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
@@ -54,8 +56,12 @@ const kittyPrompts = {
     // ...etc]
 
     /* CODE GOES HERE */
+    return animals.map(animal => {
+      animal.age += 2;
+      return animal;
+    });
   }
-};
+}
 
 // PLEASE READ-----------------------
 // Currently, your functions are probably using the `kitties` global import variable.
@@ -77,7 +83,7 @@ const kittyPrompts = {
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
-  membersBelongingToClubs() {
+  membersBelongingToClubs(clubList) {
     // Your function should access the clubs data through a parameter (it is being passed as an argument in the test file)
     // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
@@ -88,7 +94,15 @@ const clubPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return clubList.reduce((compilation, clubItem) => {
+      clubItem.members.forEach(member => {
+        if (!compilation[member]) {
+          compilation[member] = [];
+        }
+        compilation[member].push(clubItem.club)
+      })
+      return compilation;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -123,6 +137,12 @@ const modPrompts = {
     // ]
 
     /* CODE GOES HERE */
+    return mods.map(modItem => {
+      return {
+        mod: modItem.mod,
+        studentsPerInstructor: modItem.students/modItem.instructors
+      }
+    })
 
     // Annotation:
     // Write your annotation here as a comment
@@ -157,7 +177,7 @@ const cakePrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return cakes.map(cake => ({flavor: cake.cakeFlavor, inStock: cake.inStock}));
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -184,7 +204,7 @@ const cakePrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return cakes.filter(cake => cake.inStock);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -194,7 +214,7 @@ const cakePrompts = {
     // 59
 
     /* CODE GOES HERE */
-
+    return cakes.reduce((total, cake) => cake.inStock + total, 0)
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -205,7 +225,14 @@ const cakePrompts = {
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
     /* CODE GOES HERE */
-
+    return cakes.reduce((toppings, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!toppings.includes(topping)) {
+          toppings.push(topping);
+        }
+      })
+      return toppings;
+    }, [])
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -222,7 +249,16 @@ const cakePrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return cakes.reduce((list, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!list[topping]) {
+          list[topping] = 1;
+        } else {
+          list[topping]++;
+        }
+      })
+      return list;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -256,7 +292,7 @@ const classPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return classrooms.filter(classroom => classroom.program === "FE");
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -270,7 +306,14 @@ const classPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return classrooms.reduce((totalCapacity, classroom) => {
+      if(classroom.program === "FE") {
+        totalCapacity.feCapacity += classroom.capacity;
+      } else {
+        totalCapacity.beCapacity += classroom.capacity;
+      }
+      return totalCapacity;
+    }, {feCapacity:0, beCapacity: 0})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -279,7 +322,7 @@ const classPrompts = {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
     /* CODE GOES HERE */
-
+    return classrooms.sort((a,b) => a.capacity - b.capacity);
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -294,7 +337,7 @@ const classPrompts = {
 // DATASET: books from './datasets/books
 
 const bookPrompts = {
-  removeViolence() {
+  removeViolence(bookCollection) {
     // Your function should access the books data through a parameter (it is being passed as an argument in the test file)
     // return an array of all book titles that are not horror or true crime. Eg:
 
@@ -306,12 +349,14 @@ const bookPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return bookCollection
+    .filter(book => book.genre !== "Horror" && book.genre !== "True Crime")
+    .map(book => book.title)
     // Annotation:
     // Write your annotation here as a comment
 
   },
-  getNewBooks() {
+  getNewBooks(bookCollection) {
     // return an array of objects containing all books that were
     // published in the 90's and 00's. Inlucde the title and the year Eg:
 
@@ -320,7 +365,9 @@ const bookPrompts = {
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
     /* CODE GOES HERE */
-
+    return bookCollection
+    .filter(book => book.published >= 1990)
+    .map(book => ({title: book.title, year: book.published}))
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -336,6 +383,9 @@ const bookPrompts = {
     //  { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 }]
 
     /* CODE GOES HERE */
+    return books
+    .filter(book => book.published > year)
+    .map(book => ({title: book.title, year: book.published}));
 
     // Annotation:
     // Write your annotation here as a comment
@@ -358,7 +408,7 @@ const weatherPrompts = {
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
     /* CODE GOES HERE */
-
+    return weather.map(area => (area.temperature.high + area.temperature.low)/2);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -371,7 +421,9 @@ const weatherPrompts = {
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
     /* CODE GOES HERE */
-
+    return weather
+    .filter(area => area.type.includes("sunny"))
+    .map(area => `${area.location} is ${area.type}.`);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -386,7 +438,12 @@ const weatherPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return weather.reduce((mostHumidArea, area) => {
+      if (area.humidity > mostHumidArea.humidity) {
+        mostHumidArea = area;
+      }
+      return mostHumidArea;
+    }, {humidity: 0})
     // Annotation:
     // Write your annotation here as a comment
 
@@ -412,7 +469,14 @@ const nationalParksPrompts = {
     //}
 
     /* CODE GOES HERE */
-
+    return nationalParks.reduce((updatedList, park) => {
+      if (park.visited) {
+        updatedList.parksVisited.push(park.name);
+      } else {
+        updatedList.parksToVisit.push(park.name);
+      }
+      return updatedList;
+    }, {parksToVisit: [], parksVisited: []})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -428,7 +492,7 @@ const nationalParksPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return nationalParks.map(park => ({[park.location]: park.name}))
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -450,7 +514,14 @@ const nationalParksPrompts = {
     //   'rock climbing' ]
 
     /* CODE GOES HERE */
-
+    return nationalParks.reduce((allActivities, park) => {
+      park.activities.forEach(activity => {
+        if (!allActivities.includes(activity)) {
+          allActivities.push(activity);
+        }
+      })
+      return allActivities;
+    }, [])  
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -476,7 +547,7 @@ const breweryPrompts = {
     // 40
 
     /* CODE GOES HERE */
-
+    return breweries.reduce((beerCount, brewery) => beerCount + brewery.beers.length, 0);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -491,7 +562,7 @@ const breweryPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return breweries.map(brewery => ({name: brewery.name, beerCount: brewery.beers.length}));
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -503,7 +574,8 @@ const breweryPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return breweries.find(brewery => brewery.name === breweryName).beers.length
+    // .map(brewery => brewery.beers.length);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -512,8 +584,18 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
+    
     /* CODE GOES HERE */
+    function topAbvBeer(beers) {
+      return beers.reduce((topAbv, beer) => {
+        if (topAbv.abv < beer.abv) {
+          topAbv = beer;
+        }
+        return topAbv;
+      },{abv: 0})
+    }
+    return topAbvBeer(breweries.map(brewery => topAbvBeer(brewery.beers)));
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -536,7 +618,7 @@ const boardGamePrompts = {
     // ["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket to Ride"]
 
     /* CODE GOES HERE */
-
+    return boardGames[type].map(game => game.name);
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -548,7 +630,9 @@ const boardGamePrompts = {
     // ["Candy Land", "Connect Four", "Operation", "Trouble"]
 
     /* CODE GOES HERE */
-
+    return (boardGames[type]
+    .map(game => game.name)
+    .sort())
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -559,7 +643,13 @@ const boardGamePrompts = {
     // { name: 'Codenames', rating: 7.4, maxPlayers: 8 },
 
     /* CODE GOES HERE */
-
+    return boardGames[type]
+    .reduce((highestRated, game) => {
+      if (game.rating > highestRated.rating) {
+        highestRated = game;
+      }
+      return highestRated;
+    }, {rating: 0})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -570,7 +660,9 @@ const boardGamePrompts = {
     // note: do not worry about rounding your result.
 
     /* CODE GOES HERE */
-
+    let totalScore = boardGames[type]
+    .reduce(((total, game) => total + game.rating), 0);
+    return totalScore/boardGames[type].length;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -582,7 +674,11 @@ const boardGamePrompts = {
     // note: do not worry about rounding your result.
 
     /* CODE GOES HERE */
+     let filteredGames = boardGames[type]
+     .filter(game => game.maxPlayers === maximumPlayers);
 
+     return filteredGames
+     .reduce((total, game) => total + game.rating, 0)/filteredGames.length;
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -629,7 +725,13 @@ const turingPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    return instructors.map(instructor => {
+      let students = cohorts.find(cohort => cohort.module === instructor.module).studentCount;
+      return {
+        name: instructor.name,
+        studentCount: students
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -642,7 +744,12 @@ const turingPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return cohorts.reduce((cohortList, singleCohort) => {
+      let cohortKey = `cohort${singleCohort.cohort}`;
+      let teacherCount = instructors.filter(instructor => instructor.module === singleCohort.module).length;
+      cohortList[cohortKey] = singleCohort.studentCount/teacherCount;
+      return cohortList;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -663,7 +770,20 @@ const turingPrompts = {
     //   }
 
     /* CODE GOES HERE */
+    let canTeach = (instructor, cohort) => {
+      return cohort.curriculum.some(subject => instructor.teaches.includes(subject));
+    }
 
+    return instructors.reduce((instructorsList, teacher) => {
+      let teachableModules = [];
+      cohorts.forEach(cohort => {
+        if (canTeach(teacher, cohort)) {
+          teachableModules.push(cohort.module);
+        }
+      });
+      instructorsList[teacher.name] = teachableModules;
+      return instructorsList;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -679,7 +799,24 @@ const turingPrompts = {
     // }
 
     /* CODE GOES HERE */
+    let checkForTeacher = (subject) => {
+      let availableTeachers = [];
+      instructors.forEach(instructor => {
+        if (instructor.teaches.includes(subject)) {
+          availableTeachers.push(instructor.name);
+        }
+      })
+      return availableTeachers;
+    }
 
+    return cohorts.reduce((allSubjects, cohort) => {
+      cohort.curriculum.forEach(subject => {
+        if (!allSubjects[subject]) {
+          allSubjects[subject] = checkForTeacher(subject);
+        }
+      });
+      return allSubjects;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -713,7 +850,13 @@ const bossPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    let allBosses = Object.keys(bosses);
+    return allBosses.map(boss => {
+      return {
+        bossName: bosses[boss].name,
+        sidekickLoyalty: bosses[boss].sidekicks.reduce((loyalty, sidekick) => loyalty + sidekicks.find(theSidekick => theSidekick.name === sidekick.name).loyaltyToBoss, 0)
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -768,7 +911,18 @@ const astronomyPrompts = {
     // ]
 
     /* CODE GOES HERE */
+    let constellationKeys = Object.keys(constellations);
+    let allConstellationNames = constellationKeys.reduce((nameList, constellation) => {
+      nameList.push(...constellations[constellation].alternateNames)
+      return nameList;
+    }, []);
+    let constellationStars = [];
 
+    allConstellationNames.forEach(aConstellation => {
+      constellationStars.push(...stars.filter(star => star.constellation === aConstellation))
+    })
+
+    return constellationStars;
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -785,7 +939,13 @@ const astronomyPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return stars.reduce((starList, star) => {
+      if (!starList[star.color]) {
+        starList[star.color] = [];
+      }
+      starList[star.color].push(star);
+      return starList;
+    }, {})    
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -807,7 +967,10 @@ const astronomyPrompts = {
 
 
     /* CODE GOES HERE */
-
+    return stars
+    .sort((a,b) => a.visualMagnitude - b.visualMagnitude)
+    .map(star => star.constellation)
+    .filter(constellation => constellation.length)
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -837,7 +1000,11 @@ const ultimaPrompts = {
     // Answer => 113
 
     /* CODE GOES HERE */
-
+    let allWeapons = characters.reduce((list, character) => {
+      list.push(...character.weapons);
+      return list;
+    }, []);
+    return allWeapons.reduce((totalDamage, weapon) => totalDamage + weapons[weapon].damage , 0)
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -848,7 +1015,16 @@ const ultimaPrompts = {
     // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
 
     /* CODE GOES HERE */
-
+    return characters.map(character => {
+      let characterStat = character.weapons.reduce((stats, weapon) => {
+        stats.damage += weapons[weapon].damage;
+        stats.range += weapons[weapon].range;
+        return stats;
+      }, {damage: 0, range:0})
+      return {
+        [character.name]: characterStat
+      }
+    })
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -884,7 +1060,16 @@ const dinosaurPrompts = {
     // }
 
     /* CODE GOES HERE */
-
+    return movies.reduce((dinoCounts, movie) => {
+      let awesomeCount = movie.dinos.reduce((count, dino) => {
+        if (dinosaurs[dino].isAwesome) {
+          count++;
+        };
+        return count;
+      }, 0);
+      dinoCounts[movie.title] = awesomeCount;
+      return dinoCounts;
+    }, {})
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -916,7 +1101,22 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+    let getAvgAge = movie => {
+      const refYear = movie.yearReleased;
+      let totalAge = movie.cast.reduce((total, actor) => {
+        return total + refYear - humans[actor].yearBorn;
+      }, 0)
+      let numberActors = movie.cast.length;
+      return Math.floor(totalAge/numberActors);
+    }
 
+    return movies.reduce((accumulator, movie) => {
+      if (!accumulator[movie.director]) {
+        accumulator[movie.director] = {}
+      }
+      accumulator[movie.director][movie.title] = getAvgAge(movie);
+      return accumulator;
+    }, {})  
     // Annotation:
     // Write your annotation here as a comment
   },
@@ -948,6 +1148,36 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+      let castCharacters = movies.reduce((fullCast, movie) => {
+        fullCast.push(movie.cast);
+        return fullCast.flat();
+      }, []);
+
+      let humanNames = Object.keys(humans);
+      let uncastNames = [];
+      humanNames.forEach(humanName => {
+        if (!castCharacters.includes(humanName)) {
+          uncastNames.push(humanName);
+        }
+      })
+
+      return uncastNames
+      .map(actorName => {
+        let actor = {
+          name: actorName,
+          nationality: humans[actorName].nationality,
+          imdbStarMeterRating: humans[actorName].imdbStarMeterRating
+        };
+        return actor;
+      })
+      .sort((a,b) => {
+        if (a.nationality > b.nationality) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+
 
     // Annotation:
     // Write your annotation here as a comment
@@ -970,7 +1200,27 @@ const dinosaurPrompts = {
     */
 
     /* CODE GOES HERE */
+    let getMovieReleaseAges = actorName => {
+      let releaseYears = [];
+      movies.forEach(movie => {
+        if (movie.cast.includes(actorName)) {
+          releaseYears.push(movie.yearReleased);
+        }
+      })
+      let releaseAges = releaseYears.map(year => year - humans[actorName].yearBorn);
+      return releaseAges;
+    }
 
+    let allHumans = Object.keys(humans);
+    let actorsWithAge =  allHumans.map(human => {
+      return {
+        name: human,
+        ages: getMovieReleaseAges(human)
+      };
+    })
+
+    let castedActorAges = actorsWithAge.filter(actor => actor.ages.length);
+    return castedActorAges;
     // Annotation:
     // Write your annotation here as a comment
   }
