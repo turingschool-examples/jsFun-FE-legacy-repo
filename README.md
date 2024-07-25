@@ -120,6 +120,7 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 - [ ] weather
 - [ ] nationalParks
 - [ ] breweries
+- [ ] boardGames
 
 ### Double Data Sets
 - [ ] turing (instructors, cohorts)
