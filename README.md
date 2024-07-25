@@ -33,6 +33,20 @@ In order to be successful when working with prototype methods, you'll need to ha
 * iteration - how do iterator methods let us look at each element one at a time and take neccesary action iteratively
 * scope - how JS runs each line of code, in what order, where to place returns and console.logs, etc
 
+## Assessment Prep Focus
+
+🚨 You should expect to need the following methods on your midmod and final assessments:
+- forEach
+- filter
+- reduce
+- map
+- sort
+- includes
+- split 
+- join
+
+Object.keys() **will not** be needed for your midmod or final assessments.
+
 ## Solidifying a Problem Solving Process
 
 A benefit of this type of practice is that it can help you build a solid problem solving process that you can apply to any code challenge you encounter whether its ruby, JavaScript, familiar or unfamiliar.  Often, the biggest challenge in this type of work is not that you don't understand the prototype methods, but rather your problem solving process isn't polished enough for you to break down complex data and problems into small solvable steps.
