@@ -623,56 +623,8 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
-      const e = bossPrompts.bossLoyalty();
-
-      expect(e).to.deep.equal([{
-        bossName: "Scar",
-        sidekickLoyalty: 16
-      }, {
-        bossName: "Ursula",
-        sidekickLoyalty: 20
-      }, {
-        bossName: "Jafar",
-        sidekickLoyalty: 3
-      }])
-    })
-  });
 
   describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
-      const e = astronomyPrompts.starsInConstellations();
-
-      expect(e).to.deep.equal([{
-        name: 'Rigel',
-        visualMagnitude: 0.13,
-        constellation: 'Orion',
-        lightYearsFromEarth: 860,
-        color: 'blue'
-      }, {
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue'
-      }, {
-        name: 'Betelgeuse',
-        visualMagnitude: 0.5,
-        constellation: 'Orion',
-        lightYearsFromEarth: 640,
-        color: 'red'
-      },
-      {
-        name: 'Hadar',
-        visualMagnitude: 0.61,
-        constellation: 'The Little Dipper',
-        lightYearsFromEarth: 350,
-        color: 'blue'
-      }
-      ])
-    });
-
     it.skip("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();
 
@@ -751,8 +703,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("constellationsStarsExistIn", () => {
-      const e = astronomyPrompts.constellationsStarsExistIn();
+    it.skip("sortByBrightness", () => {
+      const e = astronomyPrompts.sortByBrightness();
 
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
@@ -762,7 +714,7 @@ describe("PROTOTYPES", () => {
     it.skip("totalDamage", () => {
       const e = ultimaPrompts.totalDamage();
 
-      expect(e).to.deep.equal(113)
+      expect(e).to.deep.equal(59)
     });
 
     it.skip("charactersByTotal", () => {
@@ -881,5 +833,61 @@ describe("PROTOTYPES", () => {
         ages: [34, 37]
       }])
     })
-  })
+  });
+
+  describe("Boss Prompts", () => {
+    it.skip("bossLoyalty", () => {
+      const e = bossPrompts.bossLoyalty();
+
+      expect(e).to.deep.equal([{
+        bossName: "Scar",
+        sidekickLoyalty: 16
+      }, {
+        bossName: "Ursula",
+        sidekickLoyalty: 20
+      }, {
+        bossName: "Jafar",
+        sidekickLoyalty: 3
+      }])
+    })
+  });
+
+  describe("Astronomy Prompts", () => {
+    it.skip("starsInConstellations", () => {
+      const e = astronomyPrompts.starsInConstellations();
+
+      expect(e).to.deep.equal([{
+        name: 'Rigel',
+        visualMagnitude: 0.13,
+        constellation: 'Orion',
+        lightYearsFromEarth: 860,
+        color: 'blue'
+      }, {
+        name: 'Achernar',
+        visualMagnitude: 0.46,
+        constellation: 'The Plow',
+        lightYearsFromEarth: 140,
+        color: 'blue'
+      }, {
+        name: 'Betelgeuse',
+        visualMagnitude: 0.5,
+        constellation: 'Orion',
+        lightYearsFromEarth: 640,
+        color: 'red'
+      },
+      {
+        name: 'Hadar',
+        visualMagnitude: 0.61,
+        constellation: 'The Little Dipper',
+        lightYearsFromEarth: 350,
+        color: 'blue'
+      }
+      ])
+    });
+  });
+
+
+
+
+
 })
