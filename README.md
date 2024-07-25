@@ -132,7 +132,8 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 
 ### Object.keys Challenges (optional, not needed for assessment prep)
 - [ ] bosses (bosses, sidekicks)
-- [ ] astronomy (constellations, stars)
+- [ ] astronomy II (constellations, stars)
+- [ ] dinosaurs II (dinosaurs, humans, movies)
 
 
 # More Practice

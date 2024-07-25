@@ -776,7 +776,60 @@ describe("PROTOTYPES", () => {
         }
       })
     });
+  });
 
+  describe("Boss Prompts", () => {
+    it.skip("bossLoyalty", () => {
+      const e = bossPrompts.bossLoyalty();
+
+      expect(e).to.deep.equal([{
+        bossName: "Scar",
+        sidekickLoyalty: 16
+      }, {
+        bossName: "Ursula",
+        sidekickLoyalty: 20
+      }, {
+        bossName: "Jafar",
+        sidekickLoyalty: 3
+      }])
+    })
+  });
+
+  describe("Astronomy Prompts II", () => {
+    it.skip("starsInConstellations", () => {
+      const e = astronomyPrompts.starsInConstellations();
+
+      expect(e).to.deep.equal([{
+        name: 'Rigel',
+        visualMagnitude: 0.13,
+        constellation: 'Orion',
+        lightYearsFromEarth: 860,
+        color: 'blue'
+      }, {
+        name: 'Achernar',
+        visualMagnitude: 0.46,
+        constellation: 'The Plow',
+        lightYearsFromEarth: 140,
+        color: 'blue'
+      }, {
+        name: 'Betelgeuse',
+        visualMagnitude: 0.5,
+        constellation: 'Orion',
+        lightYearsFromEarth: 640,
+        color: 'red'
+      },
+      {
+        name: 'Hadar',
+        visualMagnitude: 0.61,
+        constellation: 'The Little Dipper',
+        lightYearsFromEarth: 350,
+        color: 'blue'
+      }
+      ])
+    });
+  });
+
+  describe("Dino Prompts II", () => {
     it.skip("uncastActors", () => {
       const e = dinosaurPrompts.uncastActors();
 
@@ -834,58 +887,6 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
-
-  describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
-      const e = bossPrompts.bossLoyalty();
-
-      expect(e).to.deep.equal([{
-        bossName: "Scar",
-        sidekickLoyalty: 16
-      }, {
-        bossName: "Ursula",
-        sidekickLoyalty: 20
-      }, {
-        bossName: "Jafar",
-        sidekickLoyalty: 3
-      }])
-    })
-  });
-
-  describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
-      const e = astronomyPrompts.starsInConstellations();
-
-      expect(e).to.deep.equal([{
-        name: 'Rigel',
-        visualMagnitude: 0.13,
-        constellation: 'Orion',
-        lightYearsFromEarth: 860,
-        color: 'blue'
-      }, {
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue'
-      }, {
-        name: 'Betelgeuse',
-        visualMagnitude: 0.5,
-        constellation: 'Orion',
-        lightYearsFromEarth: 640,
-        color: 'red'
-      },
-      {
-        name: 'Hadar',
-        visualMagnitude: 0.61,
-        constellation: 'The Little Dipper',
-        lightYearsFromEarth: 350,
-        color: 'blue'
-      }
-      ])
-    });
-  });
-
 
 
 

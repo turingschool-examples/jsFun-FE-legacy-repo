@@ -805,7 +805,7 @@ const ultimaPrompts = {
 const dinosaurPrompts = {
   countAwesomeDinosaurs() {
     // Return an object where each key is a movie title and each value is the
-    // number of awesome dinosaurs in that movie. e.g.:
+    // number of *awesome* dinosaurs in that movie. e.g.:
     // {
     //   'Jurassic Park': 5,
     //   'The Lost World: Jurassic Park': 8,
@@ -821,9 +821,7 @@ const dinosaurPrompts = {
   },
 
   averageAgePerMovie() {
-    /* Return an object where each key is a movie director's name and each value is
-        an object whose key is a movie's title and whose value is the average age
-        of the cast on the release year of that movie.
+    /* Return an object where each key is a movie director's name and each value is an object whose key is a movie's title and whose value is the average age of the cast on the release year of that movie.
       e.g.:
       {
         'Steven Spielberg':
@@ -850,8 +848,86 @@ const dinosaurPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
-  },
+  }
+};
 
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+// ---------------------------------------------------------------------------
+//  ADDITIONAL CHALLENGES THAT INCLUDE METHODS NOT NEEDED FOR YOUR ASSESSMENT
+   /* NOTE - You will not see Object.keys() on an assessment */
+// ---------------------------------------------------------------------------
+
+
+
+// DATASET: bosses, sidekicks from ./datasets/bosses
+const bossPrompts = {
+  bossLoyalty() {
+    // Create an array of objects that each have the name of the boss and the sum
+    // loyalty of all their sidekicks. e.g.:
+    // [
+    //   { bossName: 'Jafar', sidekickLoyalty: 3 },
+    //   { bossName: 'Ursula', sidekickLoyalty: 20 },
+    //   { bossName: 'Scar', sidekickLoyalty: 16 }
+    // ]
+
+    /* CODE GOES HERE */
+ 
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+// DATASET: constellations, stars from ./datasets/astronomy
+const astronomyPromptsII = {
+  starsInConstellations() {
+    // Return an array of all the star objects that appear in any of the constellations listed in the constellations object e.g.
+    // [
+    //   { name: 'Rigel',
+    //     visualMagnitude: 0.13,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 860,
+    //     color: 'blue' },
+    //   {
+    //     name: 'Achernar',
+    //     visualMagnitude: 0.46,
+    //     constellation: 'The Plow',
+    //     lightYearsFromEarth: 140,
+    //     color: 'blue'
+    //   },
+    //   { name: 'Betelgeuse',
+    //     visualMagnitude: 0.5,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 640,
+    //     color: 'red' },
+    //   {
+    //     name: 'Hadar',
+    //     visualMagnitude: 0.61,
+    //     constellation: 'The Little Dipper',
+    //     lightYearsFromEarth: 350,
+    //     color: 'blue'
+    //   }
+    // ]
+
+    /* CODE GOES HERE */
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+// DATASET: dinosaurs, humans, movies from ./datasets/dinosaurs
+const dinoPromptsII = {
   uncastActors() {
     /*
     Return an array of objects that contain the names of humans who have not been cast in a Jurassic Park movie (yet), their nationality, and their imdbStarMeterRating. The object in the array should be sorted alphabetically by nationality.
@@ -906,80 +982,6 @@ const dinosaurPrompts = {
     // Write your annotation here as a comment
   }
 };
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-// ---------------------------------------------------------------------------
-//  ADDITIONAL CHALLENGES THAT INCLUDE METHODS NOT NEEDED FOR YOUR ASSESSMENT
-   /* NOTE - You will not see Object.keys() on an assessment */
-// ---------------------------------------------------------------------------
-
-
-
-// DATASET: bosses, sidekicks from ./datasets/bosses
-const bossPrompts = {
-  bossLoyalty() {
-    // Create an array of objects that each have the name of the boss and the sum
-    // loyalty of all their sidekicks. e.g.:
-    // [
-    //   { bossName: 'Jafar', sidekickLoyalty: 3 },
-    //   { bossName: 'Ursula', sidekickLoyalty: 20 },
-    //   { bossName: 'Scar', sidekickLoyalty: 16 }
-    // ]
-
-    /* CODE GOES HERE */
- 
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-}
-
-// DATASET: constellations, stars from ./datasets/astronomy
-const astronomyPromptsII = {
-  starsInConstellations() {
-    // Return an array of all the star objects that appear in any of the constellations listed in the constellations object e.g.
-    // [
-    //   { name: 'Rigel',
-    //     visualMagnitude: 0.13,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 860,
-    //     color: 'blue' },
-    //   {
-    //     name: 'Achernar',
-    //     visualMagnitude: 0.46,
-    //     constellation: 'The Plow',
-    //     lightYearsFromEarth: 140,
-    //     color: 'blue'
-    //   },
-    //   { name: 'Betelgeuse',
-    //     visualMagnitude: 0.5,
-    //     constellation: 'Orion',
-    //     lightYearsFromEarth: 640,
-    //     color: 'red' },
-    //   {
-    //     name: 'Hadar',
-    //     visualMagnitude: 0.61,
-    //     constellation: 'The Little Dipper',
-    //     lightYearsFromEarth: 350,
-    //     color: 'blue'
-    //   }
-    // ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-}
 
 
 
