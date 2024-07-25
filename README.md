@@ -33,6 +33,21 @@ In order to be successful when working with prototype methods, you'll need to ha
 * iteration - how do iterator methods let us look at each element one at a time and take neccesary action iteratively
 * scope - how JS runs each line of code, in what order, where to place returns and console.logs, etc
 
+## Solidifying a Problem Solving Process
+
+A benefit of this type of practice is that it can help you build a solid problem solving process that you can apply to any code challenge you encounter whether its ruby, JavaScript, familiar or unfamiliar.  Often, the biggest challenge in this type of work is not that you don't understand the prototype methods, but rather your problem solving process isn't polished enough for you to break down complex data and problems into small solvable steps.
+
+### Problem Solving Process
+1. Restate the goal in your own words. Take note of EXACTLY what the final output(s) should be.
+1. Consider the data that you’re working with. What data types are you working with? Are there any parameters/arguments? What data in particular do you need access to?
+1. Ask clarifying questions that you have about the goal and/or the data. Is there anything that still unclear? It is critical that you have a complete and accurate idea of the goal and data before you move on.
+1. Pseudocode the steps needed to get to the goal. Write out your plan, with specific steps, in plain English. What will you need to do first? Then what?… Note: You may only be able to pseudocode out the first couple of steps - that’s okay! Plan out as much as possible now.
+1. Research what you don’t know. Is there something you’ve noted in your pseudocode that you don’t know how to do? Take note of that and google.
+Start coding by referencing the pseudocode you’ve written.
+1. Stuck? Go back to step 4 and repeat steps 4-6 until you’ve reached your goal.
+1. Refactor your code, if necessary. You should not be worried about writing the “best” code possible while solving the problem. Get it to work, then you can work on improving the code.
+1. Make note of your approach and key learning you encountered
+
 ## Instructions
 
 In the [prototypes/index.js](https://github.com/turingschool-examples/jsFUNk/prototypes/index.js) file, you'll see several objects named after a collection of prompts that need to be solved. Each prompt is represented by a separate method on that object. 
@@ -142,6 +157,7 @@ For more practice with iterators (in an assessment-style format), check out [thi
 # Resources
 * [MDN - Array Prototype Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods)
 * [MDN - Object Prototype Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods_of_the_Object_constructor)
+<!-- * [Bracket and Dot Notation](<link needs added once SE version created>) -->
 
 
 <!-- ## Pulling Down Repo Changes
