@@ -166,12 +166,7 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 
 
 # More Practice
-For more practice and assessment prep, check out:
-- [this extra-practice-se2-assessment-style repo](https://github.com/turingschool-examples/extra-practice-se2-assessment-style)
-- [Replit Exercises #1](https://replit.com/@kaylaewood/iteratorpractice#index.js)
-- [Replit Exercises #2](https://replit.com/@kaylaewood/iteratorpractice2#index.js)
-
-
+For more practice and assessment prep, check out [this extra-practice-se2-assessment-style repo](https://github.com/turingschool-examples/extra-practice-se2-assessment-style)
 
 
 # Resources
