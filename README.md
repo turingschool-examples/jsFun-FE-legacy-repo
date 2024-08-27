@@ -4,7 +4,12 @@ This repo contains practice exercises for solving data manipulation challenges u
 
 ## Getting Started
 
-**Fork** this repo (do not clone), then clone your forked copy to your machine. `cd` into the directory for the project and run `npm install`.
+- **Fork** this repo (do not clone),
+- Clone your forked copy to your machine.
+- `cd` into the directory for the project
+- run `npm install`
+  - When you run npm install you will see a message that mentions some vulnerabilities with options to fix those vulnerabilities.
+  - 🛑 Do **NOT** fix those vulnerabilities.  Do NOT run `npm audit fix` or `npm audit fix --force`.  Using `--force` in a command is really forcing that command through in a way we want to avoid. Just ignore those vulnerabilities, they shouldn't impact your work. 
 
 Check out [this video](https://vimeo.com/691112332/2a9ef1221c) for a walkthrough of the set up and first test!
 
