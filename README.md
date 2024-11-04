@@ -15,13 +15,11 @@ Check out [this video](https://vimeo.com/691112332/2a9ef1221c) for a walkthrough
 
 ## Running the Tests
 
-To run all tests for both protoype methods and scope:
+To run the tests use:
 
 `npm test`
 
-To run the tests for just a *single* concept:
 
-`npm run testScope` or  `npm run testPrototypes`
 
 ## Understanding Prototype Methods
 

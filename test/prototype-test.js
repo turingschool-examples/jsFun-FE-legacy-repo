@@ -12,7 +12,7 @@ const {
   bossPrompts,
   classPrompts,
   modPrompts,
-  kittyPrompts,
+  // kittyPrompts,
   cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
@@ -23,16 +23,22 @@ const {
   boardGamePrompts,
 } = require("../prototypes/index");
 
+const {
+  findOrangeNames,
+  sortByAge,
+  growUp
+} = require("../prototypes/problem-sets/kitties");
+
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it.skip("orangeKittyNames", () => {
-      const e = kittyPrompts.orangePetNames(kitties);
+      const e = findOrangeNames(kitties);
 
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
 
     it.skip("sortByAge", () => {
-      const e = kittyPrompts.sortByAge(kitties);
+      const e = sortByAge(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -54,7 +60,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("growUp", () => {
-      const e = kittyPrompts.growUp(kitties);
+      const e = growUp(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -74,15 +80,15 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
-    describe('kittyPrompts refactor', () => {
+    describe('Kitty Prompts Refactor', () => {
       it.skip('should be able to handle orange puppers', () => {
-        const e = kittyPrompts.orangePetNames(puppers);
+        const e = findOrangeNames(puppers);
 
         expect(e).to.deep.equal(["Hatchet", "Butter"])
       })
 
       it.skip('should sort pups too', () => {
-        const e = kittyPrompts.sortByAge(puppers);
+        const e = sortByAge(puppers);
 
         expect(e).to.deep.equal([{
           name: 'Scout',
@@ -104,7 +110,7 @@ describe("PROTOTYPES", () => {
       })
 
       it.skip('should age puppers too', () => {
-        const e = kittyPrompts.growUp(puppers);
+        const e = growUp(puppers);
 
         expect(e).to.deep.equal([{
           name: 'Scout',
