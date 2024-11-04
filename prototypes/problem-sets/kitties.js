@@ -3,7 +3,7 @@ const { puppers } = require('../datasets/puppers');
 
 // To run the code you've written in this file, use node prototypes/problem-sets/kitties.js
 
-console.log('testing testing')
+console.log('Running kitties.js')
 
 /* Kitty Prompts*/
 
@@ -11,16 +11,16 @@ console.log('testing testing')
 Level 1
 
 Code: 
-Write a function called "findOrangeNames" that returns an array of just the names of kitties who are orange 
+  Write a function called "findOrangeNames" that returns an array of just the names of kitties who are orange 
 
 Invoke: 
-To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
+  To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
 e.g.
   console.log(findOrangeNames())
     should print --> ['Tiger', 'Snickers']
 
 Annotate:
-After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
+  After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
 
 
@@ -28,10 +28,10 @@ After you find a solution, write out the steps of that solution.  Break them dow
 Level 2
 
 Code: 
-Write a function called "sortByAge" that returns an array of kitty objects that are sorted from oldest to youngest.
+  Write a function called "sortByAge" that returns an array of kitty objects that are sorted from oldest to youngest.
 
 Invoke:
-To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
+  To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
 e.g.
   console.log(sortByAge())
     should print -->   
@@ -53,7 +53,7 @@ e.g.
       ...etc]
 
 Annotation:
-After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
+  After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
 
 
@@ -61,10 +61,10 @@ After you find a solution, write out the steps of that solution.  Break them dow
 Level 3
 
 Code: 
-Write a function called "growUp" that returns an array of kitty objects that have all grown up by 2 years.
+  Write a function called "growUp" that returns an array of kitty objects that have all grown up by 2 years.
 
 Invoke: 
-To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
+  To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
 e.g.
   console.log(growUp())
     should print -->   
@@ -81,7 +81,7 @@ e.g.
       ...etc]
 
 Annotation:
-After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
+  After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
   
 
@@ -91,11 +91,11 @@ Level 4
 Currently, your functions are probably using the imported `kitties` global  variable from line 1.
 
 Code:
-Refactor the three functions above using arguments and parameters so that
+  Refactor the three functions above using arguments and parameters so that
 they can perform the same utility for the kitties or puppers datasets, depending on what arguments you send through.
 
 Invoke:
-Invoke each refactored function twice, once passing the kitties data as an argument and once passing the puppers data as an argument
+  Invoke each refactored function twice, once passing the kitties data as an argument and once passing the puppers data as an argument
 
 e.g.
   console.log(findOrangeNames(kitties)) --> same result as above
@@ -134,7 +134,7 @@ e.g.
       ...etc]
 
 Annotation:
-Jot down any takeaways, questions, or reflections about this refactoring.
+  Jot down any takeaways, questions, or reflections about this refactoring.
 */
 
 
@@ -142,10 +142,10 @@ Jot down any takeaways, questions, or reflections about this refactoring.
 Level 5
 
 Test:
-  *Uncomment the module.exports below.
-  *Unskip the 3 Kitty Prompts tests and 3 Kitty Prompts Refactor tests in your prototype-test.js file.
-  *Run `npm test` to confirm that all your functions are passing their tests.
-  Refactor as need until all 6 tests are passing
+  * Uncomment the module.exports below.
+  * Unskip the 3 Kitty Prompts tests and 3 Kitty Prompts Refactor tests in your prototype-test.js file.
+  * Run `npm test` to confirm that all your functions are passing their tests.
+  * Refactor as need until all 6 tests are passing
 
 Annotation:
   If your tests did not immediately pass, make note of what details you missed while building and checking your solutions. 

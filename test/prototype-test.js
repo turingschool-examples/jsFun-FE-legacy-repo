@@ -8,7 +8,7 @@ const { books } = require('../prototypes/datasets/books')
 const {
   breweryPrompts,
   turingPrompts,
-  clubPrompts,
+  // clubPrompts,
   bossPrompts,
   classPrompts,
   modPrompts,
@@ -28,6 +28,10 @@ const {
   sortByAge,
   growUp
 } = require("../prototypes/problem-sets/kitties");
+
+const {
+  findClubMembers
+} = require("../prototypes/problem-sets/clubs")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -135,7 +139,7 @@ describe("PROTOTYPES", () => {
 
   describe("Club Prompts", () => {
     it.skip("membersBelongingToClubs", () => {
-      const e = clubPrompts.membersBelongingToClubs(clubs);
+      const e = findClubMembers(clubs);
 
       expect(e).to.deep.equal({
         Louisa: ['Drama', 'Art'],

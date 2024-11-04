@@ -18,61 +18,6 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 // SINGLE DATASETS
 // =================================================================
 
-// DATASET: kitties from ./datasets/kitties
-const kittyPrompts = {
-  orangePetNames() {
-    // Return an array of just the names of kitties who are orange e.g.
-        // ['Tiger', 'Snickers']
-
-        /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  sortByAge() {
-    // Sort the kitties by their age
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
-
-    /* CODE GOES HERE */
-  }
-};
-
-// PLEASE READ-----------------------
-// Currently, your functions are probably using the `kitties` global import variable.
-// refactor the above functions using arguments and parameters so that
-// they can perform the same utility
-// for the kitties or puppers datasets, depending on what arguments you send through.
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: clubs from ./datasets/clubs
@@ -999,11 +944,9 @@ const dinoPromptsII = {
 module.exports = {
   breweryPrompts,
   turingPrompts,
-  clubPrompts,
   bossPrompts,
   classPrompts,
   modPrompts,
-  kittyPrompts,
   cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
