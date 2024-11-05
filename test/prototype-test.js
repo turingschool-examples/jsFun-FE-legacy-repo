@@ -11,7 +11,7 @@ const {
   // clubPrompts,
   bossPrompts,
   classPrompts,
-  modPrompts,
+  // modPrompts,
   // kittyPrompts,
   cakePrompts,
   astronomyPrompts,
@@ -31,7 +31,11 @@ const {
 
 const {
   findClubMembers
-} = require("../prototypes/problem-sets/clubs")
+} = require("../prototypes/problem-sets/clubs");
+
+const {
+  getStats
+} = require("../prototypes/problem-sets/mods");
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -157,8 +161,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Mod Prompts", () => {
-    it.skip("studentsPerMod", () => {
-      const e = modPrompts.studentsPerMod();
+    it("studentsPerMod", () => {
+      const e = getStats();
 
       expect(e).to.deep.equal([{
         mod: 1,

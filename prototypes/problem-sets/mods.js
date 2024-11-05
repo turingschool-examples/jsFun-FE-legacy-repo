@@ -1,8 +1,8 @@
-const { clubs } = require('../datasets/clubs');
+const { mods } = require('../datasets/mods');
 
-// To run the code you've written in this file, use node prototypes/problem-sets/clubs.js
+// To run the code you've written in this file, use node prototypes/problem-sets/mods.js
 
-console.log('Running clubs.js')
+console.log('Running mods.js')
 
 /* Clubs Prompts*/
 
@@ -10,19 +10,19 @@ console.log('Running clubs.js')
 Level 1
 
 Code: 
-  Write a function called "findClubMembers" that takes in the clubs data as an argument.  Your function should create an object whose keys are the names of people, and whose values are arrays that include the names of the clubs that person is a part of. 
+  Write a function called "getStats" that returns an array of objects where the keys are mod (the number of the module) and studentsPerInstructor (how many students per instructor there are for that mod) 
 
 Invoke: 
   To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
 e.g.
-  console.log(findClubMembers(clubs))
+  console.log(getStats())
     should print --> 
-    {
-      Louisa: ['Drama', 'Art'],
-      Pam: ['Drama', 'Art', 'Chess'],
-      Nathaniel: ['Drama', 'Astronomy'],
-      ...etc
-    }
+      [
+        { mod: 1, studentsPerInstructor: 9 },
+        { mod: 2, studentsPerInstructor: 11 },
+        { mod: 3, studentsPerInstructor: 10 },
+        { mod: 4, studentsPerInstructor: 8 }
+      ]
 
 Annotate:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
@@ -35,7 +35,7 @@ Level 2
 
 Test:
   *Uncomment the module.exports below.
-  *Unskip the 1 Club Prompts test in your prototype-test.js file.
+  *Unskip the 1 Mods Prompt test in your prototype-test.js file.
   *Run `npm test` to confirm that your function is passing the test.
   *Refactor as need until the test is passing
 
@@ -47,5 +47,5 @@ Annotation:
 
 
 // module.exports = {
-//   findClubMembers
+//   getStats
 // };

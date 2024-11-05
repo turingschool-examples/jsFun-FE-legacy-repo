@@ -1,6 +1,6 @@
-const { kitties } = require('./datasets/kitties');
-const { puppers } = require('./datasets/puppers');
-const { mods } = require('./datasets/mods');
+// const { kitties } = require('./datasets/kitties');
+// const { puppers } = require('./datasets/puppers');
+// const { mods } = require('./datasets/mods');
 const { cakes } = require('./datasets/cakes');
 const { classrooms } = require('./datasets/classrooms');
 const { breweries } = require('./datasets/breweries');
@@ -20,59 +20,6 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 
-// DATASET: clubs from ./datasets/clubs
-const clubPrompts = {
-  membersBelongingToClubs() {
-    // Your function should access the clubs data through a parameter (it is being passed as an argument in the test file)
-    // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g.
-    // {
-    //   Louisa: ['Drama', 'Art'],
-    //   Pam: ['Drama', 'Art', 'Chess'],
-    //   ...etc
-    // }
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-// DATASET: mods from ./datasets/mods
-const modPrompts = {
-  studentsPerMod() {
-    // Return an array of objects where the keys are mod (the number of the module)
-    // and studentsPerInstructor (how many students per instructor there are for that mod) e.g.
-    // [
-    //   { mod: 1, studentsPerInstructor: 9 },
-    //   { mod: 2, studentsPerInstructor: 11 },
-    //   { mod: 3, studentsPerInstructor: 10 },
-    //   { mod: 4, studentsPerInstructor: 8 }
-    // ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
 
 
 
@@ -946,7 +893,7 @@ module.exports = {
   turingPrompts,
   bossPrompts,
   classPrompts,
-  modPrompts,
+  // modPrompts,
   cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
