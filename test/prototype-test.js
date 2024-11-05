@@ -3,6 +3,7 @@ const expect = chai.expect;
 const { puppers } = require('../prototypes/datasets/puppers')
 const { kitties } = require('../prototypes/datasets/kitties')
 const { clubs } = require('../prototypes/datasets/clubs')
+const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
 
 const {
@@ -48,7 +49,8 @@ const {
 const {
   getClassrooms,
   getCapacities,
-  sortByCapacity
+  sortByCapacity,
+  filterAndSortClassrooms
 } = require("../prototypes/problem-sets/classrooms");
 
 describe("PROTOTYPES", () => {
@@ -279,7 +281,7 @@ describe("PROTOTYPES", () => {
 
   describe("Class Prompts", () => {
     it.skip("getClassrooms", () => {
-      const e = getClassrooms();
+      const e = getClassrooms("FE");
 
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -310,7 +312,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("sortByCapacity", () => {
-      const e = sortByCapacity();
+      const e = sortByCapacity(classrooms);
 
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -340,6 +342,50 @@ describe("PROTOTYPES", () => {
         roomLetter: "D",
         program: "BE",
         capacity: 30
+      }, {
+        roomLetter: "A",
+        program: "FE",
+        capacity: 32
+      }])
+    })
+
+    it.skip("filter and sort BE", () => {
+      const e = filterAndSortClassrooms("BE");
+
+      expect(e).to.deep.equal([{
+        roomLetter: "H",
+        program: "BE",
+        capacity: 18
+      }, {
+        roomLetter: "F",
+        program: "BE",
+        capacity: 19
+      }, {
+        roomLetter: "B",
+        program: "BE",
+        capacity: 29
+      }, {
+        roomLetter: "D",
+        program: "BE",
+        capacity: 30
+      }])
+    })
+
+    it.skip("filter and sort FE", () => {
+      const e = filterAndSortClassrooms("FE");
+
+      expect(e).to.deep.equal([{
+        roomLetter: "E",
+        program: "FE",
+        capacity: 22
+      }, {
+        roomLetter: "C",
+        program: "FE",
+        capacity: 27
+      }, {
+        roomLetter: "G",
+        program: "FE",
+        capacity: 29
       }, {
         roomLetter: "A",
         program: "FE",

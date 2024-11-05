@@ -1,7 +1,5 @@
 const { classrooms } = require('../datasets/classrooms');
 
-const { cakes } = require('../datasets/cakes');
-
 // To run the code you've written in this file, use node prototypes/problem-sets/classrooms.js
 
 console.log('Running classrooms.js')
@@ -211,7 +209,7 @@ Code:
   If so, refactor that function so that it simply uses the logic you've already written in your "getClassrooms" and "sortByCapacity" functions.
 
 Hint:
-  Your "filterAndSort" function should take in the classroom type of "FE" or "BE", then simply:
+  Your "filterAndSortClassrooms" function should take in the classroom type of "FE" or "BE", then simply:
   - Invoke getClassrooms, passing in the classroom type
   - Invoke sortByCapacity, passing in the filtered array you get from getClassrooms
   - Return the sorted, filted array
@@ -267,6 +265,8 @@ Annotation:
   If your tests did not immediately pass, take notes on what details you missed while building and checking your solutions. 
   Take notes on the error messages that led you to fixing those details. 
 */
+
+
 
 
 
