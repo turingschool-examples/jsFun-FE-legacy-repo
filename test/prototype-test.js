@@ -10,7 +10,7 @@ const {
   turingPrompts,
   // clubPrompts,
   bossPrompts,
-  classPrompts,
+  // classPrompts,
   // modPrompts,
   // kittyPrompts,
   // cakePrompts,
@@ -44,6 +44,12 @@ const {
   getToppings,
   makeGroceryList
 } = require("../prototypes/problem-sets/cakes");
+
+const {
+  getClassrooms,
+  getCapacities,
+  sortByCapacity
+} = require("../prototypes/problem-sets/classrooms");
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -272,8 +278,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
-      const e = classPrompts.feClassrooms();
+    it.skip("getClassrooms", () => {
+      const e = getClassrooms();
 
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -295,7 +301,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("totalCapacities", () => {
-      const e = classPrompts.totalCapacities();
+      const e = getCapacities();
 
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -304,7 +310,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("sortByCapacity", () => {
-      const e = classPrompts.sortByCapacity();
+      const e = sortByCapacity();
 
       expect(e).to.deep.equal([{
         roomLetter: "H",

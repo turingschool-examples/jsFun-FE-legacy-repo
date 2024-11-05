@@ -2,7 +2,7 @@
 // const { puppers } = require('./datasets/puppers');
 // const { mods } = require('./datasets/mods');
 // const { cakes } = require('./datasets/cakes');
-const { classrooms } = require('./datasets/classrooms');
+// const { classrooms } = require('./datasets/classrooms');
 const { breweries } = require('./datasets/breweries');
 const { nationalParks } = require('./datasets/nationalParks');
 const { weather } = require('./datasets/weather');
@@ -17,124 +17,6 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // SINGLE DATASETS
 // =================================================================
-
-
-
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-// DATASET: cakes from ./datasets/cakes
-const cakePrompts = {
-  // stockPerCake() {
-  //   Return an array of objects that include just the flavor of the cake and how
-  //   much of that cake is in stock e.g.
-  //   [
-  //      { flavor: 'dark chocolate', inStock: 15 },
-  //      { flavor: 'yellow', inStock: 14 },
-  //      ..etc
-  //   ]
-
-  //   /* CODE GOES HERE */
-
-  //   // Annotation:
-  //   // Write your annotation here as a comment
-  // },
-
-  onlyInStock() {
-    // Return an array of only the cakes that are in stock
-    // e.g.
-    // [
-    //   {
-    //   cakeFlavor: 'dark chocolate',
-    //   filling: null,
-    //   frosting: 'dark chocolate ganache',
-    //   toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
-    //   inStock: 15
-    // },
-    // {
-    //   cakeFlavor: 'yellow',
-    //   filling: 'citrus glaze',
-    //   frosting: 'chantilly cream',
-    //   toppings: ['berries', 'edible flowers'],
-    //   inStock: 14
-    // },
-    // ..etc
-    // ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  totalInventory() {
-    // Return the total amount of cakes in stock e.g.
-    // 59
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  allToppings() {
-    // Return an array of all unique toppings (no duplicates) needed to bake
-    // every cake in the dataset e.g.
-    // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  // groceryList() {
-  //   I need to make a grocery list. Please give me an object where the keys are
-  //   each topping, and the values are the amount of that topping I need to buy e.g.
-  //   {
-  //      'dutch process cocoa': 1,
-  //      'toasted sugar': 3,
-  //      'smoked sea salt': 3,
-  //      'berries': 2,
-  //      ...etc
-  //   }
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  // }
-};
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
@@ -153,13 +35,13 @@ const classPrompts = {
     // Write your annotation here as a comment
   },
 
-  totalCapacities() {
-    // Create an object where the keys are 'feCapacity' and 'beCapacity',
-    // and the values are the total capacity for all classrooms in each program e.g.
-    // {
-    //   feCapacity: 110,
-    //   beCapacity: 96
-    // }
+  // totalCapacities() {
+  //   Create an object where the keys are 'feCapacity' and 'beCapacity',
+  //   and the values are the total capacity for all classrooms in each program e.g.
+  //   {
+  //     feCapacity: 110,
+  //     beCapacity: 96
+  //   }
 
     /* CODE GOES HERE */
 
