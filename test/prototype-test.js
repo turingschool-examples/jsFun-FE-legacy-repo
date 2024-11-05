@@ -13,7 +13,7 @@ const {
   classPrompts,
   // modPrompts,
   // kittyPrompts,
-  cakePrompts,
+  // cakePrompts,
   astronomyPrompts,
   ultimaPrompts,
   dinosaurPrompts,
@@ -36,6 +36,14 @@ const {
 const {
   getStats
 } = require("../prototypes/problem-sets/mods");
+
+const {
+  getStockCounts,
+  getInStock,
+  doInventory,
+  getToppings,
+  makeGroceryList
+} = require("../prototypes/problem-sets/cakes");
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -161,7 +169,7 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Mod Prompts", () => {
-    it("studentsPerMod", () => {
+    it.skip("studentsPerMod", () => {
       const e = getStats();
 
       expect(e).to.deep.equal([{
@@ -182,7 +190,7 @@ describe("PROTOTYPES", () => {
 
   describe("Cake Prompts", () => {
     it.skip("stockPerCake", () => {
-      const e = cakePrompts.stockPerCake();
+      const e = getStockCounts();
 
       expect(e).to.deep.equal([{
         flavor: "dark chocolate",
@@ -206,7 +214,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("onlyInStock", () => {
-      const e = cakePrompts.onlyInStock();
+      const e = getInStock();
 
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
@@ -236,19 +244,19 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("totalInventory", () => {
-      const e = cakePrompts.totalInventory();
+      const e = doInventory();
 
       expect(e).to.deep.equal(59)
     });
 
     it.skip("allToppings", () => {
-      const e = cakePrompts.allToppings();
+      const e = getToppings();
 
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     });
 
     it.skip("groceryList", () => {
-      const e = cakePrompts.groceryList();
+      const e = makeGroceryList();
 
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,

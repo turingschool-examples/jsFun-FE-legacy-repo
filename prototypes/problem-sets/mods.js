@@ -4,7 +4,7 @@ const { mods } = require('../datasets/mods');
 
 console.log('Running mods.js')
 
-/* Clubs Prompts*/
+/* Mods Prompts*/
 
 /*
 Level 1
@@ -13,7 +13,7 @@ Code:
   Write a function called "getStats" that returns an array of objects where the keys are mod (the number of the module) and studentsPerInstructor (how many students per instructor there are for that mod) 
 
 Invoke: 
-  To print the value your function returns and confirm it is correct, invoke your function with in a console.log().
+  To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
   console.log(getStats())
     should print --> 
@@ -37,11 +37,11 @@ Test:
   *Uncomment the module.exports below.
   *Unskip the 1 Mods Prompt test in your prototype-test.js file.
   *Run `npm test` to confirm that your function is passing the test.
-  *Refactor as need until the test is passing
+  *Refactor as needed until the test is passing
 
 Annotation:
-  If your test did not immediately pass, make note of what details you missed while building and checking your solutions. 
-  Make note of the error messages that led you to fixing those details. 
+  If your tests did not immediately pass, take notes on what details you missed while building and checking your solutions. 
+  Take notes on the error messages that led you to fixing those details. 
 */
 
 
