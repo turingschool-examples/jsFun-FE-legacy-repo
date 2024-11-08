@@ -3,7 +3,7 @@
 // const { mods } = require('./datasets/mods');
 // const { cakes } = require('./datasets/cakes');
 // const { classrooms } = require('./datasets/classrooms');
-const { breweries } = require('./datasets/breweries');
+// const { breweries } = require('./datasets/breweries');
 const { nationalParks } = require('./datasets/nationalParks');
 const { weather } = require('./datasets/weather');
 const { boardGames } = require('./datasets/boardGames');

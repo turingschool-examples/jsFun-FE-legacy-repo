@@ -7,7 +7,7 @@ const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
 
 const {
-  breweryPrompts,
+  // breweryPrompts,
   turingPrompts,
   // clubPrompts,
   bossPrompts,
@@ -52,6 +52,10 @@ const {
   sortByCapacity,
   filterAndSortClassrooms
 } = require("../prototypes/problem-sets/classrooms");
+
+const {
+
+} = require("../prototypes/problem-sets/breweries")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
