@@ -54,8 +54,10 @@ const {
 } = require("../prototypes/problem-sets/classrooms");
 
 const {
-
-} = require("../prototypes/problem-sets/breweries")
+  removeViolence,
+  getByGenre,
+  getNewBooks,
+} = require("../prototypes/problem-sets/books")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -399,8 +401,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Book prompts", () => {
-    it.skip("removeViolence", () => {
-      const e = bookPrompts.removeViolence(books);
+    it("removeViolence", () => {
+      const e = removeViolence(books);
 
       expect(e).to.deep.equal(['1984',
         'The Great Gatsby',
@@ -418,8 +420,8 @@ describe("PROTOTYPES", () => {
         'Treasure Island'])
     });
 
-    it.skip("getNewBooks", () => {
-      const e = bookPrompts.getNewBooks(books);
+    it("getNewBooks", () => {
+      const e = getNewBooks(books);
 
       expect(e).to.deep.equal([{
         title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
@@ -430,25 +432,18 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("getBooksByYear", () => {
-      const e = bookPrompts.getBooksByYear(books, 1990);
+    it("getByGenre", () => {
+      const e = getByGenre(books, "Fiction", 1954);
 
-      expect(e).to.deep.equal([{
-        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
-      },
-      { title: 'Life of Pi', year: 2001 },
-      {
-        title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
-      }])
+      expect(e).to.deep.equal([ 'Life of Pi', 'The Bell Jar' ])
 
-      const earlyBooks = bookPrompts.getBooksByYear(books, 1970);
-      expect(earlyBooks).to.deep.equal([
-        { title: "Harry Potter and the Sorcerer's Stone", year: 1997 },
-        { title: "The Hitchhiker's Guide to the Galaxy", year: 1979 },
-        { title: "The Handmaid's Tale", year: 1985 },
-        { title: 'Life of Pi', year: 2001 },
-        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 },
-        { title: 'Interview with the Vampire', year: 1976 }
+      const e2 = getByGenre(books, "Science Fiction", 1950);
+
+      expect(e2).to.deep.equal([
+        "The Hitchhiker's Guide to the Galaxy",
+        'Flowers for Algernon',
+        'Slaughterhouse-Five',
+        "The Handmaid's Tale"
       ]);
     });
   });
