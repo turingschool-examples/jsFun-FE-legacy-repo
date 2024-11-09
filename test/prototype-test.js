@@ -6,23 +6,23 @@ const { clubs } = require('../prototypes/datasets/clubs')
 const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
 
-const {
-  // breweryPrompts,
-  turingPrompts,
-  // clubPrompts,
-  bossPrompts,
-  // classPrompts,
-  // modPrompts,
-  // kittyPrompts,
-  // cakePrompts,
-  astronomyPrompts,
-  ultimaPrompts,
-  dinosaurPrompts,
-  nationalParksPrompts,
-  weatherPrompts,
-  bookPrompts,
-  boardGamePrompts,
-} = require("../prototypes/index");
+// const {
+//   // 
+//   turingPrompts,
+//   // clubPrompts,
+//   bossPrompts,
+//   // classPrompts,
+//   // modPrompts,
+//   // kittyPrompts,
+//   // cakePrompts,
+//   astronomyPrompts,
+//   ultimaPrompts,
+//   dinosaurPrompts,
+//   nationalParksPrompts,
+//   weatherPrompts,
+//   // bookPrompts,
+//   boardGamePrompts,
+// } = require("../prototypes/index");
 
 const {
   findOrangeNames,
@@ -58,6 +58,14 @@ const {
   getByGenre,
   getNewBooks,
 } = require("../prototypes/problem-sets/books")
+
+const {
+    getBeerCount,
+    getBreweryBeerCount,
+    getSingleBreweryBeerCount,
+    findHighestAbvBeer,
+    findHighestAbvAll
+} = require("../prototypes/problem-sets/breweries")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -401,7 +409,7 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Book prompts", () => {
-    it("removeViolence", () => {
+    it.skip("removeViolence", () => {
       const e = removeViolence(books);
 
       expect(e).to.deep.equal(['1984',
@@ -420,7 +428,7 @@ describe("PROTOTYPES", () => {
         'Treasure Island'])
     });
 
-    it("getNewBooks", () => {
+    it.skip("getNewBooks", () => {
       const e = getNewBooks(books);
 
       expect(e).to.deep.equal([{
@@ -432,7 +440,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it("getByGenre", () => {
+    it.skip("getByGenre", () => {
       const e = getByGenre(books, "Fiction", 1954);
 
       expect(e).to.deep.equal([ 'Life of Pi', 'The Bell Jar' ])
@@ -518,13 +526,13 @@ describe("PROTOTYPES", () => {
 
   describe("Brewery Prompts", () => {
     it.skip("getBeerCount", () => {
-      const e = breweryPrompts.getBeerCount();
+      const e = getBeerCount();
 
       expect(e).to.deep.equal(40)
     });
 
     it.skip("getBreweryBeerCount", () => {
-      const e = breweryPrompts.getBreweryBeerCount();
+      const e = getBreweryBeerCount();
 
       expect(e).to.deep.equal([{
         name: "Little Machine Brew",
@@ -545,15 +553,26 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("getSingleBreweryBeerCount", () => {
-      const ratioCount = breweryPrompts.getSingleBreweryBeerCount('Ratio Beerworks');
-      const plattCount = breweryPrompts.getSingleBreweryBeerCount('Platt Park Brewing Co.');
+      const ratioCount = getSingleBreweryBeerCount('Ratio Beerworks');
+      const plattCount = getSingleBreweryBeerCount('Platt Park Brewing Co.');
 
       expect(ratioCount).to.equal(5);
       expect(plattCount).to.equal(7);
     });
 
     it.skip("findHighestAbvBeer", () => {
-      const e = breweryPrompts.findHighestAbvBeer();
+      const e = findHighestAbvBeer("Ratio Beerworks");
+
+      expect(e).to.deep.equal({ name: 'Hold Steady', type: 'Chocolate Rye Scotch Ale', abv: 7.5, ibu: 27, })
+
+      const e2 = findHighestAbvBeer("Little Machine Brew");
+
+      expect(e2).to.deep.equal({ name: 'B.B. Rodriguez', type: 'Coffee Double Brown', abv: 8, ibu: 30, })
+    })
+
+
+    it.skip("findHighestAbvAll", () => {
+      const e = findHighestAbvAll();
 
       expect(e).to.deep.equal({
         name: "Barrel Aged Nature's Sweater",

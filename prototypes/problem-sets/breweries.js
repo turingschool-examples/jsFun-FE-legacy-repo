@@ -5,24 +5,18 @@ const { breweries } = require('../datasets/breweries');
 console.log('Running breweries.js')
 
 /* Breweries Prompts*/
-// NOT FINISHED OR STARTED REALLY 
+
 /*
 Level 1
 
 Code: 
-  Write a function called "getClassrooms" that returns an array of just the front-end classrooms.
+  Write a function called "getBeerCount" that returns the total beer count of all beers for every brewery combined.
 
 Invoke: 
   To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
-  console.log(getClassrooms())
-    should print --> 
-      [
-        { roomLetter: 'A', program: 'FE', capacity: 32 },
-        { roomLetter: 'C', program: 'FE', capacity: 27 },
-        { roomLetter: 'E', program: 'FE', capacity: 22 },
-        { roomLetter: 'G', program: 'FE', capacity: 29 }
-      ]
+  console.log(getBeerCount())
+    should print --> 40
 
 Annotate:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
@@ -33,17 +27,18 @@ Annotate:
 Level 2
 
 Code: 
-  Write a function called "getCapacities" that returns an object where the keys are 'feCapacity' and 'beCapacity', and the values are the total capacity for all classrooms in each program.
+  Write a function called "getBreweryBeerCount" that returns an array of objects where each object has the name of a brewery and the count of how many beers that brewery has.
 
 Invoke:
   To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
-  console.log(getCapacities())
+  console.log(getBreweryBeerCount())
     should print -->   
-      {
-        feCapacity: 110,
-        beCapacity: 96
-      }
+      [
+        { name: 'Little Machine Brew', beerCount: 12 },
+        { name: 'Ratio Beerworks', beerCount: 5},
+        ...etc.
+      ]
 
 Annotation:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
@@ -54,33 +49,17 @@ Annotation:
 Level 3
 
 Code: 
-  Write a function called "sortByCapacity" that returns an array of classrooms sorted by their capacity (least capacity to greatest)
+  Write a function called "getSingleBreweryBeerCount" that takes in a brewery name as an argument and returns the number of beers that specified brewery has.
 
 Invoke: 
   To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
-  console.log(sortByCapacity())
-    should print -->  
-      [
-        {
-          roomLetter: "H",
-          program: "BE",
-          capacity: 18
-        }, {
-          roomLetter: "F",
-          program: "BE",
-          capacity: 19
-        }, {
-          roomLetter: "E",
-          program: "FE",
-          capacity: 22
-        }, {
-          roomLetter: "C",
-          program: "FE",
-          capacity: 27
-        },
-        ...etc
-      ]
+  console.log(getSingleBreweryBeerCount('Ratio Beerworks'))
+    should print -->  5
+
+e.g.
+  console.log(getSingleBreweryBeerCount("Platt Park Brewing Co."))
+    should print -->  7
 
 Annotation:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
@@ -92,174 +71,50 @@ Annotation:
 Level 4
 
 Code: 
-  Refactor your "getClassrooms" function from Level 1 so that it takes in an argument of either 'FE' or 'BE' and returns an array of just those classrooms.
+  Write a function called "findHighestAbvBeer" that takes in a brewery name and returns the beer which has the highest ABV of all beers at that brewery.
 
 Invoke: 
   To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
-  console.log(getClassrooms("FE"))
+  console.log(findHighestAbvBeer("Ratio Beerworks"))
     should print --> 
-      [
-        { roomLetter: 'A', program: 'FE', capacity: 32 },
-        { roomLetter: 'C', program: 'FE', capacity: 27 },
-        { roomLetter: 'E', program: 'FE', capacity: 22 },
-        { roomLetter: 'G', program: 'FE', capacity: 29 }
-      ]
+      { name: 'Hold Steady', type: 'Chocolate Rye Scotch Ale', abv: 7.5, ibu: 27, }
+
 e.g.
-  console.log(getClassrooms("BE"))
+  console.log(findHighestAbvBeer("Little Machine Brew"))
     should print --> 
-      [
-        { roomLetter: 'B', program: 'BE', capacity: 29 },
-        { roomLetter: 'D', program: 'BE', capacity: 30 },
-        { roomLetter: 'F', program: 'BE', capacity: 19 },
-        { roomLetter: 'H', program: 'BE', capacity: 18 }
-      ]
+      { name: 'B.B. Rodriguez', type: 'Coffee Double Brown', abv: 8, ibu: 30, }
 
 Annotate:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
-
 
 /*
 Level 5
 
 Code: 
-  Refactor your "sortByCapacity" function from Level 3 so that it takes in the array to be sorted as an argument. It should still return an array of the classrooms sorted by their capacity (least capacity to greatest)
+  Write a function called "findHighestAbvAll" returns the beer which has the highest ABV across all breweries.
 
 Invoke: 
   To print the value your function returns and confirm it is correct, invoke your function within a console.log().
 e.g.
-  console.log(sortByCapacity(classrooms))
-    should print --> 
-      [
-        {
-          roomLetter: "H",
-          program: "BE",
-          capacity: 18
-        }, {
-          roomLetter: "F",
-          program: "BE",
-          capacity: 19
-        }, {
-          roomLetter: "E",
-          program: "FE",
-          capacity: 22
-        }, {
-          roomLetter: "C",
-          program: "FE",
-          capacity: 27
-        },
-        ...etc
-      ]
-
-Annotate:
-  After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
-*/
-
-/*
-Level 6
-
-Code: 
-  Write a function called "filterAndSortClassrooms".  This function should take in an argument of "FE" or "BE".  The function should return an array of only BE or FE classrooms, sorted by capacity (least to greatest).
-
-Invoke: 
-  To print the value your function returns and confirm it is correct, invoke your function within a console.log().
-e.g.
-  console.log(filterAndSortClassrooms("BE"))
-    should print --> 
-      [
-        {
-          roomLetter: "H",
-          program: "BE",
-          capacity: 18
-        }, {
-          roomLetter: "F",
-          program: "BE",
-          capacity: 19
-        }, 
-        ...etc
-      ]
-
-e.g.
-  console.log(filterAndSortClassrooms("FE"))
-    should print --> 
-      [
-        {
-          roomLetter: "E",
-          program: "FE",
-          capacity: 22
-        }, {
-          roomLetter: "C",
-          program: "FE",
-          capacity: 27
-        },
-        ...etc
-      ]
+  console.log(findHighestAbvAll())
+      { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
 Annotate:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
 
 
-/*
-Level 7
-
-Code: 
-  Did you write out logic and iteration for Level 6's "filterAndSortClassrooms" function?  
-  If so, refactor that function so that it simply uses the logic you've already written in your "getClassrooms" and "sortByCapacity" functions.
-
-Hint:
-  Your "filterAndSortClassrooms" function should take in the classroom type of "FE" or "BE", then simply:
-  - Invoke getClassrooms, passing in the classroom type
-  - Invoke sortByCapacity, passing in the filtered array you get from getClassrooms
-  - Return the sorted, filted array
-
-Invoke: 
-  After refactoring, invoke your function again to ensure you're getting the expected results.
-e.g.
-  console.log(filterAndSortClassrooms("BE"))
-    should print --> 
-      [
-        {
-          roomLetter: "H",
-          program: "BE",
-          capacity: 18
-        }, {
-          roomLetter: "F",
-          program: "BE",
-          capacity: 19
-        }, 
-        ...etc
-      ]
-
-e.g.
-  console.log(filterAndSortClassrooms("FE"))
-    should print --> 
-      [
-        {
-          roomLetter: "E",
-          program: "FE",
-          capacity: 22
-        }, {
-          roomLetter: "C",
-          program: "FE",
-          capacity: 27
-        },
-        ...etc
-      ]
-
-*/
-
-
 
 /*
-Level 8
+Level 
 
 Test:
   * Uncomment the module.exports below.
-  * Unskip the Classroom Prompts tests in your prototype-test.js file.
+  * Unskip the Brewery Prompts tests in your prototype-test.js file.
   * Run `npm test` to confirm that all your functions are passing their tests.
-  * Refactor as needed until all Classroom tests are passing
+  * Refactor as needed until all Brewery tests are passing
 
 Annotation:
   If your tests did not immediately pass, take notes on what details you missed while building and checking your solutions. 
@@ -268,11 +123,10 @@ Annotation:
 
 
 
-
-
 // module.exports = {
-//   getClassrooms,
-//   getCapacities,
-//   sortByCapacity,
-//   filterAndSortClassrooms
+//   getBeerCount,
+//   getBreweryBeerCount,
+//   getSingleBreweryBeerCount,
+//   findHighestAbvBeer,
+//   findHighestAbvAll
 // };
