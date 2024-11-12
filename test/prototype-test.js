@@ -92,9 +92,10 @@ const {
   averageAgePerMovie
 } = require("../prototypes/spicy-problem-sets/dinosaurs")
 
-// const {
-
-// } = require("../prototypes/spicy-problem-sets/nationalParks")
+const {
+  getBossData,
+  getLoyalty
+} = require("../prototypes/problem-sets/bosses")
 
 // const {
 
@@ -702,6 +703,29 @@ describe("PROTOTYPES", () => {
     });
   })
 
+  describe("Bosses Prompts", () => {
+    it.skip("getBossData", () => {
+      const scarNemesis = getBossData('scar', 'archnemesis');
+      const jafarMove = getBossData('jafar', 'signatureMove');
+      const ursulaGoal = getBossData('ursula', 'goal');
+
+      expect(scarNemesis).to.equal("Scar's archnemesis is Mufasa.");
+      expect(jafarMove).to.equal("Jafar's signatureMove is hypnosis.");
+      expect(ursulaGoal).to.equal("Ursula's goal is to rule the seas.");
+    });
+
+    
+    it.skip("getLoyalty", () => {
+      const scarLoyalty = getLoyalty('scar');
+      const ursulaLoyalty = getLoyalty('ursula');
+      const jafarLoyalty = getLoyalty('jafar');
+
+      expect(Math.round(scarLoyalty * 100) / 100).to.equal(5.33);
+      expect(ursulaLoyalty).to.equal(9.5);
+      expect(jafarLoyalty).to.equal(3);
+    })
+  })
+
   describe("Turing Prompts", () => {
     it.skip("studentsForEachInstructor", () => {
       const e = studentsForEachInstructor();
@@ -948,98 +972,7 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Astronomy Prompts II", () => {
-    it.skip("starsInConstellations", () => {
-      const e = astronomyPrompts.starsInConstellations();
 
-      expect(e).to.deep.equal([{
-        name: 'Rigel',
-        visualMagnitude: 0.13,
-        constellation: 'Orion',
-        lightYearsFromEarth: 860,
-        color: 'blue'
-      }, {
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue'
-      }, {
-        name: 'Betelgeuse',
-        visualMagnitude: 0.5,
-        constellation: 'Orion',
-        lightYearsFromEarth: 640,
-        color: 'red'
-      },
-      {
-        name: 'Hadar',
-        visualMagnitude: 0.61,
-        constellation: 'The Little Dipper',
-        lightYearsFromEarth: 350,
-        color: 'blue'
-      }
-      ])
-    });
-  });
-
-  describe("Dino Prompts II", () => {
-    it.skip("uncastActors", () => {
-      const e = uncastActors();
-
-      expect(e).to.deep.equal([{
-        name: 'Justin Duncan',
-        nationality: 'Alien',
-        imdbStarMeterRating: 0
-      },
-      {
-        name: 'Karin Ohman',
-        nationality: 'Chinese',
-        imdbStarMeterRating: 0
-      },
-      {
-        name: 'Tom Wilhoit',
-        nationality: 'Kiwi',
-        imdbStarMeterRating: 1
-      }, {
-        name: 'Jeo D',
-        nationality: 'Martian',
-        imdbStarMeterRating: 0
-      }])
-    });
-
-    it.skip("actorsAgesInMovies", () => {
-      const e = actorsAgesInMovies();
-
-      expect(e).to.deep.equal([{
-        name: 'Sam Neill',
-        ages: [46, 54]
-      }, {
-        name: 'Laura Dern',
-        ages: [26, 34]
-      }, {
-        name: 'Jeff Goldblum',
-        ages: [41, 45, 63, 66]
-      }, {
-        name: 'Richard Attenborough',
-        ages: [70, 74, 92, 95]
-      }, {
-        name: 'Ariana Richards',
-        ages: [14, 18]
-      }, {
-        name: 'Joseph Mazello',
-        ages: [10, 14]
-      }, {
-        name: 'BD Wong',
-        ages: [33, 55, 58]
-      }, {
-        name: 'Chris Pratt',
-        ages: [36, 39]
-      }, {
-        name: 'Bryce Dallas Howard',
-        ages: [34, 37]
-      }])
-    })
-  });
 
 
 
