@@ -7,25 +7,6 @@ const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
 const { weather } = require('../prototypes/datasets/weather')
 
-
-// const {
-//   // 
-//   turingPrompts,
-//   // clubPrompts,
-//   bossPrompts,
-//   // classPrompts,
-//   // modPrompts,
-//   // kittyPrompts,
-//   // cakePrompts,
-//   astronomyPrompts,
-//   ultimaPrompts,
-//   dinosaurPrompts,
-//   
-//   weatherPrompts,
-//   // bookPrompts,
-//   boardGamePrompts,
-// } = require("../prototypes/index");
-
 const {
   findOrangeNames,
   sortByAge,
@@ -82,6 +63,21 @@ const {
   getParkInEachState,
   getParkActivities
 } = require("../prototypes/problem-sets/nationalParks")
+
+const {
+  listGames,
+  findHighestRatedGamesByType,
+  averageScoreByType,
+  averageScoreByTypeAndPlayers
+} = require("../prototypes/problem-sets/boardGames")
+
+// const {
+
+// } = require("../prototypes/problem-sets/nationalParks")
+
+// const {
+
+// } = require("../prototypes/problem-sets/nationalParks")
 
 // const {
 
@@ -644,29 +640,20 @@ describe("PROTOTYPES", () => {
 
   describe("Board Game Prompts", () => {
     it.skip("listGames", () => {
-      const strategyGames = boardGamePrompts.listGames('strategy');
-      const childrensGames = boardGamePrompts.listGames('childrens');
-      const partyGames = boardGamePrompts.listGames('party');
+      const strategyGames = listGames('strategy');
+      const childrensGames = listGames('childrens');
+      const partyGames = listGames('party');
 
       expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
       expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
       expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
     });
 
-    it.skip("listGamesAlphabetically", () => {
-      const strategyGames = boardGamePrompts.listGamesAlphabetically('strategy');
-      const childrensGames = boardGamePrompts.listGamesAlphabetically('childrens');
-      const partyGames = boardGamePrompts.listGamesAlphabetically('party');
-
-      expect(strategyGames).to.deep.equal(["Azul", "Battle Ship", "Catan", "Checkers", "Chess", "Pandemic", "Ticket To Ride"]);
-      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
-      expect(partyGames).to.deep.equal(["Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro", "Werewolf"]);
-    });
-
+    
     it.skip("findHighestRatedGamesByType", () => {
-      const highestStrategy = boardGamePrompts.findHighestRatedGamesByType('strategy');
-      const highestChildrens = boardGamePrompts.findHighestRatedGamesByType('childrens');
-      const highestParty = boardGamePrompts.findHighestRatedGamesByType('party');
+      const highestStrategy = findHighestRatedGamesByType('strategy');
+      const highestChildrens = findHighestRatedGamesByType('childrens');
+      const highestParty = findHighestRatedGamesByType('party');
 
       expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
       expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
@@ -674,9 +661,9 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("averageScoreByType", () => {
-      const avScoreStrat = boardGamePrompts.averageScoreByType('strategy');
-      const avScoreChildren = boardGamePrompts.averageScoreByType('childrens');
-      const avScoreParty = boardGamePrompts.averageScoreByType('party');
+      const avScoreStrat = averageScoreByType('strategy');
+      const avScoreChildren = averageScoreByType('childrens');
+      const avScoreParty = averageScoreByType('party');
 
       expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
       expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
@@ -684,9 +671,9 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("averageScoreByTypeAndPlayers", () => {
-      const avScoreStrat = boardGamePrompts.averageScoreByTypeAndPlayers('strategy', 2);
-      const avScoreChildren = boardGamePrompts.averageScoreByTypeAndPlayers('childrens', 4);
-      const avScoreParty = boardGamePrompts.averageScoreByTypeAndPlayers('party', 8);
+      const avScoreStrat = averageScoreByTypeAndPlayers('strategy', 2);
+      const avScoreChildren = averageScoreByTypeAndPlayers('childrens', 4);
+      const avScoreParty = averageScoreByTypeAndPlayers('party', 8);
       Math.round(avScoreChildren * 100) / 100
       expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
       expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
