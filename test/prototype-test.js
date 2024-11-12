@@ -87,6 +87,19 @@ const {
   charactersByTotal
 } = require("../prototypes/spicy-problem-sets/ultima")
 
+const {
+  countAwesomeDinosaurs,
+  averageAgePerMovie
+} = require("../prototypes/spicy-problem-sets/dinosaurs")
+
+// const {
+
+// } = require("../prototypes/spicy-problem-sets/nationalParks")
+
+// const {
+
+// } = require("../prototypes/spicy-problem-sets/nationalParks")
+
 // const {
 
 // } = require("../prototypes/spicy-problem-sets/nationalParks")
@@ -886,7 +899,7 @@ describe("PROTOTYPES", () => {
 
   describe("Dinosaur Prompts", () => {
     it.skip("countAwesomeDinosaurs", () => {
-      const e = dinosaurPrompts.countAwesomeDinosaurs();
+      const e = countAwesomeDinosaurs();
 
       expect(e).to.deep.equal({
         'Jurassic Park': 5,
@@ -898,7 +911,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("averageAgePerMovie", () => {
-      const e = dinosaurPrompts.averageAgePerMovie();
+      const e = averageAgePerMovie();
 
       expect(e).to.deep.equal({
         'Steven Spielberg': {
@@ -971,7 +984,7 @@ describe("PROTOTYPES", () => {
 
   describe("Dino Prompts II", () => {
     it.skip("uncastActors", () => {
-      const e = dinosaurPrompts.uncastActors();
+      const e = uncastActors();
 
       expect(e).to.deep.equal([{
         name: 'Justin Duncan',
@@ -995,7 +1008,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("actorsAgesInMovies", () => {
-      const e = dinosaurPrompts.actorsAgesInMovies();
+      const e = actorsAgesInMovies();
 
       expect(e).to.deep.equal([{
         name: 'Sam Neill',
