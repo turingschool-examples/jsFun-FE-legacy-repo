@@ -71,17 +71,24 @@ const {
   averageScoreByTypeAndPlayers
 } = require("../prototypes/problem-sets/boardGames")
 
+const {
+  studentsForEachInstructor,
+  studentsPerInstructor,
+  modulesPerTeacher,
+  curriculumPerTeacher
+} = require("../prototypes/spicy-problem-sets/turing")
+
+const {
+  getStarsByColor
+} = require("../prototypes/spicy-problem-sets/astronomy")
+
 // const {
 
-// } = require("../prototypes/problem-sets/nationalParks")
+// } = require("../prototypes/spicy-problem-sets/nationalParks")
 
 // const {
 
-// } = require("../prototypes/problem-sets/nationalParks")
-
-// const {
-
-// } = require("../prototypes/problem-sets/nationalParks")
+// } = require("../prototypes/spicy-problem-sets/nationalParks")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -683,7 +690,7 @@ describe("PROTOTYPES", () => {
 
   describe("Turing Prompts", () => {
     it.skip("studentsForEachInstructor", () => {
-      const e = turingPrompts.studentsForEachInstructor();
+      const e = studentsForEachInstructor();
 
       expect(e).to.deep.equal([{
         name: "Pam",
@@ -716,7 +723,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("studentsPerInstructor", () => {
-      const e = turingPrompts.studentsPerInstructor();
+      const e = studentsPerInstructor();
 
       expect(e).to.deep.equal({
         cohort1806: 15,
@@ -727,7 +734,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("modulesPerTeacher", () => {
-      const e = turingPrompts.modulesPerTeacher();
+      const e = modulesPerTeacher();
 
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -743,7 +750,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("curriculumPerTeacher", () => {
-      const e = turingPrompts.curriculumPerTeacher();
+      const e = curriculumPerTeacher();
 
       expect(e).to.deep.equal({
         html: ["Travis", "Louisa"],
@@ -761,10 +768,9 @@ describe("PROTOTYPES", () => {
     })
   });
 
-
   describe("Astronomy Prompts", () => {
-    it.skip("starsByColor", () => {
-      const e = astronomyPrompts.starsByColor();
+    it.skip("getStarsByColor", () => {
+      const e = getStarsByColor();
 
       expect(e).to.deep.equal({
         blue: [{
@@ -841,11 +847,6 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("sortByBrightness", () => {
-      const e = astronomyPrompts.sortByBrightness();
-
-      expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
-    })
   });
 
   describe("Ultima Prompts", () => {
@@ -1025,7 +1026,6 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
-
 
 
 
