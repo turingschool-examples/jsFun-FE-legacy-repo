@@ -20,7 +20,7 @@ const { weather } = require('../prototypes/datasets/weather')
 //   astronomyPrompts,
 //   ultimaPrompts,
 //   dinosaurPrompts,
-//   nationalParksPrompts,
+//   
 //   weatherPrompts,
 //   // bookPrompts,
 //   boardGamePrompts,
@@ -76,6 +76,16 @@ const {
   findByType,
   getAverageTempByType
 } = require("../prototypes/problem-sets/weather")
+
+const {
+  getParkVisitList,
+  getParkInEachState,
+  getParkActivities
+} = require("../prototypes/problem-sets/nationalParks")
+
+// const {
+
+// } = require("../prototypes/problem-sets/nationalParks")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -533,7 +543,7 @@ describe("PROTOTYPES", () => {
 
   describe("National Park Prompts", () => {
     it.skip("getParkVisitList", () => {
-      const e = nationalParksPrompts.getParkVisitList();
+      const e = getParkVisitList();
 
       expect(e).to.deep.equal({
         parksToVisit: ['Yellowstone', 'Glacier', 'Everglades'],
@@ -541,7 +551,7 @@ describe("PROTOTYPES", () => {
       })
     }),
       it.skip("getParkActivities", () => {
-        const e = nationalParksPrompts.getParkActivities();
+        const e = getParkActivities();
 
         expect(e).to.deep.equal(
           ['hiking',
@@ -559,7 +569,7 @@ describe("PROTOTYPES", () => {
           ])
       }),
       it.skip("getParkInEachState", () => {
-        const e = nationalParksPrompts.getParkInEachState();
+        const e = getParkInEachState();
 
         expect(e).to.deep.equal(
           [

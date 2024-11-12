@@ -4,7 +4,7 @@
 // const { cakes } = require('./datasets/cakes');
 // const { classrooms } = require('./datasets/classrooms');
 // const { breweries } = require('./datasets/breweries');
-const { nationalParks } = require('./datasets/nationalParks');
+// const { nationalParks } = require('./datasets/nationalParks');
 // const { weather } = require('./datasets/weather');
 const { boardGames } = require('./datasets/boardGames');
 const { instructors, cohorts } = require('./datasets/turing');
@@ -16,109 +16,6 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 // SINGLE DATASETS
-
-
-// DATASET: weather from './datasets/weather
-
-const weatherPrompts = {
-  getAverageTemps() {
-    // return an array of all the average temperatures. Eg:
-    // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  findSunnySpots() {
-    // Return an array of sentences of the locations that are sunny
-    // and mostly sunny. Include the location and weather type. Eg:
-    // [ 'Atlanta, Georgia is sunny.',
-    // 'New Orleans, Louisiana is sunny.',
-    // 'Raleigh, North Carolina is mostly sunny.' ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  findHighestHumidity() {
-    // Return the location with the highest humidity. Eg:
-    // {
-    //   location: 'Portland, Oregon',
-    //   type: 'cloudy',
-    //   humidity: 84,
-    //   temperature: { high: 49, low: 38 }
-    // }
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-
-  }
-};
-
-// DATASET: nationalParks from ./datasets/nationalParks
-
-const nationalParksPrompts = {
-  getParkVisitList() {
-    /// Return an object containing the names of which parks I need to visit
-    // and the ones I have already visited eg:
-    // {
-    //   parksToVisit: ["Yellowstone", "Glacier", "Everglades"],
-    //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
-    //}
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  getParkInEachState() {
-    // Return an array of objects where the key is the state and the value is its National Park
-    // eg: [ { Colorado: 'Rocky Mountain' },
-    // { Wyoming: 'Yellowstone' },
-    // { Montana: 'Glacier' },
-    // { Maine: 'Acadia' },
-    // { Utah: 'Zion' },
-    // { Florida: 'Everglades' } ]
-
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  getParkActivities() {
-    // Return an array of all the activities I can do
-    // in a National Park. Make sure to exclude duplicates. eg:
-    // [ 'hiking',
-    //   'shoeshoing',
-    //   'camping',
-    //   'fishing',
-    //   'boating',
-    //   'watching wildlife',
-    //   'cross-country skiing',
-    //   'swimming',
-    //   'bird watching',
-    //   'canyoneering',
-    //   'backpacking',
-    //   'rock climbing' ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
-
-
-
 
 // DATASET: weather from './datasets/boardGames
 
