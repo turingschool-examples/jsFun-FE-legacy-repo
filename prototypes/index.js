@@ -5,7 +5,7 @@
 // const { classrooms } = require('./datasets/classrooms');
 // const { breweries } = require('./datasets/breweries');
 const { nationalParks } = require('./datasets/nationalParks');
-const { weather } = require('./datasets/weather');
+// const { weather } = require('./datasets/weather');
 const { boardGames } = require('./datasets/boardGames');
 const { instructors, cohorts } = require('./datasets/turing');
 const { bosses, sidekicks } = require('./datasets/bosses');
@@ -118,56 +118,6 @@ const nationalParksPrompts = {
 };
 
 
-// DATASET: breweries from ./datasets/breweries
-const breweryPrompts = {
-  getBeerCount() {
-    // Return the total beer count of all beers for every brewery e.g.
-    // 40
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  getBreweryBeerCount() {
-    // Return an array of objects where each object has the name of a brewery
-    // and the count of the beers that brewery has e.g.
-    // [
-    //  { name: 'Little Machine Brew', beerCount: 12 },
-    //  { name: 'Ratio Beerworks', beerCount: 5},
-    // ...etc.
-    // ]
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  getSingleBreweryBeerCount(breweryName) {
-    // Return a number that is the count of beers that the specified
-    // brewery has e.g.
-    // given 'Ratio Beerworks', return 5
-
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  findHighestAbvBeer() {
-    // Return the beer which has the highest ABV of all beers
-    // e.g.
-    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  }
-};
 
 
 // DATASET: weather from './datasets/boardGames

@@ -5,6 +5,8 @@ const { kitties } = require('../prototypes/datasets/kitties')
 const { clubs } = require('../prototypes/datasets/clubs')
 const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
+const { weather } = require('../prototypes/datasets/weather')
+
 
 // const {
 //   // 
@@ -66,6 +68,14 @@ const {
     findHighestAbvBeer,
     findHighestAbvAll
 } = require("../prototypes/problem-sets/breweries")
+
+const {
+  getAverageTemps,
+  findSunnySpots,
+  findHighestHumidity,
+  findByType,
+  getAverageTempByType
+} = require("../prototypes/problem-sets/weather")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -458,20 +468,20 @@ describe("PROTOTYPES", () => {
 
   describe("Weather prompts", () => {
     it.skip("getAverageTemps", () => {
-      const e = weatherPrompts.getAverageTemps();
+      const e = getAverageTemps();
 
       expect(e).to.deep.equal([
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
       ])
     }),
       it.skip("findSunnySpots", () => {
-        const e = weatherPrompts.findSunnySpots();
+        const e = findSunnySpots();
 
         expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
         )
       }),
       it.skip("findHighestHumidity", () => {
-        const e = weatherPrompts.findHighestHumidity();
+        const e = findHighestHumidity();
 
         expect(e).to.deep.equal({
           location: 'Portland, Oregon',
@@ -479,6 +489,45 @@ describe("PROTOTYPES", () => {
           humidity: 84,
           temperature: { high: 49, low: 38 }
         })
+      }),
+      it.skip("findByType sunny", () => {
+        const e = findByType(weather, "sunny");
+
+        expect(e).to.deep.equal([ 
+          'Atlanta, Georgia is sunny.',
+          'New Orleans, Louisiana is sunny.',
+          'Raleigh, North Carolina is mostly sunny.' 
+        ]
+        )
+      }),
+      it.skip("findByType cloudy", () => {
+        const e = findByType(weather, "cloudy");
+
+        expect(e).to.deep.equal([
+          'New York, New York is cloudy',
+          'Portland, Oregon is cloudy',
+          'Boston, Massachusetts is cloudy',
+          'Miami, Florida is partly cloudy',
+          'Phoenix, Arizona is cloudy',
+          'Anchorage, Alaska is cloudy'
+        ]
+        )
+      }),
+      it.skip("getAverageTempByType sunny high", () => {
+        const e = getAverageTempByType("sunny", "high");
+
+        expect(e).to.deep.equal("The average high for sunny locations is 58 degrees.")
+      }),
+      it.skip("getAverageTempByType sunny low", () => {
+        const e = getAverageTempByType("sunny", "low");
+        console.log('e', e)
+
+        expect(e).to.deep.equal("The average low for sunny locations is 43.5 degrees.")
+      }),
+      it.skip("getAverageTempByType cloudy low", () => {
+        const e = getAverageTempByType("cloudy", "low");
+
+        expect(e).to.deep.equal("The average low for cloudy locations is 33.4 degrees.")
       })
   });
 
