@@ -82,9 +82,10 @@ const {
   getStarsByColor
 } = require("../prototypes/spicy-problem-sets/astronomy")
 
-// const {
-
-// } = require("../prototypes/spicy-problem-sets/nationalParks")
+const {
+  getTotalDamage,
+  charactersByTotal
+} = require("../prototypes/spicy-problem-sets/ultima")
 
 // const {
 
@@ -850,14 +851,14 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Ultima Prompts", () => {
-    it.skip("totalDamage", () => {
-      const e = ultimaPrompts.totalDamage();
+    it.skip("getTotalDamage", () => {
+      const e = getTotalDamage();
 
       expect(e).to.deep.equal(59)
     });
 
     it.skip("charactersByTotal", () => {
-      const e = ultimaPrompts.charactersByTotal();
+      const e = charactersByTotal();
 
       expect(e).to.deep.equal([{
         Avatar: {

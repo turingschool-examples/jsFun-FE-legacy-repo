@@ -14,40 +14,12 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-
-
-
 
 
 // DATASET: charaters, weapons from ./datasets/ultima
 const ultimaPrompts = {
-  totalDamage() {
 
-    // Return the sum of the amount of damage for all the weapons that our characters can use.  Even though the same weapon might be used by multiple characters, count each weapon only once.
-    // Solve this *without* using Object.keys().  Hint: iterate over the characters array, then iterate through each character's weapons array. Find a way to make sure you only count each weapon once. 
-    // Answer => 59
 
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
-
-  charactersByTotal() {
-
-    // Return the sum damage and total range for each character as an object.
-    // ex: [ { Avatar: { damage: 27, range: 24 }, { Iolo: {...}, ...}
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
-  },
 };
 
 
