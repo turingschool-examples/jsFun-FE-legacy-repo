@@ -31,13 +31,13 @@ Object.keys() will **not** be needed for your midmod or final assessments.
 ## Instructions
 
 In the [prototypes folder](https://github.com/turingschool-examples/jsFUNk/prototypes), you'll see 3 subfolders.
-* datasets: 
+* **prototypes/datasets**: 
   * Each dataset has already been imported into the files that need it.
-* problem-sets:  
+* **prototypes/problem-sets**:  
   * These are the files where you will read each prompt and write your code.  
   * You'll use a node command to run your code in each file. The command is in each file. `node <each file path>`  
   * The function names are already exported/imported so that you can run the tests.  
-* spice-problem-sets:  
+* **prototypes/spicy-problem-sets**:  
   * More prompts that are advanced complexity. These are great for improving your ability to keep track of all the data points and do complex problem solving.  But they are more difficult than what you will see on assessments.  
 
 In the [test folder](https://github.com/turingschool-examples/jsFUNk/test), you'll see the prototype-test.js file which holds the test suite for all problem-sets.
