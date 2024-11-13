@@ -97,6 +97,11 @@ const {
   getLoyalty
 } = require("../prototypes/problem-sets/bosses")
 
+const {
+  getSupplyList,
+  getDetailedList
+} = require("../prototypes/problem-sets/crafting")
+
 // const {
 
 // } = require("../prototypes/spicy-problem-sets/nationalParks")
@@ -723,6 +728,42 @@ describe("PROTOTYPES", () => {
       expect(Math.round(scarLoyalty * 100) / 100).to.equal(5.33);
       expect(ursulaLoyalty).to.equal(9.5);
       expect(jafarLoyalty).to.equal(3);
+    })
+  })
+
+  describe("Crafting Prompts", () => {
+    it.skip("getSupplyList", () => {
+      const crossStitchList = getSupplyList("crossStitching");
+      const crochetList = getSupplyList('crocheting');
+      const weavingList = getSupplyList('weaving');
+
+      expect(crossStitchList).to.deep.equal([ 'fabric', 'needle', 'thread', 'scissor', 'hoop' ]);
+      expect(crochetList).to.deep.equal([ 'hook', 'yarn', 'scissor' ]);
+      expect(weavingList).to.deep.equal([ 'loom', 'needle', 'yarn', 'scissor' ]);
+    });
+
+    
+    it.skip("getDetailedList", () => {
+      const knitList = getDetailedList("knitting");
+      const crochetList = getDetailedList('crocheting');
+      const weavingList = getDetailedList('weaving');
+
+      expect(knitList).to.deep.equal([ 
+        'I need 2 needles.', 
+        'I need 4 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(crochetList).to.deep.equal([ 
+        'I need 1 hook.', 
+        'I need 3 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(weavingList).to.deep.equal([
+        'I need 1 loom.',
+        'I need 1 needle.',
+        'I need 6 yarns.',
+        'I need 1 scissor.'
+      ]);
     })
   })
 

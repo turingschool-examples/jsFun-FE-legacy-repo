@@ -153,19 +153,14 @@ If you'd like to keep track of your progress, feel free to use the checklist bel
 - [ ] nationalParks
 - [ ] breweries
 - [ ] boardGames
+- [ ] bosses
 
-### Double Data Sets
+### Double/Triple Data Sets
 - [ ] turing (instructors, cohorts)
 - [ ] astronomy (constellations, stars)
 - [ ] ultima (weapons, characters)
-
-#### Triple Data Sets
 - [ ] dinosaurs (dinosaurs, humans, movies)
 
-### Object.keys Challenges (optional, not needed for assessment prep)
-- [ ] bosses (bosses, sidekicks)
-- [ ] astronomy II (constellations, stars)
-- [ ] dinosaurs II (dinosaurs, humans, movies)
 
 
 # More Practice
