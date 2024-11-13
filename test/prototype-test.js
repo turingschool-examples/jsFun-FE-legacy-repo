@@ -7,6 +7,7 @@ const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
 const { weather } = require('../prototypes/datasets/weather')
 
+//Imports for the functions from problem-set files
 const {
   findOrangeNames,
   sortByAge,
@@ -125,6 +126,7 @@ const {
   getStatusTimes
 } = require("../prototypes/problem-sets/tasks")
 
+// Tests 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it.skip("orangeKittyNames", () => {

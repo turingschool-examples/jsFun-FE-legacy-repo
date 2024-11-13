@@ -91,8 +91,7 @@ Level 4
 Currently, your functions are probably using the imported `kitties` global  variable from line 1.
 
 Code:
-  Refactor the three functions above using arguments and parameters so that
-they can perform the same utility for the kitties or puppers datasets, depending on what arguments you send through.
+  Refactor the three functions above using arguments and parameters so that they can perform the same utility for the kitties or puppers datasets, depending on what arguments you send through.
 
 Invoke:
   Invoke each refactored function twice, once passing the kitties data as an argument and once passing the puppers data as an argument
