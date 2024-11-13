@@ -113,6 +113,18 @@ const {
   findLetterCounts
 } = require("../prototypes/problem-sets/sentence")
 
+const {
+  findEnrolledStudents,
+  getAverageGrade,
+  findBestAverageGrade
+} = require("../prototypes/problem-sets/students")
+
+const {
+  getAverageTime,
+  getTasksByPerson,
+  getStatusTimes
+} = require("../prototypes/problem-sets/tasks")
+
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it.skip("orangeKittyNames", () => {
@@ -235,6 +247,56 @@ describe("PROTOTYPES", () => {
       })
     })
   });
+
+  describe("Student Prompts", () => {
+    it.skip("findEnrolledStudents", () => {
+      const e = findEnrolledStudents();
+
+      expect(e).to.deep.equal(["John", "Bob", "Eve"]);
+    });
+
+    it.skip("getAverageGrade", () => {
+      const johnAve = getAverageGrade("John");
+      const bobAve = getAverageGrade("Bob");
+      const aliceAve = getAverageGrade("Alice");
+
+      expect(Math.round(johnAve * 100) / 100).to.equal(86.25);
+      expect(Math.round(bobAve * 100) / 100).to.equal(84.5);
+      expect(Math.round(aliceAve * 100) / 100).to.equal(85);
+    })
+
+    it.skip("findBestAverageGrade", () => {
+      const e = findBestAverageGrade();
+
+      expect(e).to.equal("Eve");
+    })
+  })
+
+  describe("Task Prompts", () => {
+    it.skip("getAverageTime", () => {
+      const completeAve = getAverageTime("complete");
+      const inProgressAve = getAverageTime("inProgress");
+
+      expect(completeAve).to.deep.equal('The average time for all complete tasks is 87.5 minutes.');
+      expect(inProgressAve).to.deep.equal('The average time for all inProgress tasks is 90 minutes.');
+    });
+
+    it.skip("getTasksByPerson", () => {
+      const letaTasks = getTasksByPerson("Leta");
+      const travisTasks = getTasksByPerson("Travis");
+      const robbieTasks = getTasksByPerson("Robbie");
+
+      expect(letaTasks).to.deep.equal(['write README', 'refactor']);
+      expect(travisTasks).to.deep.equal([ 'debug issue #14', 'add feature #38' ]);
+      expect(robbieTasks).to.deep.equal([ 'debug issue #13', 'add feature #33' ]);
+    })
+
+    it.skip("getStatusTimes", () => {
+      const e = getStatusTimes();
+
+      expect(e).to.deep.equal({ inProgress: 180, complete: 350, inTriage: 170 });
+    })
+  })
 
   describe("Mod Prompts", () => {
     it.skip("studentsPerMod", () => {
@@ -777,7 +839,6 @@ describe("PROTOTYPES", () => {
       expect(e).to.equal(8);
     });
 
-    
     it.skip("findAverageHeight", () => {
       const meadowsAve = findAverageHeight("meadows");
       const forestsAve = findAverageHeight('forests');
