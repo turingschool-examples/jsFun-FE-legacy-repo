@@ -298,6 +298,109 @@ describe("PROTOTYPES", () => {
     })
   })
 
+  describe("Crafting Prompts", () => {
+    it.skip("getSupplyList", () => {
+      const crossStitchList = getSupplyList("crossStitching");
+      const crochetList = getSupplyList('crocheting');
+      const weavingList = getSupplyList('weaving');
+
+      expect(crossStitchList).to.deep.equal([ 'fabric', 'needle', 'thread', 'scissor', 'hoop' ]);
+      expect(crochetList).to.deep.equal([ 'hook', 'yarn', 'scissor' ]);
+      expect(weavingList).to.deep.equal([ 'loom', 'needle', 'yarn', 'scissor' ]);
+    });
+
+    
+    it.skip("getDetailedList", () => {
+      const knitList = getDetailedList("knitting");
+      const crochetList = getDetailedList('crocheting');
+      const weavingList = getDetailedList('weaving');
+
+      expect(knitList).to.deep.equal([ 
+        'I need 2 needles.', 
+        'I need 4 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(crochetList).to.deep.equal([ 
+        'I need 1 hook.', 
+        'I need 3 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(weavingList).to.deep.equal([
+        'I need 1 loom.',
+        'I need 1 needle.',
+        'I need 6 yarns.',
+        'I need 1 scissor.'
+      ]);
+    })
+  })
+
+  describe("Plants Prompts", () => {
+    it.skip("findSpringBloomers", () => {
+      const e = findSpringBloomers();
+
+      expect(e).to.equal(8);
+    });
+
+    it.skip("findAverageHeight", () => {
+      const meadowsAve = findAverageHeight("meadows");
+      const forestsAve = findAverageHeight('forests');
+      const grasslandsAve = findAverageHeight('grasslands');
+
+      expect(meadowsAve).to.equal(28);
+      expect(Math.round(forestsAve * 100) / 100).to.equal(117.33);
+      expect(grasslandsAve).to.equal(18);
+    })
+
+    it.skip("organizeByHabitat", () => {
+      const e = organizeByHabitat("meadows");
+
+      expect(e).to.deep.equal({
+        meadows: [ 'Colorado Blue Columbine', 'Alpine Forget-Me-Not', 'Fireweed' ],
+        forests: [ 'Aspen Tree', 'Engelmann Spruce', 'Blue Spruce' ],
+        moutains: [ 'Columbian Lily' ],
+        mountains: [ 'Rocky Mountain Bristlecone Pine', 'Scarlet Gilia' ],
+        grasslands: [ 'Indian Paintbrush' ]
+      });
+    })
+  })
+
+  describe("Sentence Prompts", () => {
+    it.skip("countLetters", () => {
+      const letterT = countLetters("t");
+      const letterZ = countLetters("z");
+      const letterE = countLetters("E");
+
+      expect(letterT).to.equal(2);
+      expect(letterZ).to.equal(0);
+      expect(letterE).to.equal(5);
+    })
+
+    it.skip("findLetterCounts", () => {
+      const e = findLetterCounts();
+
+      expect(e).to.deep.equal({
+        p: 1,
+        o: 4,
+        t: 2,
+        a: 3,
+        e: 5,
+        s: 3,
+        ' ': 4,
+        r: 1,
+        u: 2,
+        n: 1,
+        b: 2,
+        l: 3,
+        i: 3,
+        v: 1,
+        y: 1,
+        d: 1,
+        c: 1,
+        '!': 1
+      });
+    })
+  })
+
   describe("Mod Prompts", () => {
     it.skip("studentsPerMod", () => {
       const e = getStats();
@@ -317,6 +420,72 @@ describe("PROTOTYPES", () => {
       }])
     })
   });
+
+  describe("Board Game Prompts", () => {
+    it.skip("listGames", () => {
+      const strategyGames = listGames('strategy');
+      const childrensGames = listGames('childrens');
+      const partyGames = listGames('party');
+
+      expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
+      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
+      expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
+    });
+
+    
+    it.skip("findHighestRatedGamesByType", () => {
+      const highestStrategy = findHighestRatedGamesByType('strategy');
+      const highestChildrens = findHighestRatedGamesByType('childrens');
+      const highestParty = findHighestRatedGamesByType('party');
+
+      expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
+      expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
+      expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
+    });
+
+    it.skip("averageScoreByType", () => {
+      const avScoreStrat = averageScoreByType('strategy');
+      const avScoreChildren = averageScoreByType('childrens');
+      const avScoreParty = averageScoreByType('party');
+
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
+    });
+
+    it.skip("averageScoreByTypeAndPlayers", () => {
+      const avScoreStrat = averageScoreByTypeAndPlayers('strategy', 2);
+      const avScoreChildren = averageScoreByTypeAndPlayers('childrens', 4);
+      const avScoreParty = averageScoreByTypeAndPlayers('party', 8);
+      Math.round(avScoreChildren * 100) / 100
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(7); // 8 players
+    });
+  })
+
+  describe("Bosses Prompts", () => {
+    it.skip("getBossData", () => {
+      const scarNemesis = getBossData('scar', 'archnemesis');
+      const jafarMove = getBossData('jafar', 'signatureMove');
+      const ursulaGoal = getBossData('ursula', 'goal');
+
+      expect(scarNemesis).to.equal("Scar's archnemesis is Mufasa.");
+      expect(jafarMove).to.equal("Jafar's signatureMove is hypnosis.");
+      expect(ursulaGoal).to.equal("Ursula's goal is to rule the seas.");
+    });
+
+    
+    it.skip("getLoyalty", () => {
+      const scarLoyalty = getLoyalty('scar');
+      const ursulaLoyalty = getLoyalty('ursula');
+      const jafarLoyalty = getLoyalty('jafar');
+
+      expect(Math.round(scarLoyalty * 100) / 100).to.equal(5.33);
+      expect(ursulaLoyalty).to.equal(9.5);
+      expect(jafarLoyalty).to.equal(3);
+    })
+  })
 
   describe("Cake Prompts", () => {
     it.skip("stockPerCake", () => {
@@ -730,175 +899,6 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Board Game Prompts", () => {
-    it.skip("listGames", () => {
-      const strategyGames = listGames('strategy');
-      const childrensGames = listGames('childrens');
-      const partyGames = listGames('party');
-
-      expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
-      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
-      expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
-    });
-
-    
-    it.skip("findHighestRatedGamesByType", () => {
-      const highestStrategy = findHighestRatedGamesByType('strategy');
-      const highestChildrens = findHighestRatedGamesByType('childrens');
-      const highestParty = findHighestRatedGamesByType('party');
-
-      expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
-      expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
-      expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
-    });
-
-    it.skip("averageScoreByType", () => {
-      const avScoreStrat = averageScoreByType('strategy');
-      const avScoreChildren = averageScoreByType('childrens');
-      const avScoreParty = averageScoreByType('party');
-
-      expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
-      expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
-      expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
-    });
-
-    it.skip("averageScoreByTypeAndPlayers", () => {
-      const avScoreStrat = averageScoreByTypeAndPlayers('strategy', 2);
-      const avScoreChildren = averageScoreByTypeAndPlayers('childrens', 4);
-      const avScoreParty = averageScoreByTypeAndPlayers('party', 8);
-      Math.round(avScoreChildren * 100) / 100
-      expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
-      expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
-      expect(Math.round(avScoreParty * 100) / 100).to.equal(7); // 8 players
-    });
-  })
-
-  describe("Bosses Prompts", () => {
-    it.skip("getBossData", () => {
-      const scarNemesis = getBossData('scar', 'archnemesis');
-      const jafarMove = getBossData('jafar', 'signatureMove');
-      const ursulaGoal = getBossData('ursula', 'goal');
-
-      expect(scarNemesis).to.equal("Scar's archnemesis is Mufasa.");
-      expect(jafarMove).to.equal("Jafar's signatureMove is hypnosis.");
-      expect(ursulaGoal).to.equal("Ursula's goal is to rule the seas.");
-    });
-
-    
-    it.skip("getLoyalty", () => {
-      const scarLoyalty = getLoyalty('scar');
-      const ursulaLoyalty = getLoyalty('ursula');
-      const jafarLoyalty = getLoyalty('jafar');
-
-      expect(Math.round(scarLoyalty * 100) / 100).to.equal(5.33);
-      expect(ursulaLoyalty).to.equal(9.5);
-      expect(jafarLoyalty).to.equal(3);
-    })
-  })
-
-  describe("Crafting Prompts", () => {
-    it.skip("getSupplyList", () => {
-      const crossStitchList = getSupplyList("crossStitching");
-      const crochetList = getSupplyList('crocheting');
-      const weavingList = getSupplyList('weaving');
-
-      expect(crossStitchList).to.deep.equal([ 'fabric', 'needle', 'thread', 'scissor', 'hoop' ]);
-      expect(crochetList).to.deep.equal([ 'hook', 'yarn', 'scissor' ]);
-      expect(weavingList).to.deep.equal([ 'loom', 'needle', 'yarn', 'scissor' ]);
-    });
-
-    
-    it.skip("getDetailedList", () => {
-      const knitList = getDetailedList("knitting");
-      const crochetList = getDetailedList('crocheting');
-      const weavingList = getDetailedList('weaving');
-
-      expect(knitList).to.deep.equal([ 
-        'I need 2 needles.', 
-        'I need 4 yarns.', 
-        'I need 1 scissor.' 
-      ]);
-      expect(crochetList).to.deep.equal([ 
-        'I need 1 hook.', 
-        'I need 3 yarns.', 
-        'I need 1 scissor.' 
-      ]);
-      expect(weavingList).to.deep.equal([
-        'I need 1 loom.',
-        'I need 1 needle.',
-        'I need 6 yarns.',
-        'I need 1 scissor.'
-      ]);
-    })
-  })
-
-  describe("Plants Prompts", () => {
-    it.skip("findSpringBloomers", () => {
-      const e = findSpringBloomers();
-
-      expect(e).to.equal(8);
-    });
-
-    it.skip("findAverageHeight", () => {
-      const meadowsAve = findAverageHeight("meadows");
-      const forestsAve = findAverageHeight('forests');
-      const grasslandsAve = findAverageHeight('grasslands');
-
-      expect(meadowsAve).to.equal(28);
-      expect(Math.round(forestsAve * 100) / 100).to.equal(117.33);
-      expect(grasslandsAve).to.equal(18);
-    })
-
-    it.skip("organizeByHabitat", () => {
-      const e = organizeByHabitat("meadows");
-
-      expect(e).to.deep.equal({
-        meadows: [ 'Colorado Blue Columbine', 'Alpine Forget-Me-Not', 'Fireweed' ],
-        forests: [ 'Aspen Tree', 'Engelmann Spruce', 'Blue Spruce' ],
-        moutains: [ 'Columbian Lily' ],
-        mountains: [ 'Rocky Mountain Bristlecone Pine', 'Scarlet Gilia' ],
-        grasslands: [ 'Indian Paintbrush' ]
-      });
-    })
-  })
-
-  describe("Sentence Prompts", () => {
-    it.skip("countLetters", () => {
-      const letterT = countLetters("t");
-      const letterZ = countLetters("z");
-      const letterE = countLetters("E");
-
-      expect(letterT).to.equal(2);
-      expect(letterZ).to.equal(0);
-      expect(letterE).to.equal(5);
-    })
-
-    it.skip("findLetterCounts", () => {
-      const e = findLetterCounts();
-
-      expect(e).to.deep.equal({
-        p: 1,
-        o: 4,
-        t: 2,
-        a: 3,
-        e: 5,
-        s: 3,
-        ' ': 4,
-        r: 1,
-        u: 2,
-        n: 1,
-        b: 2,
-        l: 3,
-        i: 3,
-        v: 1,
-        y: 1,
-        d: 1,
-        c: 1,
-        '!': 1
-      });
-    })
-  })
-
   describe("Turing Prompts", () => {
     it.skip("studentsForEachInstructor", () => {
       const e = studentsForEachInstructor();
@@ -1127,26 +1127,5 @@ describe("PROTOTYPES", () => {
       })
     });
   });
-
-  describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
-      const e = bossPrompts.bossLoyalty();
-
-      expect(e).to.deep.equal([{
-        bossName: "Scar",
-        sidekickLoyalty: 16
-      }, {
-        bossName: "Ursula",
-        sidekickLoyalty: 20
-      }, {
-        bossName: "Jafar",
-        sidekickLoyalty: 3
-      }])
-    })
-  });
-
-
-
-
 
 })
