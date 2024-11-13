@@ -54,7 +54,7 @@ To run the tests use:
 `npm test`
 
 ## Prototype Test Checklist
-If you'd like to keep track of your progress, feel free to use the checklist below. Change the `[ ]` to `[x]` in order to check off each item.
+If you'd like to keep track of your progress, feel free to use the checklist below. You'll have to edit this README and change the `[ ]` to `[x]` in order to check off each item. 
 
 ### Single Data Sets
 - [ ] kitties
