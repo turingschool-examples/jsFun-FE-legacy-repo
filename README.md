@@ -11,7 +11,7 @@ This repo contains practice exercises for solving data manipulation challenges u
   - When you run npm install you will see a message that mentions some vulnerabilities with options to fix those vulnerabilities.
   - 🛑 Do **NOT** fix those vulnerabilities.  Do NOT run `npm audit fix` or `npm audit fix --force`.  Using `--force` in a command is really forcing that command through in a way we want to avoid. Just ignore those vulnerabilities, they shouldn't impact your work. 
 
-Check out [this video](https://youtu.be/-TTzFwsZX1c) for a walkthrough of how to work through these problem sets!
+Check out [this video](https://youtu.be/-TTzFwsZX1c) for a walkthrough of how to work through these problem sets. *We recommend watching on 1.5 speed.*
 
 
 ## Assessment Prep Focus
