@@ -6,18 +6,6 @@ console.log('Running crafting.js')
 
 /* Crafting Prompts*/
 
-function getSupplyList(craft) {
-  return craftSupplies[craft].reduce((acc, craft) => {
-    acc.push(craft.name)
-    return acc
-  }, [])
-  
-}
-// console.log(getSupplyList("crossStitching"))
-
-// console.log(getSupplyList("crocheting"))
-// console.log(getSupplyList("weaving"))
-
 /*
 Level 1
 
@@ -68,24 +56,6 @@ Annotation:
   After you find a solution, write out the steps of that solution.  Break them down as much as possible. 
 */
 
-const getDetailedList = (craft) => {
-  return craftSupplies[craft].reduce((acc, supply) => {
-    let name = supply.name
-    let amount = supply.amountNeeded
-
-    if (amount > 1) {
-      name = name + "s"
-    }
-
-    let string = `I need ${amount} ${name}.`
-    acc.push(string)
-    return acc
-  }, [])
-}
-
-console.log(getDetailedList("crocheting"))
-console.log(getDetailedList("knitting"))
-console.log(getDetailedList("weaving"))
 
 /*
 Level 3

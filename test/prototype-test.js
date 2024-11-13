@@ -102,9 +102,11 @@ const {
   getDetailedList
 } = require("../prototypes/problem-sets/crafting")
 
-// const {
-
-// } = require("../prototypes/spicy-problem-sets/nationalParks")
+const {
+  findSpringBloomers,
+  findAverageHeight,
+  organizeByHabitat
+} = require("../prototypes/problem-sets/plants")
 
 // const {
 
@@ -764,6 +766,37 @@ describe("PROTOTYPES", () => {
         'I need 6 yarns.',
         'I need 1 scissor.'
       ]);
+    })
+  })
+
+  describe("Plants Prompts", () => {
+    it.skip("findSpringBloomers", () => {
+      const e = findSpringBloomers();
+
+      expect(e).to.equal(8);
+    });
+
+    
+    it.skip("findAverageHeight", () => {
+      const meadowsAve = findAverageHeight("meadows");
+      const forestsAve = findAverageHeight('forests');
+      const grasslandsAve = findAverageHeight('grasslands');
+
+      expect(meadowsAve).to.equal(28);
+      expect(Math.round(forestsAve * 100) / 100).to.equal(117.33);
+      expect(grasslandsAve).to.equal(18);
+    })
+
+    it.skip("organizeByHabitat", () => {
+      const e = organizeByHabitat("meadows");
+
+      expect(e).to.deep.equal({
+        meadows: [ 'Colorado Blue Columbine', 'Alpine Forget-Me-Not', 'Fireweed' ],
+        forests: [ 'Aspen Tree', 'Engelmann Spruce', 'Blue Spruce' ],
+        moutains: [ 'Columbian Lily' ],
+        mountains: [ 'Rocky Mountain Bristlecone Pine', 'Scarlet Gilia' ],
+        grasslands: [ 'Indian Paintbrush' ]
+      });
     })
   })
 
