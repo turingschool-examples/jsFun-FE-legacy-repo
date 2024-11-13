@@ -108,9 +108,10 @@ const {
   organizeByHabitat
 } = require("../prototypes/problem-sets/plants")
 
-// const {
-
-// } = require("../prototypes/spicy-problem-sets/nationalParks")
+const {
+  countLetters, 
+  findLetterCounts
+} = require("../prototypes/problem-sets/sentence")
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
@@ -796,6 +797,43 @@ describe("PROTOTYPES", () => {
         moutains: [ 'Columbian Lily' ],
         mountains: [ 'Rocky Mountain Bristlecone Pine', 'Scarlet Gilia' ],
         grasslands: [ 'Indian Paintbrush' ]
+      });
+    })
+  })
+
+  describe("Sentence Prompts", () => {
+    it.skip("countLetters", () => {
+      const letterT = countLetters("t");
+      const letterZ = countLetters("z");
+      const letterE = countLetters("E");
+
+      expect(letterT).to.equal(2);
+      expect(letterZ).to.equal(0);
+      expect(letterE).to.equal(5);
+    })
+
+    it.skip("findLetterCounts", () => {
+      const e = findLetterCounts();
+
+      expect(e).to.deep.equal({
+        p: 1,
+        o: 4,
+        t: 2,
+        a: 3,
+        e: 5,
+        s: 3,
+        ' ': 4,
+        r: 1,
+        u: 2,
+        n: 1,
+        b: 2,
+        l: 3,
+        i: 3,
+        v: 1,
+        y: 1,
+        d: 1,
+        c: 1,
+        '!': 1
       });
     })
   })
