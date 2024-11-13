@@ -30,7 +30,7 @@ Object.keys() will **not** be needed for your midmod or final assessments.
 
 ## Instructions
 
-In the [prototypes folder](https://github.com/turingschool-examples/jsFUNk/prototypes), you'll see 3 subfolders.
+In the [prototypes folder](https://github.com/turingschool-examples/jsFunk/prototypes), you'll see 3 subfolders.
 * **prototypes/datasets**: 
   * Each dataset has already been imported into the files that need it.
 * **prototypes/problem-sets**:  
@@ -40,7 +40,7 @@ In the [prototypes folder](https://github.com/turingschool-examples/jsFUNk/proto
 * **prototypes/spicy-problem-sets**:  
   * More prompts that are advanced complexity. These are great for improving your ability to keep track of all the data points and do complex problem solving.  But they are more difficult than what you will see on assessments.  
 
-In the [test folder](https://github.com/turingschool-examples/jsFUNk/test), you'll see the prototype-test.js file which holds the test suite for all problem-sets.
+In the [test folder](https://github.com/turingschool-examples/jsFunk/test), you'll see the prototype-test.js file which holds the test suite for all problem-sets.
 
 As you work on any given problem-set, you'll likely have 3 files open:  
 * Prompt file where you will write the code.  
@@ -96,15 +96,15 @@ You have now cloned your forked version of JSFun to your machine. As instructors
 
 In your terminal, from within the root of your JSFun project directory, run:
 
-`git remote add turing https://github.com/turingschool-examples/jsFun.git`
+`git remote add turing https://github.com/turingschool-examples/jsFunk.git`
 
 If this command was successful, you should be able to run `git remote -v` and see something like the following:
 
 ```
-origin  https://github.com/yourGithubUsername/jsFun.git (fetch)
-origin  https://github.com/yourGithubUsername/jsFun.git (push)
-turing  https://github.com/turingschool-examples/jsFun.git (fetch)
-turing  https://github.com/turingschool-examples/jsFun.git (push)
+origin  https://github.com/yourGithubUsername/jsFunk.git (fetch)
+origin  https://github.com/yourGithubUsername/jsFunk.git (push)
+turing  https://github.com/turingschool-examples/jsFunk.git (fetch)
+turing  https://github.com/turingschool-examples/jsFunk.git (push)
 ```
 
 Now, whenever instructors tell you to pull down changes, there are two steps:
