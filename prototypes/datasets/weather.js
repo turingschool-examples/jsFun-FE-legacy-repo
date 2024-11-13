@@ -55,7 +55,7 @@ const weather = [
     },
     {
         location: 'Miami, Florida',
-        type: 'party cloudy',
+        type: 'partly cloudy',
         humidity: 57,
         temperature: {
             high: 75,

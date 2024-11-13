@@ -3,36 +3,140 @@ const expect = chai.expect;
 const { puppers } = require('../prototypes/datasets/puppers')
 const { kitties } = require('../prototypes/datasets/kitties')
 const { clubs } = require('../prototypes/datasets/clubs')
+const { classrooms } = require('../prototypes/datasets/classrooms')
 const { books } = require('../prototypes/datasets/books')
+const { weather } = require('../prototypes/datasets/weather')
+
+//Imports for the functions from problem-set files
+const {
+  findOrangeNames,
+  sortByAge,
+  growUp
+} = require("../prototypes/problem-sets/kitties");
 
 const {
-  breweryPrompts,
-  turingPrompts,
-  clubPrompts,
-  bossPrompts,
-  classPrompts,
-  modPrompts,
-  kittyPrompts,
-  cakePrompts,
-  astronomyPrompts,
-  ultimaPrompts,
-  dinosaurPrompts,
-  nationalParksPrompts,
-  weatherPrompts,
-  bookPrompts,
-  boardGamePrompts,
-} = require("../prototypes/index");
+  findClubMembers
+} = require("../prototypes/problem-sets/clubs");
 
+const {
+  getStats
+} = require("../prototypes/problem-sets/mods");
+
+const {
+  getStockCounts,
+  getInStock,
+  doInventory,
+  getToppings,
+  makeGroceryList
+} = require("../prototypes/problem-sets/cakes");
+
+const {
+  getClassrooms,
+  getCapacities,
+  sortByCapacity,
+  filterAndSortClassrooms
+} = require("../prototypes/problem-sets/classrooms");
+
+const {
+  removeViolence,
+  getByGenre,
+  getNewBooks,
+} = require("../prototypes/problem-sets/books")
+
+const {
+    getBeerCount,
+    getBreweryBeerCount,
+    getSingleBreweryBeerCount,
+    findHighestAbvBeer,
+    findHighestAbvAll
+} = require("../prototypes/problem-sets/breweries")
+
+const {
+  getAverageTemps,
+  findSunnySpots,
+  findHighestHumidity,
+  findByType,
+  getAverageTempByType
+} = require("../prototypes/problem-sets/weather")
+
+const {
+  getParkVisitList,
+  getParkInEachState,
+  getParkActivities
+} = require("../prototypes/problem-sets/nationalParks")
+
+const {
+  listGames,
+  findHighestRatedGamesByType,
+  averageScoreByType,
+  averageScoreByTypeAndPlayers
+} = require("../prototypes/problem-sets/boardGames")
+
+const {
+  studentsForEachInstructor,
+  studentsPerInstructor,
+  modulesPerTeacher,
+  curriculumPerTeacher
+} = require("../prototypes/spicy-problem-sets/turing")
+
+const {
+  getStarsByColor
+} = require("../prototypes/spicy-problem-sets/astronomy")
+
+const {
+  getTotalDamage,
+  charactersByTotal
+} = require("../prototypes/spicy-problem-sets/ultima")
+
+const {
+  countAwesomeDinosaurs,
+  averageAgePerMovie
+} = require("../prototypes/spicy-problem-sets/dinosaurs")
+
+const {
+  getBossData,
+  getLoyalty
+} = require("../prototypes/problem-sets/bosses")
+
+const {
+  getSupplyList,
+  getDetailedList
+} = require("../prototypes/problem-sets/crafting")
+
+const {
+  findSpringBloomers,
+  findAverageHeight,
+  organizeByHabitat
+} = require("../prototypes/problem-sets/plants")
+
+const {
+  countLetters, 
+  findLetterCounts
+} = require("../prototypes/problem-sets/sentence")
+
+const {
+  findEnrolledStudents,
+  getAverageGrade,
+  findBestAverageGrade
+} = require("../prototypes/problem-sets/students")
+
+const {
+  getAverageTime,
+  getTasksByPerson,
+  getStatusTimes
+} = require("../prototypes/problem-sets/tasks")
+
+// Tests 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it.skip("orangeKittyNames", () => {
-      const e = kittyPrompts.orangePetNames(kitties);
+      const e = findOrangeNames(kitties);
 
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
 
     it.skip("sortByAge", () => {
-      const e = kittyPrompts.sortByAge(kitties);
+      const e = sortByAge(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -54,7 +158,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("growUp", () => {
-      const e = kittyPrompts.growUp(kitties);
+      const e = growUp(kitties);
 
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -74,15 +178,15 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
-    describe('kittyPrompts refactor', () => {
+    describe('Kitty Prompts Refactor', () => {
       it.skip('should be able to handle orange puppers', () => {
-        const e = kittyPrompts.orangePetNames(puppers);
+        const e = findOrangeNames(puppers);
 
         expect(e).to.deep.equal(["Hatchet", "Butter"])
       })
 
       it.skip('should sort pups too', () => {
-        const e = kittyPrompts.sortByAge(puppers);
+        const e = sortByAge(puppers);
 
         expect(e).to.deep.equal([{
           name: 'Scout',
@@ -104,7 +208,7 @@ describe("PROTOTYPES", () => {
       })
 
       it.skip('should age puppers too', () => {
-        const e = kittyPrompts.growUp(puppers);
+        const e = growUp(puppers);
 
         expect(e).to.deep.equal([{
           name: 'Scout',
@@ -129,7 +233,7 @@ describe("PROTOTYPES", () => {
 
   describe("Club Prompts", () => {
     it.skip("membersBelongingToClubs", () => {
-      const e = clubPrompts.membersBelongingToClubs(clubs);
+      const e = findClubMembers(clubs);
 
       expect(e).to.deep.equal({
         Louisa: ['Drama', 'Art'],
@@ -146,9 +250,162 @@ describe("PROTOTYPES", () => {
     })
   });
 
+  describe("Student Prompts", () => {
+    it.skip("findEnrolledStudents", () => {
+      const e = findEnrolledStudents();
+
+      expect(e).to.deep.equal(["John", "Bob", "Eve"]);
+    });
+
+    it.skip("getAverageGrade", () => {
+      const johnAve = getAverageGrade("John");
+      const bobAve = getAverageGrade("Bob");
+      const aliceAve = getAverageGrade("Alice");
+
+      expect(Math.round(johnAve * 100) / 100).to.equal(86.25);
+      expect(Math.round(bobAve * 100) / 100).to.equal(84.5);
+      expect(Math.round(aliceAve * 100) / 100).to.equal(85);
+    })
+
+    it.skip("findBestAverageGrade", () => {
+      const e = findBestAverageGrade();
+
+      expect(e).to.equal("Eve");
+    })
+  })
+
+  describe("Task Prompts", () => {
+    it.skip("getAverageTime", () => {
+      const completeAve = getAverageTime("complete");
+      const inProgressAve = getAverageTime("inProgress");
+
+      expect(completeAve).to.deep.equal('The average time for all complete tasks is 87.5 minutes.');
+      expect(inProgressAve).to.deep.equal('The average time for all inProgress tasks is 90 minutes.');
+    });
+
+    it.skip("getTasksByPerson", () => {
+      const letaTasks = getTasksByPerson("Leta");
+      const travisTasks = getTasksByPerson("Travis");
+      const robbieTasks = getTasksByPerson("Robbie");
+
+      expect(letaTasks).to.deep.equal(['write README', 'refactor']);
+      expect(travisTasks).to.deep.equal([ 'debug issue #14', 'add feature #38' ]);
+      expect(robbieTasks).to.deep.equal([ 'debug issue #13', 'add feature #33' ]);
+    })
+
+    it.skip("getStatusTimes", () => {
+      const e = getStatusTimes();
+
+      expect(e).to.deep.equal({ inProgress: 180, complete: 350, inTriage: 170 });
+    })
+  })
+
+  describe("Crafting Prompts", () => {
+    it.skip("getSupplyList", () => {
+      const crossStitchList = getSupplyList("crossStitching");
+      const crochetList = getSupplyList('crocheting');
+      const weavingList = getSupplyList('weaving');
+
+      expect(crossStitchList).to.deep.equal([ 'fabric', 'needle', 'thread', 'scissor', 'hoop' ]);
+      expect(crochetList).to.deep.equal([ 'hook', 'yarn', 'scissor' ]);
+      expect(weavingList).to.deep.equal([ 'loom', 'needle', 'yarn', 'scissor' ]);
+    });
+
+    
+    it.skip("getDetailedList", () => {
+      const knitList = getDetailedList("knitting");
+      const crochetList = getDetailedList('crocheting');
+      const weavingList = getDetailedList('weaving');
+
+      expect(knitList).to.deep.equal([ 
+        'I need 2 needles.', 
+        'I need 4 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(crochetList).to.deep.equal([ 
+        'I need 1 hook.', 
+        'I need 3 yarns.', 
+        'I need 1 scissor.' 
+      ]);
+      expect(weavingList).to.deep.equal([
+        'I need 1 loom.',
+        'I need 1 needle.',
+        'I need 6 yarns.',
+        'I need 1 scissor.'
+      ]);
+    })
+  })
+
+  describe("Plants Prompts", () => {
+    it.skip("findSpringBloomers", () => {
+      const e = findSpringBloomers();
+
+      expect(e).to.equal(8);
+    });
+
+    it.skip("findAverageHeight", () => {
+      const meadowsAve = findAverageHeight("meadows");
+      const forestsAve = findAverageHeight('forests');
+      const grasslandsAve = findAverageHeight('grasslands');
+
+      expect(meadowsAve).to.equal(28);
+      expect(Math.round(forestsAve * 100) / 100).to.equal(117.33);
+      expect(grasslandsAve).to.equal(18);
+    })
+
+    it.skip("organizeByHabitat", () => {
+      const e = organizeByHabitat("meadows");
+
+      expect(e).to.deep.equal({
+        meadows: [ 'Colorado Blue Columbine', 'Alpine Forget-Me-Not', 'Fireweed' ],
+        forests: [ 'Aspen Tree', 'Engelmann Spruce', 'Blue Spruce' ],
+        moutains: [ 'Columbian Lily' ],
+        mountains: [ 'Rocky Mountain Bristlecone Pine', 'Scarlet Gilia' ],
+        grasslands: [ 'Indian Paintbrush' ]
+      });
+    })
+  })
+
+  describe("Sentence Prompts", () => {
+    it.skip("countLetters", () => {
+      const letterT = countLetters("t");
+      const letterZ = countLetters("z");
+      const letterE = countLetters("E");
+
+      expect(letterT).to.equal(2);
+      expect(letterZ).to.equal(0);
+      expect(letterE).to.equal(5);
+    })
+
+    it.skip("findLetterCounts", () => {
+      const e = findLetterCounts();
+
+      expect(e).to.deep.equal({
+        p: 1,
+        o: 4,
+        t: 2,
+        a: 3,
+        e: 5,
+        s: 3,
+        ' ': 4,
+        r: 1,
+        u: 2,
+        n: 1,
+        b: 2,
+        l: 3,
+        i: 3,
+        v: 1,
+        y: 1,
+        d: 1,
+        c: 1,
+        '!': 1
+      });
+    })
+  })
+
   describe("Mod Prompts", () => {
     it.skip("studentsPerMod", () => {
-      const e = modPrompts.studentsPerMod();
+      const e = getStats();
 
       expect(e).to.deep.equal([{
         mod: 1,
@@ -166,9 +423,75 @@ describe("PROTOTYPES", () => {
     })
   });
 
+  describe("Board Game Prompts", () => {
+    it.skip("listGames", () => {
+      const strategyGames = listGames('strategy');
+      const childrensGames = listGames('childrens');
+      const partyGames = listGames('party');
+
+      expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
+      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
+      expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
+    });
+
+    
+    it.skip("findHighestRatedGamesByType", () => {
+      const highestStrategy = findHighestRatedGamesByType('strategy');
+      const highestChildrens = findHighestRatedGamesByType('childrens');
+      const highestParty = findHighestRatedGamesByType('party');
+
+      expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
+      expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
+      expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
+    });
+
+    it.skip("averageScoreByType", () => {
+      const avScoreStrat = averageScoreByType('strategy');
+      const avScoreChildren = averageScoreByType('childrens');
+      const avScoreParty = averageScoreByType('party');
+
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
+    });
+
+    it.skip("averageScoreByTypeAndPlayers", () => {
+      const avScoreStrat = averageScoreByTypeAndPlayers('strategy', 2);
+      const avScoreChildren = averageScoreByTypeAndPlayers('childrens', 4);
+      const avScoreParty = averageScoreByTypeAndPlayers('party', 8);
+      Math.round(avScoreChildren * 100) / 100
+      expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
+      expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
+      expect(Math.round(avScoreParty * 100) / 100).to.equal(7); // 8 players
+    });
+  })
+
+  describe("Bosses Prompts", () => {
+    it.skip("getBossData", () => {
+      const scarNemesis = getBossData('scar', 'archnemesis');
+      const jafarMove = getBossData('jafar', 'signatureMove');
+      const ursulaGoal = getBossData('ursula', 'goal');
+
+      expect(scarNemesis).to.equal("Scar's archnemesis is Mufasa.");
+      expect(jafarMove).to.equal("Jafar's signatureMove is hypnosis.");
+      expect(ursulaGoal).to.equal("Ursula's goal is to rule the seas.");
+    });
+
+    
+    it.skip("getLoyalty", () => {
+      const scarLoyalty = getLoyalty('scar');
+      const ursulaLoyalty = getLoyalty('ursula');
+      const jafarLoyalty = getLoyalty('jafar');
+
+      expect(Math.round(scarLoyalty * 100) / 100).to.equal(5.33);
+      expect(ursulaLoyalty).to.equal(9.5);
+      expect(jafarLoyalty).to.equal(3);
+    })
+  })
+
   describe("Cake Prompts", () => {
     it.skip("stockPerCake", () => {
-      const e = cakePrompts.stockPerCake();
+      const e = getStockCounts();
 
       expect(e).to.deep.equal([{
         flavor: "dark chocolate",
@@ -192,7 +515,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("onlyInStock", () => {
-      const e = cakePrompts.onlyInStock();
+      const e = getInStock();
 
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
@@ -222,19 +545,19 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("totalInventory", () => {
-      const e = cakePrompts.totalInventory();
+      const e = doInventory();
 
       expect(e).to.deep.equal(59)
     });
 
     it.skip("allToppings", () => {
-      const e = cakePrompts.allToppings();
+      const e = getToppings();
 
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     });
 
     it.skip("groceryList", () => {
-      const e = cakePrompts.groceryList();
+      const e = makeGroceryList();
 
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -250,8 +573,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
-      const e = classPrompts.feClassrooms();
+    it.skip("getClassrooms", () => {
+      const e = getClassrooms("FE");
 
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -273,7 +596,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("totalCapacities", () => {
-      const e = classPrompts.totalCapacities();
+      const e = getCapacities();
 
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -282,7 +605,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("sortByCapacity", () => {
-      const e = classPrompts.sortByCapacity();
+      const e = sortByCapacity(classrooms);
 
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -318,11 +641,55 @@ describe("PROTOTYPES", () => {
         capacity: 32
       }])
     })
+
+    it.skip("filter and sort BE", () => {
+      const e = filterAndSortClassrooms("BE");
+
+      expect(e).to.deep.equal([{
+        roomLetter: "H",
+        program: "BE",
+        capacity: 18
+      }, {
+        roomLetter: "F",
+        program: "BE",
+        capacity: 19
+      }, {
+        roomLetter: "B",
+        program: "BE",
+        capacity: 29
+      }, {
+        roomLetter: "D",
+        program: "BE",
+        capacity: 30
+      }])
+    })
+
+    it.skip("filter and sort FE", () => {
+      const e = filterAndSortClassrooms("FE");
+
+      expect(e).to.deep.equal([{
+        roomLetter: "E",
+        program: "FE",
+        capacity: 22
+      }, {
+        roomLetter: "C",
+        program: "FE",
+        capacity: 27
+      }, {
+        roomLetter: "G",
+        program: "FE",
+        capacity: 29
+      }, {
+        roomLetter: "A",
+        program: "FE",
+        capacity: 32
+      }])
+    })
   });
 
   describe("Book prompts", () => {
     it.skip("removeViolence", () => {
-      const e = bookPrompts.removeViolence(books);
+      const e = removeViolence(books);
 
       expect(e).to.deep.equal(['1984',
         'The Great Gatsby',
@@ -341,7 +708,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("getNewBooks", () => {
-      const e = bookPrompts.getNewBooks(books);
+      const e = getNewBooks(books);
 
       expect(e).to.deep.equal([{
         title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
@@ -352,45 +719,38 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("getBooksByYear", () => {
-      const e = bookPrompts.getBooksByYear(books, 1990);
+    it.skip("getByGenre", () => {
+      const e = getByGenre(books, "Fiction", 1954);
 
-      expect(e).to.deep.equal([{
-        title: 'Harry Potter and the Sorcerer\'s Stone', year: 1997
-      },
-      { title: 'Life of Pi', year: 2001 },
-      {
-        title: 'The Curious Incident of the Dog in the Night-Time', year: 2003
-      }])
+      expect(e).to.deep.equal([ 'Life of Pi', 'The Bell Jar' ])
 
-      const earlyBooks = bookPrompts.getBooksByYear(books, 1970);
-      expect(earlyBooks).to.deep.equal([
-        { title: "Harry Potter and the Sorcerer's Stone", year: 1997 },
-        { title: "The Hitchhiker's Guide to the Galaxy", year: 1979 },
-        { title: "The Handmaid's Tale", year: 1985 },
-        { title: 'Life of Pi', year: 2001 },
-        { title: 'The Curious Incident of the Dog in the Night-Time', year: 2003 },
-        { title: 'Interview with the Vampire', year: 1976 }
+      const e2 = getByGenre(books, "Science Fiction", 1950);
+
+      expect(e2).to.deep.equal([
+        "The Hitchhiker's Guide to the Galaxy",
+        'Flowers for Algernon',
+        'Slaughterhouse-Five',
+        "The Handmaid's Tale"
       ]);
     });
   });
 
   describe("Weather prompts", () => {
     it.skip("getAverageTemps", () => {
-      const e = weatherPrompts.getAverageTemps();
+      const e = getAverageTemps();
 
       expect(e).to.deep.equal([
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
       ])
     }),
       it.skip("findSunnySpots", () => {
-        const e = weatherPrompts.findSunnySpots();
+        const e = findSunnySpots();
 
         expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
         )
       }),
       it.skip("findHighestHumidity", () => {
-        const e = weatherPrompts.findHighestHumidity();
+        const e = findHighestHumidity();
 
         expect(e).to.deep.equal({
           location: 'Portland, Oregon',
@@ -398,12 +758,51 @@ describe("PROTOTYPES", () => {
           humidity: 84,
           temperature: { high: 49, low: 38 }
         })
+      }),
+      it.skip("findByType sunny", () => {
+        const e = findByType(weather, "sunny");
+
+        expect(e).to.deep.equal([ 
+          'Atlanta, Georgia is sunny.',
+          'New Orleans, Louisiana is sunny.',
+          'Raleigh, North Carolina is mostly sunny.' 
+        ]
+        )
+      }),
+      it.skip("findByType cloudy", () => {
+        const e = findByType(weather, "cloudy");
+
+        expect(e).to.deep.equal([
+          'New York, New York is cloudy',
+          'Portland, Oregon is cloudy',
+          'Boston, Massachusetts is cloudy',
+          'Miami, Florida is partly cloudy',
+          'Phoenix, Arizona is cloudy',
+          'Anchorage, Alaska is cloudy'
+        ]
+        )
+      }),
+      it.skip("getAverageTempByType sunny high", () => {
+        const e = getAverageTempByType("sunny", "high");
+
+        expect(e).to.deep.equal("The average high for sunny locations is 58 degrees.")
+      }),
+      it.skip("getAverageTempByType sunny low", () => {
+        const e = getAverageTempByType("sunny", "low");
+        console.log('e', e)
+
+        expect(e).to.deep.equal("The average low for sunny locations is 43.5 degrees.")
+      }),
+      it.skip("getAverageTempByType cloudy low", () => {
+        const e = getAverageTempByType("cloudy", "low");
+
+        expect(e).to.deep.equal("The average low for cloudy locations is 33.4 degrees.")
       })
   });
 
   describe("National Park Prompts", () => {
     it.skip("getParkVisitList", () => {
-      const e = nationalParksPrompts.getParkVisitList();
+      const e = getParkVisitList();
 
       expect(e).to.deep.equal({
         parksToVisit: ['Yellowstone', 'Glacier', 'Everglades'],
@@ -411,7 +810,7 @@ describe("PROTOTYPES", () => {
       })
     }),
       it.skip("getParkActivities", () => {
-        const e = nationalParksPrompts.getParkActivities();
+        const e = getParkActivities();
 
         expect(e).to.deep.equal(
           ['hiking',
@@ -429,7 +828,7 @@ describe("PROTOTYPES", () => {
           ])
       }),
       it.skip("getParkInEachState", () => {
-        const e = nationalParksPrompts.getParkInEachState();
+        const e = getParkInEachState();
 
         expect(e).to.deep.equal(
           [
@@ -445,13 +844,13 @@ describe("PROTOTYPES", () => {
 
   describe("Brewery Prompts", () => {
     it.skip("getBeerCount", () => {
-      const e = breweryPrompts.getBeerCount();
+      const e = getBeerCount();
 
       expect(e).to.deep.equal(40)
     });
 
     it.skip("getBreweryBeerCount", () => {
-      const e = breweryPrompts.getBreweryBeerCount();
+      const e = getBreweryBeerCount();
 
       expect(e).to.deep.equal([{
         name: "Little Machine Brew",
@@ -472,15 +871,26 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("getSingleBreweryBeerCount", () => {
-      const ratioCount = breweryPrompts.getSingleBreweryBeerCount('Ratio Beerworks');
-      const plattCount = breweryPrompts.getSingleBreweryBeerCount('Platt Park Brewing Co.');
+      const ratioCount = getSingleBreweryBeerCount('Ratio Beerworks');
+      const plattCount = getSingleBreweryBeerCount('Platt Park Brewing Co.');
 
       expect(ratioCount).to.equal(5);
       expect(plattCount).to.equal(7);
     });
 
     it.skip("findHighestAbvBeer", () => {
-      const e = breweryPrompts.findHighestAbvBeer();
+      const e = findHighestAbvBeer("Ratio Beerworks");
+
+      expect(e).to.deep.equal({ name: 'Hold Steady', type: 'Chocolate Rye Scotch Ale', abv: 7.5, ibu: 27, })
+
+      const e2 = findHighestAbvBeer("Little Machine Brew");
+
+      expect(e2).to.deep.equal({ name: 'B.B. Rodriguez', type: 'Coffee Double Brown', abv: 8, ibu: 30, })
+    })
+
+
+    it.skip("findHighestAbvAll", () => {
+      const e = findHighestAbvAll();
 
       expect(e).to.deep.equal({
         name: "Barrel Aged Nature's Sweater",
@@ -491,61 +901,9 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Board Game Prompts", () => {
-    it.skip("listGames", () => {
-      const strategyGames = boardGamePrompts.listGames('strategy');
-      const childrensGames = boardGamePrompts.listGames('childrens');
-      const partyGames = boardGamePrompts.listGames('party');
-
-      expect(strategyGames).to.deep.equal(["Chess", "Catan", "Checkers", "Pandemic", "Battle Ship", "Azul", "Ticket To Ride"]);
-      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
-      expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
-    });
-
-    it.skip("listGamesAlphabetically", () => {
-      const strategyGames = boardGamePrompts.listGamesAlphabetically('strategy');
-      const childrensGames = boardGamePrompts.listGamesAlphabetically('childrens');
-      const partyGames = boardGamePrompts.listGamesAlphabetically('party');
-
-      expect(strategyGames).to.deep.equal(["Azul", "Battle Ship", "Catan", "Checkers", "Chess", "Pandemic", "Ticket To Ride"]);
-      expect(childrensGames).to.deep.equal(["Candy Land", "Connect Four", "Operation", "Trouble"]);
-      expect(partyGames).to.deep.equal(["Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro", "Werewolf"]);
-    });
-
-    it.skip("findHighestRatedGamesByType", () => {
-      const highestStrategy = boardGamePrompts.findHighestRatedGamesByType('strategy');
-      const highestChildrens = boardGamePrompts.findHighestRatedGamesByType('childrens');
-      const highestParty = boardGamePrompts.findHighestRatedGamesByType('party');
-
-      expect(highestStrategy).to.deep.equal({ name: 'Azul', rating: 8.8, maxPlayers: 4 });
-      expect(highestChildrens).to.deep.equal({ name: 'Connect Four', rating: 4.9, maxPlayers: 2 });
-      expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
-    });
-
-    it.skip("averageScoreByType", () => {
-      const avScoreStrat = boardGamePrompts.averageScoreByType('strategy');
-      const avScoreChildren = boardGamePrompts.averageScoreByType('childrens');
-      const avScoreParty = boardGamePrompts.averageScoreByType('party');
-
-      expect(Math.round(avScoreStrat * 100) / 100).to.equal(7);
-      expect(Math.round(avScoreChildren * 100) / 100).to.equal(4.25);
-      expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
-    });
-
-    it.skip("averageScoreByTypeAndPlayers", () => {
-      const avScoreStrat = boardGamePrompts.averageScoreByTypeAndPlayers('strategy', 2);
-      const avScoreChildren = boardGamePrompts.averageScoreByTypeAndPlayers('childrens', 4);
-      const avScoreParty = boardGamePrompts.averageScoreByTypeAndPlayers('party', 8);
-      Math.round(avScoreChildren * 100) / 100
-      expect(Math.round(avScoreStrat * 100) / 100).to.equal(6.17); // 2 players
-      expect(Math.round(avScoreChildren * 100) / 100).to.equal(3.8); // 4 players
-      expect(Math.round(avScoreParty * 100) / 100).to.equal(7); // 8 players
-    });
-  })
-
   describe("Turing Prompts", () => {
     it.skip("studentsForEachInstructor", () => {
-      const e = turingPrompts.studentsForEachInstructor();
+      const e = studentsForEachInstructor();
 
       expect(e).to.deep.equal([{
         name: "Pam",
@@ -578,7 +936,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("studentsPerInstructor", () => {
-      const e = turingPrompts.studentsPerInstructor();
+      const e = studentsPerInstructor();
 
       expect(e).to.deep.equal({
         cohort1806: 15,
@@ -589,7 +947,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("modulesPerTeacher", () => {
-      const e = turingPrompts.modulesPerTeacher();
+      const e = modulesPerTeacher();
 
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -605,7 +963,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("curriculumPerTeacher", () => {
-      const e = turingPrompts.curriculumPerTeacher();
+      const e = curriculumPerTeacher();
 
       expect(e).to.deep.equal({
         html: ["Travis", "Louisa"],
@@ -623,58 +981,9 @@ describe("PROTOTYPES", () => {
     })
   });
 
-  describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
-      const e = bossPrompts.bossLoyalty();
-
-      expect(e).to.deep.equal([{
-        bossName: "Scar",
-        sidekickLoyalty: 16
-      }, {
-        bossName: "Ursula",
-        sidekickLoyalty: 20
-      }, {
-        bossName: "Jafar",
-        sidekickLoyalty: 3
-      }])
-    })
-  });
-
   describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
-      const e = astronomyPrompts.starsInConstellations();
-
-      expect(e).to.deep.equal([{
-        name: 'Rigel',
-        visualMagnitude: 0.13,
-        constellation: 'Orion',
-        lightYearsFromEarth: 860,
-        color: 'blue'
-      }, {
-        name: 'Achernar',
-        visualMagnitude: 0.46,
-        constellation: 'The Plow',
-        lightYearsFromEarth: 140,
-        color: 'blue'
-      }, {
-        name: 'Betelgeuse',
-        visualMagnitude: 0.5,
-        constellation: 'Orion',
-        lightYearsFromEarth: 640,
-        color: 'red'
-      },
-      {
-        name: 'Hadar',
-        visualMagnitude: 0.61,
-        constellation: 'The Little Dipper',
-        lightYearsFromEarth: 350,
-        color: 'blue'
-      }
-      ])
-    });
-
-    it.skip("starsByColor", () => {
-      const e = astronomyPrompts.starsByColor();
+    it.skip("getStarsByColor", () => {
+      const e = getStarsByColor();
 
       expect(e).to.deep.equal({
         blue: [{
@@ -751,22 +1060,17 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("constellationsStarsExistIn", () => {
-      const e = astronomyPrompts.constellationsStarsExistIn();
-
-      expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
-    })
   });
 
   describe("Ultima Prompts", () => {
-    it.skip("totalDamage", () => {
-      const e = ultimaPrompts.totalDamage();
+    it.skip("getTotalDamage", () => {
+      const e = getTotalDamage();
 
-      expect(e).to.deep.equal(113)
+      expect(e).to.deep.equal(59)
     });
 
     it.skip("charactersByTotal", () => {
-      const e = ultimaPrompts.charactersByTotal();
+      const e = charactersByTotal();
 
       expect(e).to.deep.equal([{
         Avatar: {
@@ -794,7 +1098,7 @@ describe("PROTOTYPES", () => {
 
   describe("Dinosaur Prompts", () => {
     it.skip("countAwesomeDinosaurs", () => {
-      const e = dinosaurPrompts.countAwesomeDinosaurs();
+      const e = countAwesomeDinosaurs();
 
       expect(e).to.deep.equal({
         'Jurassic Park': 5,
@@ -806,7 +1110,7 @@ describe("PROTOTYPES", () => {
     });
 
     it.skip("averageAgePerMovie", () => {
-      const e = dinosaurPrompts.averageAgePerMovie();
+      const e = averageAgePerMovie();
 
       expect(e).to.deep.equal({
         'Steven Spielberg': {
@@ -824,62 +1128,6 @@ describe("PROTOTYPES", () => {
         }
       })
     });
+  });
 
-    it.skip("uncastActors", () => {
-      const e = dinosaurPrompts.uncastActors();
-
-      expect(e).to.deep.equal([{
-        name: 'Justin Duncan',
-        nationality: 'Alien',
-        imdbStarMeterRating: 0
-      },
-      {
-        name: 'Karin Ohman',
-        nationality: 'Chinese',
-        imdbStarMeterRating: 0
-      },
-      {
-        name: 'Tom Wilhoit',
-        nationality: 'Kiwi',
-        imdbStarMeterRating: 1
-      }, {
-        name: 'Jeo D',
-        nationality: 'Martian',
-        imdbStarMeterRating: 0
-      }])
-    });
-
-    it.skip("actorsAgesInMovies", () => {
-      const e = dinosaurPrompts.actorsAgesInMovies();
-
-      expect(e).to.deep.equal([{
-        name: 'Sam Neill',
-        ages: [46, 54]
-      }, {
-        name: 'Laura Dern',
-        ages: [26, 34]
-      }, {
-        name: 'Jeff Goldblum',
-        ages: [41, 45, 63, 66]
-      }, {
-        name: 'Richard Attenborough',
-        ages: [70, 74, 92, 95]
-      }, {
-        name: 'Ariana Richards',
-        ages: [14, 18]
-      }, {
-        name: 'Joseph Mazello',
-        ages: [10, 14]
-      }, {
-        name: 'BD Wong',
-        ages: [33, 55, 58]
-      }, {
-        name: 'Chris Pratt',
-        ages: [36, 39]
-      }, {
-        name: 'Bryce Dallas Howard',
-        ages: [34, 37]
-      }])
-    })
-  })
 })
