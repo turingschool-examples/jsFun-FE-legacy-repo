@@ -30,7 +30,7 @@ Object.keys() will **not** be needed for your midmod or final assessments.
 
 ## Instructions
 
-In the [prototypes folder](https://github.com/turingschool-examples/jsFunk/prototypes), you'll see 3 subfolders.
+In the `prototypes` folder, you'll see 3 subfolders.
 * **prototypes/datasets**: 
   * Each dataset has already been imported into the files that need it.
 * **prototypes/problem-sets**:  
@@ -40,12 +40,12 @@ In the [prototypes folder](https://github.com/turingschool-examples/jsFunk/proto
 * **prototypes/spicy-problem-sets**:  
   * More prompts that are advanced complexity. These are great for improving your ability to keep track of all the data points and do complex problem solving.  But they are more difficult than what you will see on assessments.  
 
-In the [test folder](https://github.com/turingschool-examples/jsFunk/test), you'll see the prototype-test.js file which holds the test suite for all problem-sets.
+In the `test` folder, you'll see the prototype-test.js file which holds the test suite for all problem-sets.
 
 As you work on any given problem-set, you'll likely have 3 files open:  
-* Prompt file where you will write the code.  
-* Dataset file to see the data you're working with.  
-* Test file to unskip and run the tests after you've worked through all the levels. *Note: The tests are written to be run after you've completed all the levels in each problem-set, some of which require refactoring. If you run the tests before you've completed the refactoring levels, they may not pass.*  
+* **Prompt file** where you will write the code.  
+* **Dataset file** to see the data you're working with.  
+* **Test file** to unskip and run the tests after you've worked through all the levels. *Note: The tests are written to be run after you've completed all the levels in each problem-set, some of which require refactoring. If you run the tests before you've completed the refactoring levels, they may not pass.*  
 
 ## Running the Tests
 
